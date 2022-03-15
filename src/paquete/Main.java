@@ -46,8 +46,6 @@ public class Main extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-	
-		
 		JLabel lblBienvenidos = new JLabel("Bienvenidos");
 		lblBienvenidos.setFont(new Font("Trebuchet MS", Font.BOLD, 32));
 		lblBienvenidos.setBounds(124, 13, 187, 38);

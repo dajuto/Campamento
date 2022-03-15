@@ -43,24 +43,12 @@ public class acampados extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-
-		JButton back = new JButton("atras");
-		back.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				dispose();
-				Main aca = new Main();
-				aca.setVisible(true);
-			}
-		});
-		back.setBounds(5, 5, 70, 20);
-		contentPane.add(back);
 		
 		JLabel lblIniciarSesion = new JLabel("Acampados");
 		lblIniciarSesion.setFont(new Font("Tahoma", Font.PLAIN, 32));
 		lblIniciarSesion.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIniciarSesion.setBounds(108, 13, 227, 73);
 		contentPane.add(lblIniciarSesion);
-		
 		
 		JButton btnIniciarSesion = new JButton("Iniciar sesion");
 		btnIniciarSesion.addActionListener(new ActionListener() {
