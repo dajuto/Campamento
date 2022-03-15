@@ -16,6 +16,7 @@ import javax.swing.JButton;
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class Registrarse extends JFrame {
 
@@ -51,6 +52,7 @@ public class Registrarse extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 399);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -90,27 +92,27 @@ public class Registrarse extends JFrame {
 		contentPane.add(lblTelefono);
 		
 		nomb_usu = new JTextField();
-		nomb_usu.setBounds(71, 83, 116, 22);
+		nomb_usu.setBounds(131, 83, 116, 22);
 		contentPane.add(nomb_usu);
 		nomb_usu.setColumns(10);
 		
 		dni_usu = new JTextField();
-		dni_usu.setBounds(46, 112, 116, 22);
+		dni_usu.setBounds(131, 112, 116, 22);
 		contentPane.add(dni_usu);
 		dni_usu.setColumns(10);
 		
 		edad_usu = new JTextField();
-		edad_usu.setBounds(56, 142, 116, 22);
+		edad_usu.setBounds(131, 142, 116, 22);
 		contentPane.add(edad_usu);
 		edad_usu.setColumns(10);
 		
 		email_usu = new JTextField();
-		email_usu.setBounds(56, 229, 116, 22);
+		email_usu.setBounds(131, 229, 116, 22);
 		contentPane.add(email_usu);
 		email_usu.setColumns(10);
 		
 		tele_usu = new JTextField();
-		tele_usu.setBounds(81, 258, 116, 22);
+		tele_usu.setBounds(131, 258, 116, 22);
 		contentPane.add(tele_usu);
 		tele_usu.setColumns(10);
 		
@@ -167,7 +169,7 @@ public class Registrarse extends JFrame {
 		contentPane.add(btnRegistrarse);
 		
 		cont_usu1 = new JPasswordField();
-		cont_usu1.setBounds(92, 171, 105, 22);
+		cont_usu1.setBounds(131, 171, 105, 22);
 		contentPane.add(cont_usu1);
 		
 		cont_usu2 = new JPasswordField();

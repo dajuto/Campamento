@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+import java.awt.SystemColor;
 
 public class registrado extends JFrame {
 
@@ -36,15 +37,15 @@ public class registrado extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		JTextArea txtrSeHaIniciado = new JTextArea();
-		txtrSeHaIniciado.setFont(new Font("Monospaced", Font.PLAIN, 24));
-		txtrSeHaIniciado.setText("Se ha guardado \r\ncorrectamente \r\ntu usuario");
-		txtrSeHaIniciado.setBounds(99, 39, 214, 152);
-		contentPane.add(txtrSeHaIniciado);
+		JTextArea textArea = new JTextArea();
+		textArea.setText("Se ha guardado \r\ncorrectamente \r\ntu usuario");
+		textArea.setFont(new Font("Monospaced", Font.PLAIN, 24));
+		textArea.setBounds(78, 62, 256, 116);
+		contentPane.add(textArea);
 	}
-
 }

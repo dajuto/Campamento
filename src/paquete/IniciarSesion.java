@@ -15,6 +15,7 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
+import java.awt.SystemColor;
 
 public class IniciarSesion extends JFrame {
 
@@ -45,6 +46,7 @@ public class IniciarSesion extends JFrame {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
+		contentPane.setBackground(SystemColor.activeCaption);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -92,12 +94,12 @@ public class IniciarSesion extends JFrame {
 		contentPane.add(lblNewLabel);
 		
 		dni_usuario = new JTextField();
-		dni_usuario.setBounds(48, 105, 116, 22);
+		dni_usuario.setBounds(88, 105, 97, 22);
 		contentPane.add(dni_usuario);
 		dni_usuario.setColumns(10);
 		
 		contraseña_usuario = new JPasswordField();
-		contraseña_usuario.setBounds(93, 131, 97, 22);
+		contraseña_usuario.setBounds(89, 131, 97, 22);
 		contentPane.add(contraseña_usuario);
 	}
 }
