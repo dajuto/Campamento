@@ -1,4 +1,4 @@
-package paquete;
+package vista;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -19,22 +19,6 @@ public class empleados extends JFrame {
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					empleados frame = new empleados();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the frame.
 	 */
 	public empleados() {
@@ -50,7 +34,7 @@ public class empleados extends JFrame {
 		back.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Main aca = new Main();
+				Bienvenidos aca = new Bienvenidos();
 				aca.setVisible(true);
 			}
 		});
