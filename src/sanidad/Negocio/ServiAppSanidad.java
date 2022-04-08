@@ -12,9 +12,9 @@ import subsistemaActividad.capaIntegracion.SingletonDaoActividad;
 import subsistemaMantenimiento.capaIntegraccion.SingletonDaoAveria;
 import subsistemaMantenimiento.capaNegocio.TAveria;
 
-public class ServiAppSanidad implements Observable<ActividadObserver> {
+public class ServiAppSanidad implements Observable<SanidadObserver> {
 
-	private List<ActividadObserver> observers;
+	private List<SanidadObserver> observers;
 	private List<TActividad> listaActividad;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
@@ -22,11 +22,11 @@ public class ServiAppSanidad implements Observable<ActividadObserver> {
 	
 	public ServiAppSanidad()  {
 		this.listaActividad = new ArrayList<TActividad>();
-		this.observers = new ArrayList<ActividadObserver>();
+		this.observers = new ArrayList<SanidadObserver>();
 	}
 	
 	public void updateActividad() {
-		this.listaActividad = SingletonDaoActividad.getInstance().leeTodo(this.factoriaTranserObjects);
+		this.listaActividad = SingletonDaoSanidad.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
@@ -47,26 +47,26 @@ public class ServiAppSanidad implements Observable<ActividadObserver> {
 	
 	void onCreateActividad() {
 		this.updateActividad();
-		for(ActividadObserver o: this.observers) {
+		for(SanidadObserver o: this.observers) {
 			o.onCreateActividad(this.listaActividad);
 		}
 	}
 	void onEliminarActividad() {
 		this.updateActividad();
-		for(ActividadObserver o: this.observers) {
+		for(SanidadObserver o: this.observers) {
 			o.onEliminarActividad(this.listaActividad);
 		}
 	}
 
 	@Override
-	public void addObserver(ActividadObserver o) {
+	public void addObserver(SanidadObserver o) {
 		this.observers.add(o);
 		this.updateActividad();
 		o.onRegister(listaActividad);
 	}
 
 	@Override
-	public void removeObserver(ActividadObserver o) {
+	public void removeObserver(SanidadObserver o) {
 		this.observers.remove(o);
 	}
 	
@@ -81,7 +81,7 @@ public class ServiAppSanidad implements Observable<ActividadObserver> {
 
 	public void guardaActividad() {
 		
-      SingletonDaoActividad.getInstance().escribeTodo(listaActividad);
+      SingletonDaoSanidad.getInstance().escribeTodo(listaActividad);
 	}
 	
 	public boolean anadirActividad(int codigoActividad, String lug, String desc, String fecha) {
