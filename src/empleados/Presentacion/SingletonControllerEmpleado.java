@@ -1,23 +1,20 @@
-package gestoria.Negocio;
+package empleados.Presentacion;
 
-import sanidad.Presentacion.ControllerSanidad;
-
-public class SingletonServiAppSanidad {
-
-	private static ControllerSanidad INSTANCE = null;
+public class SingletonControllerEmpleado {
+	private static ControllerEmpleado INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonServiAppSanidad(){}
+    private SingletonControllerEmpleado(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerSanidad();
+            INSTANCE = new ControllerEmpleado();
         }
     }
 
-    public static ControllerSanidad getInstance() {
+    public static ControllerEmpleado getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }
