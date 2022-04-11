@@ -1,22 +1,20 @@
-package gestoria.Presentacion;
+package empleados.Negocio;
 
-
-public class SingletonControllerSanidad {
-
-	private static ControllerSanidad INSTANCE = null;
+public class SingletonServiAppEmpleado {
+	private static ServiAppEmpleado INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonControllerSanidad(){}
+    private SingletonServiAppEmpleado(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerSanidad();
+            INSTANCE = new ServiAppEmpleado();
         }
     }
 
-    public static ControllerSanidad getInstance() {
+    public static ServiAppEmpleado getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }
@@ -27,3 +25,4 @@ public class SingletonControllerSanidad {
         	throw new CloneNotSupportedException(); 
     }
 }
+

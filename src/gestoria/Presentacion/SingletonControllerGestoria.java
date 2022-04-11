@@ -1,31 +1,20 @@
-package gestoria.Integracion;
+package gestoria.Presentacion;
 
-import java.io.IOException;
-
-import subsistemaActividad.capaIntegracion.DaoActividad;
-
-public class SingletonDaoSanidad {
-
-	
-	private static DaoSanidad INSTANCE = null;
+public class SingletonControllerGestoria {
+	private static ControllerGestoria INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonDaoSanidad(){}
+    private SingletonControllerGestoria(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            try {
-				INSTANCE = new DaoSanidad();
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.out.println("El archivo no se ha encontrado");
-			}
+            INSTANCE = new ControllerGestoria();
         }
     }
 
-    public static DaoSanidad getInstance() {
+    public static ControllerGestoria getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }
