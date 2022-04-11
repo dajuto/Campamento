@@ -4,15 +4,9 @@ import java.awt.Frame;
 
 import javax.swing.JFrame;
 
+import empleados.Presentacion.SingletonControllerEmpleado;
+import gestoria.Presentacion.SingletonControllerGestoria;
 import sanidad.Presentacion.SingletonControllerSanidad;
-import subsistemaActividad.capaPresentacion.SingletonControllerActividad;
-import subsistemaAulas.capaPresentacion.SingletonControllerAulas;
-import subsistemaComedor.capaPresentacion.SingletonControllerComedor;
-import subsistemaCoordCovid.capaPresentacion.SingletonControllerCoordCovid;
-import subsistemaEmpleado.capaPresentacion.SingletonControllerEmpleado;
-import subsistemaEstudiante.capaPresentacion.SingletonControllerEstudiante;
-import subsistemaLimpieza.capaPresentacion.SingletonControllerLimpieza;
-import subsistemaMantenimiento.capaPresentacion.SingletonControllerMantenimiento;
 
 
 public class SuperControlador{
