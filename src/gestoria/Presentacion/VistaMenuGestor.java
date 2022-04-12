@@ -2,16 +2,22 @@ package gestoria.Presentacion;
 
 import javax.swing.JFrame;
 
+import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.LimpiezaObserver;
+import gestoria.Negocio.TLimpieza;
 import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class VistaMenuGestor extends JFrame {
+public class VistaMenuGestor extends JFrame implements LimpiezaObserver{
+	private static final long serialVersionUID = 1L;
 	private JFrame atras;
+	private String nombreUsuario;
+	
 	public VistaMenuGestor(JFrame frame) {
 		setTitle("Menu de gestoria");
 		getContentPane().setBackground(SystemColor.activeCaption);
@@ -64,5 +70,35 @@ public class VistaMenuGestor extends JFrame {
 	
 	private JFrame getFrame() {
 		return this;
+	}
+	
+	private void update(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+	
+	@Override
+	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		this.update(nombreUsuario);
 	}
 }

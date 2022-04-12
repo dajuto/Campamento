@@ -6,37 +6,37 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import empleados.Negocio.TEmpleadoLimpieza;
+import gestoria.Integracion.SingletonDaoLimpieza;
+import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import launcher.Observable;
-import subsistemaEmpleado.capaNegocio.TEmpleadoMantenimiento;
-import subsistemaMantenimiento.capaIntegraccion.SingletonDaoAveria;
-import subsistemaMantenimiento.capaPresentacion.SingletonControllerMantenimiento;
 
 public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 	private List<LimpiezaObserver> observers;
-	private List<TLimpieza> listaAverias;
-	private List<TEmpleadoLimpieza> listaEmpleadosMantenimiento;
+	private List<TLimpieza> listaLimpieza;
+	private List<TEmpleadoLimpieza> listaEmpleadosLimpieza;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
 	private char[] contrasenaUsuario;
 	
 	public ServiAppGestoria() {
-		this.listaAverias = new ArrayList<TLimpieza>();
-		this.listaEmpleadosMantenimiento = new ArrayList<TEmpleadoLimpieza>();
+		this.listaLimpieza = new ArrayList<TLimpieza>();
+		this.listaEmpleadosLimpieza = new ArrayList<TEmpleadoLimpieza>();
 		this.observers = new ArrayList<LimpiezaObserver>();
 	}
 	
-	public void updateAverias() {
-		this.listaAverias = SingletonDaoLimpieza.getInstance().leeTodo(this.factoriaTranserObjects);
+	public void updateLimpieza() {
+		this.listaLimpieza = SingletonDaoLimpieza.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
-	public void updateEmpleadosMantenimiento() {
-		this.listaEmpleadosMantenimiento = SingletonControllerGestoria.getInstance().getListaEmpleadosMantenimiento();	
-	}
+//	public void updateEmpleadosLimpieza() { //TODO MIRAR 
+//		this.listaEmpleadosLimpieza = SingletonControllerGestoria.getInstance().getListaEmpleadosLimpieza();	
+//	}
 	
-	public void guardaAverias() {
-        SingletonDaoLimpieza.getInstance().escribeTodo(this.listaAverias);
-	}
+//	public void guardaAverias() { //TODO sobra?
+//        SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
+//	}
 	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
@@ -47,39 +47,16 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 		this.contrasenaUsuario = password;
 	}
 
-	/*public void mostrarListaAveriasEmpleado(String nombreEmpleado) {
-		this.updateAverias();
-		//crearia una tabla con esta lista
-	}*/
-
-	void onCreateAveria() {
-		this.updateAverias();
-		this.updateEmpleadosMantenimiento();
-		for(LimpiezaObserver o: this.observers) {
-			o.onCreateAveria(this.listaAverias, listaEmpleadosMantenimiento, nombreUsuario);
-		}
-	}
-	void onEliminarAveria() {
-		this.updateAverias();
-		this.updateEmpleadosMantenimiento();
-		for(LimpiezaObserver o: this.observers) {
-			o.onEliminarAveria(this.listaAverias, listaEmpleadosMantenimiento, nombreUsuario);
-		}
-	}
-	void onModificarAveria() {
-		this.updateAverias();
-		//this.updateEmpleadosMantenimiento();
-		for(LimpiezaObserver o: this.observers) {
-			o.onModificarAveria(this.listaAverias, listaEmpleadosMantenimiento, nombreUsuario);
-		}
+	public void mostrarListaLimpiezaEmpleado(String nombreEmpleado) {
+		this.updateLimpieza();
 	}
 
 	@Override
 	public void addObserver(LimpiezaObserver o) {
 		this.observers.add(o);
-		this.updateAverias();
-		this.updateEmpleadosMantenimiento();
-		o.onRegister(listaAverias, listaEmpleadosMantenimiento, nombreUsuario);
+		this.updateLimpieza();
+		//TODO this.updateEmpleadosLimpieza();
+		o.onRegister(listaLimpieza, listaEmpleadosLimpieza, nombreUsuario);
 	}
 
 	@Override
@@ -91,15 +68,14 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 		return this.nombreUsuario;
 	}
 
-	public List<TLimpieza> getListaAveriasGestor() {
-		this.updateAverias();
-		return listaAverias;
+	public List<TLimpieza> getListaLimpiezaGestor() {	
+		return listaLimpieza;
 	}
 	
 	public List<TLimpieza> getListaAveriasEmpleado(String usuarioEmpleadoMantenimiento) {
-		this.updateAverias();
+		this.updateLimpieza();
 		List<TLimpieza> l = new ArrayList<>();
-		for(TLimpieza e: this.listaAverias) {
+		for(TLimpieza e: this.listaLimpieza) {
 			if(e.empleadoEncargado.getUsuario().equals(usuarioEmpleadoMantenimiento)) {
 				l.add(e);
 			}
@@ -107,83 +83,7 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 		return l;
 	}
 
-	public boolean anadirAveria(int codigoAveria, String lug, String desc, String usuarioEmpleadoEncargado) {
-		this.updateAverias();
-		boolean puedo = true;
-		for(TLimpieza ta: this.listaAverias) {
-			if(ta.codigo == codigoAveria) {
-				puedo = false;
-			}
-		}
-		if(puedo) {
-			JSONObject averia = new JSONObject();
-			
-			JSONObject data = new JSONObject();
-			data.accumulate("estado", "Sin Reparar");
-			data.accumulate("usuarioEmpleadoEncargado", usuarioEmpleadoEncargado);
-			data.accumulate("descripcion", desc);
-			data.accumulate("lugar", lug);
-			String codigo = Integer.toString(codigoAveria);
-			data.accumulate("codigo", codigo);
-			averia.accumulate("data", data);
-			averia.accumulate("type", "averia");
-			
-			TLimpieza ta = (TLimpieza) this.factoriaTranserObjects.createInstance(averia);
-			SingletonControllerGestoria.getInstance().anadeAveriaEmpleado(ta);
-			this.listaAverias.add(ta);
-			this.guardaAverias();
-		    this.onCreateAveria();
-		    return true;
-		}
-		else {
-			return false;
-		}
-	}
-
-	public boolean eliminarAveria(Frame ventanaListaAverias, int codigoAveria) {
-		boolean averiaReparadaPreviamente = true;
-		for(int i = 0; i < this.listaAverias.size(); i++) {
-			if(this.listaAverias.get(i).codigo == codigoAveria) {
-				if(this.listaAverias.get(i).estado.equals("Reparado")) {
-					SingletonControllerGestoria.getInstance().eliminaAveriaEmpleado(this.listaAverias.get(i));
-					this.listaAverias.remove(i);
-					this.guardaAverias();
-				    this.onEliminarAveria();
-				    i--;
-				}
-				else {
-					averiaReparadaPreviamente = false;
-				}
-			}
-		}
-		return averiaReparadaPreviamente;
-	}
-
-	public void modificarEstadoAveriaGestor(int codigoAveria) {
-		for(TLimpieza ta: this.listaAverias) {
-			if(ta.codigo == codigoAveria) {
-				if(ta.estado.equals("Sin Reparar")) {
-					ta.estado = "Reparado";
-				}
-				else {
-					ta.estado = "Sin Reparar";
-				}
-				this.guardaAverias();
-			    this.onModificarAveria();
-			}
-		}
-	}
-
-	public void actualizarListaEmpleadosMantenimiento() {
-		this.updateEmpleadosMantenimiento();
-		onModificarListaEmpleadosMantenimiento();
-	}
-
-	private void onModificarListaEmpleadosMantenimiento() {
-		for(LimpiezaObserver mo: this.observers) {
-			mo.onActualizarListaEmpleadosMantenimiento(this.listaAverias, listaEmpleadosMantenimiento, this.nombreUsuario);
-		}
-	}
+	
 
 	
 }
