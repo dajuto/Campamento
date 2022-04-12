@@ -6,13 +6,9 @@ import java.util.List;
 
 import org.json.JSONObject;
 
+import empleados.Integracion.SingletonDaoEmpleado;
 import launcher.Factory;
 import launcher.Observable;
-import subsistemaAulas.capaNegocio.TReserva;
-import subsistemaEmpleado.capaIntegracion.SingletonDaoEmpleado;
-import subsistemaMantenimiento.capaIntegraccion.SingletonDaoAveria;
-import subsistemaMantenimiento.capaNegocio.MantenimientoObserver;
-import subsistemaMantenimiento.capaNegocio.TAveria;
 
 public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	private List<EmpleadoObserver> observers;
@@ -42,6 +38,16 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	
 	public void updateEmpleados() {
 		this.listaEmpleados = SingletonDaoEmpleado.getInstance().leeTodo(this.factoriaTransferObjects);
+	}
+	
+	public boolean existeEmpleado(String usuario, String password) {
+		this.updateEmpleados();
+		for(TEmpleado e: this.listaEmpleados) {
+			if(e.usuario.equals(usuario) && e.contrasena.equals(password)) {
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean containsEmpleado(String usuarioEmpleadoEncargado) {
@@ -186,30 +192,30 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		this.listaEmpleados.add(te);
 	}
 
-	public boolean eliminarEmpleado(Frame ventanaAnterior, String usuario) {
-		for(int i = 0; i < this.listaEmpleados.size(); i++) {
-			if(this.listaEmpleados.get(i).usuario == usuario) {
-					if(this.listaEmpleados.get(i).getPuesto().equals("Empleado Mantenimiento")) {
-						boolean borrar = eliminarEmpleadoMantenimiento((TEmpleadoLimpieza) this.listaEmpleados.get(i));
-						if(borrar) {
-							this.listaEmpleados.remove(i);
-							this.guardaEmpleados();
-						    this.onEliminarEmpleado();
-						    return true;
-						}else {
-							return false;
-						}
-					}
-					this.listaEmpleados.remove(i);
-					this.guardaEmpleados();
-				    this.onEliminarEmpleado();
-				    return true;
-			}		
-		}
-		return false;
-	}
+//	public boolean eliminarEmpleado(Frame ventanaAnterior, String usuario) {
+//		for(int i = 0; i < this.listaEmpleados.size(); i++) {
+//			if(this.listaEmpleados.get(i).usuario == usuario) {
+//					if(this.listaEmpleados.get(i).getPuesto().equals("Empleado Mantenimiento")) {
+//						boolean borrar = eliminarEmpleadoMantenimiento((TEmpleadoLimpieza) this.listaEmpleados.get(i));
+//						if(borrar) {
+//							this.listaEmpleados.remove(i);
+//							this.guardaEmpleados();
+//						    this.onEliminarEmpleado();
+//						    return true;
+//						}else {
+//							return false;
+//						}
+//					}
+//					this.listaEmpleados.remove(i);
+//					this.guardaEmpleados();
+//				    this.onEliminarEmpleado();
+//				    return true;
+//			}		
+//		}
+//		return false;
+//	}
 
-	public void modificarEmpleado(String usuario, String nombre, String pu, int sal, int hor, int vac) {
+	public void modificarEmpleado(String usuario, String nombre, String pu, int sal, int hor, String vac) {
 		for(TEmpleado tr: this.listaEmpleados) {
 			if(tr.usuario == usuario) {
 				tr.nombre = nombre;
@@ -223,33 +229,7 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	}
 		}
 	}
+
 	
-	private boolean eliminarEmpleadoMantenimiento(TEmpleadoLimpieza tEmpleado) {
-		// TODO Auto-generated method stub
-		if(tEmpleado.horariosLimpieza.isEmpty()) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-
-	public void anadeAveriaEmpleado(TAveria ta) {
-		for(TEmpleadoLimpieza tem: this.getListaEmpleadosMantenimiento()) {
-			if(tem.getUsuario().equals(ta.getEmpleadoEncargado().getUsuario())) {
-				String codigo = Integer.toString(ta.getCodigo());
-				tem.getListLimpieza().add(codigo);
-				this.guardaEmpleados();
-			}
-		}
-	}
-
-	public void eliminaAveriaEmpleado(TAveria ta) {
-		for(TEmpleado te: this.getListaEmpleados()) {
-			if(te.getUsuario().equals(ta.getEmpleadoEncargado().getUsuario())) {
-				String codigoAveria = Integer.toString(ta.getCodigo());
-				((EmpleadoLimpieza) te).getListLimpieza().remove(codigoAveria);
-				this.guardaEmpleados();
-			}
-		}
-	}
+	
 	}

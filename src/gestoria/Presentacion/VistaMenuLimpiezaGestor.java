@@ -20,6 +20,7 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 		setTitle("Menu de Limpieza");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
+		setSize(500,300);
 		
 		this.atras = frame;
 		
@@ -30,7 +31,7 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(323, 215, 97, 25);
+		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 		JButton boton_Mostrar = new JButton("Mostrar Horarios");
@@ -44,12 +45,12 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 		
 		JButton boton_Modificar = new JButton("Modificar Horarios");
 		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Modificar.setBounds(232, 53, 145, 38);
+		boton_Modificar.setBounds(281, 53, 145, 38);
 		getContentPane().add(boton_Modificar);
 		
 		JButton boton_Eliminar = new JButton("Eliminar Horarios");
 		boton_Eliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Eliminar.setBounds(232, 119, 145, 38);
+		boton_Eliminar.setBounds(281, 119, 145, 38);
 		getContentPane().add(boton_Eliminar);
 		
 		JButton boton_Anadir = new JButton("A\u00F1adir Horarios");
@@ -57,6 +58,7 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 		boton_Anadir.setBounds(51, 119, 145, 38);
 		getContentPane().add(boton_Anadir);
 		
+		setVisible(true);
 	}
 	
 	private JFrame getFrame() {

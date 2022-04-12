@@ -17,10 +17,11 @@ public class SuperVista extends JFrame{
 		setTitle("HappyCamp");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
+		setSize(500,300);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.YELLOW);
-		panel.setBounds(110, 13, 209, 53);
+		panel.setBounds(132, 13, 209, 53);
 		getContentPane().add(panel);
 		panel.setLayout(null);
 		
@@ -43,7 +44,7 @@ public class SuperVista extends JFrame{
 		
 		JButton boton_Acampados = new JButton("Acampados");
 		boton_Acampados.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		boton_Acampados.setBounds(230, 128, 138, 29);
+		boton_Acampados.setBounds(279, 128, 138, 29);
 		getContentPane().add(boton_Acampados);
 		setVisible(true);
 	}

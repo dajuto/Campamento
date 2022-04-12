@@ -22,6 +22,7 @@ public class VistaMenuGestor extends JFrame implements LimpiezaObserver{
 		setTitle("Menu de gestoria");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
+		setSize(500,300);
 		
 		this.atras = frame;
 		
@@ -32,7 +33,7 @@ public class VistaMenuGestor extends JFrame implements LimpiezaObserver{
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(323, 215, 97, 25);
+		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 		JButton boton_Instalaciones = new JButton("Instalaciones");
@@ -41,7 +42,7 @@ public class VistaMenuGestor extends JFrame implements LimpiezaObserver{
 			}
 		});
 		boton_Instalaciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_Instalaciones.setBounds(138, 137, 145, 38);
+		boton_Instalaciones.setBounds(165, 131, 145, 38);
 		getContentPane().add(boton_Instalaciones);
 		
 		JButton boton_Mantenimineto = new JButton("Mantenimiento");
@@ -50,7 +51,7 @@ public class VistaMenuGestor extends JFrame implements LimpiezaObserver{
 			}
 		});
 		boton_Mantenimineto.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_Mantenimineto.setBounds(235, 63, 145, 38);
+		boton_Mantenimineto.setBounds(288, 63, 145, 38);
 		getContentPane().add(boton_Mantenimineto);
 		
 		JButton boton_Limpieza = new JButton("Limpieza");

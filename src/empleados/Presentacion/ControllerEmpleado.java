@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
+import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 
 public class ControllerEmpleado {
@@ -17,14 +18,40 @@ public class ControllerEmpleado {
 	public void registraFactoria(Factory<Object> factoriaTransferObjects) {
 		SingletonServiAppEmpleado.getInstance().registraFactoria(factoriaTransferObjects);
 	}
+	
+	public void empleado(JFrame f) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEmpleado(f);
+			}
+		});
+	}
+	
+	public void iniciarSesion(JFrame f) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaInicioSesionEmpleado(f);
+			}
+		});
+	}
+	
+	public boolean existeEmpleado(String usuario, String password) {
+		return SingletonServiAppEmpleado.getInstance().existeEmpleado(usuario, password);
+	}
 
 	public void menuEmpleado(JFrame f) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuEmpleado(f);
+				new VistaMenuEmpleado();
 			}
 		});
+	}
+	
+	public void gestoria(JFrame frame) {
+		SingletonControllerGestoria.getInstance().menuGestor(frame);
 	}
 	
 	
@@ -40,6 +67,13 @@ public class ControllerEmpleado {
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
+
+	
+
+
+	
+
+	
 	
 
 	
