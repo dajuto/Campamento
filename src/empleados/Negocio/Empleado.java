@@ -1,12 +1,21 @@
 package empleados.Negocio;
 
 public abstract class Empleado {
-	protected int codigo;
+	protected String usuario;
+	protected String contrasena;
 	protected String nombre;
 	protected String puesto;
 	protected int salario;
 	protected int horario;
 	protected String vacaciones;
+	
+	public String getUsuario() {
+		return usuario;
+	}
+	
+	public String getContrasena() {
+		return contrasena;
+	}
 	
 	public int getSalario() {
 		return salario;
@@ -22,10 +31,6 @@ public abstract class Empleado {
 
 	public String getNombre() {
 		return nombre;
-	}
-	
-	public int getUsuario() {
-		return codigo;
 	}
 	
 	public String getPuesto() {

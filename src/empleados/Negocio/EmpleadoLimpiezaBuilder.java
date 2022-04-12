@@ -16,7 +16,8 @@ public class EmpleadoLimpiezaBuilder extends Builder<Object>{
 
 	@Override
 	protected TEmpleadoLimpieza createTheInstance(JSONObject data) {
-		int codigo = data.getInt("codigo");
+		String usuario = data.getString("ususario");
+		String contrasena = data.getString("contrasena");
 		String nombre = data.getString("nombre");
 		String puesto = data.getString("puesto");
 		int salario = data.getInt("salario");
@@ -30,7 +31,7 @@ public class EmpleadoLimpiezaBuilder extends Builder<Object>{
 	        	averiasPendientes.add(averiasAsignadas.getString(i));
 	        }  
 		}
-		TEmpleadoLimpieza empleadoLimpieza = new TEmpleadoLimpieza(codigo, nombre, puesto, salario, horario, vacaciones, averiasPendientes);
+		TEmpleadoLimpieza empleadoLimpieza = new TEmpleadoLimpieza(usuario, contrasena, nombre, puesto, salario, horario, vacaciones, averiasPendientes);
 		return empleadoLimpieza;
 	}
 

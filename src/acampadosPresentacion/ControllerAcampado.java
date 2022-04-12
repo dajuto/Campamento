@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
+import acampados.Negocio.SingletonServiAppAcampado;
 import launcher.Factory;
 import subistemaActividad.capaNegocio.SingletonServiAppActividad;
 import subsistemaAulas.capaPresentacion.SingletonControllerAulas;
@@ -17,9 +18,9 @@ import subsistemaEstudiante.capaNegocio.SingletonServiAppEstudiante;
 import subsistemaEstudiante.capaNegocio.TEstudiante;
 import subsistemaLimpieza.capaPresentacion.SingletonControllerLimpieza;
 
-public class ControllerEstudiante {
+public class ControllerAcampado {
 
-	public void mostrarGeneralEstudiante(JFrame f) {
+	public void mostrarGeneralAcampado(JFrame f) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

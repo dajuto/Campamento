@@ -4,6 +4,7 @@ import java.awt.Frame;
 
 import javax.swing.JFrame;
 
+import acampadosPresentacion.SingletonControllerAcampado;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import sanidad.Presentacion.SingletonControllerSanidad;

@@ -17,7 +17,8 @@ public abstract class EmpleadoLimpieza extends TEmpleado{
 	JSONObject empleado = new JSONObject();
 	empleado.accumulate("type", "empleadoLimpieza");
 	JSONObject data = new JSONObject();
-	data.accumulate("usuario", this.codigo);
+	data.accumulate("usuario", this.usuario);
+	data.accumulate("contraseña", this.contrasena);
 	data.accumulate("nombre", this.nombre);
 	data.accumulate("puesto", this.puesto);
 	data.accumulate("salario", salario);

@@ -1,20 +1,20 @@
 package acampadosPresentacion;
 
-public class SingletonControllerEstudiante {
-	private static ControllerEstudiante INSTANCE = null;
+public class SingletonControllerAcampado {
+	private static ControllerAcampado INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonControllerEstudiante(){}
+    private SingletonControllerAcampado(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerEstudiante();
+            INSTANCE = new ControllerAcampado();
         }
     }
 
-    public static ControllerEstudiante getInstance() {
+    public static ControllerAcampado getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }
