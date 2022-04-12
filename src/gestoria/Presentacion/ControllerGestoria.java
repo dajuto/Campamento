@@ -22,30 +22,30 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().registrarFactoria(objetosFactory);
 	}
 
-	public void mostrarMantenimientoGestor(Frame frame) {
+	public void menuGestor(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMantenimientoGestor(frame);
+				new VistaMenuGestor(frame);
 			}
 		});
 	}
 
-	public void mostrarListaAveriasGestor(Frame frame) {
+	public void menuLimpiezaGestor(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaListaAveriasGestor(frame);
+				new VistaMenuLimpiezaGestor(frame);
 			}
 		});
 	}
 
 	
-	public void mostrarListaEmpleadosGestor(Frame frame) {
+	public void listaLimpezaGestor(Frame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaListaEmpleadosMantenimientoGestor(frame);
+				new VistaListaLimpiezaGestor(frame);
 			}
 		});
 	}
@@ -165,12 +165,12 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().actualizarListaEmpleadosMantenimiento();
 	}
 	
-	public List<TEmpleadoMantenimiento> getListaEmpleadosMantenimiento() {
+	public List<TEmpleadoLimpieza> getListaEmpleadosMantenimiento() {
 		return SingletonControllerEmpleado.getInstance().getListaEmpleadosMantenimiento();
 	}
 
 
-	public void addObserver(MantenimientoObserver vista) {
+	public void addObserver(LimpiezaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);
 	}
 

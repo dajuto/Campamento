@@ -191,7 +191,7 @@ public class ControllerEmpleado {
 		});
 	}
 
-	public List<TEmpleadoMantenimiento> getListaEmpleadosMantenimiento() {
+	public List<TEmpleadoLimpieza> getListaEmpleadosMantenimiento() {
 		return SingletonServiAppEmpleado.getInstance().getListaEmpleadosMantenimiento();
 	}
 	

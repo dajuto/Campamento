@@ -2,6 +2,9 @@ package gestoria.Negocio;
 
 import org.json.JSONObject;
 
+import empleados.Negocio.Empleado;
+import empleados.Negocio.SingletonServiAppEmpleado;
+import empleados.Negocio.TEmpleado;
 import launcher.Builder;
 
 public class LimpiezaBuilder extends Builder<Object> {
@@ -31,7 +34,9 @@ public class LimpiezaBuilder extends Builder<Object> {
 		String lugar = data.getString("lugar");
 		String fecha = data.getString("codigo");
 		String hora = data.getString("codigo");
-		TLimpieza tlimpieza = new TLimpieza (codigo, lugar, fecha, hora);
+		String empleadoEncargado = data.getString("usuarioEmpleadoEncargado");
+		TEmpleado empleado = SingletonServiAppEmpleado.getInstance().getEmpleado(empleadoEncargado);
+		TLimpieza tlimpieza = new TLimpieza (codigo, lugar, fecha, hora, empleado);
 		return tlimpieza;
 	}
 }

@@ -6,7 +6,7 @@ public abstract class Empleado {
 	protected String puesto;
 	protected int salario;
 	protected int horario;
-	protected int vacaciones;
+	protected String vacaciones;
 	
 	public int getSalario() {
 		return salario;
@@ -16,7 +16,7 @@ public abstract class Empleado {
 		return horario;
 	}
 
-	public int getVacaciones() {
+	public String getVacaciones() {
 		return vacaciones;
 	}
 

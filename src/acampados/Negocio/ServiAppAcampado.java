@@ -7,6 +7,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
+import acampados.Integracion.SingletonDaoAcampado;
 import launcher.Factory;
 import launcher.Observable;
 import subsistemaCoordCovid.CapaNegocio.EstudianteConfinadoBuilder;

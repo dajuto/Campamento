@@ -64,12 +64,12 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		return null;
 	}
 
-	public List<TEmpleadoMantenimiento> getListaEmpleadosMantenimiento() {
+	public List<TEmpleadoLimpieza> getListaEmpleadosMantenimiento() {
 		this.updateEmpleados();
-		List<TEmpleadoMantenimiento> l = new ArrayList<>();
+		List<TEmpleadoLimpieza> l = new ArrayList<>();
 		for(TEmpleado e: this.listaEmpleados) {
 			if(e.puesto.equals("Empleado Mantenimiento")) {
-				l.add((TEmpleadoMantenimiento) e);
+				l.add((TEmpleadoLimpieza) e);
 			}
 		}
 		return l;
@@ -182,7 +182,7 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		empleado.put("type", "empleadoMantenimiento");
 		empleado.put("data", data);
 		
-		TEmpleadoMantenimiento te = (TEmpleadoMantenimiento) this.factoriaTransferObjects.createInstance(empleado);
+		TEmpleadoLimpieza te = (TEmpleadoLimpieza) this.factoriaTransferObjects.createInstance(empleado);
 		this.listaEmpleados.add(te);
 	}
 
@@ -190,7 +190,7 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		for(int i = 0; i < this.listaEmpleados.size(); i++) {
 			if(this.listaEmpleados.get(i).usuario == usuario) {
 					if(this.listaEmpleados.get(i).getPuesto().equals("Empleado Mantenimiento")) {
-						boolean borrar = eliminarEmpleadoMantenimiento((TEmpleadoMantenimiento) this.listaEmpleados.get(i));
+						boolean borrar = eliminarEmpleadoMantenimiento((TEmpleadoLimpieza) this.listaEmpleados.get(i));
 						if(borrar) {
 							this.listaEmpleados.remove(i);
 							this.guardaEmpleados();
@@ -224,9 +224,9 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		}
 	}
 	
-	private boolean eliminarEmpleadoMantenimiento(TEmpleadoMantenimiento tEmpleado) {
+	private boolean eliminarEmpleadoMantenimiento(TEmpleadoLimpieza tEmpleado) {
 		// TODO Auto-generated method stub
-		if(tEmpleado.averiasPendientes.isEmpty()) {
+		if(tEmpleado.horariosLimpieza.isEmpty()) {
 			return true;
 		}else {
 			return false;
@@ -234,10 +234,10 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	}
 
 	public void anadeAveriaEmpleado(TAveria ta) {
-		for(TEmpleadoMantenimiento tem: this.getListaEmpleadosMantenimiento()) {
+		for(TEmpleadoLimpieza tem: this.getListaEmpleadosMantenimiento()) {
 			if(tem.getUsuario().equals(ta.getEmpleadoEncargado().getUsuario())) {
 				String codigo = Integer.toString(ta.getCodigo());
-				tem.getListaAverias().add(codigo);
+				tem.getListLimpieza().add(codigo);
 				this.guardaEmpleados();
 			}
 		}
@@ -247,7 +247,7 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		for(TEmpleado te: this.getListaEmpleados()) {
 			if(te.getUsuario().equals(ta.getEmpleadoEncargado().getUsuario())) {
 				String codigoAveria = Integer.toString(ta.getCodigo());
-				((EmpleadoMantenimiento) te).getListaAverias().remove(codigoAveria);
+				((EmpleadoLimpieza) te).getListLimpieza().remove(codigoAveria);
 				this.guardaEmpleados();
 			}
 		}

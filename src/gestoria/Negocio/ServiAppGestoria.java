@@ -12,18 +12,18 @@ import subsistemaEmpleado.capaNegocio.TEmpleadoMantenimiento;
 import subsistemaMantenimiento.capaIntegraccion.SingletonDaoAveria;
 import subsistemaMantenimiento.capaPresentacion.SingletonControllerMantenimiento;
 
-public class ServiAppGestoria implements Observable<MantenimientoObserver>{
-	private List<MantenimientoObserver> observers;
+public class ServiAppGestoria implements Observable<LimpiezaObserver>{
+	private List<LimpiezaObserver> observers;
 	private List<TLimpieza> listaAverias;
-	private List<TEmpleadoMantenimiento> listaEmpleadosMantenimiento;
+	private List<TEmpleadoLimpieza> listaEmpleadosMantenimiento;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
 	private char[] contrasenaUsuario;
 	
 	public ServiAppGestoria() {
 		this.listaAverias = new ArrayList<TLimpieza>();
-		this.listaEmpleadosMantenimiento = new ArrayList<TEmpleadoMantenimiento>();
-		this.observers = new ArrayList<MantenimientoObserver>();
+		this.listaEmpleadosMantenimiento = new ArrayList<TEmpleadoLimpieza>();
+		this.observers = new ArrayList<LimpiezaObserver>();
 	}
 	
 	public void updateAverias() {
@@ -55,27 +55,27 @@ public class ServiAppGestoria implements Observable<MantenimientoObserver>{
 	void onCreateAveria() {
 		this.updateAverias();
 		this.updateEmpleadosMantenimiento();
-		for(MantenimientoObserver o: this.observers) {
+		for(LimpiezaObserver o: this.observers) {
 			o.onCreateAveria(this.listaAverias, listaEmpleadosMantenimiento, nombreUsuario);
 		}
 	}
 	void onEliminarAveria() {
 		this.updateAverias();
 		this.updateEmpleadosMantenimiento();
-		for(MantenimientoObserver o: this.observers) {
+		for(LimpiezaObserver o: this.observers) {
 			o.onEliminarAveria(this.listaAverias, listaEmpleadosMantenimiento, nombreUsuario);
 		}
 	}
 	void onModificarAveria() {
 		this.updateAverias();
 		//this.updateEmpleadosMantenimiento();
-		for(MantenimientoObserver o: this.observers) {
+		for(LimpiezaObserver o: this.observers) {
 			o.onModificarAveria(this.listaAverias, listaEmpleadosMantenimiento, nombreUsuario);
 		}
 	}
 
 	@Override
-	public void addObserver(MantenimientoObserver o) {
+	public void addObserver(LimpiezaObserver o) {
 		this.observers.add(o);
 		this.updateAverias();
 		this.updateEmpleadosMantenimiento();
@@ -83,7 +83,7 @@ public class ServiAppGestoria implements Observable<MantenimientoObserver>{
 	}
 
 	@Override
-	public void removeObserver(MantenimientoObserver o) {
+	public void removeObserver(LimpiezaObserver o) {
 		this.observers.remove(o);
 	}
 	
@@ -180,7 +180,7 @@ public class ServiAppGestoria implements Observable<MantenimientoObserver>{
 	}
 
 	private void onModificarListaEmpleadosMantenimiento() {
-		for(MantenimientoObserver mo: this.observers) {
+		for(LimpiezaObserver mo: this.observers) {
 			mo.onActualizarListaEmpleadosMantenimiento(this.listaAverias, listaEmpleadosMantenimiento, this.nombreUsuario);
 		}
 	}

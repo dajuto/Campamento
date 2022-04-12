@@ -11,7 +11,6 @@ public class EmpleadoBuilder extends Builder<Object>{
 
 	@Override
 	protected Object createTheInstance(JSONObject data) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
