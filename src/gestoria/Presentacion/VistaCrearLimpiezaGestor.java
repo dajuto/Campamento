@@ -1,0 +1,139 @@
+package gestoria.Presentacion;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import empleados.Negocio.TEmpleadoLimpieza;
+import gestoria.Negocio.LimpiezaObserver;
+import gestoria.Negocio.TLimpieza;
+
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
+public class VistaCrearLimpiezaGestor extends JFrame implements LimpiezaObserver{
+	private JFrame atras;
+	private String nombreUsuario;
+	private JTextField lugar_txt;
+	private JTextField fecha_txt;
+	private JTextField hora_txt;
+	public VistaCrearLimpiezaGestor(JFrame frame) {
+		setTitle("Crear horario de Limpieza");
+		getContentPane().setBackground(SystemColor.activeCaption);
+		getContentPane().setLayout(null);
+		setSize(500,300);
+		
+		this.atras = frame;
+		
+		JButton boton_Atras = new JButton("Atras");
+		boton_Atras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				atras.setVisible(true);
+			}
+		});
+		boton_Atras.setBounds(373, 215, 97, 25);
+		getContentPane().add(boton_Atras);
+		
+		JLabel labcrear = new JLabel("Crea horario de limpieza nuevo");
+		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		labcrear.setBounds(25, 24, 330, 36);
+		getContentPane().add(labcrear);
+		
+		JLabel lblLugar = new JLabel("Lugar:");
+		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblLugar.setBounds(25, 73, 69, 25);
+		getContentPane().add(lblLugar);
+		
+		JLabel lblFecha = new JLabel("Fecha:");
+		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblFecha.setBounds(25, 109, 69, 25);
+		getContentPane().add(lblFecha);
+		
+		JLabel lblHora = new JLabel("Hora:");
+		lblHora.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblHora.setBounds(25, 147, 69, 25);
+		getContentPane().add(lblHora);
+		
+		JLabel lblEmplead = new JLabel("Emplead@:");
+		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEmplead.setBounds(25, 187, 97, 25);
+		getContentPane().add(lblEmplead);
+		
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(121, 189, 116, 22);
+		getContentPane().add(comboBox);
+		
+		lugar_txt = new JTextField();
+		lugar_txt.setBounds(121, 75, 116, 22);
+		getContentPane().add(lugar_txt);
+		lugar_txt.setColumns(10);
+		
+		fecha_txt = new JTextField();
+		fecha_txt.setBounds(121, 111, 116, 22);
+		getContentPane().add(fecha_txt);
+		fecha_txt.setColumns(10);
+		
+		hora_txt = new JTextField();
+		hora_txt.setBounds(121, 149, 116, 22);
+		getContentPane().add(hora_txt);
+		hora_txt.setColumns(10);
+		
+		JButton boton_Crear = new JButton("Crear");
+		boton_Crear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
+					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
+						
+					}
+					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
+				}
+				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
+			}
+		});
+		boton_Crear.setBounds(269, 129, 97, 25);
+		getContentPane().add(boton_Crear);
+		
+		setVisible(true);
+	}
+	
+	private JFrame getFrame() {
+		return this;
+	}
+	
+	private void update(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+	
+	@Override
+	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		this.update(nombreUsuario);
+	}
+}

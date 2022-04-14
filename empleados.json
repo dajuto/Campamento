@@ -1,0 +1,14 @@
+{"empleados": [
+   {
+      "data": {
+         "usuario": "alvaro00",
+         "contrasena": "12345678",
+         "nombre": "Ivan Hernandez",
+         "puesto": "Gestor",
+         "salario": 1400,
+         "horario": 8,
+         "vacaciones": "2 semanas de verano"
+      },
+      "type": "empleado"
+   }
+]}

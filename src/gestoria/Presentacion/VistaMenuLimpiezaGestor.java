@@ -54,6 +54,12 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 		getContentPane().add(boton_Eliminar);
 		
 		JButton boton_Anadir = new JButton("A\u00F1adir Horarios");
+		boton_Anadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().crearLimpieza(getFrame());
+			}
+		});
 		boton_Anadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		boton_Anadir.setBounds(51, 119, 145, 38);
 		getContentPane().add(boton_Anadir);

@@ -43,10 +43,18 @@ public class ControllerGestoria {
 		});
 	}
 
-	
+	public void crearLimpieza(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaCrearLimpiezaGestor(frame);
+			}
+		});
+	}
 
 	public void addObserver(LimpiezaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);
 	}
+
 
 }

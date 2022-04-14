@@ -37,6 +37,15 @@ public class ControllerEmpleado {
 		});
 	}
 	
+	public void resgistrar(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaRegistrarEmpleado(frame);
+			}
+		});
+	}
+	
 	public boolean existeEmpleado(String usuario, String password) {
 		return SingletonServiAppEmpleado.getInstance().existeEmpleado(usuario, password);
 	}
@@ -67,6 +76,8 @@ public class ControllerEmpleado {
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
+
+	
 
 	
 

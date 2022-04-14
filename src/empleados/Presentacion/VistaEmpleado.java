@@ -35,8 +35,8 @@ public class VistaEmpleado extends JFrame{
 		JButton boton_IniciarSesion = new JButton("Iniciar Sesion");
 		boton_IniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SingletonControllerEmpleado.getInstance().iniciarSesion(getFrame());
 				setVisible(false);
+				SingletonControllerEmpleado.getInstance().iniciarSesion(getFrame());
 			}
 		});
 		boton_IniciarSesion.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -44,6 +44,12 @@ public class VistaEmpleado extends JFrame{
 		getContentPane().add(boton_IniciarSesion);
 		
 		JButton boton_Registrarse = new JButton("Registrarse");
+		boton_Registrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerEmpleado.getInstance().resgistrar(getFrame());
+			}
+		});
 		boton_Registrarse.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		boton_Registrarse.setBounds(279, 101, 138, 29);
 		getContentPane().add(boton_Registrarse);

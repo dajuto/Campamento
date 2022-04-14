@@ -73,7 +73,7 @@ private JPasswordField password;
 					setVisible(false);
 					SingletonControllerEmpleado.getInstance().menuEmpleado(getFrame());
 				//}
-			//	else JOptionPane.showMessageDialog(atras, "Usuario Incorrecto", "Error", JOptionPane.ERROR_MESSAGE);			
+				//else JOptionPane.showMessageDialog(atras, "Usuario Incorrecto", "Error", JOptionPane.ERROR_MESSAGE);			
 			}
 		});
 		boton_Aceptar.setBounds(84, 162, 97, 25);
