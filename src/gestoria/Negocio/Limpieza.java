@@ -6,7 +6,7 @@ import empleados.Negocio.Empleado;
 
 public abstract class Limpieza {
 	protected int codigo;
-	protected Empleado empleadoEncargado;
+	protected String empleadoEncargado;
 	protected String lugar;
 	protected String fecha;
 	protected String hora;
@@ -27,7 +27,7 @@ public abstract class Limpieza {
 	public String getHora() {
 		return hora;
 	}
-	public Empleado getEmpleadoEncargado() {
+	public String getEmpleadoEncargado() {
 		return empleadoEncargado;
 	}
 
@@ -40,7 +40,7 @@ public abstract class Limpieza {
 		data.accumulate("Lugar", this.lugar);
 		data.accumulate("Fecha", this.fecha);
 		data.accumulate("Hora", this.hora);
-		data.accumulate("usuarioEmpleadoEncargado", this.empleadoEncargado.getUsuario());
+		data.accumulate("Empleado", this.empleadoEncargado);
 		limpieza.accumulate("data", data);
 		return limpieza;
 	}

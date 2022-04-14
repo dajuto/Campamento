@@ -66,9 +66,9 @@ public class VistaCrearLimpiezaGestor extends JFrame implements LimpiezaObserver
 		lblEmplead.setBounds(25, 187, 97, 25);
 		getContentPane().add(lblEmplead);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(121, 189, 116, 22);
-		getContentPane().add(comboBox);
+		JComboBox empleado = new JComboBox();
+		empleado.setBounds(121, 189, 116, 22);
+		getContentPane().add(empleado);
 		
 		lugar_txt = new JTextField();
 		lugar_txt.setBounds(121, 75, 116, 22);
@@ -90,7 +90,8 @@ public class VistaCrearLimpiezaGestor extends JFrame implements LimpiezaObserver
 			public void actionPerformed(ActionEvent e) {
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
-						
+						String empleadoString = (String) empleado.getSelectedItem();
+						SingletonControllerGestoria.getInstance().añadirLimpieza(lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleadoString, getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
 				}

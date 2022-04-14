@@ -11,22 +11,22 @@ import launcher.Builder;
 public class EmpleadoLimpiezaBuilder extends Builder<Object>{
 
 	public EmpleadoLimpiezaBuilder() {
-		super("empleadoMantenimiento");
+		super("empleadoLimpieza");
 	}
 
 	@Override
 	protected TEmpleadoLimpieza createTheInstance(JSONObject data) {
-		String usuario = data.getString("ususario");
+		String usuario = data.getString("usuario");
 		String contrasena = data.getString("contrasena");
 		String nombre = data.getString("nombre");
 		String puesto = data.getString("puesto");
 		int salario = data.getInt("salario");
 		int horario = data.getInt("horario");
 		String vacaciones = data.getString("vacaciones");
-		JSONObject limpieza = data.getJSONObject("limpieza");
+		JSONObject limpieza = data.getJSONObject("trabajo");
 		List<String> averiasPendientes = new ArrayList<String>();
 		if(limpieza.has("listaLimpieza")) {
-			JSONArray averiasAsignadas = limpieza.getJSONArray("listaAverias");
+			JSONArray averiasAsignadas = limpieza.getJSONArray("listaLimpieza");
 			for(int i = 0; i < averiasAsignadas.length(); i++) {
 	        	averiasPendientes.add(averiasAsignadas.getString(i));
 	        }  

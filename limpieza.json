@@ -1,0 +1,12 @@
+{"limpieza": [
+   {
+      "data": {
+         "Codigo": "12",
+         "Lugar": "Piscina",
+         "Fecha": "12/12/2020",
+         "Hora": "12:12",
+         "Empleado": "Penelope"
+      },
+      "type": "limpieza"
+   }
+]}

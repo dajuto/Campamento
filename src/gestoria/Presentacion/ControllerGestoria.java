@@ -51,10 +51,28 @@ public class ControllerGestoria {
 			}
 		});
 	}
+	
+	public void añadirLimpieza(String lugar, String fecha, String hora, String empleado, JFrame frame) {
+		SingletonServiAppGestoria.getInstance().añadirLimpieza(lugar, fecha, hora, empleado, frame);
+	}
 
+	public void mostrarLimpieza(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaVerLimpiezaGestor(frame);
+			}
+		});
+	}
+	
+	
 	public void addObserver(LimpiezaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);
 	}
+
+	
+
+	
 
 
 }

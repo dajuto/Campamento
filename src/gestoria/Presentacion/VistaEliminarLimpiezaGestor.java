@@ -12,12 +12,17 @@ import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.JTable;
 
-public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
+public class VistaEliminarLimpiezaGestor extends JFrame implements LimpiezaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	public VistaMenuLimpiezaGestor(JFrame frame) {
-		setTitle("Menu de Limpieza");
+	public VistaEliminarLimpiezaGestor(JFrame frame) {
+		setTitle("Eliminar horario limpieza");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -34,45 +39,18 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JButton boton_Mostrar = new JButton("Mostrar Horarios");
-		boton_Mostrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().mostrarLimpieza(getFrame());
-			}
-		});
-		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Mostrar.setBounds(51, 53, 145, 38);
-		getContentPane().add(boton_Mostrar);
+		JLabel eliminar = new JLabel("Eliminar horario de limpieza");
+		eliminar.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		eliminar.setBounds(25, 24, 330, 36);
+		getContentPane().add(eliminar);
 		
-		JButton boton_Modificar = new JButton("Modificar Horarios");
-		boton_Modificar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Modificar.setBounds(281, 53, 145, 38);
-		getContentPane().add(boton_Modificar);
-		
-		JButton boton_Eliminar = new JButton("Eliminar Horarios");
-		boton_Eliminar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		boton_Eliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Eliminar.setBounds(281, 119, 145, 38);
+		JButton boton_Eliminar = new JButton("Eliminar");
+		boton_Eliminar.setBounds(25, 112, 97, 25);
 		getContentPane().add(boton_Eliminar);
 		
-		JButton boton_Anadir = new JButton("A\u00F1adir Horarios");
-		boton_Anadir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().crearLimpieza(getFrame());
-			}
-		});
-		boton_Anadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Anadir.setBounds(51, 119, 145, 38);
-		getContentPane().add(boton_Anadir);
+		JComboBox comboBox = new JComboBox();
+		comboBox.setBounds(25, 73, 239, 22);
+		getContentPane().add(comboBox);
 		
 		setVisible(true);
 	}

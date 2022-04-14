@@ -4,6 +4,8 @@ import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.json.JSONObject;
 
 import empleados.Negocio.TEmpleadoLimpieza;
@@ -76,11 +78,18 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 		this.updateLimpieza();
 		List<TLimpieza> l = new ArrayList<>();
 		for(TLimpieza e: this.listaLimpieza) {
-			if(e.empleadoEncargado.getUsuario().equals(usuarioEmpleadoMantenimiento)) {
+			//if(e.empleadoEncargado.getUsuario().equals(usuarioEmpleadoMantenimiento)) {
 				l.add(e);
-			}
+			//}
 		}
 		return l;
+	}
+
+	public void añadirLimpieza(String lugar, String fecha, String hora, String empleado, JFrame frame) {
+		this.updateLimpieza();
+		
+		//TODO CREAR LO DE LIMPIEZA Y TAL
+		
 	}
 
 	
