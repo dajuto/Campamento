@@ -3,7 +3,7 @@ package gestoria.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Negocio.TEmpleadoGestoria;
 import gestoria.Negocio.LimpiezaObserver;
 import gestoria.Negocio.LimpiezaTableModel;
 import gestoria.Negocio.TLimpieza;
@@ -68,28 +68,28 @@ public class VistaVerLimpiezaGestor extends JFrame implements LimpiezaObserver{
 	}
 	
 	@Override
-	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
-	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
-	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
-	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
 	public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 }

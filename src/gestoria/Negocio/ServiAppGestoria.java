@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
-import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Negocio.TEmpleadoGestoria;
 import gestoria.Integracion.SingletonDaoLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
@@ -17,28 +17,20 @@ import launcher.Observable;
 public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 	private List<LimpiezaObserver> observers;
 	private List<TLimpieza> listaLimpieza;
-	private List<TEmpleadoLimpieza> listaEmpleadosLimpieza;
+	private List<TEmpleadoGestoria> listaEmpleadosLimpieza;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
 	private char[] contrasenaUsuario;
 	
 	public ServiAppGestoria() {
 		this.listaLimpieza = new ArrayList<TLimpieza>();
-		this.listaEmpleadosLimpieza = new ArrayList<TEmpleadoLimpieza>();
+		this.listaEmpleadosLimpieza = new ArrayList<TEmpleadoGestoria>();
 		this.observers = new ArrayList<LimpiezaObserver>();
 	}
 	
 	public void updateLimpieza() {
 		this.listaLimpieza = SingletonDaoLimpieza.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
-	
-//	public void updateEmpleadosLimpieza() { //TODO MIRAR 
-//		this.listaEmpleadosLimpieza = SingletonControllerGestoria.getInstance().getListaEmpleadosLimpieza();	
-//	}
-	
-//	public void guardaAverias() { //TODO sobra?
-//        SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
-//	}
 	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
@@ -71,24 +63,49 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 	}
 
 	public List<TLimpieza> getListaLimpiezaGestor() {	
+		this.updateLimpieza();
 		return listaLimpieza;
 	}
 	
-	public List<TLimpieza> getListaAveriasEmpleado(String usuarioEmpleadoMantenimiento) {
-		this.updateLimpieza();
-		List<TLimpieza> l = new ArrayList<>();
-		for(TLimpieza e: this.listaLimpieza) {
-			//if(e.empleadoEncargado.getUsuario().equals(usuarioEmpleadoMantenimiento)) {
-				l.add(e);
-			//}
-		}
-		return l;
+	public void guardaLimpieza() {
+        SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
 	}
 
-	public void añadirLimpieza(String lugar, String fecha, String hora, String empleado, JFrame frame) {
+	public boolean añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
+		this.updateLimpieza();
+		for(TLimpieza ta: this.listaLimpieza) {
+			if(ta.codigo.equals(codigo)) {
+				return false;
+			}
+		}
+		JSONObject limpieza = new JSONObject();
+		JSONObject data = new JSONObject();
+		data.accumulate("Codigo", codigo);
+		data.accumulate("Lugar", lugar);
+		data.accumulate("Fecha", fecha);
+		data.accumulate("Hora", hora);
+		data.accumulate("Empleado", empleado);
+		
+		limpieza.accumulate("data", data);
+		limpieza.accumulate("type", "limpieza");
+		
+		TLimpieza tLimpieza = (TLimpieza) this.factoriaTranserObjects.createInstance(limpieza);
+		this.listaLimpieza.add(tLimpieza);
+		this.guardaLimpieza();
 		this.updateLimpieza();
 		
-		//TODO CREAR LO DE LIMPIEZA Y TAL
+		return true;
+	}
+
+	public void eliminarLimpieza(JFrame frame, String codigo) {
+		for (int i = 0; i < listaLimpieza.size(); i++) {
+			if (listaLimpieza.get(i).getCodigo().equals(codigo)) {
+				//TODO empleado limpieza aguita de coco
+				listaLimpieza.remove(i);
+				SingletonDaoLimpieza.getInstance().escribeTodo(listaLimpieza);
+				this.updateLimpieza();
+			}
+		}
 		
 	}
 

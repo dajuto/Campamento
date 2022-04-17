@@ -8,14 +8,14 @@ import org.json.JSONObject;
 
 import launcher.Builder;
 
-public class EmpleadoLimpiezaBuilder extends Builder<Object>{
+public class EmpleadoGestorBuilder extends Builder<Object>{
 
-	public EmpleadoLimpiezaBuilder() {
-		super("empleadoLimpieza");
+	public EmpleadoGestorBuilder() {
+		super("empleadoGestor");
 	}
 
 	@Override
-	protected TEmpleadoLimpieza createTheInstance(JSONObject data) {
+	protected TEmpleadoGestoria createTheInstance(JSONObject data) {
 		String usuario = data.getString("usuario");
 		String contrasena = data.getString("contrasena");
 		String nombre = data.getString("nombre");
@@ -24,14 +24,14 @@ public class EmpleadoLimpiezaBuilder extends Builder<Object>{
 		int horario = data.getInt("horario");
 		String vacaciones = data.getString("vacaciones");
 		JSONObject limpieza = data.getJSONObject("trabajo");
-		List<String> averiasPendientes = new ArrayList<String>();
+		List<String> limpiezaPendiente = new ArrayList<String>();
 		if(limpieza.has("listaLimpieza")) {
-			JSONArray averiasAsignadas = limpieza.getJSONArray("listaLimpieza");
-			for(int i = 0; i < averiasAsignadas.length(); i++) {
-	        	averiasPendientes.add(averiasAsignadas.getString(i));
+			JSONArray limpiezaAsignada = limpieza.getJSONArray("listaLimpieza");
+			for(int i = 0; i < limpiezaAsignada.length(); i++) {
+	        	limpiezaPendiente.add(limpiezaAsignada.getString(i));
 	        }  
 		}
-		TEmpleadoLimpieza empleadoLimpieza = new TEmpleadoLimpieza(usuario, contrasena, nombre, puesto, salario, horario, vacaciones, averiasPendientes);
+		TEmpleadoGestoria empleadoLimpieza = new TEmpleadoGestoria(usuario, contrasena, nombre, puesto, salario, horario, vacaciones, limpiezaPendiente);
 		return empleadoLimpieza;
 	}
 

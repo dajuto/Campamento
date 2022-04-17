@@ -34,7 +34,7 @@ public class SuperVista extends JFrame{
 		JButton boton_Empleados = new JButton("Empleados");
 		boton_Empleados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SingletonSuperControlador.getInstance().mostrarGeneralEmpleado(getFrame());
+				SingletonSuperControlador.getInstance().generalEmpleado(getFrame());
 				setVisible(false);
 			}
 		});
@@ -43,6 +43,12 @@ public class SuperVista extends JFrame{
 		getContentPane().add(boton_Empleados);
 		
 		JButton boton_Acampados = new JButton("Acampados");
+		boton_Acampados.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonSuperControlador.getInstance().generalAcampado(getFrame());
+			}
+		});
 		boton_Acampados.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		boton_Acampados.setBounds(279, 128, 138, 29);
 		getContentPane().add(boton_Acampados);

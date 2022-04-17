@@ -3,7 +3,7 @@ package gestoria.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Negocio.TEmpleadoGestoria;
 import gestoria.Negocio.LimpiezaObserver;
 import gestoria.Negocio.TLimpieza;
 
@@ -21,6 +21,9 @@ import javax.swing.JTable;
 public class VistaEliminarLimpiezaGestor extends JFrame implements LimpiezaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
+	private JComboBox codElegido;
+	List<TLimpieza> listaLimpieza;
+	
 	public VistaEliminarLimpiezaGestor(JFrame frame) {
 		setTitle("Eliminar horario limpieza");
 		getContentPane().setBackground(SystemColor.activeCaption);
@@ -45,12 +48,23 @@ public class VistaEliminarLimpiezaGestor extends JFrame implements LimpiezaObser
 		getContentPane().add(eliminar);
 		
 		JButton boton_Eliminar = new JButton("Eliminar");
+		boton_Eliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				atras.setVisible(true);
+				SingletonControllerGestoria.getInstance().eliminarLimpieza(frame, (String) codElegido.getSelectedItem());
+			}
+		});
 		boton_Eliminar.setBounds(25, 112, 97, 25);
 		getContentPane().add(boton_Eliminar);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(25, 73, 239, 22);
-		getContentPane().add(comboBox);
+		codElegido = new JComboBox();
+		codElegido.setBounds(25, 73, 239, 22);
+		listaLimpieza = SingletonControllerGestoria.getInstance().getListaCodigosLimpieza();
+		for(TLimpieza cod: this.listaLimpieza) {
+			codElegido.addItem(cod.getCodigo());
+		}
+		getContentPane().add(codElegido);
 		
 		setVisible(true);
 	}
@@ -64,28 +78,28 @@ public class VistaEliminarLimpiezaGestor extends JFrame implements LimpiezaObser
 	}
 	
 	@Override
-	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
-	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
-	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
-	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoLimpieza> listaR, String nombreUsuario) {
+	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 
 	@Override
 	public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
 		this.update(nombreUsuario);
 	}
 }

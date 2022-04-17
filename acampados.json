@@ -1,0 +1,30 @@
+{"acampados": [
+   {
+      "data": {
+         "Usuario": "alvaro01",
+         "Contraseña": "12345678",
+         "Nombre": "Alvaro ",
+         "Apellidos": "Cordero Capitas",
+         "DNI": 1400,
+         "Email": "alvcorde@ucm.es",
+         "Salud": "sano",
+         "Habitacion": "12A",
+         "pagado": "Si"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Usuario": "alvaro02",
+         "Contraseña": "12345678",
+         "Nombre": "Alvaro ",
+         "Apellidos": "Cordero Capitas",
+         "DNI": 1400,
+         "Email": "alvcorde@ucm.es",
+         "Salud": "sano",
+         "Habitacion": "12A",
+         "pagado": "Si"
+      },
+      "type": "acampado"
+   }
+]}

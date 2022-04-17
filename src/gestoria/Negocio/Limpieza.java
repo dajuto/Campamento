@@ -5,17 +5,13 @@ import org.json.JSONObject;
 import empleados.Negocio.Empleado;
 
 public abstract class Limpieza {
-	protected int codigo;
+	protected String codigo;
 	protected String empleadoEncargado;
 	protected String lugar;
 	protected String fecha;
 	protected String hora;
 	
-	public String toString() {
-		return Integer.toString(codigo);
-	}
-	
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 	public String getLugar() {
@@ -32,11 +28,10 @@ public abstract class Limpieza {
 	}
 
 	public JSONObject report() {
-		String c = Integer.toString(codigo);
 		JSONObject limpieza = new JSONObject();
 		limpieza.accumulate("type", "limpieza");
 		JSONObject data = new JSONObject();
-		data.accumulate("Codigo", c);
+		data.accumulate("Codigo", this.codigo);
 		data.accumulate("Lugar", this.lugar);
 		data.accumulate("Fecha", this.fecha);
 		data.accumulate("Hora", this.hora);

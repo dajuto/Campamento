@@ -6,38 +6,55 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Acampado {
-	protected String nombre;
 	protected String usuario;
-	protected boolean confinado;
+	protected String contrasena;
+	protected String nombre;
+	protected String apellidos;
+	protected int dni;
+	protected String email;
+	protected String salud;
 	protected String habitacion;
-	protected List<String> listaactividades;
+	protected List<String> listaactividades; //TODO SEGOVIANO, CAMBIA STRING POR TActividades
 	protected boolean pagado;
-	
-	public List<String> getListaactividades() {
-		return listaactividades;
-	}
-	
-	public String getNombre() {
-		return nombre;
-	}
 	
 	public String getUsuario() {
 		return usuario;
 	}
-	
-	public boolean isConfinado() {
-		return confinado;
+
+	public String getContrasena() {
+		return contrasena;
 	}
-	
-	public boolean isPagado() {
-		return pagado;
+
+	public String getNombre() {
+		return nombre;
 	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public int getDni() {
+		return dni;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public String getSalud() {
+		return salud;
+	}
+
 	public String getHabitacion() {
 		return habitacion;
 	}
-	
-	public void setConfinado(boolean confinado) {
-		this.confinado=confinado;
+
+	public List<String> getListaactividades() {
+		return listaactividades;
+	}
+
+	public boolean isPagado() {
+		return pagado;
 	}
 	
 	public void setPagado(boolean pagado) {
@@ -50,15 +67,14 @@ public class Acampado {
 		acampado.put("type", "acampado");
 		
 		JSONObject data = new JSONObject();
-		data.put("nombre", nombre);
-		data.put("usuario", usuario);
-		String isConfinado= "No";
-		if(confinado) {
-			isConfinado= "Si";
-		}
-		data.put("confinado", isConfinado);
-		data.put("habitacion", habitacion);
-		
+		data.put("Usuario", usuario);
+		data.put("Contraseña", contrasena);
+		data.put("Nombre", nombre);
+		data.put("Apellidos", apellidos);
+		data.put("DNI", dni);
+		data.put("Email", email);
+		data.put("Salud", salud);
+		data.put("Habitacion", habitacion);
 		
 		String actividades = "[";
 		for(int j = 0; j < this.listaactividades.size(); j++) {
@@ -70,11 +86,13 @@ public class Acampado {
 		actividades += "]";
 		data.accumulate("listaActividades", new JSONArray(actividades));
 		
-		String isPagado= "No";
-		if(pagado) {
-			isPagado= "Si";
+		if (pagado) {
+			data.put("Pagado", "Si");
 		}
-		data.put("pagado", isPagado);
+		else {
+			data.put("Pagado", "No");
+		}
+		
 		acampado.put("data", data);
 		
 		return acampado;

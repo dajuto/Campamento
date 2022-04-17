@@ -5,7 +5,8 @@ import java.util.List;
 
 import javax.swing.SwingUtilities;
 
-import empleados.Negocio.EmpleadoLimpiezaBuilder;
+import acampados.Negocio.AcampadoBuilder;
+import empleados.Negocio.EmpleadoGestorBuilder;
 import gestoria.Negocio.LimpiezaBuilder;
 
 public class Main {
@@ -13,7 +14,8 @@ public class Main {
 	private static Factory<Object> initFactories() {
 		List<Builder<Object>> constructores = new ArrayList<>();
 		constructores.add(new LimpiezaBuilder());
-		constructores.add(new EmpleadoLimpiezaBuilder());
+		constructores.add(new EmpleadoGestorBuilder());
+		constructores.add(new AcampadoBuilder());
 		Factory<Object> factoriaTransferObjects = new BuilderBasedFactory<>(constructores);
 		return factoriaTransferObjects;
 	}

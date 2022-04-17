@@ -71,7 +71,7 @@ private JPasswordField password;
 				
 				if(SingletonControllerEmpleado.getInstance().existeEmpleado(usuario.getText(), password.getText())) {
 					setVisible(false);
-					SingletonControllerEmpleado.getInstance().menuEmpleado(getFrame());
+					SingletonControllerEmpleado.getInstance().menuEmpleado();
 				}
 				else JOptionPane.showMessageDialog(atras, "Usuario Incorrecto", "Error", JOptionPane.ERROR_MESSAGE);			
 			}

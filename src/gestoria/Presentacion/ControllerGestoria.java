@@ -8,10 +8,11 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Negocio.TEmpleadoGestoria;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.LimpiezaObserver;
 import gestoria.Negocio.SingletonServiAppGestoria;
+import gestoria.Negocio.TLimpieza;
 import launcher.Factory;
 import launcher.Observable;
 
@@ -52,8 +53,20 @@ public class ControllerGestoria {
 		});
 	}
 	
-	public void añadirLimpieza(String lugar, String fecha, String hora, String empleado, JFrame frame) {
-		SingletonServiAppGestoria.getInstance().añadirLimpieza(lugar, fecha, hora, empleado, frame);
+	public void añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
+		boolean existe = SingletonServiAppGestoria.getInstance().añadirLimpieza(codigo, lugar, fecha, hora, empleado, frame);
+		if (existe) {
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					frame.setVisible(false);
+					new VistaMenuLimpiezaGestor(frame);
+				}
+			});
+		}
+		else {
+			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
+		}
 	}
 
 	public void mostrarLimpieza(JFrame frame) {
@@ -65,10 +78,43 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void crearEmpleado(JFrame frame) {
+		SingletonControllerEmpleado.getInstance().resgistrar(frame);
+	}
+	
+	public void mostrarEliminarLimpieza(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEliminarLimpiezaGestor(frame);
+			}
+		});
+	}
+
+	public void eliminarLimpieza(JFrame frame, String codigo) {
+		SingletonServiAppGestoria.getInstance().eliminarLimpieza(frame, codigo);
+	}
+	
+	public List<TLimpieza> getListaCodigosLimpieza() {
+		List<TLimpieza> listaLimpieza = SingletonServiAppGestoria.getInstance().getListaLimpiezaGestor();
+//		List<String> listaCodigos = null;
+//		for (int i = 0; i < listaLimpieza.size(); i++) {
+//			String hola = listaLimpieza.get(i).getCodigo();
+//			listaCodigos.add(index, element);
+//		}
+		return listaLimpieza;
+	}
 	
 	public void addObserver(LimpiezaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);
 	}
+
+	
+
+	
+
+	
+	
 
 	
 

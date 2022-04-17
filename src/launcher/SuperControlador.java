@@ -12,12 +12,12 @@ import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class SuperControlador{
 	
-	public void mostrarGeneralEmpleado(JFrame f) {
+	public void generalEmpleado(JFrame f) {
 		SingletonControllerEmpleado.getInstance().empleado(f);
 	}
 
-	public void mostrarGeneralAcampado(JFrame f) {
-		SingletonControllerAcampado.getInstance().mostrarGeneralAcampado(f);
+	public void generalAcampado(JFrame f) {
+		SingletonControllerAcampado.getInstance().acampado(f);
 	}
 
 	public void registraFactoria(Factory<Object> factoriaTransferObjects) {
@@ -29,8 +29,9 @@ public class SuperControlador{
 		//SingletonControllerComedor.getInstance().registraFactoria(factoriaTransferObjects);
 		
 		SingletonControllerEmpleado.getInstance().registraFactoria(factoriaTransferObjects);
-		SingletonControllerAcampado.getInstance().registraFactoria(factoriaTransferObjects);
+		//SingletonControllerAcampado.getInstance().registraFactoria(factoriaTransferObjects);
 
 	
 	}
+
 }

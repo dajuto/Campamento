@@ -29,7 +29,7 @@ public class DaoLimpieza {
 		JSONObject object = new JSONObject();
 		try {
 	        for(int i = 0; i < listaLimpieza.size(); i++) {
-	            object.accumulate("averias", listaLimpieza.get(i).report());
+	            object.accumulate("limpieza", listaLimpieza.get(i).report());
 	        }
 			this.os = new FileOutputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {

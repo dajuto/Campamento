@@ -3,14 +3,17 @@ package acampados.Negocio;
 import java.util.List;
 
 public class TAcampado extends Acampado{
-public TAcampado(String nombre, String usuario, boolean isConfinado, String habitacion, List<String> listaactividades, boolean pagado) {
-		this.nombre=nombre;
-		this.confinado = isConfinado;
+public TAcampado(String usuario, String contrasena, String nombre, String apellidos, int dni, String email, String salud, String habitacion, boolean pagado) {
 		this.usuario=usuario;
+		this.contrasena=contrasena;
+		this.nombre=nombre;
+		this.apellidos = apellidos;
+		this.dni=dni;
+		this.salud=salud;
+		this.email=email;
 		this.habitacion = habitacion;
-		this.listaactividades = listaactividades;
-		this.pagado = pagado;
-		
+		//this.listaactividades = listaactividades;
+		this.pagado = pagado;	
 	}
 
 }

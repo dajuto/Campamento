@@ -29,13 +29,12 @@ public class LimpiezaBuilder extends Builder<Object> {
 //		else {
 //			return null;
 //		}
-		String c = data.getString("Codigo");
-		int codigo = Integer.parseInt(c);
+		String codigo = data.getString("Codigo");
 		String lugar = data.getString("Lugar");
 		String fecha = data.getString("Fecha");
 		String hora = data.getString("Hora");
 		String empleadoEncargado = data.getString("Empleado");
-		TEmpleado empleado = SingletonServiAppEmpleado.getInstance().getEmpleado(empleadoEncargado);
+		//TEmpleado empleado = SingletonServiAppEmpleado.getInstance().getEmpleado(empleadoEncargado);
 		TLimpieza tlimpieza = new TLimpieza (codigo, lugar, fecha, hora, empleadoEncargado);
 		return tlimpieza;
 	}

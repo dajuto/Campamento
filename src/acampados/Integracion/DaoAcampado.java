@@ -22,16 +22,16 @@ public class DaoAcampado {
 	private InputStream in;
 	private OutputStream os;
 	public DaoAcampado() throws IOException {
-		this.nombreFichero = "estudiantes.json";
+		this.nombreFichero = "acampados.json";
 	}
 
-	public void escribeTodo(List<TAcampado> listaEstudiantes) { 
+	public void escribeTodo(List<TAcampado> listaAcampados) { 
 			
 			JSONObject object = new JSONObject();		
 			
 			try {
-		        for(int i = 0; i < listaEstudiantes.size(); i++) {
-		           object.accumulate("estudiantes", listaEstudiantes.get(i).report());
+		        for(int i = 0; i < listaAcampados.size(); i++) {
+		           object.accumulate("acampados", listaAcampados.get(i).report());
 		        }	       
 				this.os = new FileOutputStream(this.nombreFichero);
 			} catch (FileNotFoundException e1) {

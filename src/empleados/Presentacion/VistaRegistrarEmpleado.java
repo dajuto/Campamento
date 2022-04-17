@@ -26,6 +26,7 @@ private JTextField usuario;
 private JPasswordField password;
 private JPasswordField password2;
 private JTextField nombre;
+private JComboBox puesto;
 	
 	public VistaRegistrarEmpleado(JFrame frame) {
 		setTitle("Registrar");
@@ -76,9 +77,9 @@ private JTextField nombre;
 				if (password.getText().length() > 7) {
 					if(password.getText().equals(password2.getText())) {
 						//if (nombre.getText().equals(nombre)) {
-							setVisible(false);
+							
 							//TODO HABRA QUE AÑADIR EL USUARIO Y TAL
-							SingletonControllerEmpleado.getInstance().menuEmpleado(getFrame());
+							SingletonControllerEmpleado.getInstance().crearEmpleado(getFrame(), usuario.getText(), password.getText(), nombre.getText(), puesto.getSelectedItem().toString());
 						//}
 					}
 					else JOptionPane.showMessageDialog(atras, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
@@ -113,7 +114,7 @@ private JTextField nombre;
 		lblUsuario_1_1.setBounds(35, 221, 69, 25);
 		getContentPane().add(lblUsuario_1_1);
 		
-		JComboBox puesto = new JComboBox();
+		puesto = new JComboBox();
 		puesto.setModel(new DefaultComboBoxModel(new String[] {"Gestor", "M\u00E9dico", "Contable", "Coordinador Actividades", "Nutricionista"}));
 		puesto.setBounds(132, 223, 116, 22);
 		getContentPane().add(puesto);

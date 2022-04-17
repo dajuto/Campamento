@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Negocio.TEmpleadoGestoria;
 
 
 public class LimpiezaTableModel extends AbstractTableModel implements LimpiezaObserver {
@@ -52,32 +52,32 @@ public class LimpiezaTableModel extends AbstractTableModel implements LimpiezaOb
 		}
 
 		@Override
-		public void onRegister(List<TLimpieza> listaLimpieza, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+		public void onRegister(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
-		public void onCreateLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+		public void onCreateLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
-		public void onEliminarLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+		public void onEliminarLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
-		public void onModificarLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+		public void onModificarLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
 		public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
-				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
