@@ -56,8 +56,10 @@ public class ControllerAcampado {
 		});
 	}
 
-	public void crearAcampado(JFrame frame) {
-		//TODO HAcerlo
+	public void crearAcampado(String usuario, String contrasena, String nombre, String apellidos, String text5, String text6,
+			String text7, String text8, String salud, JFrame frame) {
+	
 	}
+	
 	
 }
