@@ -95,6 +95,27 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().eliminarLimpieza(frame, codigo);
 	}
 	
+	public void mostrarModificarLimpieza(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarLimpiezaGestor(frame);
+			}
+		});
+		
+	}
+	
+	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
+		SingletonServiAppGestoria.getInstance().modificarLimpieza(codigo, lugar, fecha, hora, empleado);
+		frame.setVisible(false);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuLimpiezaGestor(frame);
+			}
+		});
+	}
+	
 	public List<TLimpieza> getListaCodigosLimpieza() {
 		List<TLimpieza> listaLimpieza = SingletonServiAppGestoria.getInstance().getListaLimpiezaGestor();
 //		List<String> listaCodigos = null;
@@ -108,6 +129,8 @@ public class ControllerGestoria {
 	public void addObserver(LimpiezaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);
 	}
+
+	
 
 	
 

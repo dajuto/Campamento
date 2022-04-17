@@ -10,8 +10,10 @@ public class Acampado {
 	protected String contrasena;
 	protected String nombre;
 	protected String apellidos;
-	protected int dni;
+	protected String dni;
 	protected String email;
+	protected int edad;
+	protected int telefono;
 	protected String salud;
 	protected String habitacion;
 	protected List<String> listaactividades; //TODO SEGOVIANO, CAMBIA STRING POR TActividades
@@ -33,7 +35,7 @@ public class Acampado {
 		return apellidos;
 	}
 
-	public int getDni() {
+	public String getDni() {
 		return dni;
 	}
 
@@ -41,6 +43,14 @@ public class Acampado {
 		return email;
 	}
 
+	public int getEdad() {
+		return edad;
+	}
+	
+	public int getTelefono() {
+		return telefono;
+	}
+	
 	public String getSalud() {
 		return salud;
 	}
@@ -49,7 +59,7 @@ public class Acampado {
 		return habitacion;
 	}
 
-	public List<String> getListaactividades() {
+	public List<String> getListaActividades() {
 		return listaactividades;
 	}
 
@@ -73,18 +83,23 @@ public class Acampado {
 		data.put("Apellidos", apellidos);
 		data.put("DNI", dni);
 		data.put("Email", email);
+		data.put("Edad", edad);
+		data.put("Telefono", telefono);
 		data.put("Salud", salud);
 		data.put("Habitacion", habitacion);
 		
-		String actividades = "[";
-		for(int j = 0; j < this.listaactividades.size(); j++) {
-			actividades += "\"" + this.getListaactividades().get(j) +  "\"";
-			if(j!= this.listaactividades.size() - 1 ) {
-				actividades += ",";
-			}
-		}
-		actividades += "]";
-		data.accumulate("listaActividades", new JSONArray(actividades));
+		JSONObject activi = new JSONObject();
+		activi.accumulate("Lista Actividades", this.getListaActividades());
+		data.accumulate("Actividades", activi);
+//		String actividades = "[";
+//		for(int j = 0; j < this.listaactividades.size(); j++) {
+//			actividades += "\"" + this.getListaactividades().get(j) +  "\"";
+//			if(j!= this.listaactividades.size() - 1 ) {
+//				actividades += ",";
+//			}
+//		}
+//		actividades += "]";
+//		data.accumulate("listaActividades", new JSONArray(actividades));
 		
 		if (pagado) {
 			data.put("Pagado", "Si");
@@ -97,5 +112,7 @@ public class Acampado {
 		
 		return acampado;
 	}
+
+	
 }
 

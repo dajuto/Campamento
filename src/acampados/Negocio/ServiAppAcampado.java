@@ -21,11 +21,6 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		this.observers = new ArrayList<AcampadoObserver>();
 	}
 	
-	public void updateAcampados() {
-		this.listaAcampados = SingletonDaoAcampado.getInstance().leeTodo(this.factoriaTranserObjects);
-		
-	}
-	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
 	}
@@ -33,6 +28,11 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 	public void registraUsuario(String text, char[] password) {
 		this.nombreUsuario = text;
 		this.contrasenaUsuario = password;
+	}
+	
+	public void updateAcampados() {
+		this.listaAcampados = SingletonDaoAcampado.getInstance().leeTodo(this.factoriaTranserObjects);
+		
 	}
 	
 	public boolean existeAcampado(String usuario, String password) {

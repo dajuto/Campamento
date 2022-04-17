@@ -26,26 +26,24 @@ public class DaoAcampado {
 	}
 
 	public void escribeTodo(List<TAcampado> listaAcampados) { 
-			
-			JSONObject object = new JSONObject();		
-			
-			try {
-		        for(int i = 0; i < listaAcampados.size(); i++) {
-		           object.accumulate("acampados", listaAcampados.get(i).report());
-		        }	       
-				this.os = new FileOutputStream(this.nombreFichero);
-			} catch (FileNotFoundException e1) {
-				e1.printStackTrace();
-			}
-			try {
-				os.write(object.toString(3).getBytes());
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block	
-				e.printStackTrace();
-			}
+		try {
+			this.os = new FileOutputStream(this.nombreFichero);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			JSONObject object = new JSONObject();
+	        for(int i = 0; i < listaAcampados.size(); i++) {
+	            object.accumulate("empleados", listaAcampados.get(i).report());
+	        }
+			os.write(object.toString(3).getBytes());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		}
 	
 	public List<TAcampado> leeTodo(Factory<Object> factoriaTranserObjects){ // de json a objetos
@@ -59,8 +57,8 @@ public class DaoAcampado {
             JSONObject jo = new JSONObject(new JSONTokener(in));
             JSONArray acampados = jo.getJSONArray("acampados");
             for(int i = 0; i < acampados.length(); i++) {
-            	TAcampado a = (TAcampado) factoriaTranserObjects.createInstance(acampados.getJSONObject(i));
-                l.add(a);
+            	TAcampado tacampado = (TAcampado) factoriaTranserObjects.createInstance(acampados.getJSONObject(i));
+                l.add(tacampado);
             }
         }
         catch (JSONException e) {

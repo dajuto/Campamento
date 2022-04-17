@@ -109,6 +109,21 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 		
 	}
 
+	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado) {
+		for (int i = 0; i < listaLimpieza.size(); i++) {
+			if (listaLimpieza.get(i).getCodigo().equals(codigo)) {
+				listaLimpieza.get(i).codigo = codigo;
+				listaLimpieza.get(i).lugar = lugar;
+				listaLimpieza.get(i).fecha = fecha;
+				listaLimpieza.get(i).hora = hora;
+				listaLimpieza.get(i).empleadoEncargado = empleado;
+				SingletonDaoLimpieza.getInstance().escribeTodo(listaLimpieza);
+				this.updateLimpieza();
+			}
+		}
+		
+	}
+
 	
 
 	

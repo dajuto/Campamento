@@ -29,7 +29,7 @@ public class SuperControlador{
 		//SingletonControllerComedor.getInstance().registraFactoria(factoriaTransferObjects);
 		
 		SingletonControllerEmpleado.getInstance().registraFactoria(factoriaTransferObjects);
-		//SingletonControllerAcampado.getInstance().registraFactoria(factoriaTransferObjects);
+		SingletonControllerAcampado.getInstance().registraFactoria(factoriaTransferObjects);
 
 	
 	}

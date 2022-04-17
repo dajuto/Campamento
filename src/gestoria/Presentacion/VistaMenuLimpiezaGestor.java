@@ -48,6 +48,8 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 		JButton boton_Modificar = new JButton("Modificar Horarios");
 		boton_Modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().mostrarModificarLimpieza(getFrame());
 			}
 		});
 		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));

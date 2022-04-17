@@ -20,10 +20,21 @@ public class AcampadoBuilder extends  Builder<Object> {
 		String contrasena = data.getString("Contraseña");
 		String nombre = data.getString("Nombre");
 		String apellidos = data.getString("Apellidos");
-		int dni = data.getInt("DNI");
+		String dni = data.getString("DNI");
 		String email = data.getString("Email");
+		int edad = data.getInt("Edad");
+		int telefono = data.getInt("Telefono");
 		String salud = data.getString("Salud");
 		String habitacion = data.getString("Habitacion");
+		
+		JSONObject activi = data.getJSONObject("Actividades");
+		List<String> listaActividades = new ArrayList<String>();
+		if(activi.has("Lista Actividades")) {
+			JSONArray actividades = activi.getJSONArray("Lista Actividades");
+			for(int i = 0; i < actividades.length(); i++) {
+				listaActividades.add(actividades.getString(i));
+	        }  
+		}
 		
 //		JSONArray actividades = data.getJSONArray("listaActividades").getJSONArray(0);
 //		List<String> listaactividades = new ArrayList<String>();
@@ -38,7 +49,7 @@ public class AcampadoBuilder extends  Builder<Object> {
 		if(pagado.equals("Si")) {
 			isPagado= true;
 		}
-        TAcampado te = new TAcampado(usuario, contrasena, nombre, apellidos, dni, email, salud, habitacion, isPagado);
+        TAcampado te = new TAcampado(usuario, contrasena, nombre, apellidos, dni, email, edad, telefono, salud, habitacion, listaActividades, isPagado);
 		return te;
 	}
 	

@@ -5,24 +5,13 @@
          "Contraseña": "12345678",
          "Nombre": "Alvaro ",
          "Apellidos": "Cordero Capitas",
-         "DNI": 1400,
+         "DNI": "78765711A",
          "Email": "alvcorde@ucm.es",
+         "Edad": 21,
+         "Telefono": 630864506,
          "Salud": "sano",
          "Habitacion": "12A",
-         "pagado": "Si"
-      },
-      "type": "acampado"
-   },
-   {
-      "data": {
-         "Usuario": "alvaro02",
-         "Contraseña": "12345678",
-         "Nombre": "Alvaro ",
-         "Apellidos": "Cordero Capitas",
-         "DNI": 1400,
-         "Email": "alvcorde@ucm.es",
-         "Salud": "sano",
-         "Habitacion": "12A",
+         "Actividades": {"Lista Actividades": []},
          "pagado": "Si"
       },
       "type": "acampado"

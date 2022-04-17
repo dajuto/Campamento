@@ -18,6 +18,7 @@ import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
 
 public class VistaRegistrarAcampado extends JFrame {
 
@@ -26,12 +27,18 @@ private JTextField usuario;
 private JPasswordField password;
 private JPasswordField password2;
 private JTextField nombre;
+private JTextField apellidos;
+private JTextField dni;
+private JTextField email;
+private JComboBox comboBox;
+private JCheckBox checkBox;
+private boolean cambio = false;
 	
 	public VistaRegistrarAcampado(JFrame frame) {
 		setTitle("Registrar");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
-		setSize(500,400);
+		setSize(500,550);
 		
 		this.atras = frame;
 		
@@ -42,7 +49,7 @@ private JTextField nombre;
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(373, 315, 97, 25);
+		boton_Atras.setBounds(373, 365, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 		JLabel labelResgistrar = new JLabel("Registrar:");
@@ -69,26 +76,6 @@ private JTextField nombre;
 		password.setBounds(132, 109, 116, 22);
 		getContentPane().add(password);
 		
-		JButton boton_Aceptar = new JButton("Aceptar");
-		boton_Aceptar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (password.getText().length() > 7) {
-					if(password.getText().equals(password2.getText())) {
-						//if (nombre.getText().equals(nombre)) {
-							setVisible(false);
-							//TODO HABRA QUE AÑADIR EL USUARIO Y TAL
-							SingletonControllerEmpleado.getInstance().menuEmpleado(getFrame());
-						//}
-					}
-					else JOptionPane.showMessageDialog(atras, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-				else JOptionPane.showMessageDialog(atras, "Tamaño de clave minimo es de 8 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
-			}
-		});
-		boton_Aceptar.setBounds(84, 277, 97, 25);
-		getContentPane().add(boton_Aceptar);
-		
 		JLabel lblContrasea_1 = new JLabel("Contrase\u00F1a:");
 		lblContrasea_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblContrasea_1.setBounds(35, 145, 97, 25);
@@ -98,25 +85,90 @@ private JTextField nombre;
 		password2.setBounds(132, 147, 116, 22);
 		getContentPane().add(password2);
 		
-		JLabel lblUsuario_1 = new JLabel("Nombre:");
-		lblUsuario_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario_1.setBounds(35, 183, 69, 25);
-		getContentPane().add(lblUsuario_1);
+		JLabel lblNombre = new JLabel("Nombre:");
+		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNombre.setBounds(35, 183, 69, 25);
+		getContentPane().add(lblNombre);
 		
 		nombre = new JTextField();
 		nombre.setColumns(10);
 		nombre.setBounds(132, 185, 116, 22);
 		getContentPane().add(nombre);
 		
-		JLabel lblUsuario_1_1 = new JLabel("Puesto:");
-		lblUsuario_1_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblUsuario_1_1.setBounds(35, 221, 69, 25);
-		getContentPane().add(lblUsuario_1_1);
+		JLabel lblApellidos = new JLabel("Apellidos:");
+		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblApellidos.setBounds(35, 221, 88, 25);
+		getContentPane().add(lblApellidos);
 		
-		JComboBox puesto = new JComboBox();
-		puesto.setModel(new DefaultComboBoxModel(new String[] {"Gestor", "M\u00E9dico", "Contable", "Coordinador Actividades", "Nutricionista"}));
-		puesto.setBounds(132, 223, 116, 22);
-		getContentPane().add(puesto);
+		JLabel lblDNI = new JLabel("DNI:");
+		lblDNI.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblDNI.setBounds(35, 259, 69, 25);
+		getContentPane().add(lblDNI);
+		
+		apellidos = new JTextField();
+		apellidos.setColumns(10);
+		apellidos.setBounds(132, 223, 116, 22);
+		getContentPane().add(apellidos);
+		
+		dni = new JTextField();
+		dni.setColumns(10);
+		dni.setBounds(132, 261, 116, 22);
+		getContentPane().add(dni);
+		
+		checkBox = new JCheckBox("Marca si estas enfermo");
+		checkBox.setBounds(25, 335, 163, 25);
+		checkBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (!cambio) {
+					cambio = true;
+					comboBox.setEnabled(cambio);
+				}
+				else {
+					cambio = false;
+					comboBox.setEnabled(cambio);
+				}
+			}
+		});
+		getContentPane().add(checkBox);
+		
+		comboBox = new JComboBox();
+		comboBox.setEnabled(false);
+		comboBox.setBounds(207, 336, 123, 22);
+		//TODO DAVID PONER LAS ENFERMEDADES QUE QUIERAS
+		comboBox.addItem("Covid");
+		comboBox.addItem("Gripe");
+		getContentPane().add(comboBox);
+		
+		JLabel lblEmail = new JLabel("Email:");
+		lblEmail.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEmail.setBounds(35, 297, 69, 25);
+		getContentPane().add(lblEmail);
+		
+		email = new JTextField();
+		email.setColumns(10);
+		email.setBounds(132, 299, 116, 22);
+		getContentPane().add(email);
+		
+		JButton boton_Registrar = new JButton("Registrar");
+		boton_Registrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (password.getText().length() < 7 ) {
+					if (!password.equals(password2)) {
+						if (dni.getText().matches("[0-9]{7,8}[A-Za-z]")) {
+							if (email.getText().matches("[-\\w\\.]+@\\w+\\.\\w+")) {
+							
+							}
+							else JOptionPane.showMessageDialog(atras, "Formato del email es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+						}
+						else JOptionPane.showMessageDialog(atras, "Formato del dni es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+					}
+					else JOptionPane.showMessageDialog(atras, "Tamaño de clave minimo es de 8 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+				}
+				else JOptionPane.showMessageDialog(atras, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
+			}
+		});
+		boton_Registrar.setBounds(311, 184, 97, 25);
+		getContentPane().add(boton_Registrar);
 		
 		setVisible(true);
 	}
