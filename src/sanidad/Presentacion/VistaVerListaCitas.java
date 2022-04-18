@@ -2,9 +2,9 @@ package sanidad.Presentacion;
 
 import java.awt.Frame;
 
-public class VistaConsultarListaCitas {
+public class VistaVerListaCitas {
 
-	public VistaConsultarListaCitas(Frame frame) {
+	public VistaVerListaCitas(Frame frame) {
 		// TODO Auto-generated constructor stub
 	}
 
