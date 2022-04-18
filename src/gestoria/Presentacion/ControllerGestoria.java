@@ -186,7 +186,7 @@ public class ControllerGestoria {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuLimpiezaGestor(frame);
+				new VistaMenuInstalacionesGestor(frame);
 			}
 		});
 	}

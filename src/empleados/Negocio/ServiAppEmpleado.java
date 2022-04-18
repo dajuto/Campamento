@@ -70,12 +70,12 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		return null;
 	}
 
-	public List<TEmpleadoGestoria> getListaEmpleadosMantenimiento() {
+	public List<TEmpleadoLimpieza> getListaEmpleadosMantenimiento() {
 		this.updateEmpleados();
-		List<TEmpleadoGestoria> l = new ArrayList<>();
+		List<TEmpleadoLimpieza> l = new ArrayList<>();
 		for(TEmpleado e: this.listaEmpleados) {
 			if(e.puesto.equals("Empleado Mantenimiento")) {
-				l.add((TEmpleadoGestoria) e);
+				l.add((TEmpleadoLimpieza) e);
 			}
 		}
 		return l;
@@ -135,15 +135,25 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		data.accumulate("contrasena", contrasena);
 		data.accumulate("nombre", nombre);
 		data.accumulate("puesto", puesto);
-		if (puesto.equals("Gestor")) {
-			data.accumulate("salario", 3500);
+		
+		if (puesto.equals("Empleado Limpieza")) {
+			data.accumulate("salario", 1400);
 			data.accumulate("horario", 8);
-			data.accumulate("vacaciones", "Todo el verano");
+			data.accumulate("vacaciones", "Navidades");
 			JSONObject trabajo = new JSONObject();
 			data.accumulate("trabajo", trabajo);
 			empleado.accumulate("data", data);
-			empleado.accumulate("type", "empleadoGestor");
-			TEmpleadoGestoria tEmpleado = (TEmpleadoGestoria) this.factoriaTransferObjects.createInstance(empleado);
+			empleado.accumulate("type", "Empleado Limpieza");
+			TEmpleadoLimpieza tEmpleado = (TEmpleadoLimpieza) this.factoriaTransferObjects.createInstance(empleado);
+			this.listaEmpleados.add(tEmpleado);
+		}
+		else if (puesto.equals("Gestor")) {
+			data.accumulate("salario", 3500);
+			data.accumulate("horario", 8);
+			data.accumulate("vacaciones", "Todo el verano");
+			empleado.accumulate("data", data);
+			empleado.accumulate("type", "Gestor");
+			TGestor tEmpleado = (TGestor) this.factoriaTransferObjects.createInstance(empleado);
 			this.listaEmpleados.add(tEmpleado);
 		}
 		

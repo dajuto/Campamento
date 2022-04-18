@@ -8,14 +8,14 @@ import org.json.JSONObject;
 
 import launcher.Builder;
 
-public class EmpleadoGestorBuilder extends Builder<Object>{
+public class EmpleadoLimpiezaBuilder extends Builder<Object>{
 
-	public EmpleadoGestorBuilder() {
-		super("empleadoGestor");
+	public EmpleadoLimpiezaBuilder() {
+		super("Empleado Limpieza");
 	}
 
 	@Override
-	protected TEmpleadoGestoria createTheInstance(JSONObject data) {
+	protected TEmpleadoLimpieza createTheInstance(JSONObject data) {
 		String usuario = data.getString("usuario");
 		String contrasena = data.getString("contrasena");
 		String nombre = data.getString("nombre");
@@ -31,7 +31,7 @@ public class EmpleadoGestorBuilder extends Builder<Object>{
 	        	limpiezaPendiente.add(limpiezaAsignada.getString(i));
 	        }  
 		}
-		TEmpleadoGestoria empleadoLimpieza = new TEmpleadoGestoria(usuario, contrasena, nombre, puesto, salario, horario, vacaciones, limpiezaPendiente);
+		TEmpleadoLimpieza empleadoLimpieza = new TEmpleadoLimpieza(usuario, contrasena, nombre, puesto, salario, horario, vacaciones, limpiezaPendiente);
 		return empleadoLimpieza;
 	}
 

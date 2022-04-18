@@ -3,7 +3,7 @@
       "data": {
          "Nombre": "Piscina",
          "Codigo": "1",
-         "Superficie": 500,
+         "Superficie": 20,
          "Actividades": "Si",
          "Pagado": "Si",
          "Precio": 250000

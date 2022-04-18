@@ -3,7 +3,7 @@ package gestoria.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import empleados.Negocio.TEmpleadoGestoria;
+import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.LimpiezaTableModel;
 import gestoria.Negocio.TInstalacion;
@@ -69,28 +69,28 @@ public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
