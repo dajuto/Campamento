@@ -8,14 +8,14 @@ import javax.swing.table.AbstractTableModel;
 import empleados.Negocio.TEmpleadoGestoria;
 
 
-public class LimpiezaTableModel extends AbstractTableModel implements GestoriaObserver {
+public class InstalacionesTableModel extends AbstractTableModel implements GestoriaObserver {
 	private static final long serialVersionUID = 1L;
 	
-		private List<TLimpieza> list;
-		private String[] columnNames = {"Codigo", "Lugar", "Fecha","Hora", "Empleado"};
+		private List<TInstalacion> list;
+		private String[] columnNames = {"Codigo", "Nombre", "Superficie","Precio", "Pagado", "Actividades"};
 		
-		public LimpiezaTableModel() {
-			list = new ArrayList<TLimpieza>();
+		public InstalacionesTableModel() {
+			list = new ArrayList<TInstalacion>();
 			SingletonServiAppGestoria.getInstance().addObserver(this);
 		}
 		
@@ -38,15 +38,16 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			switch(columnIndex) {
 			case 0: return list.get(rowIndex).getCodigo();
-			case 1:	return list.get(rowIndex).getLugar();
-			case 2: return list.get(rowIndex).getFecha();
-			case 3: return list.get(rowIndex).getHora();
-			case 4: return list.get(rowIndex).getEmpleadoEncargado();
+			case 1:	return list.get(rowIndex).getNombre();
+			case 2: return list.get(rowIndex).getSuperficie();
+			case 3: return list.get(rowIndex).getPrecio();
+			case 4: return list.get(rowIndex).isPagado();
+			case 5: return list.get(rowIndex).isPuedeActividades();
 			default: return null;
 			}
 		}
 		
-		private void update(List<TLimpieza> lista) {
+		private void update(List<TInstalacion> lista) {
 			this.list = lista;
 			this.fireTableDataChanged();
 		}
@@ -54,28 +55,27 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 		@Override
 		public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
-			this.update(listaLimpieza);
+			this.update(listaInstalaciones);
 		}
 
 		@Override
 		public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
-			this.update(listaLimpieza);
+			this.update(listaInstalaciones);
 		}
 
 		@Override
 		public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
-			this.update(listaLimpieza);
+			this.update(listaInstalaciones);
 		}
 
 		@Override
 		public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
-			this.update(listaLimpieza);
+			this.update(listaInstalaciones);
 		}
 
-		
 
 		
 }

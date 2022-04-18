@@ -5,26 +5,20 @@ import javax.swing.JFrame;
 
 import empleados.Negocio.TEmpleadoGestoria;
 import gestoria.Negocio.GestoriaObserver;
-import gestoria.Negocio.LimpiezaTableModel;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
-import java.awt.BorderLayout;
+
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JComponent;
-import javax.swing.JTable;
 
-public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
+public class VistaMenuInstalacionesGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	public VistaVerLimpiezaGestor(JFrame frame) {
-		setTitle("Lista horarios limpieza");
+	public VistaMenuInstalacionesGestor(JFrame frame) {
+		setTitle("Menu de instalaciones");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -41,26 +35,55 @@ public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel labcrear = new JLabel("Lista horarios limpieza");
-		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		labcrear.setBounds(25, 24, 330, 36);
-		getContentPane().add(labcrear);
+		JButton boton_Mostrar = new JButton("Mostrar Instalaciones");
+		boton_Mostrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().mostrarInstalacion(getFrame());
+			}
+		});
+		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Mostrar.setBounds(51, 53, 166, 38);
+		getContentPane().add(boton_Mostrar);
 		
-		JPanel p2 = createViewPanel(new JTable(new LimpiezaTableModel()), "Lista Horarios limpieza");
-		p2.setBounds(35, 73, 416, 126);
-		getContentPane().add(p2);
+		JButton boton_Modificar = new JButton("Modificar Instalaciones");
+		boton_Modificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().mostrarModificarInstalacion(getFrame());
+			}
+		});
+		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Modificar.setBounds(260, 53, 166, 38);
+		getContentPane().add(boton_Modificar);
+		
+		JButton boton_Eliminar = new JButton("Eliminar Instalacion");
+		boton_Eliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().mostrarEliminarInstalacion(getFrame());
+			}
+		});
+		boton_Eliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Eliminar.setBounds(260, 119, 166, 38);
+		getContentPane().add(boton_Eliminar);
+		
+		JButton boton_Anadir = new JButton("A\u00F1adir Instalacion");
+		boton_Anadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().mostrarCrearInstalacion(getFrame());
+			}
+		});
+		boton_Anadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Anadir.setBounds(51, 119, 166, 38);
+		getContentPane().add(boton_Anadir);
 		
 		setVisible(true);
 	}
 	
 	private JFrame getFrame() {
 		return this;
-	}
-	
-	private JPanel createViewPanel(JComponent c, String title) {
-		JPanel p = new JPanel( new BorderLayout() );
-		p.add(new JScrollPane(c));
-		return p;
 	}
 	
 	private void update(String nombreUsuario) {
@@ -94,6 +117,4 @@ public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
 		// TODO Auto-generated method stub
 		
 	}
-	
-	
 }

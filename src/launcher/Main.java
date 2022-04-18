@@ -7,15 +7,18 @@ import javax.swing.SwingUtilities;
 
 import acampados.Negocio.AcampadoBuilder;
 import empleados.Negocio.EmpleadoGestorBuilder;
+import gestoria.Negocio.Instalacion;
+import gestoria.Negocio.InstalacionBuilder;
 import gestoria.Negocio.LimpiezaBuilder;
 
 public class Main {
 	
 	private static Factory<Object> initFactories() {
 		List<Builder<Object>> constructores = new ArrayList<>();
-		constructores.add(new LimpiezaBuilder());
 		constructores.add(new EmpleadoGestorBuilder());
 		constructores.add(new AcampadoBuilder());
+		constructores.add(new LimpiezaBuilder());
+		constructores.add(new InstalacionBuilder());
 		Factory<Object> factoriaTransferObjects = new BuilderBasedFactory<>(constructores);
 		return factoriaTransferObjects;
 	}

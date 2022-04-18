@@ -5,26 +5,28 @@ import javax.swing.JFrame;
 
 import empleados.Negocio.TEmpleadoGestoria;
 import gestoria.Negocio.GestoriaObserver;
-import gestoria.Negocio.LimpiezaTableModel;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
-import java.awt.BorderLayout;
+
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JComponent;
+import javax.swing.JOptionPane;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
 import javax.swing.JTable;
 
-public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
+public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	public VistaVerLimpiezaGestor(JFrame frame) {
-		setTitle("Lista horarios limpieza");
+	private JComboBox codElegido;
+	List<TInstalacion> listainstalaciones;
+	
+	public VistaEliminarInstalacionGestor(JFrame frame) {
+		setTitle("Eliminar instalaciones");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -41,26 +43,35 @@ public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel labcrear = new JLabel("Lista horarios limpieza");
-		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		labcrear.setBounds(25, 24, 330, 36);
-		getContentPane().add(labcrear);
+		JLabel eliminar = new JLabel("Eliminar instalacion");
+		eliminar.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		eliminar.setBounds(25, 24, 330, 36);
+		getContentPane().add(eliminar);
 		
-		JPanel p2 = createViewPanel(new JTable(new LimpiezaTableModel()), "Lista Horarios limpieza");
-		p2.setBounds(35, 73, 416, 126);
-		getContentPane().add(p2);
+		JButton boton_Eliminar = new JButton("Eliminar");
+		boton_Eliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				atras.setVisible(true);
+				SingletonControllerGestoria.getInstance().eliminarInstalacion(frame, (String) codElegido.getSelectedItem());
+			}
+		});
+		boton_Eliminar.setBounds(25, 112, 97, 25);
+		getContentPane().add(boton_Eliminar);
+		
+		codElegido = new JComboBox();
+		codElegido.setBounds(25, 73, 239, 22);
+		listainstalaciones = SingletonControllerGestoria.getInstance().getListainstalaciones();
+		for(TInstalacion cod: this.listainstalaciones) {
+			codElegido.addItem(cod.getCodigo());
+		}
+		getContentPane().add(codElegido);
 		
 		setVisible(true);
 	}
 	
 	private JFrame getFrame() {
 		return this;
-	}
-	
-	private JPanel createViewPanel(JComponent c, String title) {
-		JPanel p = new JPanel( new BorderLayout() );
-		p.add(new JScrollPane(c));
-		return p;
 	}
 	
 	private void update(String nombreUsuario) {
@@ -95,5 +106,5 @@ public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
 		
 	}
 	
-	
+
 }

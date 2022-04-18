@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 
 import empleados.Negocio.TEmpleadoGestoria;
 import gestoria.Negocio.GestoriaObserver;
-import gestoria.Negocio.LimpiezaTableModel;
+import gestoria.Negocio.InstalacionesTableModel;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
 import java.awt.BorderLayout;
@@ -20,11 +20,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
-public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
+public class VistaVerInstalacionGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	public VistaVerLimpiezaGestor(JFrame frame) {
-		setTitle("Lista horarios limpieza");
+	public VistaVerInstalacionGestor(JFrame frame) {
+		setTitle("Lista horarios instalaciones");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -41,20 +41,16 @@ public class VistaVerLimpiezaGestor extends JFrame implements GestoriaObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel labcrear = new JLabel("Lista horarios limpieza");
+		JLabel labcrear = new JLabel("Lista instalaciones");
 		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		labcrear.setBounds(25, 24, 330, 36);
 		getContentPane().add(labcrear);
 		
-		JPanel p2 = createViewPanel(new JTable(new LimpiezaTableModel()), "Lista Horarios limpieza");
+		JPanel p2 = createViewPanel(new JTable(new InstalacionesTableModel()), "Instalaciones");
 		p2.setBounds(35, 73, 416, 126);
 		getContentPane().add(p2);
 		
 		setVisible(true);
-	}
-	
-	private JFrame getFrame() {
-		return this;
 	}
 	
 	private JPanel createViewPanel(JComponent c, String title) {

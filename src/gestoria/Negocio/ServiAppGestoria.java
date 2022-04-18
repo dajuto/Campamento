@@ -9,14 +9,16 @@ import javax.swing.JFrame;
 import org.json.JSONObject;
 
 import empleados.Negocio.TEmpleadoGestoria;
+import gestoria.Integracion.SingletonDaoInstalacion;
 import gestoria.Integracion.SingletonDaoLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import launcher.Observable;
 
-public class ServiAppGestoria implements Observable<LimpiezaObserver>{
-	private List<LimpiezaObserver> observers;
+public class ServiAppGestoria implements Observable<GestoriaObserver>{
+	private List<GestoriaObserver> observers;
 	private List<TLimpieza> listaLimpieza;
+	private List<TInstalacion> listaInstalaciones;
 	private List<TEmpleadoGestoria> listaEmpleadosLimpieza;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
@@ -25,11 +27,15 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 	public ServiAppGestoria() {
 		this.listaLimpieza = new ArrayList<TLimpieza>();
 		this.listaEmpleadosLimpieza = new ArrayList<TEmpleadoGestoria>();
-		this.observers = new ArrayList<LimpiezaObserver>();
+		this.observers = new ArrayList<GestoriaObserver>();
 	}
 	
 	public void updateLimpieza() {
 		this.listaLimpieza = SingletonDaoLimpieza.getInstance().leeTodo(this.factoriaTranserObjects);
+	}
+	
+	public void updateInstalaciones() {
+		this.listaInstalaciones = SingletonDaoInstalacion.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
@@ -46,15 +52,16 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 	}
 
 	@Override
-	public void addObserver(LimpiezaObserver o) {
+	public void addObserver(GestoriaObserver o) {
 		this.observers.add(o);
 		this.updateLimpieza();
+		this.updateInstalaciones();
 		//TODO this.updateEmpleadosLimpieza();
-		o.onRegister(listaLimpieza, listaEmpleadosLimpieza, nombreUsuario);
+		o.onRegister(listaLimpieza, listaInstalaciones, listaEmpleadosLimpieza, nombreUsuario);
 	}
 
 	@Override
-	public void removeObserver(LimpiezaObserver o) {
+	public void removeObserver(GestoriaObserver o) {
 		this.observers.remove(o);
 	}
 	
@@ -62,15 +69,24 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 		return this.nombreUsuario;
 	}
 
-	public List<TLimpieza> getListaLimpiezaGestor() {	
+	public List<TLimpieza> getListaLimpieza() {	
 		this.updateLimpieza();
 		return listaLimpieza;
+	}
+	
+	public List<TInstalacion> getListaInstalaciones() {
+		updateInstalaciones();
+		return listaInstalaciones;
 	}
 	
 	public void guardaLimpieza() {
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
 	}
-
+	
+	public void guardaInstalacion() {
+        SingletonDaoInstalacion.getInstance().escribeTodo(this.listaInstalaciones);
+	}
+	
 	public boolean añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
 		this.updateLimpieza();
 		for(TLimpieza ta: this.listaLimpieza) {
@@ -106,7 +122,6 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 				this.updateLimpieza();
 			}
 		}
-		
 	}
 
 	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado) {
@@ -123,6 +138,66 @@ public class ServiAppGestoria implements Observable<LimpiezaObserver>{
 		}
 		
 	}
+
+	public boolean añadirInstalacion(String codigo, String nombre, String superficie, String precio, boolean actividades,
+			JFrame frame) {
+		this.updateInstalaciones();
+		for(TInstalacion ti: this.listaInstalaciones) {
+			if(ti.codigo.equals(codigo)) {
+				return false;
+			}
+		}
+		JSONObject instalacion = new JSONObject();
+		JSONObject data = new JSONObject();
+		data.accumulate("Codigo", codigo);
+		data.accumulate("Nombre", nombre);
+		data.accumulate("Superficie", superficie);
+		data.accumulate("Precio", precio);
+		data.accumulate("Pagado", "No");
+		if (actividades) {
+			data.accumulate("Actividades", "Si");
+		}
+		else {
+			data.accumulate("Actividades", "No");
+		}
+		
+		instalacion.accumulate("data", data);
+		instalacion.accumulate("type", "instalacion");
+		
+		TInstalacion tinstalacion = (TInstalacion) this.factoriaTranserObjects.createInstance(instalacion);
+		this.listaInstalaciones.add(tinstalacion);
+		this.guardaInstalacion();
+		this.updateInstalaciones();
+		
+		return true;
+	}
+
+	public void eliminarInstalacion(JFrame frame, String codigo) {
+		for (int i = 0; i < listaInstalaciones.size(); i++) {
+			if (listaInstalaciones.get(i).getCodigo().equals(codigo)) {
+				listaInstalaciones.remove(i);
+				SingletonDaoInstalacion.getInstance().escribeTodo(listaInstalaciones);
+				this.updateInstalaciones();
+			}
+		}
+	}
+
+	public void modificarInstalacion(String codigo, String nombre, String superficie, String precio, boolean pagado,
+			boolean actividades) {
+		for (int i = 0; i < listaInstalaciones.size(); i++) {
+			if (listaInstalaciones.get(i).getCodigo().equals(codigo)) {
+				listaInstalaciones.get(i).nombre = nombre;
+				listaInstalaciones.get(i).superficie = Integer.parseInt(superficie);
+				listaInstalaciones.get(i).precio = Integer.parseInt(precio);
+				listaInstalaciones.get(i).pagado = pagado;
+				listaInstalaciones.get(i).puedeActividades = actividades;
+				SingletonDaoInstalacion.getInstance().escribeTodo(listaInstalaciones);
+				this.updateLimpieza();
+			}
+		}
+	}
+
+	
 
 	
 
