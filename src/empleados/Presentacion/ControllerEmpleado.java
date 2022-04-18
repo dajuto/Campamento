@@ -77,33 +77,18 @@ public class ControllerEmpleado {
 	public void gestoria(JFrame frame) {
 		SingletonControllerGestoria.getInstance().menuGestor(frame);
 	}
+
 	
 	
-
-//	public void registraUsuario(String text, char[] password) {
-//		SingletonServiAppEmpleado.getInstance().registraUsuario(text, password);
-//		SingletonControllerMantenimiento.getInstance().registraUsuario(text, password);
-//		SingletonControllerAulas.getInstance().registraUsuario(text, password);
-//		SingletonControllerLimpieza.getInstance().registraUsuario(text, password);
-//	}
-
+	
+	
+	
+	
 	
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
 
-
-	
-
-	
-
-	
-
-
-	
-
-	
-	
 
 	
 }
