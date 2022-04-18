@@ -155,6 +155,16 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 			empleado.accumulate("type", "Gestor");
 			TGestor tEmpleado = (TGestor) this.factoriaTransferObjects.createInstance(empleado);
 			this.listaEmpleados.add(tEmpleado);
+		}else if (puesto.equals("Medico")) {
+			data.accumulate("salario", 8000);
+			data.accumulate("horario", 8);
+			data.accumulate("vacaciones", "Todo el verano");
+			JSONObject trabajo = new JSONObject();
+			data.accumulate("trabajo", trabajo);
+			empleado.accumulate("data", data);
+			empleado.accumulate("type", "Medico");
+			TMedico tEmpleado = (TMedico) this.factoriaTransferObjects.createInstance(empleado);
+			this.listaEmpleados.add(tEmpleado);
 		}
 		
 		this.guardaEmpleados();

@@ -23,6 +23,12 @@ public class VistaMenuEmpleado extends JFrame{
 		
 		JButton boton_Sanidad = new JButton("Sanidad");
 		boton_Sanidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		boton_Sanidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerEmpleado.getInstance().sanidad(getFrame());
+			}
+		});
 		boton_Sanidad.setBounds(49, 111, 140, 36);
 		getContentPane().add(boton_Sanidad);
 		
