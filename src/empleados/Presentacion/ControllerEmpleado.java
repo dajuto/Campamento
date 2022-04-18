@@ -9,8 +9,9 @@ import javax.swing.SwingUtilities;
 
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
-import empleados.Negocio.TEmpleadoGestoria;
+import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
+import gestoria.Presentacion.VistaRegistrarEmpleado;
 import launcher.Factory;
 
 public class ControllerEmpleado {

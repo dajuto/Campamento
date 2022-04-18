@@ -8,7 +8,7 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
-import empleados.Negocio.TEmpleadoGestoria;
+import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Integracion.SingletonDaoInstalacion;
 import gestoria.Integracion.SingletonDaoLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
@@ -19,14 +19,14 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 	private List<GestoriaObserver> observers;
 	private List<TLimpieza> listaLimpieza;
 	private List<TInstalacion> listaInstalaciones;
-	private List<TEmpleadoGestoria> listaEmpleadosLimpieza;
+	private List<TEmpleadoLimpieza> listaEmpleadosLimpieza;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
 	private char[] contrasenaUsuario;
 	
 	public ServiAppGestoria() {
 		this.listaLimpieza = new ArrayList<TLimpieza>();
-		this.listaEmpleadosLimpieza = new ArrayList<TEmpleadoGestoria>();
+		this.listaEmpleadosLimpieza = new ArrayList<TEmpleadoLimpieza>();
 		this.observers = new ArrayList<GestoriaObserver>();
 	}
 	

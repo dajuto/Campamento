@@ -6,7 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public abstract class EmpleadoGestor extends TEmpleado{
+public abstract class Gestor extends TEmpleado{
 	protected List<String> horariosLimpieza;
 	
 	public List<String> getListLimpieza(){
@@ -15,7 +15,7 @@ public abstract class EmpleadoGestor extends TEmpleado{
 
 	public JSONObject report() {
 	JSONObject empleado = new JSONObject();
-	empleado.accumulate("type", "empleadoGestor");
+	empleado.accumulate("type", "Gestor");
 	JSONObject data = new JSONObject();
 	data.accumulate("usuario", this.usuario);
 	data.accumulate("contrasena", this.contrasena);
@@ -25,10 +25,6 @@ public abstract class EmpleadoGestor extends TEmpleado{
 	data.accumulate("horario", horario);
 	data.accumulate("vacaciones", vacaciones);
 	
-	JSONObject limpieza = new JSONObject();
-	limpieza.accumulate("listaLimpieza", this.getListLimpieza());
-	
-	data.accumulate("trabajo", limpieza);
 	empleado.accumulate("data", data);
 	return empleado;
 }

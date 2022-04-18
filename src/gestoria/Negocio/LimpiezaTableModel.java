@@ -5,7 +5,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import empleados.Negocio.TEmpleadoGestoria;
+import empleados.Negocio.TEmpleadoLimpieza;
 
 
 public class LimpiezaTableModel extends AbstractTableModel implements GestoriaObserver {
@@ -53,25 +53,25 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 
 		@Override
 		public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
 		public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
 		public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
 		public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 

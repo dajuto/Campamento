@@ -1,15 +1,13 @@
-package empleados.Presentacion;
+package gestoria.Presentacion;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import empleados.Presentacion.SingletonControllerEmpleado;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -115,7 +113,7 @@ private JComboBox puesto;
 		getContentPane().add(lblUsuario_1_1);
 		
 		puesto = new JComboBox();
-		puesto.setModel(new DefaultComboBoxModel(new String[] {"Gestor", "M\u00E9dico", "Contable", "Coordinador Actividades", "Nutricionista"}));
+		puesto.setModel(new DefaultComboBoxModel(new String[] {"Gestor", "M\u00E9dico", "Contable", "Coordinador Actividades", "Nutricionista", "Empleado Limpieza"}));
 		puesto.setBounds(132, 223, 116, 22);
 		getContentPane().add(puesto);
 		

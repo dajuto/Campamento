@@ -3,7 +3,7 @@ package gestoria.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import empleados.Negocio.TEmpleadoGestoria;
+import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
@@ -39,9 +39,7 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 		setSize(500,350);
 		
 		listaInstalaciones = SingletonControllerGestoria.getInstance().getListainstalaciones();
-//		if (listaInstalaciones.get(0).isPagado()) {
-//			pagado.setEnabled(false);
-//		}
+		
 		
 		this.atras = frame;
 		
@@ -127,6 +125,12 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 			public void actionPerformed(ActionEvent e) {
 				for(TInstalacion cod: listaInstalaciones) {
 					if (cod.getCodigo().equals(codigo.getSelectedItem().toString())) {
+						if (cod.isPagado()) {
+							pagado.setEnabled(false);
+						}
+						else {
+							pagado.setEnabled(true);
+						}
 						pagado.setSelected(cod.isPagado());
 						actividades.setSelected(cod.isPuedeActividades());
 						nombre.setText(cod.getNombre());
@@ -145,6 +149,9 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 		pagado.setBounds(25, 223, 253, 25);
 		pagado.setSelected(listaInstalaciones.get(0).isPagado());
 		getContentPane().add(pagado);
+		if (listaInstalaciones.get(0).isPagado()) {
+			pagado.setEnabled(false);
+		}
 		
 		actividades = new JCheckBox("Marcar si es apto para actividades");
 		actividades.setBounds(25, 265, 253, 25);
@@ -164,28 +171,28 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}

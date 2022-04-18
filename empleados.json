@@ -4,51 +4,60 @@
          "puesto": "Gestor",
          "horario": 8,
          "salario": 1400,
-         "trabajo": {"listaLimpieza": ["4"]},
          "vacaciones": "2 semanas de verano",
          "usuario": "alvaro00",
          "contrasena": "12345678",
          "nombre": "Ivan Hernandez"
       },
-      "type": "empleadoGestor"
+      "type": "Gestor"
    },
    {
       "data": {
          "puesto": "Gestor",
          "horario": 8,
          "salario": 3500,
-         "trabajo": {"listaLimpieza": []},
          "vacaciones": "Todo el verano",
          "usuario": "ines00",
          "contrasena": "12345678",
          "nombre": "inesita"
       },
-      "type": "empleadoGestor"
+      "type": "Gestor"
    },
    {
       "data": {
          "puesto": "Gestor",
          "horario": 8,
          "salario": 3500,
-         "trabajo": {"listaLimpieza": []},
          "vacaciones": "Todo el verano",
          "usuario": "victor00",
          "contrasena": "12345678",
          "nombre": "Vicotr Cordero"
       },
-      "type": "empleadoGestor"
+      "type": "Gestor"
    },
    {
       "data": {
          "puesto": "Gestor",
          "horario": 8,
          "salario": 3500,
-         "trabajo": {"listaLimpieza": []},
          "vacaciones": "Todo el verano",
          "usuario": "jose00",
          "contrasena": "12345678",
          "nombre": "Jose luis"
       },
-      "type": "empleadoGestor"
+      "type": "Gestor"
+   },
+   {
+      "data": {
+         "puesto": "Empleado Limpieza",
+         "horario": 8,
+         "salario": 1400,
+         "trabajo": {"listaLimpieza": []},
+         "vacaciones": "Navidades",
+         "usuario": "pepe00",
+         "contrasena": "12345678",
+         "nombre": "Pepe Luis"
+      },
+      "type": "Empleado Limpieza"
    }
 ]}
