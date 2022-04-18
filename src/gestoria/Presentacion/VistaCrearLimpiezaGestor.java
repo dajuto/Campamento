@@ -3,6 +3,7 @@ package gestoria.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
@@ -25,7 +26,7 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 	private JTextField fecha_txt;
 	private JTextField hora_txt;
 	private JTextField codigo_txt;
-	private JComboBox empleado;
+	private JComboBox<String> empleado;
 	
 	public VistaCrearLimpiezaGestor(JFrame frame) {
 		setTitle("Crear horario de Limpieza");
@@ -70,8 +71,13 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 		lblEmplead.setBounds(25, 215, 97, 25);
 		getContentPane().add(lblEmplead);
 		
-		empleado = new JComboBox();
+		empleado = new JComboBox<String>();
 		empleado.setBounds(121, 217, 116, 22);
+		for(TEmpleado e: SingletonControllerGestoria.getInstance().getListaEmpleados()) {
+			if (e.getPuesto().matches("Empleado Limpieza")) {
+				empleado.addItem(e.getNombre());
+			}
+		}
 		getContentPane().add(empleado);
 		
 		lugar_txt = new JTextField();

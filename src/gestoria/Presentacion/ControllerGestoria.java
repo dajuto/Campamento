@@ -2,6 +2,7 @@ package gestoria.Presentacion;
 
 import java.util.List;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -219,6 +220,12 @@ public class ControllerGestoria {
 	public List<TEmpleado> getListaEmpleados() {
 		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
 	}
+	
+	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
+		SingletonControllerEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
+	}
+
+	
 
 	
 

@@ -7,7 +7,7 @@
          "vacaciones": "2 semanas de verano",
          "usuario": "alvaro00",
          "contrasena": "12345678",
-         "nombre": "Ivan Hernandez"
+         "nombre": "Ivan pp"
       },
       "type": "Gestor"
    },
@@ -29,18 +29,6 @@
          "horario": 8,
          "salario": 3500,
          "vacaciones": "Todo el verano",
-         "usuario": "victor00",
-         "contrasena": "12345678",
-         "nombre": "Vicotr Cordero"
-      },
-      "type": "Gestor"
-   },
-   {
-      "data": {
-         "puesto": "Gestor",
-         "horario": 8,
-         "salario": 3500,
-         "vacaciones": "Todo el verano",
          "usuario": "jose00",
          "contrasena": "12345678",
          "nombre": "Jose luis"
@@ -52,7 +40,7 @@
          "puesto": "Empleado Limpieza",
          "horario": 8,
          "salario": 1400,
-         "trabajo": {"listaLimpieza": []},
+         "trabajo": {"listaLimpieza": ["13"]},
          "vacaciones": "Navidades",
          "usuario": "pepe00",
          "contrasena": "12345678",
@@ -72,5 +60,21 @@
          "nombre": "David Viejo"
       },
       "type": "Medico"
+   },
+   {
+      "data": {
+         "puesto": "Empleado Limpieza",
+         "horario": 8,
+         "salario": 1400,
+         "trabajo": {"listaLimpieza": [
+            "12",
+            "13"
+         ]},
+         "vacaciones": "Navidades",
+         "usuario": "ivan00",
+         "contrasena": "12345678",
+         "nombre": "Ivan Hernandez"
+      },
+      "type": "Empleado Limpieza"
    }
 ]}

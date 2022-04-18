@@ -5,6 +5,7 @@ import javax.swing.JFrame;
 
 import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
@@ -107,6 +108,7 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
 						SingletonControllerGestoria.getInstance().modificarLimpieza(codigo.getSelectedItem().toString(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
+						SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(empleado.getSelectedItem().toString(), codigo.getSelectedItem().toString());
 					}
 					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
 				}

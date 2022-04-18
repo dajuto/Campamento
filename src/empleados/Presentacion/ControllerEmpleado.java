@@ -90,13 +90,17 @@ public class ControllerEmpleado {
 		
 	}
 	
-	
+	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
+		SingletonServiAppEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
+	}
 	
 	
 	
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
+
+	
 
 	
 

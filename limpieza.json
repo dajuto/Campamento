@@ -1,0 +1,22 @@
+{"limpieza": [
+   {
+      "data": {
+         "Empleado": "Ivan Hernandez",
+         "Fecha": "12/12/2020",
+         "Hora": "12:12",
+         "Codigo": "12",
+         "Lugar": "Mar"
+      },
+      "type": "limpieza"
+   },
+   {
+      "data": {
+         "Empleado": "Ivan Hernandez",
+         "Fecha": "11/11/2121",
+         "Hora": "11:30",
+         "Codigo": "13",
+         "Lugar": "puerta"
+      },
+      "type": "limpieza"
+   }
+]}
