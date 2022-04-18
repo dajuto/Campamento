@@ -39,6 +39,10 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		this.listaInstalaciones = SingletonDaoInstalacion.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
+//	private void updateEmpleadosLimpieza() {
+//		this.listaEmpleadosLimpieza = SingletonControllerGestoria.getInstance().getListaEmpleadosLimpieza();
+//	}
+	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
 	}
@@ -51,13 +55,13 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 	public void mostrarListaLimpiezaEmpleado(String nombreEmpleado) {
 		this.updateLimpieza();
 	}
-
+	
 	@Override
 	public void addObserver(GestoriaObserver o) {
 		this.observers.add(o);
 		this.updateLimpieza();
 		this.updateInstalaciones();
-		//TODO this.updateEmpleadosLimpieza();
+		//this.updateEmpleadosLimpieza();
 		o.onRegister(listaLimpieza, listaInstalaciones, listaEmpleadosLimpieza, nombreUsuario);
 	}
 
@@ -80,10 +84,10 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		return listaInstalaciones;
 	}
 	
-	public List<TEmpleadoLimpieza> getListaEmpleadosLimpieza() {
-		updateEmpleadosLimpieza();
-		return listaEmpleadosLimpieza;
-	}
+//	public List<TEmpleadoLimpieza> getListaEmpleadosLimpieza() {
+//		updateEmpleadosLimpieza();
+//		return listaEmpleadosLimpieza;
+//	}
 
 	public void guardaLimpieza() {
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
@@ -130,7 +134,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		}
 	}
 
-	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, TEmpleadoLimpieza empleado) {
+	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado) {
 		for (int i = 0; i < listaLimpieza.size(); i++) {
 			if (listaLimpieza.get(i).getCodigo().equals(codigo)) {
 				listaLimpieza.get(i).codigo = codigo;

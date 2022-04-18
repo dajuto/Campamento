@@ -10,7 +10,7 @@ public abstract class Limpieza {
 	protected String lugar;
 	protected String fecha;
 	protected String hora;
-	protected TEmpleadoLimpieza empleadoEncargado;
+	protected String empleadoEncargado;
 	
 	public String getCodigo() {
 		return codigo;
@@ -24,7 +24,7 @@ public abstract class Limpieza {
 	public String getHora() {
 		return hora;
 	}
-	public TEmpleadoLimpieza getEmpleadoEncargado() {
+	public String getEmpleadoEncargado() {
 		return empleadoEncargado;
 	}
 
@@ -36,7 +36,7 @@ public abstract class Limpieza {
 		data.accumulate("Lugar", this.lugar);
 		data.accumulate("Fecha", this.fecha);
 		data.accumulate("Hora", this.hora);
-		data.accumulate("Empleado", this.empleadoEncargado.getNombre());
+		data.accumulate("Empleado", this.empleadoEncargado);
 		limpieza.accumulate("data", data);
 		return limpieza;
 	}

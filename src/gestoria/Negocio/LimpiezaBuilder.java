@@ -6,6 +6,7 @@ import empleados.Negocio.Empleado;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Presentacion.SingletonControllerEmpleado;
 import launcher.Builder;
 
 public class LimpiezaBuilder extends Builder<Object> {
@@ -21,7 +22,7 @@ public class LimpiezaBuilder extends Builder<Object> {
 		String fecha = data.getString("Fecha");
 		String hora = data.getString("Hora");
 		String empleadoEncargado = data.getString("Empleado");
-		TEmpleadoLimpieza empleado = SingletonServiAppEmpleado.getInstance().getEmpleado(empleadoEncargado);
+		String empleado = data.getString("Empleado");
 		TLimpieza tlimpieza = new TLimpieza (codigo, lugar, fecha, hora, empleado);
 		return tlimpieza;
 	}

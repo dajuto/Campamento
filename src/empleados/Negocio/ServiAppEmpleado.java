@@ -14,7 +14,6 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	private List<EmpleadoObserver> observers;
 	private Factory<Object> factoriaTransferObjects;
 	private String nombreUsuario;
-	private char[] contrasenaUsuario;
 	private List<TEmpleado> listaEmpleados;
 	
 	public ServiAppEmpleado() {
@@ -31,9 +30,8 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		return this.nombreUsuario;
 	}
 
-	public void registraUsuario(String text, char[] password) {
+	public void registraUsuario(String text) {
 		this.nombreUsuario = text;
-		this.contrasenaUsuario = password;
 	}
 	
 	public void updateEmpleados() {
@@ -142,7 +140,8 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 			empleado.accumulate("type", "Gestor");
 			TGestor tEmpleado = (TGestor) this.factoriaTransferObjects.createInstance(empleado);
 			this.listaEmpleados.add(tEmpleado);
-		}else if (puesto.equals("Medico")) {
+		}
+		else if (puesto.equals("Medico")) {
 			data.accumulate("salario", 8000);
 			data.accumulate("horario", 8);
 			data.accumulate("vacaciones", "Todo el verano");
