@@ -8,6 +8,7 @@ import javax.swing.SwingUtilities;
 import acampados.Negocio.AcampadoBuilder;
 import empleados.Negocio.EmpleadoLimpiezaBuilder;
 import empleados.Negocio.GestorBuilder;
+import empleados.Negocio.MedicoBuilder;
 import gestoria.Negocio.Instalacion;
 import gestoria.Negocio.InstalacionBuilder;
 import gestoria.Negocio.LimpiezaBuilder;
@@ -20,6 +21,7 @@ public class Main {
 		constructores.add(new GestorBuilder());
 		constructores.add(new AcampadoBuilder());
 		constructores.add(new LimpiezaBuilder());
+		constructores.add(new MedicoBuilder());
 		constructores.add(new InstalacionBuilder());
 		Factory<Object> factoriaTransferObjects = new BuilderBasedFactory<>(constructores);
 		return factoriaTransferObjects;

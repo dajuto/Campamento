@@ -3,6 +3,7 @@ package sanidad.Presentacion;
 import java.awt.Frame;
 import java.util.List;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -22,7 +23,7 @@ public class ControllerSanidad {
 		SingletonServiAppSanidad.getInstance().registraFactoria(objetosFactory);
 	}
 
-	public void mostrarMenuMedico(Frame frame) {
+	public void menuSanidad(Frame frame) {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -31,6 +32,7 @@ public class ControllerSanidad {
 			}
 		});
 	}
+
 
 	public void mostrarListaCitas(Frame frame) {
 		
@@ -114,6 +116,9 @@ public class ControllerSanidad {
 	public void addObserver(SanidadObserver vista) {
 		SingletonServiAppSanidad.getInstance().addObserver(vista);
 	}
+
+
+	
 
 	
 }

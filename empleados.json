@@ -59,5 +59,18 @@
          "nombre": "Pepe Luis"
       },
       "type": "Empleado Limpieza"
+   },
+   {
+      "data": {
+         "puesto": "Medico",
+         "horario": 8,
+         "salario": 8000,
+         "trabajo": {"citasPendientes": []},
+         "vacaciones": "Todo el verano",
+         "usuario": "david00",
+         "contrasena": "12345678",
+         "nombre": "David Viejo"
+      },
+      "type": "Medico"
    }
 ]}

@@ -13,6 +13,7 @@ import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import gestoria.Presentacion.VistaRegistrarEmpleado;
 import launcher.Factory;
+import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class ControllerEmpleado {
 
@@ -80,7 +81,10 @@ public class ControllerEmpleado {
 	}
 
 	
-	
+	public void sanidad(JFrame frame) {
+		SingletonControllerSanidad.getInstance().menuSanidad(frame);
+		
+	}
 	
 	
 	
@@ -89,6 +93,8 @@ public class ControllerEmpleado {
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
+
+	
 
 
 	
