@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
+import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Integracion.SingletonDaoInstalacion;
 import gestoria.Integracion.SingletonDaoLimpieza;
@@ -79,6 +80,11 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		return listaInstalaciones;
 	}
 	
+	public List<TEmpleadoLimpieza> getListaEmpleadosLimpieza() {
+		updateEmpleadosLimpieza();
+		return listaEmpleadosLimpieza;
+	}
+
 	public void guardaLimpieza() {
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
 	}
@@ -124,7 +130,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		}
 	}
 
-	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado) {
+	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, TEmpleadoLimpieza empleado) {
 		for (int i = 0; i < listaLimpieza.size(); i++) {
 			if (listaLimpieza.get(i).getCodigo().equals(codigo)) {
 				listaLimpieza.get(i).codigo = codigo;
@@ -196,6 +202,8 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 			}
 		}
 	}
+
+	
 
 	
 

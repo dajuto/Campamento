@@ -75,6 +75,9 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 		
 		empleado = new JComboBox();
 		empleado.setBounds(121, 217, 116, 22);
+		for(TEmpleadoLimpieza cod: SingletonControllerGestoria.getInstance().) {
+			codigo.addItem(cod.getCodigo());
+		}
 		getContentPane().add(empleado);
 		
 		lugar_txt = new JTextField();
@@ -100,7 +103,7 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 			public void actionPerformed(ActionEvent e) {
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
-						SingletonControllerGestoria.getInstance().modificarLimpieza(codigo.getSelectedItem().toString(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), "JORGE", getFrame());
+						SingletonControllerGestoria.getInstance().modificarLimpieza(codigo.getSelectedItem().toString(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), , getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
 				}

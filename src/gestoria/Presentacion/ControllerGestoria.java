@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.SingletonServiAppGestoria;
@@ -46,6 +47,15 @@ public class ControllerGestoria {
 			@Override
 			public void run() {
 				new VistaMenuInstalacionesGestor(frame);
+			}
+		});
+	}
+	
+	public void menuMantenimientoGestor(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuMantenimientoGestor(frame);
 			}
 		});
 	}
@@ -168,7 +178,7 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().eliminarInstalacion(frame, codigo);
 	}
 	
-	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
+	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, TEmpleadoLimpieza empleado, JFrame frame) {
 		SingletonServiAppGestoria.getInstance().modificarLimpieza(codigo, lugar, fecha, hora, empleado);
 		frame.setVisible(false);
 		SwingUtilities.invokeLater(new Runnable() {
@@ -200,9 +210,15 @@ public class ControllerGestoria {
 		List<TInstalacion> listaInstalaciones = SingletonServiAppGestoria.getInstance().getListaInstalaciones();
 		return listaInstalaciones;
 	}
+	
+	public List<TEmpleadoLimpieza> getListaEmpleadosLimpieza() {
+		for ()
+	}
 	public void addObserver(GestoriaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);
 	}
+
+	
 
 	
 

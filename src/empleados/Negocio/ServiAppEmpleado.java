@@ -70,21 +70,9 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		return null;
 	}
 
-	public List<TEmpleadoLimpieza> getListaEmpleadosMantenimiento() {
-		this.updateEmpleados();
-		List<TEmpleadoLimpieza> l = new ArrayList<>();
-		for(TEmpleado e: this.listaEmpleados) {
-			if(e.puesto.equals("Empleado Mantenimiento")) {
-				l.add((TEmpleadoLimpieza) e);
-			}
-		}
-		return l;
-	}
-	
 	public void guardaEmpleados() {
         SingletonDaoEmpleado.getInstance().escribeTodo(listaEmpleados);
 	}
-	
 	
 	void onEliminarEmpleado() {
 		this.updateEmpleados();
@@ -135,7 +123,6 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		data.accumulate("contrasena", contrasena);
 		data.accumulate("nombre", nombre);
 		data.accumulate("puesto", puesto);
-		
 		if (puesto.equals("Empleado Limpieza")) {
 			data.accumulate("salario", 1400);
 			data.accumulate("horario", 8);
