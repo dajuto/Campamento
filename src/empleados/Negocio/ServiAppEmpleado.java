@@ -4,6 +4,7 @@ import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import empleados.Integracion.SingletonDaoEmpleado;
@@ -14,7 +15,6 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	private List<EmpleadoObserver> observers;
 	private Factory<Object> factoriaTransferObjects;
 	private String nombreUsuario;
-	private char[] contrasenaUsuario;
 	private List<TEmpleado> listaEmpleados;
 	
 	public ServiAppEmpleado() {
@@ -31,9 +31,8 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		return this.nombreUsuario;
 	}
 
-	public void registraUsuario(String text, char[] password) {
+	public void registraUsuario(String text) {
 		this.nombreUsuario = text;
-		this.contrasenaUsuario = password;
 	}
 	
 	public void updateEmpleados() {
@@ -70,21 +69,9 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		return null;
 	}
 
-	public List<TEmpleadoLimpieza> getListaEmpleadosMantenimiento() {
-		this.updateEmpleados();
-		List<TEmpleadoLimpieza> l = new ArrayList<>();
-		for(TEmpleado e: this.listaEmpleados) {
-			if(e.puesto.equals("Empleado Mantenimiento")) {
-				l.add((TEmpleadoLimpieza) e);
-			}
-		}
-		return l;
-	}
-	
 	public void guardaEmpleados() {
         SingletonDaoEmpleado.getInstance().escribeTodo(listaEmpleados);
 	}
-	
 	
 	void onEliminarEmpleado() {
 		this.updateEmpleados();
@@ -135,13 +122,13 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		data.accumulate("contrasena", contrasena);
 		data.accumulate("nombre", nombre);
 		data.accumulate("puesto", puesto);
+		JSONObject trabajo = new JSONObject();
+		data.accumulate("trabajo", trabajo);
 		
 		if (puesto.equals("Empleado Limpieza")) {
 			data.accumulate("salario", 1400);
 			data.accumulate("horario", 8);
 			data.accumulate("vacaciones", "Navidades");
-			JSONObject trabajo = new JSONObject();
-			data.accumulate("trabajo", trabajo);
 			empleado.accumulate("data", data);
 			empleado.accumulate("type", "Empleado Limpieza");
 			TEmpleadoLimpieza tEmpleado = (TEmpleadoLimpieza) this.factoriaTransferObjects.createInstance(empleado);
@@ -155,12 +142,11 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 			empleado.accumulate("type", "Gestor");
 			TGestor tEmpleado = (TGestor) this.factoriaTransferObjects.createInstance(empleado);
 			this.listaEmpleados.add(tEmpleado);
-		}else if (puesto.equals("Medico")) {
+		}
+		else if (puesto.equals("Medico")) {
 			data.accumulate("salario", 8000);
 			data.accumulate("horario", 8);
 			data.accumulate("vacaciones", "Todo el verano");
-			JSONObject trabajo = new JSONObject();
-			data.accumulate("trabajo", trabajo);
 			empleado.accumulate("data", data);
 			empleado.accumulate("type", "Medico");
 			TMedico tEmpleado = (TMedico) this.factoriaTransferObjects.createInstance(empleado);
@@ -170,6 +156,55 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		this.guardaEmpleados();
 	    this.onCreateEmpleado();
 		return true;
+	}
+
+	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
+		for(TEmpleado e: this.listaEmpleados) {
+			if(e.nombre.equals(empleado) && e.puesto.equals("Empleado Limpieza")) {
+				TEmpleadoLimpieza te = (TEmpleadoLimpieza) e;
+				
+				for (int i = 0; i < te.horariosLimpieza.size(); i++) {
+					if (te.horariosLimpieza.get(i).matches(codigo)) {
+						te.horariosLimpieza.remove(i);
+					}
+					else {
+						te.horariosLimpieza.add(codigo);
+						break;
+					}
+				}
+				if (te.horariosLimpieza.isEmpty()) {
+					te.horariosLimpieza.add(codigo);
+				}
+				JSONArray a = new JSONArray();
+				for (int i = 0; i < te.horariosLimpieza.size(); i++) {
+					a.put(te.horariosLimpieza.get(i));
+				}
+				JSONObject trabajo = new JSONObject();
+				trabajo.accumulate("listaLimpieza", a);
+				e.trabajo = trabajo;
+				//te.trabajo.accumulate("listaLimpieza", a);
+				e = te;
+				this.guardaEmpleados();
+				
+//				JSONObject trabajo = e.trabajo;
+//				JSONArray listaLimpieza = trabajo.getJSONArray("listaLimpieza");
+//				List<String> listaCod = new ArrayList<String>();
+//				
+//				for(int i = 0; i < listaLimpieza.length(); i++) {
+//		        	listaCod.add(listaLimpieza.getString(i));
+//		        }  
+//				
+//				for (int i = 0; i < listaCod.size(); i++) {
+//					if (listaCod.get(i).matches(codigo)) {
+//						listaCod.remove(i);
+//					}
+//					else {
+//						listaCod.add(codigo);
+//					}
+//				}
+				
+			}
+		}
 	}
 	
 		

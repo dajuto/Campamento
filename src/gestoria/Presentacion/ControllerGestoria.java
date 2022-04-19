@@ -2,10 +2,13 @@ package gestoria.Presentacion;
 
 import java.util.List;
 
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import empleados.Negocio.TEmpleado;
+import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.SingletonServiAppGestoria;
@@ -50,6 +53,15 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void menuMantenimientoGestor(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuMantenimientoGestor(frame);
+			}
+		});
+	}
+	
 	public void mostrarLimpieza(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -68,14 +80,7 @@ public class ControllerGestoria {
 		});
 	}
 	
-	public void mostrarModificarLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaModificarLimpiezaGestor(frame);
-			}
-		});
-	}
+	
 	
 	public void mostrarModificarInstalacion(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -164,6 +169,15 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().eliminarLimpieza(frame, codigo);
 	}
 	
+	public void mostrarModificarLimpieza(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarLimpiezaGestor(frame);
+			}
+		});
+	}
+
 	public void eliminarInstalacion(JFrame frame, String codigo) {
 		SingletonServiAppGestoria.getInstance().eliminarInstalacion(frame, codigo);
 	}
@@ -200,30 +214,22 @@ public class ControllerGestoria {
 		List<TInstalacion> listaInstalaciones = SingletonServiAppGestoria.getInstance().getListaInstalaciones();
 		return listaInstalaciones;
 	}
+	
 	public void addObserver(GestoriaObserver vista) {
-		SingletonServiAppGestoria.getInstance().addObserver(vista);
+		SingletonServiAppGestoria.getInstance().addObserver(vista);	
+
 	}
 
+	public List<TEmpleado> getListaEmpleados() {
+		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
+	}
 	
+	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
+		SingletonControllerEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
+	}
 
-	
 
-	
-
-	
-
-	
-
-	
 
 	
-
-	
-
-	
-
-	
-
-
 
 }

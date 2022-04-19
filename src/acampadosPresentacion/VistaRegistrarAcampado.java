@@ -164,7 +164,7 @@ private String salud = "Sano";
 							if (email.getText().matches("[-\\w\\.]+@\\w+\\.\\w+")) {
 								if (edad.getText().matches("[0-9]*")) {
 									if (telefono.getText().matches("[0-9]*") && telefono.getText().length() == 9) {
-										SingletonControllerAcampado.getInstance().crearAcampado(usuario.getText(), password.getText(), nombre.getText(), apellidos.getText(), dni.getText(), email.getText(), edad.getText(), telefono.getText(), salud, getFrame());
+										SingletonControllerAcampado.getInstance().crearAcampado(usuario.getText(), password.getText(), nombre.getText(), apellidos.getText(), dni.getText(), email.getText(), edad.getText(), telefono.getText(), salud, frame);
 									}
 									else JOptionPane.showMessageDialog(atras, "Formato del telefono es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 								}
@@ -203,7 +203,9 @@ private String salud = "Sano";
 		getContentPane().add(telefono);
 		
 		setVisible(true);
+	
 	}
+		
 	private JFrame getFrame() {
 		return this;
 	}

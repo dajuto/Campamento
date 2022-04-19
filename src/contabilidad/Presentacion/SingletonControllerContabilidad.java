@@ -1,22 +1,22 @@
 package contabilidad.Presentacion;
 
 
-public class SingletonControllerSanidad {
+public class SingletonControllerContabilidad {
 
-	private static ControllerSanidad INSTANCE = null;
+	private static ControllerContabilidad INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonControllerSanidad(){}
+    private SingletonControllerContabilidad(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerSanidad();
+            INSTANCE = new ControllerContabilidad();
         }
     }
 
-    public static ControllerSanidad getInstance() {
+    public static ControllerContabilidad getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }

@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
+import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Integracion.SingletonDaoInstalacion;
 import gestoria.Integracion.SingletonDaoLimpieza;
@@ -38,6 +39,10 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		this.listaInstalaciones = SingletonDaoInstalacion.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
+//	private void updateEmpleadosLimpieza() {
+//		this.listaEmpleadosLimpieza = SingletonControllerGestoria.getInstance().getListaEmpleadosLimpieza();
+//	}
+	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
 	}
@@ -50,13 +55,13 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 	public void mostrarListaLimpiezaEmpleado(String nombreEmpleado) {
 		this.updateLimpieza();
 	}
-
+	
 	@Override
 	public void addObserver(GestoriaObserver o) {
 		this.observers.add(o);
 		this.updateLimpieza();
 		this.updateInstalaciones();
-		//TODO this.updateEmpleadosLimpieza();
+		//this.updateEmpleadosLimpieza();
 		o.onRegister(listaLimpieza, listaInstalaciones, listaEmpleadosLimpieza, nombreUsuario);
 	}
 
@@ -79,6 +84,11 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		return listaInstalaciones;
 	}
 	
+//	public List<TEmpleadoLimpieza> getListaEmpleadosLimpieza() {
+//		updateEmpleadosLimpieza();
+//		return listaEmpleadosLimpieza;
+//	}
+
 	public void guardaLimpieza() {
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
 	}
@@ -196,6 +206,8 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 			}
 		}
 	}
+
+	
 
 	
 

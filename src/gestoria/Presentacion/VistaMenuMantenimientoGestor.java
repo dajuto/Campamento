@@ -1,27 +1,24 @@
 package gestoria.Presentacion;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
-import java.awt.SystemColor;
-import javax.swing.JButton;
+
 import java.awt.Font;
-import java.awt.Frame;
+import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
 
-public class VistaMenuGestor extends JFrame implements GestoriaObserver{
-	private static final long serialVersionUID = 1L;
+public class VistaMenuMantenimientoGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	
-	public VistaMenuGestor(JFrame frame) {
-		setTitle("Menu de gestoria");
+	public VistaMenuMantenimientoGestor(JFrame frame) {
+		setTitle("Menu de instalaciones");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -38,52 +35,51 @@ public class VistaMenuGestor extends JFrame implements GestoriaObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JButton boton_Instalaciones = new JButton("Instalaciones");
-		boton_Instalaciones.addActionListener(new ActionListener() {
+		JButton boton_Mostrar = new JButton("Mostrar Instalaciones");
+		boton_Mostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerGestoria.getInstance().menuInstalacionesGestor(getFrame());
+				SingletonControllerGestoria.getInstance().mostrarInstalacion(getFrame());
 			}
 		});
-		boton_Instalaciones.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_Instalaciones.setBounds(41, 135, 165, 38);
-		getContentPane().add(boton_Instalaciones);
+		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Mostrar.setBounds(51, 53, 166, 38);
+		getContentPane().add(boton_Mostrar);
 		
-		JButton boton_Mantenimineto = new JButton("Mantenimiento");
-		boton_Mantenimineto.addActionListener(new ActionListener() {
+		JButton boton_Modificar = new JButton("Modificar Instalaciones");
+		boton_Modificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().mostrarModificarInstalacion(getFrame());
+			}
+		});
+		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Modificar.setBounds(260, 53, 166, 38);
+		getContentPane().add(boton_Modificar);
+		
+		JButton boton_Eliminar = new JButton("Eliminar Instalacion");
+		boton_Eliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerGestoria.getInstance().menuMantenimientoGestor(getFrame());
+				SingletonControllerGestoria.getInstance().mostrarEliminarInstalacion(getFrame());
 			}
 		});
-		boton_Mantenimineto.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_Mantenimineto.setBounds(268, 63, 165, 38);
-		getContentPane().add(boton_Mantenimineto);
+		boton_Eliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Eliminar.setBounds(260, 119, 166, 38);
+		getContentPane().add(boton_Eliminar);
 		
-		JButton boton_Limpieza = new JButton("Limpieza");
-		boton_Limpieza.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+		JButton boton_Anadir = new JButton("A\u00F1adir Instalacion");
+		boton_Anadir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerGestoria.getInstance().menuLimpiezaGestor(getFrame());
+				SingletonControllerGestoria.getInstance().mostrarCrearInstalacion(getFrame());
 			}
 		});
-		boton_Limpieza.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_Limpieza.setBounds(41, 63, 165, 38);
-		getContentPane().add(boton_Limpieza);
+		boton_Anadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Anadir.setBounds(51, 119, 166, 38);
+		getContentPane().add(boton_Anadir);
 		
-		JButton boton_añadirEmpleado = new JButton("A\u00F1adir Empleado");
-		boton_añadirEmpleado.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().crearEmpleado(getFrame());
-			}
-		});
-		boton_añadirEmpleado.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_añadirEmpleado.setBounds(268, 135, 165, 38);
-		getContentPane().add(boton_añadirEmpleado);
-		
-		
-		this.setVisible(true);
+		setVisible(true);
 	}
 	
 	private JFrame getFrame() {

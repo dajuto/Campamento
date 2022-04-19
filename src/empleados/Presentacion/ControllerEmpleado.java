@@ -1,6 +1,5 @@
 package empleados.Presentacion;
 
-import java.awt.Frame;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -9,6 +8,7 @@ import javax.swing.SwingUtilities;
 
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
+import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import gestoria.Presentacion.VistaRegistrarEmpleado;
@@ -19,6 +19,10 @@ public class ControllerEmpleado {
 
 	public void registraFactoria(Factory<Object> factoriaTransferObjects) {
 		SingletonServiAppEmpleado.getInstance().registraFactoria(factoriaTransferObjects);
+	}
+	
+	public List<TEmpleado> getListaEmpleados() {
+		return SingletonServiAppEmpleado.getInstance().getListaEmpleados();
 	}
 	
 	public void empleado(JFrame f) {
@@ -86,13 +90,21 @@ public class ControllerEmpleado {
 		
 	}
 	
-	
+	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
+		SingletonServiAppEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
+	}
 	
 	
 	
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
+
+	
+
+	
+
+	
 
 	
 

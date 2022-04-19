@@ -1,31 +1,22 @@
-package contabilidad.Integracion;
+package contabilidad.Negocio;
 
-import java.io.IOException;
 
-import subsistemaActividad.capaIntegracion.DaoActividad;
+public class SingletonServiAppContabilidad {
 
-public class SingletonDaoSanidad {
-
-	
-	private static DaoSanidad INSTANCE = null;
+	private static ControllerContabilidad INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonDaoSanidad(){}
+    private SingletonServiAppContabilidad(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            try {
-				INSTANCE = new DaoSanidad();
-			} catch (IOException e) {
-				e.printStackTrace();
-				System.out.println("El archivo no se ha encontrado");
-			}
+            INSTANCE = new ControllerContabilidad();
         }
     }
 
-    public static DaoSanidad getInstance() {
+    public static ControllerContabilidad getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }

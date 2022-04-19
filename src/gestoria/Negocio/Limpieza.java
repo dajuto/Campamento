@@ -3,13 +3,14 @@ package gestoria.Negocio;
 import org.json.JSONObject;
 
 import empleados.Negocio.Empleado;
+import empleados.Negocio.TEmpleadoLimpieza;
 
 public abstract class Limpieza {
 	protected String codigo;
-	protected String empleadoEncargado;
 	protected String lugar;
 	protected String fecha;
 	protected String hora;
+	protected String empleadoEncargado;
 	
 	public String getCodigo() {
 		return codigo;
