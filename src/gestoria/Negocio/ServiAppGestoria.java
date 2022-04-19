@@ -67,6 +67,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		this.observers.add(o);
 		this.updateLimpieza();
 		this.updateInstalaciones();
+		this.updateMantenimiento();
 		//this.updateEmpleadosLimpieza();
 		o.onRegister(listaLimpieza, listaInstalaciones, listaAverias, listaEmpleadosLimpieza, nombreUsuario);
 	}

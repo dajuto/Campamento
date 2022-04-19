@@ -6,7 +6,6 @@ import empleados.Negocio.Empleado;
 
 public abstract class Mantenimiento {
 	protected String codigo;
-	protected String nombre;
 	protected String descripcion;
 	protected String lugar;
 	protected int coste;
@@ -15,10 +14,6 @@ public abstract class Mantenimiento {
 	
 	public String getCodigo() {
 		return codigo;
-	}
-
-	public String getNombre() {
-		return nombre;
 	}
 
 	public String getDescripcion() {
@@ -45,7 +40,6 @@ public abstract class Mantenimiento {
 		JSONObject averia = new JSONObject();
 		JSONObject data = new JSONObject();
 		data.accumulate("Codigo", this.codigo);
-		data.accumulate("Nombre", this.nombre);
 		data.accumulate("Descripcion", this.descripcion);
 		data.accumulate("Lugar", this.lugar);
 		data.accumulate("Coste", this.coste);

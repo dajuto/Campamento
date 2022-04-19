@@ -1,22 +1,24 @@
-{"limpieza": [
+{"mantenimiento": [
    {
       "data": {
-         "Empleado": "Ivan Hernandez",
-         "Fecha": "12/12/2020",
-         "Hora": "12:12",
-         "Codigo": "12",
-         "Lugar": "Mar"
+         "Codigo": "1",
+         "Descripcion": "fkjsf",
+         "Lugar": "Mar",
+         "Coste": 1200,
+         "Empleado": "Pepito Grillo",
+         "Estado": "Reparado"
       },
-      "type": "limpieza"
+      "type": "averia"
    },
    {
       "data": {
-         "Empleado": "Ivan Hernandez",
-         "Fecha": "11/11/2121",
-         "Hora": "11:30",
-         "Codigo": "13",
-         "Lugar": "puerta"
+         "Codigo": "2",
+         "Descripcion": "12:12",
+         "Lugar": "piscina",
+         "Coste": 200,
+         "Empleado": "Pepito Grillo",
+         "Estado": "Reparado"
       },
-      "type": "limpieza"
+      "type": "averia"
    }
 ]}

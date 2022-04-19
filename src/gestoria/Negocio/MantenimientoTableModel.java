@@ -12,7 +12,7 @@ public class MantenimientoTableModel extends AbstractTableModel implements Gesto
 	private static final long serialVersionUID = 1L;
 	
 		private List<TMantenimiento> list;
-		private String[] columnNames = {"Codigo", "Nombre", "Lugar","Coste", "Empleado", "Estado"};
+		private String[] columnNames = {"Codigo", "Lugar","Coste", "Empleado", "Estado"};
 		
 		public MantenimientoTableModel() {
 			list = new ArrayList<TMantenimiento>();
@@ -38,11 +38,10 @@ public class MantenimientoTableModel extends AbstractTableModel implements Gesto
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			switch(columnIndex) {
 			case 0: return list.get(rowIndex).getCodigo();
-			case 1:	return list.get(rowIndex).getNombre();
-			case 2: return list.get(rowIndex).getLugar();
-			case 3: return list.get(rowIndex).getCoste();
-			case 4: return list.get(rowIndex).getEmpleado();
-			case 5: return list.get(rowIndex).getEstado();
+			case 1: return list.get(rowIndex).getLugar();
+			case 2: return list.get(rowIndex).getCoste();
+			case 3: return list.get(rowIndex).getEmpleado();
+			case 4: return list.get(rowIndex).getEstado();
 			default: return null;
 			}
 		}

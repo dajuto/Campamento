@@ -76,5 +76,18 @@
          "nombre": "Ivan Hernandez"
       },
       "type": "Empleado Limpieza"
+   },
+   {
+      "data": {
+         "puesto": "Empleado Limpieza",
+         "horario": 8,
+         "salario": 1400,
+         "trabajo": {"listaLimpieza": []},
+         "vacaciones": "Navidades",
+         "usuario": "limp00",
+         "contrasena": "12345678",
+         "nombre": "Limpiezaaaa"
+      },
+      "type": "Empleado Limpieza"
    }
 ]}

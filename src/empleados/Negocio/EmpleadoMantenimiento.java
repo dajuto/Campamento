@@ -9,7 +9,7 @@ import org.json.JSONObject;
 public abstract class EmpleadoMantenimiento extends TEmpleado{
 	protected List<String> listaAverias;
 	
-	public List<String> getListLimpieza(){
+	public List<String> getListaAverias(){
 		return this.listaAverias;
 	}
 
@@ -26,7 +26,7 @@ public abstract class EmpleadoMantenimiento extends TEmpleado{
 	data.accumulate("vacaciones", vacaciones);
 	
 	JSONObject averias = new JSONObject();
-	averias.accumulate("listaAverias", this.getListLimpieza());
+	averias.accumulate("listaAverias", this.getListaAverias());
 	
 	data.accumulate("trabajo", averias);
 	empleado.accumulate("data", data);
