@@ -7,6 +7,7 @@ import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
+import gestoria.Negocio.TMantenimiento;
 
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -92,29 +93,31 @@ public class VistaMenuMantenimientoGestor extends JFrame implements GestoriaObse
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
+
+	
 }
