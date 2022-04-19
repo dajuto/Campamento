@@ -1,6 +1,13 @@
 package contabilidad.Negocio;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 import contabilidad.Presentacion.ControllerContabilidad;
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+=======
+import contabilidad.Presentacion.ControllerContabilidad;
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 
 public class SingletonServiAppContabilidad {
 

@@ -23,7 +23,7 @@ public class ControllerSanidad {
 		SingletonServiAppSanidad.getInstance().registraFactoria(objetosFactory);
 	}
 
-	public void menuSanidad(Frame frame) {
+	public void menuSanidad(JFrame frame) {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -32,9 +32,30 @@ public class ControllerSanidad {
 			}
 		});
 	}
+	
+	public void menuCitas(JFrame frame) {
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuCitas(frame);
+			}
+		});
+	}
+
+	
+	public void menuRecetas(JFrame frame) {
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuRecetas(frame);
+			}
+		});
+	}
 
 
-	public void mostrarListaCitas(Frame frame) {
+	public void mostrarListaCitas(JFrame frame) {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -44,7 +65,7 @@ public class ControllerSanidad {
 		});
 	}
 	
-	public void mostrarEliminarCita(Frame frame) {
+	public void mostrarEliminarCita(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -52,7 +73,7 @@ public class ControllerSanidad {
 			}
 		});
 	}
-	public void mostrarConsultarCitas(Frame frame) {
+	public void mostrarConsultarCitas(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -61,7 +82,7 @@ public class ControllerSanidad {
 		});
 	}
 	
-	public void mostrarCrearReceta(Frame frame) {
+	public void mostrarCrearReceta(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -70,7 +91,7 @@ public class ControllerSanidad {
 		});
 	}
 
-	public void mostrarEliminarReceta(Frame frame) {
+	public void mostrarEliminarReceta(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -78,7 +99,7 @@ public class ControllerSanidad {
 			}
 		});
 	}
-	public void mostrarListaRecetas(Frame frame) {
+	public void mostrarListaRecetas(JFrame frame) {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -87,7 +108,7 @@ public class ControllerSanidad {
 			}
 		});
 	}
-	public void mostrarConsultarRecetas(Frame frame) {
+	public void mostrarConsultarRecetas(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {

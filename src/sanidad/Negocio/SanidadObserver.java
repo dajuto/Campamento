@@ -13,7 +13,6 @@ public interface SanidadObserver {
 	
 	void onEliminarCita(List<TReceta> listaCitas, List<TMedico> listaMedicos, String nombreUsuario);
 	void onConsultarCita(List<TReceta> listaCitas, List<TMedico> listaMedicos, String nombreUsuario);
-	//void onActualizarListaEmpleadosMantenimiento(List<TAveria> listaAverias, List<TEmpleadoMantenimiento> listaEmpleadosMantenimiento, String nombreUsuario);
-	//completar
+	
 
 }

@@ -3,9 +3,21 @@ package contabilidad.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+import empleados.Negocio.TEmpleadoGestoria;
+import gestoria.Negocio.LimpiezaObserver;
+import gestoria.Negocio.TLimpieza;
+=======
 import empleados.Negocio.TEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+=======
+import empleados.Negocio.TEmpleado;
+import gestoria.Presentacion.SingletonControllerGestoria;
+
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -75,6 +87,15 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		lblEmplead.setBounds(25, 215, 97, 25);
 		getContentPane().add(lblEmplead);
 		
+<<<<<<< HEAD
+<<<<<<< HEAD
+		empleado = new JComboBox(); //cambiaar (hay que poner condición de si es cuenta sueldos y salarios, puede escribir
+		empleado.setBounds(121, 217, 116, 22);
+		getContentPane().add(empleado);
+		
+=======
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 		empleado = new JComboBox<String>();
 		empleado.setBounds(121, 217, 116, 22);
 		for(TEmpleado e: SingletonControllerGestoria.getInstance().getListaEmpleados()) {
@@ -84,6 +105,10 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		}
 		getContentPane().add(empleado);
 			
+<<<<<<< HEAD
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 		concepto_txt = new JTextField();
 		concepto_txt.setBounds(121, 103, 116, 22);
 		getContentPane().add(concepto_txt);
@@ -97,23 +122,54 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		importe_txt = new JTextField();
 		importe_txt.setBounds(121, 141, 116, 22);
 		getContentPane().add(importe_txt);
+<<<<<<< HEAD
+<<<<<<< HEAD
+		importe_txt.setColumns(10);
+=======
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 		importe_txt.setColumns(10);	
 		
 		if (!fecha_txt.getText().matches("Sueldos y salarios")) {
 			empleado.setVisible(false);
 			lblEmplead.setVisible(false);
 		}
+<<<<<<< HEAD
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 		
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
+<<<<<<< HEAD
+<<<<<<< HEAD
+					if (importe_txt.getText().matches("\\d{2}:\\d{2}")) {
+						String empleadoString = (String) empleado.getSelectedItem();
+						//SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleadoString, getFrame());
+					}
+					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);	
+					
+					if (cuenta_txt.getText().matches("Sueldos y salarios")) {
+						String empleadoString = (String) empleado.getSelectedItem();
+						//SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleadoString, getFrame());
+					}
+					
+				}
+=======
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 					if (importe_txt.getText().matches("[0-9]*")) {
 						String empleadoString = (String) empleado.getSelectedItem();
 						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta_txt.getText(), concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleadoString, getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);		
 				}	
+<<<<<<< HEAD
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
 			}
 		});

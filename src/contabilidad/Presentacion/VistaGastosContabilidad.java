@@ -40,7 +40,15 @@ public class VistaGastosContabilidad extends JFrame implements ContabilidadObser
 		boton_Mostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+<<<<<<< HEAD
+<<<<<<< HEAD
+				//SingletonControllerGestoria.getInstance().mostrarLimpieza(getFrame());
+=======
 				SingletonControllerContabilidad.getInstance().mostrarGastos(getFrame());
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+=======
+				SingletonControllerContabilidad.getInstance().mostrarGastos(getFrame());
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 			}
 		});
 		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -48,6 +56,21 @@ public class VistaGastosContabilidad extends JFrame implements ContabilidadObser
 		getContentPane().add(boton_Mostrar);
 		
 		
+<<<<<<< HEAD
+<<<<<<< HEAD
+		JButton boton_Modificar = new JButton("A\u00F1adir Gasto");
+		boton_Modificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				//SingletonControllerGestoria.getInstance().mostrarModificarLimpieza(getFrame());
+			}
+		});
+		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Modificar.setBounds(284, 110, 145, 38);
+		getContentPane().add(boton_Modificar);
+=======
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 		JButton boton_Añadir = new JButton("A\u00F1adir Gasto");
 		boton_Añadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -58,6 +81,10 @@ public class VistaGastosContabilidad extends JFrame implements ContabilidadObser
 		boton_Añadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		boton_Añadir.setBounds(284, 110, 145, 38);
 		getContentPane().add(boton_Añadir);
+<<<<<<< HEAD
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+=======
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 		
 		setVisible(true);
 	}
