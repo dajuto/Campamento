@@ -33,6 +33,9 @@ private JTextField email;
 private JComboBox comboBox;
 private JCheckBox checkBox;
 private boolean cambio = false;
+private JTextField edad;
+private JTextField telefono;
+private String salud = "Sano";
 	
 	public VistaRegistrarAcampado(JFrame frame) {
 		setTitle("Registrar");
@@ -49,7 +52,7 @@ private boolean cambio = false;
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(373, 365, 97, 25);
+		boton_Atras.setBounds(373, 465, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 		JLabel labelResgistrar = new JLabel("Registrar:");
@@ -116,7 +119,7 @@ private boolean cambio = false;
 		getContentPane().add(dni);
 		
 		checkBox = new JCheckBox("Marca si estas enfermo");
-		checkBox.setBounds(25, 335, 163, 25);
+		checkBox.setBounds(25, 415, 163, 25);
 		checkBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (!cambio) {
@@ -133,7 +136,7 @@ private boolean cambio = false;
 		
 		comboBox = new JComboBox();
 		comboBox.setEnabled(false);
-		comboBox.setBounds(207, 336, 123, 22);
+		comboBox.setBounds(207, 416, 123, 22);
 		//TODO DAVID PONER LAS ENFERMEDADES QUE QUIERAS
 		comboBox.addItem("Covid");
 		comboBox.addItem("Gripe");
@@ -152,11 +155,20 @@ private boolean cambio = false;
 		JButton boton_Registrar = new JButton("Registrar");
 		boton_Registrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (checkBox.isSelected()) {
+					salud = comboBox.getSelectedItem().toString();
+				}
 				if (password.getText().length() < 7 ) {
 					if (!password.equals(password2)) {
 						if (dni.getText().matches("[0-9]{7,8}[A-Za-z]")) {
 							if (email.getText().matches("[-\\w\\.]+@\\w+\\.\\w+")) {
-							
+								if (edad.getText().matches("[0-9]*")) {
+									if (telefono.getText().matches("[0-9]*") && telefono.getText().length() == 9) {
+										SingletonControllerAcampado.getInstance().crearAcampado(usuario.getText(), password.getText(), nombre.getText(), apellidos.getText(), dni.getText(), email.getText(), edad.getText(), telefono.getText(), salud, frame);
+									}
+									else JOptionPane.showMessageDialog(atras, "Formato del telefono es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+								}
+								else JOptionPane.showMessageDialog(atras, "Formato de la edad es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 							}
 							else JOptionPane.showMessageDialog(atras, "Formato del email es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 						}
@@ -167,8 +179,28 @@ private boolean cambio = false;
 				else JOptionPane.showMessageDialog(atras, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
-		boton_Registrar.setBounds(311, 184, 97, 25);
+		boton_Registrar.setBounds(341, 222, 97, 25);
 		getContentPane().add(boton_Registrar);
+		
+		JLabel lblEdad = new JLabel("Edad:");
+		lblEdad.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblEdad.setBounds(35, 335, 69, 25);
+		getContentPane().add(lblEdad);
+		
+		edad = new JTextField();
+		edad.setColumns(10);
+		edad.setBounds(132, 337, 116, 22);
+		getContentPane().add(edad);
+		
+		JLabel lblTelefono = new JLabel("Telefono:");
+		lblTelefono.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblTelefono.setBounds(35, 373, 69, 25);
+		getContentPane().add(lblTelefono);
+		
+		telefono = new JTextField();
+		telefono.setColumns(10);
+		telefono.setBounds(132, 375, 116, 22);
+		getContentPane().add(telefono);
 		
 		setVisible(true);
 	}

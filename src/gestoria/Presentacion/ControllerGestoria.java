@@ -102,7 +102,6 @@ public class ControllerGestoria {
 				new VistaModificarLimpiezaGestor(frame);
 			}
 		});
-		
 	}
 	
 	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
@@ -128,20 +127,5 @@ public class ControllerGestoria {
 	
 	public void addObserver(LimpiezaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);
-	}
-
-	
-
-	
-
-	
-
-	
-	
-
-	
-
-	
-
-
+	}	
 }
