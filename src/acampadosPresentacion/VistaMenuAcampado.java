@@ -36,20 +36,15 @@ public class VistaMenuAcampado extends JFrame{
 		boton_Comedor.setBounds(270, 33, 153, 36);
 		getContentPane().add(boton_Comedor);
 		
-		JButton boton_Gestoria = new JButton("Mi habitaci\u00F3n");
+		JButton boton_Gestoria = new JButton("Gestoria");
 		boton_Gestoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 			}
 		});
 		boton_Gestoria.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		boton_Gestoria.setBounds(49, 181, 153, 36);
+		boton_Gestoria.setBounds(161, 179, 153, 36);
 		getContentPane().add(boton_Gestoria);
-		
-		JButton boton_Gestoria_1 = new JButton("Limpieza");
-		boton_Gestoria_1.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		boton_Gestoria_1.setBounds(270, 181, 153, 36);
-		getContentPane().add(boton_Gestoria_1);
 		setVisible(true);
 	}
 	

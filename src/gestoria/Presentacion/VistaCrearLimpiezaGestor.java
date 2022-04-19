@@ -3,8 +3,10 @@ package gestoria.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import empleados.Negocio.TEmpleadoGestoria;
-import gestoria.Negocio.LimpiezaObserver;
+import empleados.Negocio.TEmpleado;
+import empleados.Negocio.TEmpleadoLimpieza;
+import gestoria.Negocio.GestoriaObserver;
+import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -17,14 +19,14 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 
-public class VistaCrearLimpiezaGestor extends JFrame implements LimpiezaObserver{
+public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
 	private JTextField lugar_txt;
 	private JTextField fecha_txt;
 	private JTextField hora_txt;
 	private JTextField codigo_txt;
-	private JComboBox empleado;
+	private JComboBox<String> empleado;
 	
 	public VistaCrearLimpiezaGestor(JFrame frame) {
 		setTitle("Crear horario de Limpieza");
@@ -69,8 +71,13 @@ public class VistaCrearLimpiezaGestor extends JFrame implements LimpiezaObserver
 		lblEmplead.setBounds(25, 215, 97, 25);
 		getContentPane().add(lblEmplead);
 		
-		empleado = new JComboBox();
+		empleado = new JComboBox<String>();
 		empleado.setBounds(121, 217, 116, 22);
+		for(TEmpleado e: SingletonControllerGestoria.getInstance().getListaEmpleados()) {
+			if (e.getPuesto().matches("Empleado Limpieza")) {
+				empleado.addItem(e.getNombre());
+			}
+		}
 		getContentPane().add(empleado);
 		
 		lugar_txt = new JTextField();
@@ -124,30 +131,32 @@ public class VistaCrearLimpiezaGestor extends JFrame implements LimpiezaObserver
 	private void update(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
-	
+
 	@Override
-	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
+	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
+	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
+	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
 	}
 
 	@Override
-	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
-	}
-
-	@Override
-	public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
-		this.update(nombreUsuario);
+	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
 	}
 }

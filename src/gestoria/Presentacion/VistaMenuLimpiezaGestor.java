@@ -3,8 +3,9 @@ package gestoria.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import empleados.Negocio.TEmpleadoGestoria;
-import gestoria.Negocio.LimpiezaObserver;
+import empleados.Negocio.TEmpleadoLimpieza;
+import gestoria.Negocio.GestoriaObserver;
+import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
 
 import java.awt.Font;
@@ -13,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 
-public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
+public class VistaMenuLimpiezaGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
 	public VistaMenuLimpiezaGestor(JFrame frame) {
@@ -71,7 +72,7 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 		boton_Anadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerGestoria.getInstance().crearLimpieza(getFrame());
+				SingletonControllerGestoria.getInstance().mostrarCrearLimpieza(getFrame());
 			}
 		});
 		boton_Anadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -88,30 +89,34 @@ public class VistaMenuLimpiezaGestor extends JFrame implements LimpiezaObserver{
 	private void update(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
+
+	@Override
+	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	@Override
-	public void onRegister(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
-	}
-
-	@Override
-	public void onCreateLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
-	}
-
-	@Override
-	public void onEliminarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
-	}
-
-	@Override
-	public void onModificarLimpieza(List<TLimpieza> listaA, List<TEmpleadoGestoria> listaR, String nombreUsuario) {
-		this.update(nombreUsuario);
-	}
-
-	@Override
-	public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
-			List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
-		this.update(nombreUsuario);
-	}
+	
 }

@@ -1,0 +1,24 @@
+{"instalaciones": [
+   {
+      "data": {
+         "Nombre": "Piscina",
+         "Codigo": "1",
+         "Superficie": 20,
+         "Actividades": "Si",
+         "Pagado": "Si",
+         "Precio": 250000
+      },
+      "type": "instalacion"
+   },
+   {
+      "data": {
+         "Nombre": "Tennis",
+         "Codigo": "3",
+         "Superficie": 50,
+         "Actividades": "No",
+         "Pagado": "No",
+         "Precio": 2500
+      },
+      "type": "instalacion"
+   }
+]}

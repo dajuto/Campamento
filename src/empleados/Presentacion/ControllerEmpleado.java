@@ -1,6 +1,5 @@
 package empleados.Presentacion;
 
-import java.awt.Frame;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -9,14 +8,21 @@ import javax.swing.SwingUtilities;
 
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
-import empleados.Negocio.TEmpleadoGestoria;
+import empleados.Negocio.TEmpleado;
+import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
+import gestoria.Presentacion.VistaRegistrarEmpleado;
 import launcher.Factory;
+import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class ControllerEmpleado {
 
 	public void registraFactoria(Factory<Object> factoriaTransferObjects) {
 		SingletonServiAppEmpleado.getInstance().registraFactoria(factoriaTransferObjects);
+	}
+	
+	public List<TEmpleado> getListaEmpleados() {
+		return SingletonServiAppEmpleado.getInstance().getListaEmpleados();
 	}
 	
 	public void empleado(JFrame f) {
@@ -77,33 +83,31 @@ public class ControllerEmpleado {
 	public void gestoria(JFrame frame) {
 		SingletonControllerGestoria.getInstance().menuGestor(frame);
 	}
+
+	
+	public void sanidad(JFrame frame) {
+		SingletonControllerSanidad.getInstance().menuSanidad(frame);
+		
+	}
+	
+	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
+		SingletonServiAppEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
+	}
 	
 	
-
-//	public void registraUsuario(String text, char[] password) {
-//		SingletonServiAppEmpleado.getInstance().registraUsuario(text, password);
-//		SingletonControllerMantenimiento.getInstance().registraUsuario(text, password);
-//		SingletonControllerAulas.getInstance().registraUsuario(text, password);
-//		SingletonControllerLimpieza.getInstance().registraUsuario(text, password);
-//	}
-
 	
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
 
-
 	
 
 	
 
 	
 
-
 	
 
-	
-	
 
 	
 }

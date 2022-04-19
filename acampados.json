@@ -1,18 +1,35 @@
-{"acampados": [
+{"empleados": [
    {
       "data": {
-         "Usuario": "alvaro01",
-         "Contraseña": "12345678",
          "Nombre": "Alvaro ",
          "Apellidos": "Cordero Capitas",
-         "DNI": "78765711A",
-         "Email": "alvcorde@ucm.es",
          "Edad": 21,
-         "Telefono": 630864506,
          "Salud": "sano",
-         "Habitacion": "12A",
+         "Usuario": "alvaro01",
+         "Email": "alvcorde@ucm.es",
+         "Telefono": 630864506,
          "Actividades": {"Lista Actividades": []},
-         "pagado": "Si"
+         "Pagado": "Si",
+         "Contraseña": "12345678",
+         "Habitacion": "12A",
+         "DNI": "78765711A"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "Jose",
+         "Apellidos": "Cordero",
+         "Edad": 21,
+         "Salud": "Sano",
+         "Usuario": "jose00",
+         "Email": "alvaro@gmial.es",
+         "Telefono": 606606060,
+         "Actividades": {"Lista Actividades": []},
+         "Pagado": "No",
+         "Contraseña": "12345678",
+         "Habitacion": "123",
+         "DNI": "78765711A"
       },
       "type": "acampado"
    }

@@ -5,10 +5,10 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-import empleados.Negocio.TEmpleadoGestoria;
+import empleados.Negocio.TEmpleadoLimpieza;
 
 
-public class LimpiezaTableModel extends AbstractTableModel implements LimpiezaObserver {
+public class LimpiezaTableModel extends AbstractTableModel implements GestoriaObserver {
 	private static final long serialVersionUID = 1L;
 	
 		private List<TLimpieza> list;
@@ -52,35 +52,30 @@ public class LimpiezaTableModel extends AbstractTableModel implements LimpiezaOb
 		}
 
 		@Override
-		public void onRegister(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
-				String nombreUsuario) {
+		public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
-		public void onCreateLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
-				String nombreUsuario) {
+		public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
-		public void onEliminarLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
-				String nombreUsuario) {
+		public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
 		@Override
-		public void onModificarLimpieza(List<TLimpieza> listaLimpieza, List<TEmpleadoGestoria> listaEmpleadosLimpieza,
-				String nombreUsuario) {
+		public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
+				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 			this.update(listaLimpieza);
 		}
 
-		@Override
-		public void onActualizarListaEmpleadosLimpieza(List<TLimpieza> listaLimpieza,
-				List<TEmpleadoGestoria> listaEmpleadosLimpieza, String nombreUsuario) {
-			this.update(listaLimpieza);
-		}
-
+		
 
 		
 }
