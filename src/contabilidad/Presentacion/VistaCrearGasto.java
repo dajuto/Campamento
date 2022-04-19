@@ -122,33 +122,19 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 
 		
 		JButton boton_Crear = new JButton("Crear");
-//		boton_Crear.addActionListener(new ActionListener() {
-//			public void actionPerformed(ActionEvent e) {
-//				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-//
-//					if (importe_txt.getText().matches("\\d{2}:\\d{2}")) {
-//						String empleadoString = (String) empleado.getSelectedItem();
-//						//SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleadoString, getFrame());
-//					}
-//					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);	
-//					
-//					if (cuenta_txt.getText().matches("Sueldos y salarios")) {
-//						String empleadoString = (String) empleado.getSelectedItem();
-//						//SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleadoString, getFrame());
-//					}
-//					
-//				}
-//
-//					if (importe_txt.getText().matches("[0-9]*")) {
-//						String empleadoString = (String) empleado.getSelectedItem();
-//						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta_txt.getText(), concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleadoString, getFrame());
-//					}
-//					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);		
-//				}	
-//
-//				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
-//			}
-//		});
+		boton_Crear.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
+					
+					if (importe_txt.getText().matches("[0-9]*")) {
+						String empleadoString = (String) empleado.getSelectedItem();
+						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta_txt.getText(), concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleadoString, getFrame());
+					}
+					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
+				}	
+				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
+			}
+		});
 		boton_Crear.setBounds(266, 215, 97, 25);
 		getContentPane().add(boton_Crear);
 		

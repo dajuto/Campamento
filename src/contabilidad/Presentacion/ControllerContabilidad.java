@@ -11,11 +11,7 @@ import contabilidad.Negocio.SingletonServiAppContabilidad;
 import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
-import gestoria.Negocio.GestoriaObserver;
-import gestoria.Negocio.SingletonServiAppGestoria;
-import gestoria.Negocio.TInstalacion;
-import gestoria.Negocio.TLimpieza;
-import gestoria.Presentacion.VistaCrearLimpiezaGestor;
+
 import launcher.Factory;
 
 public class ControllerContabilidad {
@@ -93,26 +89,7 @@ public class ControllerContabilidad {
 			}
 		});
 	}
-
 	
-	 //ALVARO
-	public void añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
-		boolean existe = SingletonServiAppGestoria.getInstance().añadirLimpieza(codigo, lugar, fecha, hora, empleado, frame);
-		if (existe) {
-			SwingUtilities.invokeLater(new Runnable() {
-				@Override
-				public void run() {
-					frame.setVisible(false);
-					new VistaMenuLimpiezaGestor(frame);
-				}
-			});
-		}
-		else {
-			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
-		}
-	}
-	
-
 	//ADRIANA
 	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
 		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, frame);
@@ -146,50 +123,7 @@ public class ControllerContabilidad {
 		}
 	}
 	
-	public void crearEmpleado(JFrame frame) {
-		SingletonControllerEmpleado.getInstance().resgistrar(frame);
-	}
-	
 
-	public void eliminarLimpieza(JFrame frame, String codigo) {
-		SingletonServiAppGestoria.getInstance().eliminarLimpieza(frame, codigo);
-	}
-	
-	public void mostrarModificarLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaModificarLimpiezaGestor(frame);
-			}
-		});
-	}
-
-	public void eliminarInstalacion(JFrame frame, String codigo) {
-		SingletonServiAppGestoria.getInstance().eliminarInstalacion(frame, codigo);
-	}
-	
-	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
-		SingletonServiAppGestoria.getInstance().modificarLimpieza(codigo, lugar, fecha, hora, empleado);
-		frame.setVisible(false);
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaMenuLimpiezaGestor(frame);
-			}
-		});
-	}
-	
-	public void modificarInstalacion(String codigo, String nombre, String superficie, String precio, boolean pagado,
-			boolean actividades, JFrame frame) {
-		SingletonServiAppGestoria.getInstance().modificarInstalacion(codigo, nombre, superficie, precio, pagado, actividades);
-		frame.setVisible(false);
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaMenuInstalacionesGestor(frame);
-			}
-		});
-	}
 	
 	public List<TLimpieza> getListaLimpieza() {
 		List<TLimpieza> listaLimpieza = SingletonServiAppGestoria.getInstance().getListaLimpieza();
@@ -210,12 +144,32 @@ public class ControllerContabilidad {
 		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
 	}
 	
-	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
-		SingletonControllerEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
-	}
-
-
-
-	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

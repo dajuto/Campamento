@@ -1,5 +1,6 @@
 package contabilidad.Integracion;
 
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -8,39 +9,34 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
 import launcher.Factory;
 
-public class DaoContabilidad {
+public class DaoIngresos {
+	
 	private String nombreFichero;
 	private InputStream in;
 	private OutputStream os;
-	public DaoContabilidad() throws IOException {
+	public DaoIngresos() throws IOException {
 		this.nombreFichero = "contabilidad.json";
 	}
 	
-	public void escribeTodo(List<TGastos> listaGastos, List <TIngresos> listaIngresos) { 
+	public void escribeTodo(List<TIngresos> listaIngresos) { 
+		JSONObject object = new JSONObject();
 		try {
+	        for(int i = 0; i < listaIngresos.size(); i++) {
+	            object.accumulate("contabilidad", listaIngresos.get(i).report());
+	        }
 			this.os = new FileOutputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
 		try {
-			JSONObject object = new JSONObject();
-	        for(int i = 0; i < listaGastos.size(); i++) {  //listaGastos.size()
-	            object.accumulate("contabilidad", listaGastos.get(i).report());
-	        }
-	       
-	        for(int i = 0; i < listaIngresos.size(); i++) {  
-	            object.accumulate("contabilidad", listaIngresos.get(i).report());
-	        }
 			os.write(object.toString(3).getBytes());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -48,30 +44,27 @@ public class DaoContabilidad {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	
+		}
 	}
 	
-	public List<TGastos> leeTodo(Factory<Object> factoriaTransferObjects){ // de json a objetos
+	public List<TIngresos> leeTodo(Factory<Object> factoriaTranserObjects){ 
 		try {
 			this.in = new FileInputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
-		}	
-		List<TGastos> l = new ArrayList<TGastos>();
+		}
+		List<TIngresos> l = new ArrayList<TIngresos>();
 		try {
             JSONObject jo = new JSONObject(new JSONTokener(in));
-            JSONArray contabilidad = jo.getJSONArray("contabilidad");
-            for(int i = 0; i < contabilidad.length(); i++) {
-            	TGastos tgastos = (TGastos) factoriaTransferObjects.createInstance(contabilidad.getJSONObject(i));
-        		l.add(tgastos); //mirar más tarde
+            JSONArray ingresos = jo.getJSONArray("contabilidad");
+            for(int i = 0; i < ingresos.length(); i++) {
+                TIngresos a = (TIngresos) factoriaTranserObjects.createInstance(ingresos.getJSONObject(i));
+                l.add(a);
             }
         }
         catch (JSONException e) {
             System.out.println("ERROR => La entrada JSON no coincide con la esperada");
         }
-		
 		return l;
 	}
-
-
 }

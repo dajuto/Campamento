@@ -69,7 +69,8 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	public String getNombreUsuario() {
 		return this.nombreUsuario;
 	}
-
+	
+	
 	public List<TLimpieza> getListaLimpiezaGestor() {	
 		this.updateLimpieza();
 		return listaLimpieza;
@@ -79,52 +80,16 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
 	}
 
-
-	public boolean añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
-		this.updateLimpieza();
-		for(TLimpieza ta: this.listaLimpieza) {
-			if(ta.codigo.equals(codigo)) {
-				return false;
-			}
-		}
-		JSONObject limpieza = new JSONObject();
-		JSONObject data = new JSONObject();
-		data.accumulate("Codigo", codigo);
-		data.accumulate("Lugar", lugar);
-		data.accumulate("Fecha", fecha);
-		data.accumulate("Hora", hora);
-		data.accumulate("Empleado", empleado);
-		
-		limpieza.accumulate("data", data);
-		limpieza.accumulate("type", "limpieza");
-		
-		TLimpieza tLimpieza = (TLimpieza) this.factoriaTranserObjects.createInstance(limpieza);
-		this.listaLimpieza.add(tLimpieza);
-		this.guardaLimpieza();
-		this.updateLimpieza();
-
-	
-	  //ALVARO
-		//public void updateLimpieza() {
-			//this.listaLimpieza = SingletonDaoLimpieza.getInstance().leeTodo(this.factoriaTranserObjects);
-		//}
-		
-		 //adri 
-		
+	  
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
 		}
 		
-		//alvaro
-		//public void guardaLimpieza() {
-	        //SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
-		//}
-         
-		//adri
+		
 		public void guardaGastos() {
 	        SingletonDaoGastos.getInstance().escribeTodo(this.listaGastos);
 		}
-	//funcion adri 
+	 
 	public boolean añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
 		
 		this.updateGastos();
@@ -163,7 +128,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		
 		this.updateGastos();
 		
-	
 		JSONObject ingresos = new JSONObject();
 		JSONObject data = new JSONObject();
 		data.accumulate("Tipo", cuenta);
