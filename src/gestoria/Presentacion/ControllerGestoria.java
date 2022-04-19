@@ -8,6 +8,10 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import contabilidad.Presentacion.VistaCrearGasto;
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 =======
 import contabilidad.Presentacion.VistaCrearGasto;
 >>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164

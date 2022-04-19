@@ -7,6 +7,10 @@ import contabilidad.Negocio.Gastos;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import gestoria.Presentacion.SingletonControllerGestoria;
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 =======
 import gestoria.Presentacion.SingletonControllerGestoria;
 >>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
@@ -47,7 +51,11 @@ public class VistaMenuContabilidad extends JFrame implements ContabilidadObserve
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				//SingletonControllerGestoria.getInstance().crearEmpleado(getFrame());
+=======
+				SingletonControllerContabilidad.getInstance().menuGastos(getFrame());
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 =======
 				SingletonControllerContabilidad.getInstance().menuGastos(getFrame());
 >>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
@@ -63,7 +71,11 @@ public class VistaMenuContabilidad extends JFrame implements ContabilidadObserve
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 <<<<<<< HEAD
+<<<<<<< HEAD
 				//SingletonControllerGestoria.getInstance().crearEmpleado(getFrame());
+=======
+				SingletonControllerContabilidad.getInstance().menuIngresos(getFrame());
+>>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 =======
 				SingletonControllerContabilidad.getInstance().menuIngresos(getFrame());
 >>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
