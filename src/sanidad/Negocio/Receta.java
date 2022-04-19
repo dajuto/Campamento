@@ -2,6 +2,7 @@ package sanidad.Negocio;
 
 import org.json.JSONObject;
 
+import acampados.Negocio.Acampado;
 import empleados.Negocio.Empleado;
 
 public class Receta {
@@ -10,6 +11,7 @@ public class Receta {
 	protected String medicamento;
 	protected String dosis;
 	protected Empleado Nombremedico;
+	protected Acampado NombreAcampado;
 	protected String comprado;
 	
 	public String toString() {
@@ -22,6 +24,22 @@ public class Receta {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
+	public Acampado getNombreAcampado() {
+		return NombreAcampado;
+	}
+
+	public void setNombreAcampado(Acampado nombreAcampado) {
+		NombreAcampado = nombreAcampado;
+	}
+
+	public String getComprado() {
+		return comprado;
+	}
+
+	public void setComprado(String comprado) {
+		this.comprado = comprado;
+	}
+
 	public String getMedicamento() {
 		return medicamento;
 	}
@@ -51,6 +69,7 @@ public class Receta {
 		data.accumulate("medicamento", this.medicamento);
 		data.accumulate("dosis", this.dosis);
 		data.accumulate("Nombremedico", this.Nombremedico.getUsuario());
+		data.accumulate("NombreAcampado", this.NombreAcampado.getNombre());
 		data.accumulate("comprado", this.comprado);
 		receta.accumulate("data", data);
 		return receta;
