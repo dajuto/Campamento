@@ -5,21 +5,29 @@ import javax.swing.JFrame;
 
 import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.GestoriaObserver;
+import gestoria.Negocio.LimpiezaTableModel;
+import gestoria.Negocio.MantenimientoTableModel;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
 import gestoria.Negocio.TMantenimiento;
 
+import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JComponent;
+import javax.swing.JTable;
 
-public class VistaMenuMantenimientoGestor extends JFrame implements GestoriaObserver{
+public class VistaVerMantenimientoGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	public VistaMenuMantenimientoGestor(JFrame frame) {
-		setTitle("Menu de mantenimiento");
+	public VistaVerMantenimientoGestor(JFrame frame) {
+		setTitle("Lista averias");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -36,49 +44,14 @@ public class VistaMenuMantenimientoGestor extends JFrame implements GestoriaObse
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JButton boton_Mostrar = new JButton("Mostrar averias");
-		boton_Mostrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().mostrarMantenimiento(getFrame());
-			}
-		});
-		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Mostrar.setBounds(51, 53, 166, 38);
-		getContentPane().add(boton_Mostrar);
+		JLabel labcrear = new JLabel("Lista averias");
+		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		labcrear.setBounds(25, 24, 330, 36);
+		getContentPane().add(labcrear);
 		
-		JButton boton_Modificar = new JButton("Modificar Averias");
-		boton_Modificar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().mostrarModificarInstalacion(getFrame());
-			}
-		});
-		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Modificar.setBounds(260, 53, 166, 38);
-		getContentPane().add(boton_Modificar);
-		
-		JButton boton_Eliminar = new JButton("Eliminar averia");
-		boton_Eliminar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().mostrarEliminarInstalacion(getFrame());
-			}
-		});
-		boton_Eliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Eliminar.setBounds(260, 119, 166, 38);
-		getContentPane().add(boton_Eliminar);
-		
-		JButton boton_Anadir = new JButton("A\u00F1adir averia");
-		boton_Anadir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().mostrarCrearMantenimiento(getFrame());
-			}
-		});
-		boton_Anadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Anadir.setBounds(51, 119, 166, 38);
-		getContentPane().add(boton_Anadir);
+		JPanel p2 = createViewPanel(new JTable(new MantenimientoTableModel()), "Lista averias");
+		p2.setBounds(35, 73, 416, 126);
+		getContentPane().add(p2);
 		
 		setVisible(true);
 	}
@@ -87,9 +60,16 @@ public class VistaMenuMantenimientoGestor extends JFrame implements GestoriaObse
 		return this;
 	}
 	
+	private JPanel createViewPanel(JComponent c, String title) {
+		JPanel p = new JPanel( new BorderLayout() );
+		p.add(new JScrollPane(c));
+		return p;
+	}
+	
 	private void update(String nombreUsuario) {
 		this.nombreUsuario = nombreUsuario;
 	}
+
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
@@ -118,6 +98,6 @@ public class VistaMenuMantenimientoGestor extends JFrame implements GestoriaObse
 		// TODO Auto-generated method stub
 		
 	}
-
+	
 	
 }

@@ -82,7 +82,14 @@ public class ControllerGestoria {
 		});
 	}
 	
-	
+	public void mostrarMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaVerMantenimientoGestor(frame);
+			}
+		});
+	}
 	
 	public void mostrarModificarInstalacion(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -127,6 +134,15 @@ public class ControllerGestoria {
 			@Override
 			public void run() {
 				new VistaCrearInstalacionGestor(frame);
+			}
+		});
+	}
+	
+	public void mostrarCrearMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaCrearMantenimientoGestor(frame);
 			}
 		});
 	}
@@ -231,6 +247,10 @@ public class ControllerGestoria {
 	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
 	}
+
+	
+
+	
 
 
 

@@ -23,14 +23,14 @@ public class DaoMantenimiento {
 	private InputStream in;
 	private OutputStream os;
 	public DaoMantenimiento() throws IOException {
-		this.nombreFichero = "averias.json";
+		this.nombreFichero = "mantenimiento.json";
 	}
 	
 	public void escribeTodo(List<TMantenimiento> listaLimpieza) { 
 		JSONObject object = new JSONObject();
 		try {
 	        for(int i = 0; i < listaLimpieza.size(); i++) {
-	            object.accumulate("averias", listaLimpieza.get(i).report());
+	            object.accumulate("mantenimiento", listaLimpieza.get(i).report());
 	        }
 			this.os = new FileOutputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {
@@ -56,7 +56,7 @@ public class DaoMantenimiento {
 		List<TMantenimiento> l = new ArrayList<TMantenimiento>();
 		try {
             JSONObject jo = new JSONObject(new JSONTokener(in));
-            JSONArray listaAverias = jo.getJSONArray("averias");
+            JSONArray listaAverias = jo.getJSONArray("mantenimiento");
             for(int i = 0; i < listaAverias.length(); i++) {
             	TMantenimiento m = (TMantenimiento) factoriaTranserObjects.createInstance(listaAverias.getJSONObject(i));
                 l.add(m);
