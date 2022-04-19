@@ -9,38 +9,12 @@ public abstract class Mantenimiento {
 	protected String nombre;
 	protected String descripcion;
 	protected String lugar;
-	protected TEmpleadoMantenimiento precio;
-	protected boolean reparado;
+	protected int coste;
+	protected TEmpleadoMantenimiento empleado;
+	protected boolean estado;
 
 	
-	public String getCodigo() {
-		return codigo;
-	}
-
-
-	public String getNombre() {
-		return nombre;
-	}
-
-
-	public int getSuperficie() {
-		return superficie;
-	}
-
-
-	public int getPrecio() {
-		return precio;
-	}
-
-
-	public boolean isPuedeActividades() {
-		return puedeActividades;
-	}
-
-
-	public boolean isPagado() {
-		return pagado;
-	}
+	
 
 
 	public JSONObject report() {
