@@ -36,7 +36,7 @@ public class VistaMenuEmpleado extends JFrame{
 		boton_contabilidad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerEmpleado.getInstance().gestoria(getFrame());
+				SingletonControllerEmpleado.getInstance().contabilidad(getFrame());
 			}
 		});
 		boton_contabilidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
