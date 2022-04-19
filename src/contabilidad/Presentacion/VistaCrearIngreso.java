@@ -23,17 +23,17 @@ import contabilidad.Negocio.TIngresos;
 
 import javax.swing.DefaultComboBoxModel;
 
-public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
+public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 	private JFrame atras;
 	private String nombreUsuario;
 	private JTextField concepto_txt;
 	private JTextField fecha_txt;
 	private JTextField importe_txt;
 	private JTextField cuenta_txt;
-	private JComboBox empleado;
+	private JComboBox acampado;
 	
-	public VistaCrearGasto(JFrame frame) {
-		setTitle("Añadir un Gasto");
+	public VistaCrearIngreso(JFrame frame) {
+		setTitle("Añadir un Ingreso");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -50,7 +50,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel labcrear = new JLabel("A\u00F1adir Gasto");
+		JLabel labcrear = new JLabel("A\u00F1adir Ingreso");
 		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 22));
 		labcrear.setBounds(25, 14, 330, 36);
 		getContentPane().add(labcrear);
@@ -70,19 +70,19 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		lblFecha.setBounds(25, 175, 116, 25);
 		getContentPane().add(lblFecha);
 		
-		JLabel lblEmplead = new JLabel("Emplead@:");
-		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblEmplead.setBounds(25, 215, 97, 25);
-		getContentPane().add(lblEmplead);
+		JLabel lblAcampado = new JLabel("Acampad@:");
+		lblAcampado.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblAcampado.setBounds(25, 215, 97, 25);
+		getContentPane().add(lblAcampado);
 		
-		empleado = new JComboBox<String>();
-		empleado.setBounds(121, 217, 116, 22);
+		acampado = new JComboBox<String>();
+		acampado.setBounds(121, 217, 116, 22);
 		for(TEmpleado e: SingletonControllerGestoria.getInstance().getListaEmpleados()) {
 			if (e.getPuesto().matches("Empleado Limpieza")) {
-				empleado.addItem(e.getNombre());  // revisar
+				acampado.addItem(e.getNombre());  // revisar
 			}
 		}
-		getContentPane().add(empleado);
+		getContentPane().add(acampado);
 			
 		concepto_txt = new JTextField();
 		concepto_txt.setBounds(121, 103, 116, 22);
@@ -100,8 +100,8 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		importe_txt.setColumns(10);	
 		
 		if (!fecha_txt.getText().matches("Sueldos y salarios")) {
-			empleado.setVisible(false);
-			lblEmplead.setVisible(false);
+			acampado.setVisible(false);
+			lblAcampado.setVisible(false);
 		}
 		
 		JButton boton_Crear = new JButton("Crear");
@@ -109,8 +109,8 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 			public void actionPerformed(ActionEvent e) {
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					if (importe_txt.getText().matches("[0-9]*")) {
-						String empleadoString = (String) empleado.getSelectedItem();
-						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta_txt.getText(), concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleadoString, getFrame());
+						String empleadoString = (String) acampado.getSelectedItem();
+						SingletonControllerContabilidad.getInstance().añadirIngreso(cuenta_txt.getText(), concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleadoString, getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);		
 				}	
@@ -120,7 +120,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		boton_Crear.setBounds(266, 215, 97, 25);
 		getContentPane().add(boton_Crear);
 		
-		JLabel lblCodigo = new JLabel("Cuenta de Gastos: ");
+		JLabel lblCodigo = new JLabel("Cuenta de Ingresos: ");
 		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCodigo.setBounds(25, 63, 148, 25);
 		getContentPane().add(lblCodigo);

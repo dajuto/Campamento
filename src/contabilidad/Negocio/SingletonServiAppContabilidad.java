@@ -1,5 +1,6 @@
 package contabilidad.Negocio;
 
+import contabilidad.Presentacion.ControllerContabilidad;
 
 public class SingletonServiAppContabilidad {
 

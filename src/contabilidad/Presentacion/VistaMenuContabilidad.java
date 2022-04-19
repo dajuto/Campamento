@@ -6,6 +6,7 @@ import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.Gastos;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
+import gestoria.Presentacion.SingletonControllerGestoria;
 
 import java.awt.SystemColor;
 import javax.swing.JButton;
@@ -42,7 +43,7 @@ public class VistaMenuContabilidad extends JFrame implements ContabilidadObserve
 		boton_Gastos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//SingletonControllerGestoria.getInstance().crearEmpleado(getFrame());
+				SingletonControllerContabilidad.getInstance().menuGastos(getFrame());
 			}
 		});
 		
@@ -54,7 +55,7 @@ public class VistaMenuContabilidad extends JFrame implements ContabilidadObserve
 		boton_Ingresos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				//SingletonControllerGestoria.getInstance().crearEmpleado(getFrame());
+				SingletonControllerContabilidad.getInstance().menuIngresos(getFrame());
 			}
 		});
 		boton_Ingresos.setFont(new Font("Tahoma", Font.PLAIN, 17));
