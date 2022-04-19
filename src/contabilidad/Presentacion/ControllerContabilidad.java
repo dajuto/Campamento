@@ -1,4 +1,4 @@
-package gestoria.Presentacion;
+package contabilidad.Presentacion;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
-import contabilidad.Presentacion.VistaCrearGasto;
+import contabilidad.Negocio.SingletonServiAppContabilidad;
 import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
@@ -15,9 +15,10 @@ import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.SingletonServiAppGestoria;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
+import gestoria.Presentacion.VistaCrearLimpiezaGestor;
 import launcher.Factory;
 
-public class ControllerGestoria {
+public class ControllerContabilidad {
 	
 	public void registraUsuario(String text, char[] password) {
 		SingletonServiAppGestoria.getInstance().registraUsuario(text, password);
@@ -27,109 +28,74 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().registrarFactoria(objetosFactory);
 	}
 
-	public void menuGestor(JFrame frame) {
+	
+	
+	public void menuContabilidad(JFrame frame) {  //hecha
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuGestor(frame);
+				new VistaMenuContabilidad(frame);
 			}
 		});
 	}
 
-	public void menuLimpiezaGestor(JFrame frame) {
+	public void menuGastos(JFrame frame) { //hecha
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuLimpiezaGestor(frame);
+				new VistaGastosContabilidad(frame);
 			}
 		});
 	}
 
-	public void menuInstalacionesGestor(JFrame frame) {
+	public void menuIngresos(JFrame frame) { //hecha
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuInstalacionesGestor(frame);
+				new VistaIngresosContabilidad(frame);
+			}
+		});
+	}
+
+	
+		public void mostrarGastos(JFrame frame) { //hecha
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					new VistaVerGastos(frame);
+			    }
+			});
+		}
+	
+		public void mostrarIngresos(JFrame frame) { //hecha
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					new VistaVerIngresos(frame);
+			    }
+			});
+		}
+	
+	public void mostrarCrearGasto(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaCrearGasto(frame);
 			}
 		});
 	}
 	
-	public void menuMantenimientoGestor(JFrame frame) {
+	public void mostrarCrearIngreso(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuMantenimientoGestor(frame);
+				new VistaCrearIngreso(frame);
 			}
 		});
 	}
+
 	
-	public void mostrarLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaVerLimpiezaGestor(frame);
-			}
-		});
-	}
-	
-	public void mostrarInstalacion(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaVerInstalacionGestor(frame);
-			}
-		});
-	}
-	
-	
-	
-	public void mostrarModificarInstalacion(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaModificarInstalacionGestor(frame);
-			}
-		});
-	}
-	
-	public void mostrarEliminarLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaEliminarLimpiezaGestor(frame);
-			}
-		});
-	}
-	
-	public void mostrarEliminarInstalacion(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaEliminarInstalacionGestor(frame);
-			}
-		});
-	}
-	
-	
-	public void mostrarCrearLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaCrearLimpiezaGestor(frame);
-			}
-		});
-	}
-	
-	
-	public void mostrarCrearInstalacion(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaCrearInstalacionGestor(frame);
-			}
-		});
-	}
-	
+	 //ALVARO
 	public void añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
 		boolean existe = SingletonServiAppGestoria.getInstance().añadirLimpieza(codigo, lugar, fecha, hora, empleado, frame);
 		if (existe) {
@@ -146,15 +112,32 @@ public class ControllerGestoria {
 		}
 	}
 	
-	public void añadirInstalacion(String codigo, String nombre, String superficie, String precio, boolean actividades,
-			JFrame frame) {
-		boolean existe = SingletonServiAppGestoria.getInstance().añadirInstalacion(codigo, nombre, superficie, precio, actividades, frame);
+
+	//ADRIANA
+	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
 				public void run() {
 					frame.setVisible(false);
-					new VistaMenuInstalacionesGestor(frame);
+					new VistaGastosContabilidad(frame); 
+				}
+			});
+		}
+		else {
+			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
+		}
+	}
+	
+	public void añadirIngreso(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirIngreso(cuenta, concepto, importe, fecha, empleado, frame);
+		if (existe) {
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					frame.setVisible(false);
+					new VistaIngresosContabilidad(frame);  
 				}
 			});
 		}
