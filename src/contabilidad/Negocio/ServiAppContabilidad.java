@@ -9,18 +9,13 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
-import empleados.Negocio.TEmpleadoGestoria;
+
 import gestoria.Integracion.SingletonDaoLimpieza;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
-=======
-import gestoria.Negocio.TInstalacion;
-import gestoria.Negocio.TLimpieza;
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+
+
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import launcher.Observable;
@@ -40,18 +35,11 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.observers = new ArrayList<ContabilidadObserver>();
 	}
 	
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	public void updateLimpieza() {
 		this.listaLimpieza = SingletonDaoLimpieza.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
-=======
-	
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
-=======
-	
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
-	
+
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
 	}
@@ -91,8 +79,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 	public boolean añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
 		this.updateLimpieza();
 		for(TLimpieza ta: this.listaLimpieza) {
@@ -115,9 +102,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.listaLimpieza.add(tLimpieza);
 		this.guardaLimpieza();
 		this.updateLimpieza();
-=======
-=======
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+
 	
 	  //ALVARO
 		//public void updateLimpieza() {
@@ -194,28 +179,16 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.listaIngresos.add(tingresos);
 		this.guardaIngresos();
 		this.updateIngresos();
-<<<<<<< HEAD
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
-=======
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+
 		
 		return true;
 	}
 
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-	
-=======
-=======
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
 	@Override
 	public void removeObserver(ContabilidadObserver o) {
 		// TODO Auto-generated method stub
 		
 	}
-<<<<<<< HEAD
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
-=======
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
+
 }
