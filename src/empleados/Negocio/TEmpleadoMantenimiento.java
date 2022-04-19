@@ -3,7 +3,7 @@ package empleados.Negocio;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TEmpleadoMantenimiento extends EmpleadoLimpieza{
+public class TEmpleadoMantenimiento extends EmpleadoMantenimiento{
 	public TEmpleadoMantenimiento(String usuario, String contrasena, String nombre, String puesto, int salario, int horario, String vacaciones, List<String> listaAverias){
 		this.usuario = usuario;
 		this.contrasena = contrasena;

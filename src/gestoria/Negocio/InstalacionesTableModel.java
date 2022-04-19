@@ -54,25 +54,33 @@ public class InstalacionesTableModel extends AbstractTableModel implements Gesto
 
 		@Override
 		public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+				String nombreUsuario) {
+			// TODO Auto-generated method stub
 			this.update(listaInstalaciones);
 		}
 
 		@Override
 		public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+				String nombreUsuario) {
+			// TODO Auto-generated method stub
 			this.update(listaInstalaciones);
 		}
 
 		@Override
 		public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+				String nombreUsuario) {
+			// TODO Auto-generated method stub
 			this.update(listaInstalaciones);
 		}
 
 		@Override
 		public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-				List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
+				String nombreUsuario) {
+			// TODO Auto-generated method stub
 			this.update(listaInstalaciones);
 		}
 

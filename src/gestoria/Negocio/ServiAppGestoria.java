@@ -12,6 +12,7 @@ import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Integracion.SingletonDaoInstalacion;
 import gestoria.Integracion.SingletonDaoLimpieza;
+import gestoria.Integracion.SingletonDaoMantenimiento;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import launcher.Observable;
@@ -20,6 +21,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 	private List<GestoriaObserver> observers;
 	private List<TLimpieza> listaLimpieza;
 	private List<TInstalacion> listaInstalaciones;
+	private List<TMantenimiento> listaAverias;
 	private List<TEmpleadoLimpieza> listaEmpleadosLimpieza;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
@@ -37,6 +39,10 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 	
 	public void updateInstalaciones() {
 		this.listaInstalaciones = SingletonDaoInstalacion.getInstance().leeTodo(this.factoriaTranserObjects);
+	}
+	
+	public void updateMantenimiento() {
+		this.listaAverias = SingletonDaoMantenimiento.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
 //	private void updateEmpleadosLimpieza() {
@@ -62,7 +68,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		this.updateLimpieza();
 		this.updateInstalaciones();
 		//this.updateEmpleadosLimpieza();
-		o.onRegister(listaLimpieza, listaInstalaciones, listaEmpleadosLimpieza, nombreUsuario);
+		o.onRegister(listaLimpieza, listaInstalaciones, listaAverias, listaEmpleadosLimpieza, nombreUsuario);
 	}
 
 	@Override

@@ -8,14 +8,14 @@ import javax.swing.table.AbstractTableModel;
 import empleados.Negocio.TEmpleadoLimpieza;
 
 
-public class LimpiezaTableModel extends AbstractTableModel implements GestoriaObserver {
+public class MantenimientoTableModel extends AbstractTableModel implements GestoriaObserver {
 	private static final long serialVersionUID = 1L;
 	
-		private List<TLimpieza> list;
-		private String[] columnNames = {"Codigo", "Lugar", "Fecha","Hora", "Empleado"};
+		private List<TMantenimiento> list;
+		private String[] columnNames = {"Codigo", "Nombre", "Lugar","Coste", "Empleado", "Estado"};
 		
-		public LimpiezaTableModel() {
-			list = new ArrayList<TLimpieza>();
+		public MantenimientoTableModel() {
+			list = new ArrayList<TMantenimiento>();
 			SingletonServiAppGestoria.getInstance().addObserver(this);
 		}
 		
@@ -38,15 +38,16 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			switch(columnIndex) {
 			case 0: return list.get(rowIndex).getCodigo();
-			case 1:	return list.get(rowIndex).getLugar();
-			case 2: return list.get(rowIndex).getFecha();
-			case 3: return list.get(rowIndex).getHora();
-			case 4: return list.get(rowIndex).getEmpleadoEncargado();
+			case 1:	return list.get(rowIndex).getNombre();
+			case 2: return list.get(rowIndex).getLugar();
+			case 3: return list.get(rowIndex).getCoste();
+			case 4: return list.get(rowIndex).getEmpleado();
+			case 5: return list.get(rowIndex).getEstado();
 			default: return null;
 			}
 		}
 		
-		private void update(List<TLimpieza> lista) {
+		private void update(List<TMantenimiento> lista) {
 			this.list = lista;
 			this.fireTableDataChanged();
 		}
@@ -56,7 +57,7 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			// TODO Auto-generated method stub
-			this.update(listaLimpieza);
+			this.update(listaAverias);
 		}
 
 		@Override
@@ -64,7 +65,7 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			// TODO Auto-generated method stub
-			this.update(listaLimpieza);
+			this.update(listaAverias);
 		}
 
 		@Override
@@ -72,7 +73,7 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			// TODO Auto-generated method stub
-			this.update(listaLimpieza);
+			this.update(listaAverias);
 		}
 
 		@Override
@@ -80,11 +81,10 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 				List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza,
 				String nombreUsuario) {
 			// TODO Auto-generated method stub
-			this.update(listaLimpieza);
+			this.update(listaAverias);
 		}
 
 		
-
 		
 
 		
