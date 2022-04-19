@@ -9,7 +9,7 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
-
+import contabilidad.Integracion.SingletonDaoIngresos;
 import gestoria.Integracion.SingletonDaoLimpieza;
 
 import gestoria.Negocio.TInstalacion;
