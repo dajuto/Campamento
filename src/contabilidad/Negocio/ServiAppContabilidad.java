@@ -9,9 +9,10 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
+import contabilidad.Integracion.SingletonDaoGastos;
 import contabilidad.Integracion.SingletonDaoIngresos;
 import gestoria.Integracion.SingletonDaoLimpieza;
-
+import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
 
@@ -24,23 +25,18 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	private List<ContabilidadObserver> observers;
 	private List <TGastos> listaGastos; 
 	private List<TIngresos> listaIngresos;
-	private List<TEmpleadoGestoria> listaEmpleadosLimpieza;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
 	private char[] contrasenaUsuario;
 	
 	public ServiAppContabilidad() {
-		this.listaLimpieza = new ArrayList<TLimpieza>();
-		this.listaEmpleadosLimpieza = new ArrayList<TEmpleadoGestoria>();
+		this.listaGastos = new ArrayList<TGastos>();
+		this.listaIngresos= new ArrayList<TIngresos>();
 		this.observers = new ArrayList<ContabilidadObserver>();
 	}
 	
 
-	public void updateLimpieza() {
-		this.listaLimpieza = SingletonDaoLimpieza.getInstance().leeTodo(this.factoriaTranserObjects);
-	}
-
-	public void registrarFactoria(Factory<Object> objetosFactory) {
+	public void registrarFactoria(Factory<Object> objetosFactory) {  // la tenia alvaro
 		this.factoriaTranserObjects = objetosFactory;
 	}
 
@@ -53,34 +49,33 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.updateLimpieza();
 	}
 
-	@Override
-	public void addObserver(ContabilidadObserver o) {
-		this.observers.add(o);
-		this.updateLimpieza();
-		//TODO this.updateEmpleadosLimpieza();
-		o.onRegister(listaLimpieza, listaEmpleadosLimpieza, nombreUsuario);
-	}
 
 	@Override
-	public void removeObserver(LimpiezaObserver o) {
+	public void addObserver(ContabilidadObserver o) {  //por ejemplo se usa en GastosTableModel e ingresosTableModel
+		this.observers.add(o);
+		this.updateGastos();
+		this.updateIngresos();
+		o.onRegister(listaGastos, listaIngresos, nombreUsuario);
+	}
+	
+	
+	@Override
+	public void removeObserver(ContabilidadObserver o) {
 		this.observers.remove(o);
 	}
 	
+
 	public String getNombreUsuario() {
 		return this.nombreUsuario;
 	}
 	
 	
-	public List<TLimpieza> getListaLimpiezaGestor() {	
-		this.updateLimpieza();
-		return listaLimpieza;
-	}
-	
-	public void guardaLimpieza() {
-        SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
+	public List<TGastos> getListaGastos() {
+		this.updateGastos();
+		return listaGastos;
 	}
 
-	  
+	
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
 		}
@@ -147,7 +142,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		
 		return true;
 	}
-
 
 	@Override
 	public void removeObserver(ContabilidadObserver o) {

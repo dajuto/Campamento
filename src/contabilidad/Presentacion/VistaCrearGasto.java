@@ -172,7 +172,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 	}
 
 	@Override
-	public void onActualizar(List<Gastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
+	public void onActualizar(List<TGastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		this.update(nombreUsuario);
 	}

@@ -7,11 +7,12 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.SingletonServiAppContabilidad;
 import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
-
+import gestoria.Negocio.SingletonServiAppGestoria;
 import launcher.Factory;
 
 public class ControllerContabilidad {
@@ -135,8 +136,8 @@ public class ControllerContabilidad {
 		return listaInstalaciones;
 	}
 	
-	public void addObserver(GestoriaObserver vista) {
-		SingletonServiAppGestoria.getInstance().addObserver(vista);	
+	public void addObserver(ContabilidadObserver vista) {  //hecha
+		SingletonServiAppContabilidad.getInstance().addObserver(vista);	
 
 	}
 

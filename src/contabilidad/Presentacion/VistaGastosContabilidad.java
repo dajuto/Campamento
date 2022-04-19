@@ -86,7 +86,7 @@ public class VistaGastosContabilidad extends JFrame implements ContabilidadObser
 	}
 
 	@Override
-	public void onActualizar(List<Gastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
+	public void onActualizar(List<TGastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
 		this.update(nombreUsuario);
 		
 	}
