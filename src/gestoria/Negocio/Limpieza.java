@@ -3,19 +3,16 @@ package gestoria.Negocio;
 import org.json.JSONObject;
 
 import empleados.Negocio.Empleado;
+import empleados.Negocio.TEmpleadoLimpieza;
 
 public abstract class Limpieza {
-	protected int codigo;
-	protected Empleado empleadoEncargado;
+	protected String codigo;
 	protected String lugar;
 	protected String fecha;
 	protected String hora;
+	protected String empleadoEncargado;
 	
-	public String toString() {
-		return Integer.toString(codigo);
-	}
-	
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 	public String getLugar() {
@@ -27,20 +24,19 @@ public abstract class Limpieza {
 	public String getHora() {
 		return hora;
 	}
-	public Empleado getEmpleadoEncargado() {
+	public String getEmpleadoEncargado() {
 		return empleadoEncargado;
 	}
 
 	public JSONObject report() {
-		String c = Integer.toString(codigo);
 		JSONObject limpieza = new JSONObject();
 		limpieza.accumulate("type", "limpieza");
 		JSONObject data = new JSONObject();
-		data.accumulate("Codigo", c);
+		data.accumulate("Codigo", this.codigo);
 		data.accumulate("Lugar", this.lugar);
 		data.accumulate("Fecha", this.fecha);
 		data.accumulate("Hora", this.hora);
-		data.accumulate("usuarioEmpleadoEncargado", this.empleadoEncargado.getUsuario());
+		data.accumulate("Empleado", this.empleadoEncargado);
 		limpieza.accumulate("data", data);
 		return limpieza;
 	}

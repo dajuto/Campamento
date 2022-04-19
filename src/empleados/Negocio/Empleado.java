@@ -1,5 +1,7 @@
 package empleados.Negocio;
 
+import org.json.JSONObject;
+
 public abstract class Empleado {
 	protected String usuario;
 	protected String contrasena;
@@ -8,7 +10,12 @@ public abstract class Empleado {
 	protected int salario;
 	protected int horario;
 	protected String vacaciones;
+	protected JSONObject trabajo;
 	
+	public JSONObject getTrabajo() {
+		return trabajo;
+	}
+
 	public String getUsuario() {
 		return usuario;
 	}

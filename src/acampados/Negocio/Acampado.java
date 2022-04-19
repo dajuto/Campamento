@@ -6,38 +6,65 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class Acampado {
-	protected String nombre;
 	protected String usuario;
-	protected boolean confinado;
+	protected String contrasena;
+	protected String nombre;
+	protected String apellidos;
+	protected String dni;
+	protected String email;
+	protected int edad;
+	protected int telefono;
+	protected String salud;
 	protected String habitacion;
-	protected List<String> listaactividades;
+	protected List<String> listaactividades; //TODO SEGOVIANO, CAMBIA STRING POR TActividades
 	protected boolean pagado;
-	
-	public List<String> getListaactividades() {
-		return listaactividades;
-	}
-	
-	public String getNombre() {
-		return nombre;
-	}
 	
 	public String getUsuario() {
 		return usuario;
 	}
-	
-	public boolean isConfinado() {
-		return confinado;
+
+	public String getContrasena() {
+		return contrasena;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getApellidos() {
+		return apellidos;
+	}
+
+	public String getDni() {
+		return dni;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public int getEdad() {
+		return edad;
 	}
 	
-	public boolean isPagado() {
-		return pagado;
+	public int getTelefono() {
+		return telefono;
 	}
+	
+	public String getSalud() {
+		return salud;
+	}
+
 	public String getHabitacion() {
 		return habitacion;
 	}
-	
-	public void setConfinado(boolean confinado) {
-		this.confinado=confinado;
+
+	public List<String> getListaActividades() {
+		return listaactividades;
+	}
+
+	public boolean isPagado() {
+		return pagado;
 	}
 	
 	public void setPagado(boolean pagado) {
@@ -50,34 +77,42 @@ public class Acampado {
 		acampado.put("type", "acampado");
 		
 		JSONObject data = new JSONObject();
-		data.put("nombre", nombre);
-		data.put("usuario", usuario);
-		String isConfinado= "No";
-		if(confinado) {
-			isConfinado= "Si";
-		}
-		data.put("confinado", isConfinado);
-		data.put("habitacion", habitacion);
+		data.put("Usuario", usuario);
+		data.put("Contraseña", contrasena);
+		data.put("Nombre", nombre);
+		data.put("Apellidos", apellidos);
+		data.put("DNI", dni);
+		data.put("Email", email);
+		data.put("Edad", edad);
+		data.put("Telefono", telefono);
+		data.put("Salud", salud);
+		data.put("Habitacion", habitacion);
 		
+		JSONObject activi = new JSONObject();
+		activi.accumulate("Lista Actividades", this.getListaActividades());
+		data.accumulate("Actividades", activi);
+//		String actividades = "[";
+//		for(int j = 0; j < this.listaactividades.size(); j++) {
+//			actividades += "\"" + this.getListaactividades().get(j) +  "\"";
+//			if(j!= this.listaactividades.size() - 1 ) {
+//				actividades += ",";
+//			}
+//		}
+//		actividades += "]";
+//		data.accumulate("listaActividades", new JSONArray(actividades));
 		
-		String actividades = "[";
-		for(int j = 0; j < this.listaactividades.size(); j++) {
-			actividades += "\"" + this.getListaactividades().get(j) +  "\"";
-			if(j!= this.listaactividades.size() - 1 ) {
-				actividades += ",";
-			}
+		if (pagado) {
+			data.put("Pagado", "Si");
 		}
-		actividades += "]";
-		data.accumulate("listaActividades", new JSONArray(actividades));
+		else {
+			data.put("Pagado", "No");
+		}
 		
-		String isPagado= "No";
-		if(pagado) {
-			isPagado= "Si";
-		}
-		data.put("pagado", isPagado);
 		acampado.put("data", data);
 		
 		return acampado;
 	}
+
+	
 }
 

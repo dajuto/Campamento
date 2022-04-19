@@ -26,7 +26,11 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 	}
 	
 	public void updateActividad() {
+<<<<<<< HEAD
 		this.listaActividad = SingletonDaoActividad.getInstance().leeTodo(this.factoriaTranserObjects);
+=======
+		this.listaActividad = SingletonDaoContabilidad.getInstance().leeTodo(this.factoriaTranserObjects);
+>>>>>>> ffd58eade2d4ee07e8ef67becd76040d00bf67a8
 	}
 	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
@@ -81,7 +85,11 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 
 	public void guardaActividad() {
 		
+<<<<<<< HEAD
       SingletonDaoActividad.getInstance().escribeTodo(listaActividad);
+=======
+      SingletonDaoContabilidad.getInstance().escribeTodo(listaActividad);
+>>>>>>> ffd58eade2d4ee07e8ef67becd76040d00bf67a8
 	}
 	
 	public boolean anadirActividad(int codigoActividad, String lug, String desc, String fecha) {
