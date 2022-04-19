@@ -102,12 +102,6 @@ public class ControllerEmpleado {
 
 	
 
-	
-
-	
-
-	
-
 
 	
 }
