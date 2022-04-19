@@ -3,7 +3,6 @@ package contabilidad.Presentacion;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import gestoria.Negocio.InstalacionesTableModel;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -18,6 +17,7 @@ import javax.swing.JTable;
 
 import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.Gastos;
+import contabilidad.Negocio.GastosTableModel;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
 
@@ -47,7 +47,7 @@ public class VistaVerGastos extends JFrame implements ContabilidadObserver{
 		labcrear.setBounds(25, 24, 330, 36);
 		getContentPane().add(labcrear);
 		
-		JPanel p2 = createViewPanel(new JTable(new InstalacionesTableModel()), "Gastos campamento");
+		JPanel p2 = createViewPanel(new JTable(new GastosTableModel()), "Gastos campamento");
 		p2.setBounds(35, 73, 416, 126);
 		getContentPane().add(p2);
 		
@@ -77,7 +77,7 @@ public class VistaVerGastos extends JFrame implements ContabilidadObserver{
 	}
 
 	@Override
-	public void onActualizar(List<Gastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
+	public void onActualizar(List<TGastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}		

@@ -82,7 +82,7 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 	}
 
 	@Override
-	public void onActualizar(List<Gastos> listaGastos, List<TIngresos> listaIngresos, String nombreUsuario) {
+	public void onActualizar(List<TGastos> listaGastos, List<TIngresos> listaIngresos, String nombreUsuario) {
 		this.update(nombreUsuario);
 		
 	}

@@ -21,7 +21,19 @@ public abstract class Gastos {
 		return fecha;
 	}
 
+	public int getImporte() {
+		return importe;
+	}
+	
+	public String getLoEs() {
+		return LoEs;
+	}
 
+	public String getNombre() {
+		return nombre;
+	}
+	
+	
 	public JSONObject report() {  //esto es como escribir en el JSON
 		JSONObject contabilidad = new JSONObject();
 		contabilidad.accumulate("type", "gastos");
