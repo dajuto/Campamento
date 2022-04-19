@@ -80,14 +80,7 @@ public class ControllerGestoria {
 		});
 	}
 	
-	public void mostrarModificarLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaModificarLimpiezaGestor(frame);
-			}
-		});
-	}
+	
 	
 	public void mostrarModificarInstalacion(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -176,7 +169,6 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().eliminarLimpieza(frame, codigo);
 	}
 	
-<<<<<<< HEAD
 	public void mostrarModificarLimpieza(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -184,10 +176,10 @@ public class ControllerGestoria {
 				new VistaModificarLimpiezaGestor(frame);
 			}
 		});
-=======
+	}
+
 	public void eliminarInstalacion(JFrame frame, String codigo) {
 		SingletonServiAppGestoria.getInstance().eliminarInstalacion(frame, codigo);
->>>>>>> 00ebea6f17e95d2456711977cd701e3d6b425329
 	}
 	
 	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
@@ -224,10 +216,8 @@ public class ControllerGestoria {
 	}
 	
 	public void addObserver(GestoriaObserver vista) {
-		SingletonServiAppGestoria.getInstance().addObserver(vista);
-<<<<<<< HEAD
-	}	
-=======
+		SingletonServiAppGestoria.getInstance().addObserver(vista);	
+
 	}
 
 	public List<TEmpleado> getListaEmpleados() {
@@ -238,31 +228,8 @@ public class ControllerGestoria {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
 	}
 
-	
 
-	
-
-	
 
 	
 
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-
-
->>>>>>> 00ebea6f17e95d2456711977cd701e3d6b425329
 }

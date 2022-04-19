@@ -158,22 +158,13 @@ private String salud = "Sano";
 				if (checkBox.isSelected()) {
 					salud = comboBox.getSelectedItem().toString();
 				}
-<<<<<<< HEAD
-				if (password.getText().length() < 7 ) {
-					if (!password.equals(password2)) {
-=======
 				if (password.getText().length() > 7 ) {
 					if (password.getText().equals(password2.getText())) {
->>>>>>> 00ebea6f17e95d2456711977cd701e3d6b425329
 						if (dni.getText().matches("[0-9]{7,8}[A-Za-z]")) {
 							if (email.getText().matches("[-\\w\\.]+@\\w+\\.\\w+")) {
 								if (edad.getText().matches("[0-9]*")) {
 									if (telefono.getText().matches("[0-9]*") && telefono.getText().length() == 9) {
-<<<<<<< HEAD
 										SingletonControllerAcampado.getInstance().crearAcampado(usuario.getText(), password.getText(), nombre.getText(), apellidos.getText(), dni.getText(), email.getText(), edad.getText(), telefono.getText(), salud, frame);
-=======
-										SingletonControllerAcampado.getInstance().crearAcampado(usuario.getText(), password.getText(), nombre.getText(), apellidos.getText(), dni.getText(), email.getText(), edad.getText(), telefono.getText(), salud, getFrame());
->>>>>>> 00ebea6f17e95d2456711977cd701e3d6b425329
 									}
 									else JOptionPane.showMessageDialog(atras, "Formato del telefono es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 								}
@@ -212,7 +203,9 @@ private String salud = "Sano";
 		getContentPane().add(telefono);
 		
 		setVisible(true);
+	
 	}
+		
 	private JFrame getFrame() {
 		return this;
 	}
