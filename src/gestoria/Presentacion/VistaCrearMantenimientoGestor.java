@@ -23,15 +23,14 @@ import javax.swing.DefaultComboBoxModel;
 
 public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
-	private String nombreUsuario;
-	private JTextField lugar_txt;
-	private JTextField fecha_txt;
-	private JTextField hora_txt;
-	private JTextField codigo_txt;
+	private JTextField descripcion;
+	private JTextField lugar;
+	private JTextField coste;
+	private JTextField codigo;
 	private JComboBox<String> empleado;
 	
 	public VistaCrearMantenimientoGestor(JFrame frame) {
-		setTitle("Crear averia nueva");
+		setTitle("Crear nueva averia");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -48,25 +47,25 @@ public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObs
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel labcrear = new JLabel("Crea nueva averia");
+		JLabel labcrear = new JLabel("Crea una nueva averia");
 		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		labcrear.setBounds(25, 14, 330, 36);
 		getContentPane().add(labcrear);
 		
-		JLabel lblLugar = new JLabel("Lugar:");
-		lblLugar.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblLugar.setBounds(25, 101, 69, 25);
-		getContentPane().add(lblLugar);
+		JLabel lbldescripcion = new JLabel("Descripcion:");
+		lbldescripcion.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbldescripcion.setBounds(25, 101, 97, 25);
+		getContentPane().add(lbldescripcion);
 		
-		JLabel lblFecha = new JLabel("Fecha:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFecha.setBounds(25, 137, 69, 25);
-		getContentPane().add(lblFecha);
+		JLabel lbllugar = new JLabel("Lugar:");
+		lbllugar.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lbllugar.setBounds(25, 137, 69, 25);
+		getContentPane().add(lbllugar);
 		
-		JLabel lblHora = new JLabel("Hora:");
-		lblHora.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblHora.setBounds(25, 175, 69, 25);
-		getContentPane().add(lblHora);
+		JLabel lblCoste = new JLabel("Coste:");
+		lblCoste.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblCoste.setBounds(25, 175, 69, 25);
+		getContentPane().add(lblCoste);
 		
 		JLabel lblEmplead = new JLabel("Emplead@:");
 		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 16));
@@ -76,39 +75,36 @@ public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObs
 		empleado = new JComboBox<String>();
 		empleado.setBounds(121, 217, 116, 22);
 		for(TEmpleado e: SingletonControllerGestoria.getInstance().getListaEmpleados()) {
-			if (e.getPuesto().matches("Empleado Limpieza")) {
+			if (e.getPuesto().matches("Empleado Mantenimiento")) {
 				empleado.addItem(e.getNombre());
 			}
 		}
 		getContentPane().add(empleado);
 		
-		lugar_txt = new JTextField();
-		lugar_txt.setBounds(121, 103, 116, 22);
-		getContentPane().add(lugar_txt);
-		lugar_txt.setColumns(10);
+		descripcion = new JTextField();
+		descripcion.setBounds(121, 103, 116, 22);
+		getContentPane().add(descripcion);
+		descripcion.setColumns(10);
 		
-		fecha_txt = new JTextField();
-		fecha_txt.setBounds(121, 139, 116, 22);
-		getContentPane().add(fecha_txt);
-		fecha_txt.setColumns(10);
+		lugar = new JTextField();
+		lugar.setBounds(121, 139, 116, 22);
+		getContentPane().add(lugar);
+		lugar.setColumns(10);
 		
-		hora_txt = new JTextField();
-		hora_txt.setBounds(121, 177, 116, 22);
-		getContentPane().add(hora_txt);
-		hora_txt.setColumns(10);
+		coste = new JTextField();
+		coste.setBounds(121, 177, 116, 22);
+		getContentPane().add(coste);
+		coste.setColumns(10);
 		
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
-						String empleadoString = (String) empleado.getSelectedItem();
-						SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleadoString, getFrame());
-					}
-					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
+				if (coste.getText().matches("[0-9]*")) {
+					SingletonControllerGestoria.getInstance().añadirMantenimiento(codigo.getText(), descripcion.getText(), lugar.getText(), coste.getText(), empleado.getSelectedItem().toString(), getFrame());
+					SingletonControllerGestoria.getInstance().modificarEmpleadoMantenimiento(empleado.getSelectedItem().toString(), codigo.getText());
 				}
-				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
-			}
+				else JOptionPane.showMessageDialog(atras, "El coste tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
+				}
 		});
 		boton_Crear.setBounds(269, 129, 97, 25);
 		getContentPane().add(boton_Crear);
@@ -118,10 +114,10 @@ public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObs
 		lblCodigo.setBounds(25, 63, 69, 25);
 		getContentPane().add(lblCodigo);
 		
-		codigo_txt = new JTextField();
-		codigo_txt.setColumns(10);
-		codigo_txt.setBounds(121, 65, 116, 22);
-		getContentPane().add(codigo_txt);
+		codigo = new JTextField();
+		codigo.setColumns(10);
+		codigo.setBounds(121, 65, 116, 22);
+		getContentPane().add(codigo);
 		
 		setVisible(true);
 	}
@@ -131,7 +127,6 @@ public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObs
 	}
 	
 	private void update(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
 	}
 
 	@Override

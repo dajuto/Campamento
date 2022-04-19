@@ -28,6 +28,7 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 	private JTextField lugar_txt;
 	private JTextField fecha_txt;
 	private JTextField hora_txt;
+	private String antiguoEmpleado;
 	private JComboBox<String> empleado;
 	private JComboBox<String> codigo;
 	List<TLimpieza> listaLimpieza;
@@ -79,6 +80,8 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 		
 		empleado = new JComboBox<String>();
 		empleado.setBounds(121, 217, 116, 22);
+		empleado.setSelectedItem(listaLimpieza.get(0).getEmpleadoEncargado());
+		antiguoEmpleado = listaLimpieza.get(0).getEmpleadoEncargado();
 		for(TEmpleado e: SingletonControllerGestoria.getInstance().getListaEmpleados()) {
 			if (e.getPuesto().matches("Empleado Limpieza")) {
 				empleado.addItem(e.getNombre());
@@ -111,6 +114,9 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
 						SingletonControllerGestoria.getInstance().modificarLimpieza(codigo.getSelectedItem().toString(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
 						SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(empleado.getSelectedItem().toString(), codigo.getSelectedItem().toString());
+						if (!antiguoEmpleado.matches(empleado.getSelectedItem().toString())) {
+							SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(antiguoEmpleado, codigo.getSelectedItem().toString());
+						}
 					}
 					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
 				}
@@ -137,6 +143,8 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 						lugar_txt.setText(cod.getLugar());
 						fecha_txt.setText(cod.getFecha());
 						hora_txt.setText(cod.getHora());
+						empleado.setSelectedItem(cod.getEmpleadoEncargado());
+						antiguoEmpleado = cod.getEmpleadoEncargado();
 					}
 				}
 			}
@@ -159,29 +167,26 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		this.listaLimpieza = listaLimpieza;
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
+		this.listaLimpieza = listaLimpieza;
 		
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		this.listaLimpieza = listaLimpieza;
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		this.listaLimpieza = listaLimpieza;
 	}
 	
 	

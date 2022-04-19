@@ -22,9 +22,9 @@ import javax.swing.JTable;
 
 public class VistaEliminarLimpiezaGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
-	private String nombreUsuario;
-	private JComboBox codElegido;
-	List<TLimpieza> listaLimpieza;
+	private JComboBox <String> codElegido;
+	List<TLimpieza> listaLimpieza =	SingletonControllerGestoria.getInstance().getListaLimpieza();
+;
 	
 	public VistaEliminarLimpiezaGestor(JFrame frame) {
 		setTitle("Eliminar horario limpieza");
@@ -54,15 +54,19 @@ public class VistaEliminarLimpiezaGestor extends JFrame implements GestoriaObser
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				atras.setVisible(true);
-				SingletonControllerGestoria.getInstance().eliminarLimpieza(frame, (String) codElegido.getSelectedItem());
+				for (TLimpieza l: listaLimpieza) {
+					if (l.getCodigo().equals(codElegido.getSelectedItem().toString())) {
+						SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(l.getEmpleadoEncargado(), codElegido.getSelectedItem().toString());
+					}
+				}
+				SingletonControllerGestoria.getInstance().eliminarLimpieza(frame, codElegido.getSelectedItem().toString());
 			}
 		});
 		boton_Eliminar.setBounds(25, 112, 97, 25);
 		getContentPane().add(boton_Eliminar);
 		
-		codElegido = new JComboBox();
+		codElegido = new JComboBox<String>();
 		codElegido.setBounds(25, 73, 239, 22);
-		listaLimpieza = SingletonControllerGestoria.getInstance().getListaLimpieza();
 		for(TLimpieza cod: this.listaLimpieza) {
 			codElegido.addItem(cod.getCodigo());
 		}
@@ -75,9 +79,6 @@ public class VistaEliminarLimpiezaGestor extends JFrame implements GestoriaObser
 		return this;
 	}
 	
-	private void update(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,

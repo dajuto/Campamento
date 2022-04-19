@@ -40,7 +40,7 @@
          "puesto": "Empleado Limpieza",
          "horario": 8,
          "salario": 1400,
-         "trabajo": {"listaLimpieza": ["13"]},
+         "trabajo": {"listaLimpieza": []},
          "vacaciones": "Navidades",
          "usuario": "pepe00",
          "contrasena": "12345678",
@@ -67,8 +67,8 @@
          "horario": 8,
          "salario": 1400,
          "trabajo": {"listaLimpieza": [
-            "12",
-            "13"
+            "13",
+            "1"
          ]},
          "vacaciones": "Navidades",
          "usuario": "ivan00",
@@ -80,14 +80,40 @@
    {
       "data": {
          "puesto": "Empleado Limpieza",
-         "horario": 8,
-         "salario": 1400,
-         "trabajo": {"listaLimpieza": []},
-         "vacaciones": "Navidades",
-         "usuario": "limp00",
+         "horario": 9,
+         "salario": 2000,
+         "trabajo": {"listaLimpieza": ["12"]},
+         "vacaciones": "Nunca",
+         "usuario": "almu00",
          "contrasena": "12345678",
-         "nombre": "Limpiezaaaa"
+         "nombre": "Almudena"
       },
       "type": "Empleado Limpieza"
+   },
+   {
+      "data": {
+         "puesto": "Empleado Mantenimiento",
+         "horario": 9,
+         "salario": 2000,
+         "trabajo": {"listaAverias": []},
+         "vacaciones": "Nunca",
+         "usuario": "Penelope",
+         "contrasena": "12345678",
+         "nombre": "Penelope Cruz"
+      },
+      "type": "Empleado Mantenimiento"
+   },
+   {
+      "data": {
+         "puesto": "Empleado Mantenimiento",
+         "horario": 8,
+         "salario": 3500,
+         "trabajo": {"listaAverias": []},
+         "vacaciones": "Todo el verano",
+         "usuario": "joaquin",
+         "contrasena": "12345678",
+         "nombre": "Joaquiiin"
+      },
+      "type": "Empleado Mantenimiento"
    }
 ]}

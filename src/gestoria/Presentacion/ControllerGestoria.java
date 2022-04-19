@@ -180,6 +180,23 @@ public class ControllerGestoria {
 		}
 	}
 	
+	public void añadirMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado,
+			JFrame frame) {
+		boolean existe = SingletonServiAppGestoria.getInstance().añadirMantenimiento(codigo, descripcion, lugar, coste, empleado);
+		if (existe) {
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					frame.setVisible(false);
+					new VistaMenuMantenimientoGestor(frame);
+				}
+			});
+		}
+		else {
+			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
+		}
+	}
+	
 	public void crearEmpleado(JFrame frame) {
 		SingletonControllerEmpleado.getInstance().resgistrar(frame);
 	}
@@ -247,6 +264,12 @@ public class ControllerGestoria {
 	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
 	}
+
+	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
+		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
+	}
+
+	
 
 	
 
