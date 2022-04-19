@@ -34,7 +34,7 @@ public class DaoAcampado {
 		try {
 			JSONObject object = new JSONObject();
 	        for(int i = 0; i < listaAcampados.size(); i++) {
-	            object.accumulate("empleados", listaAcampados.get(i).report());
+	            object.accumulate("acampados", listaAcampados.get(i).report());
 	        }
 			os.write(object.toString(3).getBytes());
 		} catch (JSONException e) {

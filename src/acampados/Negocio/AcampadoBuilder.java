@@ -44,7 +44,7 @@ public class AcampadoBuilder extends  Builder<Object> {
 //        
 //        }
 		
-		String pagado = data.getString("pagado");
+		String pagado = data.getString("Pagado");
 		boolean isPagado= false;
 		if(pagado.equals("Si")) {
 			isPagado= true;
