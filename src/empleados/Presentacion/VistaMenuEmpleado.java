@@ -32,7 +32,13 @@ public class VistaMenuEmpleado extends JFrame{
 		boton_Sanidad.setBounds(49, 111, 140, 36);
 		getContentPane().add(boton_Sanidad);
 		
-		JButton boton_contabilidad = new JButton("Contabilidad");
+		JButton boton_contabilidad = new JButton("Contabilidad");	
+		boton_contabilidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerEmpleado.getInstance().gestoria(getFrame());
+			}
+		});
 		boton_contabilidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		boton_contabilidad.setBounds(283, 111, 140, 36);
 		getContentPane().add(boton_contabilidad);
