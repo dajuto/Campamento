@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import contabilidad.Presentacion.SingletonControllerContabilidad;
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleado;
@@ -84,6 +85,9 @@ public class ControllerEmpleado {
 		SingletonControllerGestoria.getInstance().menuGestor(frame);
 	}
 
+	public void contabilidad(JFrame frame) {
+		SingletonControllerContabilidad.getInstance().menuContabilidad(frame);
+	}
 	
 	public void sanidad(JFrame frame) {
 		SingletonControllerSanidad.getInstance().menuSanidad(frame);
@@ -94,11 +98,15 @@ public class ControllerEmpleado {
 		SingletonServiAppEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
 	}
 	
-	
+	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
+		SingletonServiAppEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);
+	}
 	
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
 	}
+
+	
 
 	
 

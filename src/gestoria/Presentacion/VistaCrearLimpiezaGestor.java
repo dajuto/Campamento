@@ -8,6 +8,8 @@ import empleados.Negocio.TEmpleadoLimpieza;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
+import gestoria.Negocio.TMantenimiento;
+
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -100,8 +102,8 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 			public void actionPerformed(ActionEvent e) {
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
-						String empleadoString = (String) empleado.getSelectedItem();
-						SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleadoString, getFrame());
+						SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
+						SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(empleado.getSelectedItem().toString(), codigo_txt.getText());
 					}
 					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
 				}
@@ -134,28 +136,28 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
-			List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
+			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		
 	}

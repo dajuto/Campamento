@@ -6,7 +6,6 @@ import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.Gastos;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
-import gestoria.Presentacion.SingletonControllerGestoria;
 
 import java.awt.SystemColor;
 import javax.swing.JButton;
@@ -96,14 +95,14 @@ public class VistaMenuContabilidad extends JFrame implements ContabilidadObserve
 	}
 
 	@Override
-	public void onCreate(List<TGastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
+	public void onCreate(List<TGastos> listaGastos, List<TIngresos> listaIngresos, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		this.update(nombreUsuario);
 		
 	}
 
 	@Override
-	public void onActualizar(List<Gastos> listaLimpieza, List<TIngresos> listaIngresos,String nombreUsuario) {	
+	public void onActualizar(List<TGastos> listaGastos, List<TIngresos> listaIngresos,String nombreUsuario) {	
 			this.update(nombreUsuario);
 		
 	}

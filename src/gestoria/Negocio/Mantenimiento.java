@@ -6,65 +6,49 @@ import empleados.Negocio.Empleado;
 
 public abstract class Mantenimiento {
 	protected String codigo;
-	protected String nombre;
 	protected String descripcion;
 	protected String lugar;
-	protected TEmpleadoMantenimiento precio;
-	protected boolean reparado;
-
+	protected int coste;
+	protected String empleado;
+	protected String estado;
 	
 	public String getCodigo() {
 		return codigo;
 	}
 
-
-	public String getNombre() {
-		return nombre;
+	public String getDescripcion() {
+		return descripcion;
 	}
 
-
-	public int getSuperficie() {
-		return superficie;
+	public String getLugar() {
+		return lugar;
 	}
 
-
-	public int getPrecio() {
-		return precio;
+	public int getCoste() {
+		return coste;
+	}
+	
+	public String getEmpleado() {
+		return empleado;
 	}
 
-
-	public boolean isPuedeActividades() {
-		return puedeActividades;
+	public String getEstado() {
+		return estado;
 	}
-
-
-	public boolean isPagado() {
-		return pagado;
-	}
-
-
+	
 	public JSONObject report() {
-		JSONObject instalacion = new JSONObject();
+		JSONObject averia = new JSONObject();
 		JSONObject data = new JSONObject();
 		data.accumulate("Codigo", this.codigo);
-		data.accumulate("Nombre", this.nombre);
-		data.accumulate("Superficie", this.superficie);
-		data.accumulate("Precio", this.precio);
-		if (pagado) {
-			data.accumulate("Pagado", "Si");
-		}
-		else {
-			data.accumulate("Pagado", "No");
-		}
-		if (puedeActividades) {
-			data.accumulate("Actividades", "Si");
-		}
-		else {
-			data.accumulate("Actividades", "No");
-		}
-		instalacion.accumulate("data", data);
-		instalacion.accumulate("type", "instalacion");
+		data.accumulate("Descripcion", this.descripcion);
+		data.accumulate("Lugar", this.lugar);
+		data.accumulate("Coste", this.coste);
+		data.accumulate("Empleado", this.empleado);
+		data.accumulate("Estado", this.estado);
 		
-		return instalacion;
+		averia.accumulate("data", data);
+		averia.accumulate("type", "averia");
+		
+		return averia;
 	}
 }

@@ -18,7 +18,7 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 	private JFrame atras;
 	private String nombreUsuario;
 	public VistaIngresosContabilidad(JFrame frame) {
-		setTitle("Menú de Gastos");
+		setTitle("Menú de Ingresos");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -39,7 +39,7 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 		boton_Mostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//SingletonControllerGestoria.getInstance().mostrarLimpieza(getFrame());
+				SingletonControllerContabilidad.getInstance().mostrarIngresos(getFrame());
 			}
 		});
 		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -47,16 +47,16 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 		getContentPane().add(boton_Mostrar);
 		
 		
-		JButton boton_Modificar = new JButton("A\u00F1adir Ingreso");
-		boton_Modificar.addActionListener(new ActionListener() {
+		JButton boton_Añadir = new JButton("A\u00F1adir Ingreso");
+		boton_Añadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				//SingletonControllerGestoria.getInstance().mostrarModificarLimpieza(getFrame());
+				SingletonControllerContabilidad.getInstance().mostrarCrearIngreso(getFrame());
 			}
 		});
-		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Modificar.setBounds(284, 110, 145, 38);
-		getContentPane().add(boton_Modificar);
+		boton_Añadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Añadir.setBounds(284, 110, 145, 38);
+		getContentPane().add(boton_Añadir);
 		
 		setVisible(true);
 	}
@@ -77,12 +77,12 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 	}
 
 	@Override
-	public void onCreate(List<TGastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
+	public void onCreate(List<TGastos> listaGastos, List<TIngresos> listaIngresos, String nombreUsuario) {
 		this.update(nombreUsuario);	
 	}
 
 	@Override
-	public void onActualizar(List<Gastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
+	public void onActualizar(List<TGastos> listaGastos, List<TIngresos> listaIngresos, String nombreUsuario) {
 		this.update(nombreUsuario);
 		
 	}

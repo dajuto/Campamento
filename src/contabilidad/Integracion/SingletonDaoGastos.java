@@ -1,20 +1,20 @@
 package contabilidad.Integracion;
 
+
 import java.io.IOException;
 
-public class SingletonDaoContabilidad {
-	
-	private static DaoContabilidad INSTANCE = null;
+public class SingletonDaoGastos {
+    private static DaoGastos INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonDaoContabilidad(){}
+    private SingletonDaoGastos(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
             try {
-				INSTANCE = new DaoContabilidad();
+				INSTANCE = new DaoGastos();
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.out.println("El archivo no se ha encontrado");
@@ -22,7 +22,7 @@ public class SingletonDaoContabilidad {
         }
     }
 
-    public static DaoContabilidad getInstance() {
+    public static DaoGastos getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }

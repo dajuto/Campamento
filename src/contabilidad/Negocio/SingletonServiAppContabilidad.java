@@ -1,28 +1,19 @@
 package contabilidad.Negocio;
 
-
-import contabilidad.Presentacion.ControllerContabilidad;
->>>>>>> dc9ff1bf0eed17863b4fc8c4c14e9b1d793f2164
-=======
-import contabilidad.Presentacion.ControllerContabilidad;
-
-
 public class SingletonServiAppContabilidad {
 
-	private static ControllerContabilidad INSTANCE = null;
+	private static ServiAppContabilidad INSTANCE = null;
 
     // Private constructor suppresses 
     private SingletonServiAppContabilidad(){}
-
-    // creador sincronizado para protegerse de posibles problemas  multi-hilo
-    // otra prueba para evitar instanciación múltiple 
+ 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerContabilidad();
+            INSTANCE = new ServiAppContabilidad();
         }
     }
 
-    public static ControllerContabilidad getInstance() {
+    public static ServiAppContabilidad getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }
