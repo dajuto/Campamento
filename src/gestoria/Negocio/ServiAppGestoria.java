@@ -91,10 +91,10 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		return listaInstalaciones;
 	}
 	
-//	public List<TEmpleadoLimpieza> getListaEmpleadosLimpieza() {
-//		updateEmpleadosLimpieza();
-//		return listaEmpleadosLimpieza;
-//	}
+	public List<TMantenimiento> getListaMantenimiento() {
+		updateMantenimiento();
+		return listaAverias;
+	}
 
 	public void guardaLimpieza() {
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
@@ -245,6 +245,22 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		return true;
 	}
 
+	public void modificarMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado,
+			String estado) {
+		for (int i = 0; i < listaAverias.size(); i++) {
+			if (listaAverias.get(i).getCodigo().equals(codigo)) {
+				listaAverias.get(i).descripcion = descripcion;
+				listaAverias.get(i).lugar = lugar;
+				listaAverias.get(i).coste = Integer.parseInt(coste);
+				listaAverias.get(i).empleado = empleado;
+				listaAverias.get(i).estado = estado;
+				SingletonDaoMantenimiento.getInstance().escribeTodo(listaAverias);
+				this.updateMantenimiento();
+			}
+		}
+	}
+
+	
 	
 
 	

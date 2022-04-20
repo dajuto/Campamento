@@ -16,6 +16,7 @@ import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.SingletonServiAppGestoria;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
+import gestoria.Negocio.TMantenimiento;
 import launcher.Factory;
 
 public class ControllerGestoria {
@@ -99,6 +100,16 @@ public class ControllerGestoria {
 			}
 		});
 	}
+	
+	public void mostrarModificarMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarMantenimientoGestor(frame);
+			}
+		});
+	}
+
 	
 	public void mostrarEliminarLimpieza(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -242,6 +253,18 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void modificarMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado,
+			String estado, JFrame frame) {
+		SingletonServiAppGestoria.getInstance().modificarMantenimiento(codigo, descripcion, lugar, coste, empleado, estado);
+		frame.setVisible(false);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuMantenimientoGestor(frame);
+			}
+		});
+	}
+	
 	public List<TLimpieza> getListaLimpieza() {
 		List<TLimpieza> listaLimpieza = SingletonServiAppGestoria.getInstance().getListaLimpieza();
 		return listaLimpieza;
@@ -250,6 +273,11 @@ public class ControllerGestoria {
 	public List<TInstalacion> getListainstalaciones() {
 		List<TInstalacion> listaInstalaciones = SingletonServiAppGestoria.getInstance().getListaInstalaciones();
 		return listaInstalaciones;
+	}
+	
+	public List<TMantenimiento> getListaAverias() {
+		List<TMantenimiento> listaAverias = SingletonServiAppGestoria.getInstance().getListaMantenimiento();
+		return listaAverias;
 	}
 	
 	public void addObserver(GestoriaObserver vista) {
@@ -269,6 +297,11 @@ public class ControllerGestoria {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
 
+	
+
+	
+
+	
 	
 
 	

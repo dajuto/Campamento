@@ -51,7 +51,7 @@ public class VistaMenuMantenimientoGestor extends JFrame implements GestoriaObse
 		boton_Modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				SingletonControllerGestoria.getInstance().mostrarModificarInstalacion(getFrame());
+				SingletonControllerGestoria.getInstance().mostrarModificarMantenimiento(getFrame());
 			}
 		});
 		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));

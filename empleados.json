@@ -40,7 +40,7 @@
          "puesto": "Empleado Limpieza",
          "horario": 8,
          "salario": 1400,
-         "trabajo": {"listaLimpieza": []},
+         "trabajo": {"listaLimpieza": ["13"]},
          "vacaciones": "Navidades",
          "usuario": "pepe00",
          "contrasena": "12345678",
@@ -66,10 +66,7 @@
          "puesto": "Empleado Limpieza",
          "horario": 8,
          "salario": 1400,
-         "trabajo": {"listaLimpieza": [
-            "13",
-            "1"
-         ]},
+         "trabajo": {"listaLimpieza": ["1"]},
          "vacaciones": "Navidades",
          "usuario": "ivan00",
          "contrasena": "12345678",
@@ -95,7 +92,7 @@
          "puesto": "Empleado Mantenimiento",
          "horario": 9,
          "salario": 2000,
-         "trabajo": {"listaAverias": []},
+         "trabajo": {"listaAverias": ["1"]},
          "vacaciones": "Nunca",
          "usuario": "Penelope",
          "contrasena": "12345678",
@@ -108,7 +105,10 @@
          "puesto": "Empleado Mantenimiento",
          "horario": 8,
          "salario": 3500,
-         "trabajo": {"listaAverias": []},
+         "trabajo": {"listaAverias": [
+            "3",
+            "2"
+         ]},
          "vacaciones": "Todo el verano",
          "usuario": "joaquin",
          "contrasena": "12345678",
