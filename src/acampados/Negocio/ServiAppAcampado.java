@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import org.json.JSONObject;
 
@@ -84,7 +85,11 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		this.updateAcampados();
 		for(TAcampado te: this.listaAcampados) {
 			if(te.usuario.equals(usuario)) {
+				JOptionPane.showMessageDialog(frame, "El usuario especificado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
 				return false;
+			}
+			else if (te.nombre.equals(nombre)) {
+				JOptionPane.showMessageDialog(frame, "El nombre especificado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		
@@ -105,7 +110,7 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		data.accumulate("Habitacion", "123");
 		JSONObject actividades = new JSONObject();
 		data.accumulate("Actividades", actividades);
-		data.accumulate("pagado", "No");
+		data.accumulate("Pagado", "No");
 		
 		acampado.accumulate("data", data);
 		acampado.accumulate("type", "acampado");

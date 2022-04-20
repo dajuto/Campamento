@@ -63,10 +63,10 @@ public class ControllerAcampado {
 			frame.setVisible(false);
 			SingletonControllerAcampado.getInstance().menuAcampado(frame);
 		}
-		
-		else {
-			JOptionPane.showMessageDialog(frame, "Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);			
-		}
+	}
+
+	public void gestoria(JFrame frame) {
+		SingletonControllerGestoria.getInstance().menuAcampado(frame);
 	}
 	
 	

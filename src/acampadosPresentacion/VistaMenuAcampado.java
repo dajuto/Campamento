@@ -40,6 +40,7 @@ public class VistaMenuAcampado extends JFrame{
 		boton_Gestoria.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				SingletonControllerAcampado.getInstance().gestoria(getFrame());
 			}
 		});
 		boton_Gestoria.setFont(new Font("Tahoma", Font.PLAIN, 18));

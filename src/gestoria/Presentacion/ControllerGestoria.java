@@ -37,6 +37,15 @@ public class ControllerGestoria {
 			}
 		});
 	}
+	
+	public void menuAcampado(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuAcampado(frame);
+			}
+		});
+	}
 
 	public void menuLimpiezaGestor(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -308,6 +317,8 @@ public class ControllerGestoria {
 	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
+
+	
 
 	
 
