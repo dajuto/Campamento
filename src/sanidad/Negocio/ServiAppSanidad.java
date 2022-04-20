@@ -4,34 +4,40 @@ import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.JFrame;
+
 import org.json.JSONObject;
 
+import empleados.Negocio.TMedico;
+import gestoria.Integracion.SingletonDaoLimpieza;
+import gestoria.Negocio.TLimpieza;
 import launcher.Factory;
 import launcher.Observable;
-import subsistemaActividad.capaIntegracion.SingletonDaoActividad;
-import subsistemaMantenimiento.capaIntegraccion.SingletonDaoAveria;
-import subsistemaMantenimiento.capaNegocio.TAveria;
+import sanidad.Integracion.SingletonDaoSanidad;
+import sanidad.Presentacion.SingletonControllerSanidad;
+
 
 public class ServiAppSanidad implements Observable<SanidadObserver> {
 
 	private List<SanidadObserver> observers;
-	private List<TActividad> listaActividad;
+	private List<TReceta> listaRecetas;
+	private List<TMedico> listaMedicos;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
 	private char[] contrasenaUsuario;
 	
 	public ServiAppSanidad()  {
-		this.listaActividad = new ArrayList<TActividad>();
+		this.listaRecetas = new ArrayList<TReceta>();
+		this.listaMedicos=new ArrayList<TMedico>();
 		this.observers = new ArrayList<SanidadObserver>();
 	}
 	
-	public void updateActividad() {
-<<<<<<< HEAD
-		this.listaActividad = SingletonDaoActividad.getInstance().leeTodo(this.factoriaTranserObjects);
-=======
-		this.listaActividad = SingletonDaoContabilidad.getInstance().leeTodo(this.factoriaTranserObjects);
->>>>>>> ffd58eade2d4ee07e8ef67becd76040d00bf67a8
+	public void updateRecetas() {
+		this.listaRecetas = SingletonDaoSanidad.getInstance().leeTodo(this.factoriaTranserObjects);
+		
 	}
+	
+
 	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
@@ -43,32 +49,18 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 	}
 	
 	
-	/*public void mostrarListaAveriasEmpleado(String nombreEmpleado) {
-		this.updateActividad();
+	public void mostrarlistaMedicos(String nombreEmpleado) {
+		this.updateRecetas();
 		//crearia una tabla con esta lista
-	}
-*/
-	
-	void onCreateActividad() {
-		this.updateActividad();
-		for(SanidadObserver o: this.observers) {
-			o.onCreateActividad(this.listaActividad);
-		}
-	}
-	void onEliminarActividad() {
-		this.updateActividad();
-		for(SanidadObserver o: this.observers) {
-			o.onEliminarActividad(this.listaActividad);
-		}
 	}
 
 	@Override
 	public void addObserver(SanidadObserver o) {
 		this.observers.add(o);
-		this.updateActividad();
-		o.onRegister(listaActividad);
+		this.updateRecetas();
+		o.onRegister(listaRecetas,listaMedicos,nombreUsuario);
 	}
-
+	
 	@Override
 	public void removeObserver(SanidadObserver o) {
 		this.observers.remove(o);
@@ -78,63 +70,110 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 		return this.nombreUsuario;
 	}
 
-	public List<TActividad> getListaActividades() {
-		this.updateActividad();
-		return listaActividad;
-	}
-
-	public void guardaActividad() {
-		
-<<<<<<< HEAD
-      SingletonDaoActividad.getInstance().escribeTodo(listaActividad);
-=======
-      SingletonDaoContabilidad.getInstance().escribeTodo(listaActividad);
->>>>>>> ffd58eade2d4ee07e8ef67becd76040d00bf67a8
+	
+	//RECETAS
+	
+	public List<TReceta> getListaRecetas() {	
+		this.updateRecetas();
+		return listaRecetas;
 	}
 	
-	public boolean anadirActividad(int codigoActividad, String lug, String desc, String fecha) {
-		this.updateActividad();
+	public void guardaReceta() {
+        SingletonDaoSanidad.getInstance().escribeTodo(this.listaRecetas);
+	}
+
+	void onCrearReceta() {
+		this.updateRecetas();
+		for(SanidadObserver o: this.observers) {
+			o.onCrearReceta(this.listaRecetas,this.listaMedicos,this.nombreUsuario);
+		}
+	}
+	void onEliminarReceta() {
+		this.updateRecetas();
+		for(SanidadObserver o: this.observers) {
+			o.onEliminarReceta(this.listaRecetas,this.listaMedicos,this.nombreUsuario);
+		}
+	}
+
+	void onConsultarReceta() {
+		this.updateRecetas();
+		for(SanidadObserver o: this.observers) {
+			o.onConsultarReceta(this.listaRecetas,this.listaMedicos,this.nombreUsuario);
+		}
+	}
+
+	
+	public boolean añadirReceta(int codigo, String medicamento, String dosis, String Nombremedico, String NombreAcampado, String comprado ,JFrame frame) {
+		this.updateRecetas();
 		boolean puedo = true;
-		for(TActividad ta: this.listaActividad) {
-			if(ta.codigo == codigoActividad) {
-				puedo = false;
+		for(TReceta ta: this.listaRecetas) {
+			if(ta.codigo == (codigo)) {
+				puedo=false;
 			}
 		}
 		if(puedo) {
-			JSONObject actividad = new JSONObject();
-			
+			JSONObject receta = new JSONObject();
 			JSONObject data = new JSONObject();
-			data.accumulate("lugar", lug);
-			data.accumulate("codigo", codigoActividad);
-			data.accumulate("descripcion", desc);
-			data.accumulate("Fecha", fecha);
+			String c = Integer.toString(codigo);
+			data.accumulate("codigo", c);
+			data.accumulate("medicamento", medicamento);
+			data.accumulate("dosis", dosis);
+			data.accumulate("Nombremedico", Nombremedico);
+			data.accumulate("NombreAcampado", NombreAcampado);
+			data.accumulate("comprado", "Sin Adquirir");
 			
-			actividad.accumulate("data", data);
-			actividad.accumulate("type", "actividad");
+			receta.accumulate("data", data);
+			receta.accumulate("type", "receta");
 			
-			TActividad ta = (TActividad) this.factoriaTranserObjects.createInstance(actividad);
-			this.listaActividad.add(ta);
-			this.guardaActividad();
-		    this.onCreateActividad();
-		    return true;
-		}
-		else {
+			TReceta TReceta = (TReceta) this.factoriaTranserObjects.createInstance(receta);
+			//SingletonControllerSanidad.getInstance().mostrarEliminarReceta(frame);(this.listaAverias.get(i));
+			
+			this.listaRecetas.add(TReceta);
+			this.guardaReceta();
+			this.onCrearReceta();
+			
+			return true;
+		}else {
 			return false;
+		}
+		
+	}
+
+
+	public boolean eliminarReceta(JFrame ventanaListaRecetas, int codigo) {
+		boolean recetaCompradoPreviamente = true;
+		for(int i = 0; i < this.listaRecetas.size(); i++) {
+			if(this.listaRecetas.get(i).codigo == codigo) {
+				if(this.listaRecetas.get(i).comprado.equals("Adquirido")) {
+					//SingletonControllerSanidad.getInstance().mostrarEliminarReceta(frame);(this.listaAverias.get(i));
+					this.listaRecetas.remove(i);
+					this.guardaReceta();
+				    this.onEliminarReceta();
+				    i--;
+				}
+				else {
+					recetaCompradoPreviamente = false;
+				}
+			}
+		}
+
+		return recetaCompradoPreviamente;
+	}
+	
+	public void consultarCompraReceta(int codigo) {
+		for(TReceta ta: this.listaRecetas) {
+			if(ta.codigo == codigo) {
+				if(ta.comprado.equals("Sin Adquirir")) {
+					ta.comprado = "Adquirido";
+				}
+				else {
+					ta.comprado = "Sin Adquirir";
+				}
+				this.guardaReceta();
+			    this.onConsultarReceta();
+			}
 		}
 	}
 	
-	public boolean eliminarActividad(Frame ventanaListaActividad, int codigoActividad) {
-		boolean actividad = true;
-		for(int i = 0; i < this.listaActividad.size(); i++) {
-			if(this.listaActividad.get(i).getCodigo() == codigoActividad) {
-					this.listaActividad.remove(i);
-					this.guardaActividad();
-				    this.onEliminarActividad();
-				    i--;
-				}
-				
-		}
-		return actividad;
-	}
 	
 }
