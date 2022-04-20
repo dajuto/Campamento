@@ -24,10 +24,10 @@ import javax.swing.DefaultComboBoxModel;
 public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private JTextField descripcion;
-	private JTextField lugar;
 	private JTextField coste;
 	private JTextField codigo;
 	private JComboBox<String> empleado;
+	private JComboBox<String> lugar;
 	
 	public VistaCrearMantenimientoGestor(JFrame frame) {
 		setTitle("Crear nueva averia");
@@ -86,11 +86,6 @@ public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObs
 		getContentPane().add(descripcion);
 		descripcion.setColumns(10);
 		
-		lugar = new JTextField();
-		lugar.setBounds(121, 139, 116, 22);
-		getContentPane().add(lugar);
-		lugar.setColumns(10);
-		
 		coste = new JTextField();
 		coste.setBounds(121, 177, 116, 22);
 		getContentPane().add(coste);
@@ -100,7 +95,7 @@ public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObs
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (coste.getText().matches("[0-9]*")) {
-					SingletonControllerGestoria.getInstance().añadirMantenimiento(codigo.getText(), descripcion.getText(), lugar.getText(), coste.getText(), empleado.getSelectedItem().toString(), getFrame());
+					SingletonControllerGestoria.getInstance().añadirMantenimiento(codigo.getText(), descripcion.getText(), lugar.getSelectedItem().toString(), coste.getText(), empleado.getSelectedItem().toString(), getFrame());
 					SingletonControllerGestoria.getInstance().modificarEmpleadoMantenimiento(empleado.getSelectedItem().toString(), codigo.getText());
 				}
 				else JOptionPane.showMessageDialog(atras, "El coste tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
@@ -118,6 +113,13 @@ public class VistaCrearMantenimientoGestor extends JFrame implements GestoriaObs
 		codigo.setColumns(10);
 		codigo.setBounds(121, 65, 116, 22);
 		getContentPane().add(codigo);
+		
+		lugar = new JComboBox<String>();
+		lugar.setBounds(121, 139, 116, 22);
+		for(TInstalacion i: SingletonControllerGestoria.getInstance().getListaInstalaciones()) {
+			lugar.addItem(i.getNombre());
+		}
+		getContentPane().add(lugar);
 		
 		setVisible(true);
 	}

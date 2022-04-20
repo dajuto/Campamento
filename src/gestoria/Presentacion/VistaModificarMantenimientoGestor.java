@@ -26,12 +26,12 @@ public class VistaModificarMantenimientoGestor extends JFrame implements Gestori
 	private JFrame atras;
 	private String nombreUsuario;
 	private JTextField descripcion;
-	private JTextField lugar;
 	private JTextField coste;
 	private String antiguoEmpleado;
 	private JComboBox<String> empleado;
 	private JComboBox<String> codigo;
 	private JComboBox<String> estado;
+	private JComboBox<String> lugar;
 	private String costeString;
 	List<TMantenimiento> listaAverias;
 	
@@ -97,12 +97,6 @@ public class VistaModificarMantenimientoGestor extends JFrame implements Gestori
 		getContentPane().add(descripcion);
 		descripcion.setColumns(10);
 		
-		lugar = new JTextField();
-		lugar.setBounds(121, 139, 116, 22);
-		lugar.setText(listaAverias.get(0).getLugar());
-		getContentPane().add(lugar);
-		lugar.setColumns(10);
-		
 		coste = new JTextField();
 		coste.setBounds(121, 177, 116, 22);
 		costeString = Integer.toString(listaAverias.get(0).getCoste());
@@ -114,7 +108,7 @@ public class VistaModificarMantenimientoGestor extends JFrame implements Gestori
 		boton_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (coste.getText().matches("[0-9]*")) {
-					SingletonControllerGestoria.getInstance().modificarMantenimiento(codigo.getSelectedItem().toString(), descripcion.getText(), lugar.getText(), coste.getText(), empleado.getSelectedItem().toString(), estado.getSelectedItem().toString(), getFrame());
+					SingletonControllerGestoria.getInstance().modificarMantenimiento(codigo.getSelectedItem().toString(), descripcion.getText(), lugar.getSelectedItem().toString(), coste.getText(), empleado.getSelectedItem().toString(), estado.getSelectedItem().toString(), getFrame());
 					SingletonControllerGestoria.getInstance().modificarEmpleadoMantenimiento(empleado.getSelectedItem().toString(), codigo.getSelectedItem().toString());
 					if (!antiguoEmpleado.matches(empleado.getSelectedItem().toString())) {
 						SingletonControllerGestoria.getInstance().modificarEmpleadoMantenimiento(antiguoEmpleado, codigo.getSelectedItem().toString());
@@ -141,9 +135,9 @@ public class VistaModificarMantenimientoGestor extends JFrame implements Gestori
 				for(TMantenimiento cod: listaAverias) {
 					if (cod.getCodigo().equals(codigo.getSelectedItem().toString())) {
 						descripcion.setText(cod.getDescripcion());
-						lugar.setText(cod.getLugar());
 						costeString = Integer.toString(cod.getCoste());
 						coste.setText(costeString);
+						lugar.setSelectedItem(cod.getLugar());
 						empleado.setSelectedItem(cod.getEmpleado());
 						estado.setSelectedItem(cod.getEstado());
 						antiguoEmpleado = cod.getEmpleado();
@@ -163,6 +157,14 @@ public class VistaModificarMantenimientoGestor extends JFrame implements Gestori
 		estado.setBounds(121, 256, 116, 22);
 		estado.setSelectedItem(listaAverias.get(0).getEstado());
 		getContentPane().add(estado);
+		
+		lugar = new JComboBox<String>();
+		lugar.setBounds(121, 139, 116, 22);
+		for(TInstalacion i: SingletonControllerGestoria.getInstance().getListaInstalaciones()) {
+			lugar.addItem(i.getNombre());
+		}
+		lugar.setSelectedItem(listaAverias.get(0).getLugar());
+		getContentPane().add(lugar);
 		
 		setVisible(true);
 	}

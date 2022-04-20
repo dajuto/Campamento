@@ -291,7 +291,7 @@ public class ControllerGestoria {
 		return listaLimpieza;
 	}
 	
-	public List<TInstalacion> getListainstalaciones() {
+	public List<TInstalacion> getListaInstalaciones() {
 		List<TInstalacion> listaInstalaciones = SingletonServiAppGestoria.getInstance().getListaInstalaciones();
 		return listaInstalaciones;
 	}

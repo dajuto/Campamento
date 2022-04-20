@@ -25,12 +25,12 @@ import javax.swing.DefaultComboBoxModel;
 public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	private JTextField lugar_txt;
 	private JTextField fecha_txt;
 	private JTextField hora_txt;
 	private String antiguoEmpleado;
 	private JComboBox<String> empleado;
 	private JComboBox<String> codigo;
+	private JComboBox<String> lugar;
 	List<TLimpieza> listaLimpieza;
 	
 	public VistaModificarLimpiezaGestor(JFrame frame) {
@@ -89,12 +89,6 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 		empleado.setSelectedItem(listaLimpieza.get(0).getEmpleadoEncargado());
 		getContentPane().add(empleado);
 		
-		lugar_txt = new JTextField();
-		lugar_txt.setBounds(121, 103, 116, 22);
-		lugar_txt.setText(listaLimpieza.get(0).getLugar());
-		getContentPane().add(lugar_txt);
-		lugar_txt.setColumns(10);
-		
 		fecha_txt = new JTextField();
 		fecha_txt.setBounds(121, 139, 116, 22);
 		fecha_txt.setText(listaLimpieza.get(0).getFecha());
@@ -112,7 +106,7 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 			public void actionPerformed(ActionEvent e) {
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
-						SingletonControllerGestoria.getInstance().modificarLimpieza(codigo.getSelectedItem().toString(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
+						SingletonControllerGestoria.getInstance().modificarLimpieza(codigo.getSelectedItem().toString(), lugar.getSelectedItem().toString(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
 						SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(empleado.getSelectedItem().toString(), codigo.getSelectedItem().toString());
 						if (!antiguoEmpleado.matches(empleado.getSelectedItem().toString())) {
 							SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(antiguoEmpleado, codigo.getSelectedItem().toString());
@@ -140,9 +134,9 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 			public void actionPerformed(ActionEvent e) {
 				for(TLimpieza cod: listaLimpieza) {
 					if (cod.getCodigo().equals(codigo.getSelectedItem().toString())) {
-						lugar_txt.setText(cod.getLugar());
 						fecha_txt.setText(cod.getFecha());
 						hora_txt.setText(cod.getHora());
+						lugar.setSelectedItem(cod.getLugar());
 						empleado.setSelectedItem(cod.getEmpleadoEncargado());
 						antiguoEmpleado = cod.getEmpleadoEncargado();
 					}
@@ -151,18 +145,20 @@ public class VistaModificarLimpiezaGestor extends JFrame implements GestoriaObse
 		});
 		getContentPane().add(codigo);
 		
+		lugar = new JComboBox<String>();
+		lugar.setBounds(121, 103, 116, 22);
+		for(TInstalacion i: SingletonControllerGestoria.getInstance().getListaInstalaciones()) {
+			lugar.addItem(i.getNombre());
+		}
+		lugar.setSelectedItem(listaLimpieza.get(0).getLugar());
+		getContentPane().add(lugar);
+		
 		setVisible(true);
 	}
 	
 	private JFrame getFrame() {
 		return this;
 	}
-	
-	private void update(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
-	
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,

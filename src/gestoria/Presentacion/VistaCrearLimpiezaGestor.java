@@ -24,11 +24,11 @@ import javax.swing.DefaultComboBoxModel;
 public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	private JTextField lugar_txt;
 	private JTextField fecha_txt;
 	private JTextField hora_txt;
 	private JTextField codigo_txt;
 	private JComboBox<String> empleado;
+	private JComboBox<String> lugar;
 	
 	public VistaCrearLimpiezaGestor(JFrame frame) {
 		setTitle("Crear horario de Limpieza");
@@ -82,11 +82,6 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 		}
 		getContentPane().add(empleado);
 		
-		lugar_txt = new JTextField();
-		lugar_txt.setBounds(121, 103, 116, 22);
-		getContentPane().add(lugar_txt);
-		lugar_txt.setColumns(10);
-		
 		fecha_txt = new JTextField();
 		fecha_txt.setBounds(121, 139, 116, 22);
 		getContentPane().add(fecha_txt);
@@ -102,7 +97,7 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 			public void actionPerformed(ActionEvent e) {
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
-						SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
+						SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar.getSelectedItem().toString(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
 						SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(empleado.getSelectedItem().toString(), codigo_txt.getText());
 					}
 					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
@@ -122,6 +117,13 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 		codigo_txt.setColumns(10);
 		codigo_txt.setBounds(121, 65, 116, 22);
 		getContentPane().add(codigo_txt);
+		
+		lugar = new JComboBox<String>();
+		lugar.setBounds(121, 103, 116, 22);
+		for(TInstalacion i: SingletonControllerGestoria.getInstance().getListaInstalaciones()) {
+			lugar.addItem(i.getNombre());
+		}
+		getContentPane().add(lugar);
 		
 		setVisible(true);
 	}

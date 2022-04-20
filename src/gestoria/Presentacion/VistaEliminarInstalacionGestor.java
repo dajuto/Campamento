@@ -22,8 +22,7 @@ import javax.swing.JTable;
 
 public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
-	private String nombreUsuario;
-	private JComboBox codElegido;
+	private JComboBox<String> codElegido;
 	List<TInstalacion> listainstalaciones;
 	
 	public VistaEliminarInstalacionGestor(JFrame frame) {
@@ -60,9 +59,9 @@ public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaOb
 		boton_Eliminar.setBounds(25, 112, 97, 25);
 		getContentPane().add(boton_Eliminar);
 		
-		codElegido = new JComboBox();
+		codElegido = new JComboBox<String>();
 		codElegido.setBounds(25, 73, 239, 22);
-		listainstalaciones = SingletonControllerGestoria.getInstance().getListainstalaciones();
+		listainstalaciones = SingletonControllerGestoria.getInstance().getListaInstalaciones();
 		for(TInstalacion cod: this.listainstalaciones) {
 			codElegido.addItem(cod.getCodigo());
 		}
@@ -75,10 +74,6 @@ public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaOb
 		return this;
 	}
 	
-	private void update(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
