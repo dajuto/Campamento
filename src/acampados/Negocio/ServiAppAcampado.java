@@ -8,6 +8,7 @@ import javax.swing.JFrame;
 import org.json.JSONObject;
 
 import acampados.Integracion.SingletonDaoAcampado;
+import empleados.Negocio.TEmpleado;
 import launcher.Factory;
 import launcher.Observable;
 
@@ -58,6 +59,16 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		for(AcampadoObserver o: this.observers) {
 			o.onModificarAcampado(this.listaAcampados);
 		}
+	}
+	
+	public TAcampado getAcampado(String usuarioAcampado) {
+		this.updateAcampados();
+		for(TAcampado e: this.listaAcampados) {
+			if(e.usuario.equals(usuarioAcampado)) {
+				return e;
+			}
+		}
+		return null;
 	}
 	
 	public boolean existeAcampado(String usuario, String password) {
