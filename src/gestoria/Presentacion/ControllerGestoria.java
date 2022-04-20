@@ -92,6 +92,15 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void mostrarModificarLimpieza(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarLimpiezaGestor(frame);
+			}
+		});
+	}
+	
 	public void mostrarModificarInstalacion(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -129,6 +138,14 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void mostrarEliminarMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEliminarMantenimientoGestor(frame);
+			}
+		});
+	}
 	
 	public void mostrarCrearLimpieza(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -216,18 +233,13 @@ public class ControllerGestoria {
 	public void eliminarLimpieza(JFrame frame, String codigo) {
 		SingletonServiAppGestoria.getInstance().eliminarLimpieza(frame, codigo);
 	}
-	
-	public void mostrarModificarLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaModificarLimpiezaGestor(frame);
-			}
-		});
-	}
 
 	public void eliminarInstalacion(JFrame frame, String codigo) {
 		SingletonServiAppGestoria.getInstance().eliminarInstalacion(frame, codigo);
+	}
+	
+	public void eliminarMantenimiento(JFrame frame, String codigo) {
+		SingletonServiAppGestoria.getInstance().eliminarMantenimiento(frame, codigo);
 	}
 	
 	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
@@ -296,6 +308,10 @@ public class ControllerGestoria {
 	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
+
+	
+
+	
 
 	
 

@@ -244,6 +244,16 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		
 		return true;
 	}
+	
+	public void eliminarMantenimiento(JFrame frame, String codigo) {
+		for (int i = 0; i < listaAverias.size(); i++) {
+			if (listaAverias.get(i).getCodigo().equals(codigo)) {
+				listaAverias.remove(i);
+				SingletonDaoMantenimiento.getInstance().escribeTodo(listaAverias);
+				this.updateMantenimiento();
+			}
+		}
+	}
 
 	public void modificarMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado,
 			String estado) {
@@ -259,6 +269,8 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 			}
 		}
 	}
+
+	
 
 	
 	
