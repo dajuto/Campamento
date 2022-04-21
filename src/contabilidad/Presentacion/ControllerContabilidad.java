@@ -15,6 +15,7 @@ import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.SingletonServiAppGestoria;
+import gestoria.Negocio.TLimpieza;
 import launcher.Factory;
 
 public class ControllerContabilidad {
@@ -92,8 +93,8 @@ public class ControllerContabilidad {
 	}
 	
 	//ADRIANA
-	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
-		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, frame);
+	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, "", frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
@@ -143,7 +144,7 @@ public class ControllerContabilidad {
 	public List<TEmpleado> getListaEmpleados() {
 		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
 	}
-	
+
 
 }
 
