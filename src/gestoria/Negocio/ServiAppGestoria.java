@@ -108,7 +108,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		SingletonDaoMantenimiento.getInstance().escribeTodo(this.listaAverias);
 	}
 	
-	public boolean añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
+	public boolean añadirLimpieza(String codigo, String lugar, String dia, String hora, String empleado, JFrame frame) {
 		this.updateLimpieza();
 		for(TLimpieza ta: this.listaLimpieza) {
 			if(ta.codigo.equals(codigo)) {
@@ -119,7 +119,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		JSONObject data = new JSONObject();
 		data.accumulate("Codigo", codigo);
 		data.accumulate("Lugar", lugar);
-		data.accumulate("Fecha", fecha);
+		data.accumulate("Dia", dia);
 		data.accumulate("Hora", hora);
 		data.accumulate("Empleado", empleado);
 		
@@ -150,7 +150,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 			if (listaLimpieza.get(i).getCodigo().equals(codigo)) {
 				listaLimpieza.get(i).codigo = codigo;
 				listaLimpieza.get(i).lugar = lugar;
-				listaLimpieza.get(i).fecha = fecha;
+				listaLimpieza.get(i).dia = fecha;
 				listaLimpieza.get(i).hora = hora;
 				listaLimpieza.get(i).empleadoEncargado = empleado;
 				SingletonDaoLimpieza.getInstance().escribeTodo(listaLimpieza);
