@@ -3,6 +3,7 @@ package gestoria.Presentacion;
 import javax.swing.JFrame;
 
 import empleados.Negocio.TEmpleadoLimpieza;
+import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
@@ -19,22 +20,20 @@ import java.awt.Color;
 
 public class VistaMenuGestor extends JFrame implements GestoriaObserver{
 	private static final long serialVersionUID = 1L;
-	private JFrame atras;
 	private String nombreUsuario;
 	
-	public VistaMenuGestor(JFrame frame) {
+	public VistaMenuGestor() {
 		setTitle("Menu de gestoria");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		
-		this.atras = frame;
 		
 		JButton boton_Atras = new JButton("Atras");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				atras.setVisible(true);
+				SingletonControllerEmpleado.getInstance().menuEmpleado();
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);

@@ -29,11 +29,20 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().registrarFactoria(objetosFactory);
 	}
 
-	public void menuGestor(JFrame frame) {
+	public void menuGestor() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuGestor(frame);
+				new VistaMenuGestor();
+			}
+		});
+	}
+	
+	public void menuAcampado(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuAcampado(frame);
 			}
 		});
 	}
@@ -282,7 +291,7 @@ public class ControllerGestoria {
 		return listaLimpieza;
 	}
 	
-	public List<TInstalacion> getListainstalaciones() {
+	public List<TInstalacion> getListaInstalaciones() {
 		List<TInstalacion> listaInstalaciones = SingletonServiAppGestoria.getInstance().getListaInstalaciones();
 		return listaInstalaciones;
 	}
@@ -308,6 +317,8 @@ public class ControllerGestoria {
 	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
+
+	
 
 	
 

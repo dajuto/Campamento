@@ -23,12 +23,11 @@ import javax.swing.DefaultComboBoxModel;
 
 public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
-	private String nombreUsuario;
-	private JTextField lugar_txt;
-	private JTextField fecha_txt;
-	private JTextField hora_txt;
-	private JTextField codigo_txt;
+	private JComboBox<String> dia;
+	private JTextField hora;
+	private JTextField codigo;
 	private JComboBox<String> empleado;
+	private JComboBox<String> lugar;
 	
 	public VistaCrearLimpiezaGestor(JFrame frame) {
 		setTitle("Crear horario de Limpieza");
@@ -82,32 +81,29 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 		}
 		getContentPane().add(empleado);
 		
-		lugar_txt = new JTextField();
-		lugar_txt.setBounds(121, 103, 116, 22);
-		getContentPane().add(lugar_txt);
-		lugar_txt.setColumns(10);
+		dia = new JComboBox<String>();
+		dia.setBounds(121, 139, 116, 22);
+		dia.addItem("Lunes");
+		dia.addItem("Martes");
+		dia.addItem("Miercoles");
+		dia.addItem("Jueves");
+		dia.addItem("Viernes");
+		dia.addItem("Sabado");
+		getContentPane().add(dia);
 		
-		fecha_txt = new JTextField();
-		fecha_txt.setBounds(121, 139, 116, 22);
-		getContentPane().add(fecha_txt);
-		fecha_txt.setColumns(10);
-		
-		hora_txt = new JTextField();
-		hora_txt.setBounds(121, 177, 116, 22);
-		getContentPane().add(hora_txt);
-		hora_txt.setColumns(10);
+		hora = new JTextField();
+		hora.setBounds(121, 177, 116, 22);
+		getContentPane().add(hora);
+		hora.setColumns(10);
 		
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-					if (hora_txt.getText().matches("\\d{2}:\\d{2}")) {
-						SingletonControllerGestoria.getInstance().añadirLimpieza(codigo_txt.getText(), lugar_txt.getText(), fecha_txt.getText(), hora_txt.getText(), empleado.getSelectedItem().toString(), getFrame());
-						SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(empleado.getSelectedItem().toString(), codigo_txt.getText());
-					}
-					else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
+			public void actionPerformed(ActionEvent e) {	
+				if (hora.getText().matches("\\d{2}:\\d{2}")) {
+					SingletonControllerGestoria.getInstance().añadirLimpieza(codigo.getText(), lugar.getSelectedItem().toString(), dia.getSelectedItem().toString(), hora.getText(), empleado.getSelectedItem().toString(), getFrame());
+					SingletonControllerGestoria.getInstance().modificarEmpleadoLimpieza(empleado.getSelectedItem().toString(), codigo.getText());
 				}
-				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
+				else JOptionPane.showMessageDialog(atras, "Formato de la hora incorrecto \n HH:MM", "Error", JOptionPane.ERROR_MESSAGE);			
 			}
 		});
 		boton_Crear.setBounds(269, 129, 97, 25);
@@ -118,10 +114,17 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 		lblCodigo.setBounds(25, 63, 69, 25);
 		getContentPane().add(lblCodigo);
 		
-		codigo_txt = new JTextField();
-		codigo_txt.setColumns(10);
-		codigo_txt.setBounds(121, 65, 116, 22);
-		getContentPane().add(codigo_txt);
+		codigo = new JTextField();
+		codigo.setColumns(10);
+		codigo.setBounds(121, 65, 116, 22);
+		getContentPane().add(codigo);
+		
+		lugar = new JComboBox<String>();
+		lugar.setBounds(121, 103, 116, 22);
+		for(TInstalacion i: SingletonControllerGestoria.getInstance().getListaInstalaciones()) {
+			lugar.addItem(i.getNombre());
+		}
+		getContentPane().add(lugar);
 		
 		setVisible(true);
 	}
@@ -130,10 +133,6 @@ public class VistaCrearLimpiezaGestor extends JFrame implements GestoriaObserver
 		return this;
 	}
 	
-	private void update(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {

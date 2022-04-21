@@ -35,12 +35,12 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 	List<TInstalacion> listaInstalaciones;
 	
 	public VistaModificarInstalacionGestor(JFrame frame) {
-		setTitle("Modificar horario de Limpieza");
+		setTitle("Modificar instalacion");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,350);
 		
-		listaInstalaciones = SingletonControllerGestoria.getInstance().getListainstalaciones();
+		listaInstalaciones = SingletonControllerGestoria.getInstance().getListaInstalaciones();
 		
 		
 		this.atras = frame;
@@ -55,7 +55,7 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 		boton_Atras.setBounds(373, 265, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel labmodificar = new JLabel("Modificar horario de limpieza");
+		JLabel labmodificar = new JLabel("Modificar instalacion");
 		labmodificar.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		labmodificar.setBounds(25, 14, 341, 36);
 		getContentPane().add(labmodificar);
@@ -101,7 +101,7 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 				if (superficie.getText().matches("[0-9]*")) {
 					if (precio.getText().matches("[0-9]*")) {
 						if (pagado.isSelected()) {
-							//TODO ADRI aqui tendria que pagar
+							//TODO ADRI aqui tendria que pagar la instalacion
 						}
 						SingletonControllerGestoria.getInstance().modificarInstalacion(codigo.getSelectedItem().toString(), nombre.getText(), superficie.getText(), precio.getText(), pagado.isSelected(), actividades.isSelected(), getFrame());
 					}

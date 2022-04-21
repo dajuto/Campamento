@@ -1,0 +1,42 @@
+{"gastos": [
+   {
+      "data": {
+         "Fecha de pago": "11/01/2022",
+         "Tipo": "Publicidad",
+         "Empleado": "",
+         "Importe": 650,
+         "Concepto": "Campaña de marketing"
+      },
+      "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "15/02/2022",
+         "Tipo": "Sueldos y Salarios",
+         "Empleado": "inesita",
+         "Importe": 550,
+         "Concepto": "Nómina empleado"
+      },
+      "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "21/04/2022",
+         "Tipo": "Publicidad",
+         "Empleado": "",
+         "Importe": 100,
+         "Concepto": "Instagram"
+      },
+      "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "12/04/2022",
+         "Tipo": "Publicidad",
+         "Empleado": "",
+         "Importe": 200,
+         "Concepto": "Anuncio"
+      },
+      "type": "gastos"
+   }
+]}

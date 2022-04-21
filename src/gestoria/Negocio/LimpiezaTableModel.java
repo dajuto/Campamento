@@ -12,7 +12,7 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 	private static final long serialVersionUID = 1L;
 	
 		private List<TLimpieza> list;
-		private String[] columnNames = {"Codigo", "Lugar", "Fecha","Hora", "Empleado"};
+		private String[] columnNames = {"Codigo", "Lugar", "Dia","Hora", "Empleado"};
 		
 		public LimpiezaTableModel() {
 			list = new ArrayList<TLimpieza>();
@@ -39,7 +39,7 @@ public class LimpiezaTableModel extends AbstractTableModel implements GestoriaOb
 			switch(columnIndex) {
 			case 0: return list.get(rowIndex).getCodigo();
 			case 1:	return list.get(rowIndex).getLugar();
-			case 2: return list.get(rowIndex).getFecha();
+			case 2: return list.get(rowIndex).getDia();
 			case 3: return list.get(rowIndex).getHora();
 			case 4: return list.get(rowIndex).getEmpleadoEncargado();
 			default: return null;

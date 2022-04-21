@@ -71,18 +71,14 @@ public class ControllerEmpleado {
 		exito = SingletonServiAppEmpleado.getInstance().anadirEmpleado(usuario, contrasena, nombre, puesto);
 		if (exito) {
 			frame.setVisible(false);
-			SingletonControllerGestoria.getInstance().menuGestor(frame);
-		}
-		
-		else {
-			JOptionPane.showMessageDialog(frame, "Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);			
+			SingletonControllerGestoria.getInstance().menuGestor();
 		}
 	}
 
 	
 	
 	public void gestoria(JFrame frame) {
-		SingletonControllerGestoria.getInstance().menuGestor(frame);
+		SingletonControllerGestoria.getInstance().menuGestor();
 	}
 
 	public void contabilidad(JFrame frame) {

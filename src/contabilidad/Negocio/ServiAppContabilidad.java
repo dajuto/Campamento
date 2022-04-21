@@ -11,13 +11,6 @@ import org.json.JSONObject;
 
 import contabilidad.Integracion.SingletonDaoGastos;
 import contabilidad.Integracion.SingletonDaoIngresos;
-import gestoria.Integracion.SingletonDaoLimpieza;
-import gestoria.Negocio.GestoriaObserver;
-import gestoria.Negocio.TInstalacion;
-import gestoria.Negocio.TLimpieza;
-
-
-import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import launcher.Observable;
 
@@ -45,11 +38,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.contrasenaUsuario = password;
 	}
 
-	public void mostrarListaLimpiezaEmpleado(String nombreEmpleado) {
-		this.updateLimpieza();
-	}
-
-
 	@Override
 	public void addObserver(ContabilidadObserver o) {  //por ejemplo se usa en GastosTableModel e ingresosTableModel
 		this.observers.add(o);
@@ -75,6 +63,10 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		return listaGastos;
 	}
 
+	public List<TIngresos> getListaIngresos() {
+		this.updateIngresos();
+		return listaIngresos;
+	}
 	
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
@@ -112,25 +104,29 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	
 	// ++++++++++++++INGRESOS ++++++++++++
 	public void updateIngresos() {
-		this.listaGastos = SingletonDaoIngresos.getInstance().leeTodo(this.factoriaTranserObjects);
+		this.listaIngresos = SingletonDaoIngresos.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
 	public void guardaIngresos() {
         SingletonDaoIngresos.getInstance().escribeTodo(this.listaIngresos);
 	}	
 	
-    public boolean añadirIngreso(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
+    public boolean añadirIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcampado, String dniAcampado, boolean contabilizada,  JFrame frame) {
 		
-		this.updateGastos();
+		this.updateIngresos();
 		
 		JSONObject ingresos = new JSONObject();
 		JSONObject data = new JSONObject();
 		data.accumulate("Tipo", cuenta);
 		data.accumulate("Concepto", concepto);
 		data.accumulate("Importe", importe);
-		data.accumulate("Fecha de pago", fecha);
-		data.accumulate("Empleado", empleado);
-		
+		data.accumulate("Fecha contable", fecha);
+		JSONObject acampado = new JSONObject();
+		acampado.accumulate("Nombre", nombreAcampado);
+		acampado.accumulate("DNI", dniAcampado); 
+		data.accumulate("Acampado", acampado);
+		data.accumulate("Contabilizada", "No");
+	
 		ingresos.accumulate("data", data);
 		ingresos.accumulate("type", "ingresos");
 		
@@ -143,10 +139,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		return true;
 	}
 
-	@Override
-	public void removeObserver(ContabilidadObserver o) {
-		// TODO Auto-generated method stub
-		
-	}
+    
 
 }
