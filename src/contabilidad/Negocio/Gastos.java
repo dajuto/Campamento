@@ -7,7 +7,7 @@ public abstract class Gastos {
 	protected String concepto; 
 	protected int importe; 
 	protected String fecha; 
-	protected String nombre; 
+	protected String nombreEmpleado; 
 
 
 	public String getTipo() {
@@ -24,9 +24,8 @@ public abstract class Gastos {
 		return importe;
 	}
 
-
 	public String getNombre() {
-		return nombre;
+		return nombreEmpleado;
 	}
 	
 	
@@ -37,11 +36,8 @@ public abstract class Gastos {
 		data.accumulate("Tipo", this.tipo);
 		data.accumulate("Concepto", this.concepto);
 		data.accumulate("Importe", this.importe);
-		data.accumulate("Fecha", this.fecha); 
-		JSONObject empleado = new JSONObject();
-		empleado.accumulate("LoEs", this.LoEs);
-		empleado.accumulate("Nombre", this.nombre);
-		data.accumulate("Empleado", empleado);
+		data.accumulate("Fecha de pago", this.fecha); 
+		data.accumulate("Empleado", this.nombreEmpleado);
 		contabilidad.accumulate("data", data);
 		return contabilidad;
 	}

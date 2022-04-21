@@ -9,13 +9,23 @@
       },
       "type": "gastos"
    },
-    {
+   {
       "data": {
          "Tipo": "Sueldos y Salarios",
          "Concepto": "Nómina empleado",
          "Importe": 550,
          "Fecha de pago": "15/02/2022",
          "Empleado": "inesita"
+      },
+      "type": "gastos"
+   },
+   {
+      "data": {
+         "Tipo": "Publicidad",
+         "Concepto": "Instagram",
+         "Importe": 100,
+         "Fecha de pago": "21/04/2022",
+         "Empleado": ""
       },
       "type": "gastos"
    }
