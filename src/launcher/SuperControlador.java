@@ -25,7 +25,7 @@ public class SuperControlador{
 		
 		//SingletonControllerActividades.getInstance().registraFactoria(factoriaTransferObjects);
 		SingletonControllerContabilidad.getInstance().registraFactoria(factoriaTransferObjects);
-		//SingletonControllerSanidad.getInstance().registraFactoria(factoriaTransferObjects);
+		SingletonControllerSanidad.getInstance().registraFactoria(factoriaTransferObjects);
 		SingletonControllerGestoria.getInstance().registraFactoria(factoriaTransferObjects);
 		//SingletonControllerComedor.getInstance().registraFactoria(factoriaTransferObjects);
 		
