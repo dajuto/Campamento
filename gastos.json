@@ -5,17 +5,17 @@
          "Concepto": "Campaña de marketing",
          "Importe": 650,
          "Fecha de pago": "11/01/2022",
-         "Empleado": {"LoEs": "NO" , "Nombre":  " "  }
+         "Empleado": ""
       },
       "type": "gastos"
    },
     {
       "data": {
          "Tipo": "Sueldos y Salarios",
-         "Concepto": "Nómina de Alfredo Ramos",
+         "Concepto": "Nómina empleado",
          "Importe": 550,
          "Fecha de pago": "15/02/2022",
-         "Empleado": {"LoEs": "SI" , "Nombre":  "Alfredo Ramos"  }
+         "Empleado": "inesita"
       },
       "type": "gastos"
    }

@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 
 
 import empleados.Negocio.TEmpleado;
+import empleados.Presentacion.SingletonControllerEmpleado;
+import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
 import gestoria.Presentacion.SingletonControllerGestoria;
 
@@ -37,8 +39,9 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 	private JTextField fecha_txt;
 	private JTextField importe_txt;
 	private JComboBox<String> cuenta_txt;
-	private String cuenta;
+	private JComboBox<String> empleado_txt;
 	List<TGastos> listaGastos;
+	List<TEmpleado> listaEmpleados;
 	
 	public VistaCrearGasto(JFrame frame) {
 		setTitle("Añadir un Gasto");
@@ -47,6 +50,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		setSize(500,300);
 		
 		listaGastos = SingletonControllerContabilidad.getInstance().getListaGastos();
+		listaEmpleados = SingletonControllerEmpleado.getInstance().getListaEmpleados();
 		
 		this.atras = frame;
 		
@@ -62,12 +66,12 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		
 		JLabel labcrear = new JLabel("A\u00F1adir Gasto");
 		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 22));
-		labcrear.setBounds(25, 14, 330, 36);
+		labcrear.setBounds(25, 20, 330, 36);
 		getContentPane().add(labcrear);
 		
 		JLabel lblCodigo = new JLabel("Cuenta de Gastos: ");
 		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCodigo.setBounds(25, 63, 148, 25);
+		lblCodigo.setBounds(25, 66, 148, 25);
 		getContentPane().add(lblCodigo);
 		
 		JLabel lblConcepto = new JLabel("Concepto: ");
@@ -101,7 +105,6 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		for(TGastos e: listaGastos) {
 			cuenta_txt.addItem(e.getTipo());
 		}
-		getContentPane().add(cuenta_txt);
 		
 		fecha_txt = new JTextField();
 		fecha_txt.setBounds(151, 179, 116, 22);
@@ -113,23 +116,47 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		getContentPane().add(importe_txt);
 		importe_txt.setColumns(10);
 		
+		empleado_txt = new JComboBox<String>();
+		empleado_txt.setBounds(121, 216, 116, 22);
+		getContentPane().add(empleado_txt);
+		for(TEmpleado e: listaEmpleados) {
+			empleado_txt.addItem(e.getNombre());
+		}
+		
+		if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
+			
+			empleado_txt.setVisible(false);
+			lblEmplead.setVisible(false);	
+		}
+		
+		cuenta_txt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
+					
+					empleado_txt.setVisible(false);
+					lblEmplead.setVisible(false);	
+				}else {	
+					empleado_txt.setVisible(true);
+					lblEmplead.setVisible(true);	
+				}	
+			}
+		});
+		
+		
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				String empleado = "";
 				if (((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
-					
-					if (importe_txt.getText().matches("[0-9]*")) {
-						String cuenta = (String) cuenta_txt.getSelectedItem();
-						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), getFrame());
-					}
-					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
+					empleado = (String) empleado_txt.getSelectedItem();
 				}
 				
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					
 					if (importe_txt.getText().matches("[0-9]*")) {
 						String cuenta = (String) cuenta_txt.getSelectedItem();
-						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), getFrame());
+						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleado, getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
 				}	

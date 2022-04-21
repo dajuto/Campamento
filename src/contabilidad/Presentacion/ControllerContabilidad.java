@@ -93,8 +93,8 @@ public class ControllerContabilidad {
 	}
 	
 	//ADRIANA
-	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, JFrame frame) {
-		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, "", frame);
+	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override

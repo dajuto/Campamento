@@ -6,8 +6,7 @@ public abstract class Gastos {
 	protected String tipo;
 	protected String concepto; 
 	protected int importe; 
-	protected String fecha;
-	protected String LoEs; 
+	protected String fecha; 
 	protected String nombre; 
 
 
@@ -24,10 +23,7 @@ public abstract class Gastos {
 	public int getImporte() {
 		return importe;
 	}
-	
-	public String getLoEs() {
-		return LoEs;
-	}
+
 
 	public String getNombre() {
 		return nombre;
