@@ -9,10 +9,13 @@ import javax.swing.SwingUtilities;
 
 import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.SingletonServiAppContabilidad;
+import contabilidad.Negocio.TGastos;
+import contabilidad.Negocio.TIngresos;
 import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.SingletonServiAppGestoria;
+import gestoria.Negocio.TLimpieza;
 import launcher.Factory;
 
 public class ControllerContabilidad {
@@ -22,10 +25,8 @@ public class ControllerContabilidad {
 	}
 
 	public void registraFactoria(Factory<Object> objetosFactory) {
-		SingletonServiAppGestoria.getInstance().registrarFactoria(objetosFactory);
+		SingletonServiAppContabilidad.getInstance().registrarFactoria(objetosFactory);
 	}
-
-	
 	
 	public void menuContabilidad(JFrame frame) {  //hecha
 		SwingUtilities.invokeLater(new Runnable() {
@@ -92,8 +93,8 @@ public class ControllerContabilidad {
 	}
 	
 	//ADRIANA
-	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
-		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, frame);
+	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, "", frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
@@ -126,25 +127,24 @@ public class ControllerContabilidad {
 	
 
 	
-	public List<TLimpieza> getListaLimpieza() {
-		List<TLimpieza> listaLimpieza = SingletonServiAppGestoria.getInstance().getListaLimpieza();
-		return listaLimpieza;
+	public List<TGastos> getListaGastos() {
+		List<TGastos> listaGastos = SingletonServiAppContabilidad.getInstance().getListaGastos();
+		return listaGastos;
 	}
 	
-	public List<TInstalacion> getListainstalaciones() {
-		List<TInstalacion> listaInstalaciones = SingletonServiAppGestoria.getInstance().getListaInstalaciones();
-		return listaInstalaciones;
+	public List<TIngresos> getListaIngresos() {
+		List<TIngresos> listaIngresos = SingletonServiAppContabilidad.getInstance().getListaIngresos();
+		return listaIngresos;
 	}
 	
 	public void addObserver(ContabilidadObserver vista) {  //hecha
 		SingletonServiAppContabilidad.getInstance().addObserver(vista);	
-
 	}
 
 	public List<TEmpleado> getListaEmpleados() {
 		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
 	}
-	
+
 
 }
 

@@ -24,14 +24,14 @@ public class DaoGastos {
 	private InputStream in;
 	private OutputStream os;
 	public DaoGastos() throws IOException {
-		this.nombreFichero = "contabilidad.json";
+		this.nombreFichero = "gastos.json";
 	}
 	
 	public void escribeTodo(List<TGastos> listaGastos) { 
 		JSONObject object = new JSONObject();
 		try {
 	        for(int i = 0; i < listaGastos.size(); i++) {
-	            object.accumulate("contabilidad", listaGastos.get(i).report());
+	            object.accumulate("gastos", listaGastos.get(i).report());
 	        }
 			this.os = new FileOutputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {
@@ -57,7 +57,7 @@ public class DaoGastos {
 		List<TGastos> l = new ArrayList<TGastos>();
 		try {
             JSONObject jo = new JSONObject(new JSONTokener(in));
-            JSONArray gastos = jo.getJSONArray("contabilidad");
+            JSONArray gastos = jo.getJSONArray("gastos");
             for(int i = 0; i < gastos.length(); i++) {
                 TGastos a = (TGastos) factoriaTranserObjects.createInstance(gastos.getJSONObject(i));
                 l.add(a);
