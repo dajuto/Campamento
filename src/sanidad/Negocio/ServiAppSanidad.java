@@ -103,7 +103,7 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 	}
 
 	
-	public boolean añadirReceta(int codigo, String medicamento, String dosis, String Nombremedico, String NombreAcampado, String comprado ,JFrame frame) {
+	public boolean añadirReceta(int codigo, String medicamento, String dosis, String Nombremedico, String NombreAcampado) {
 		this.updateRecetas();
 		boolean puedo = true;
 		for(TReceta ta: this.listaRecetas) {

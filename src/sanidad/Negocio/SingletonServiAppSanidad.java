@@ -4,7 +4,7 @@ import sanidad.Presentacion.ControllerSanidad;
 
 public class SingletonServiAppSanidad {
 
-	private static ControllerSanidad INSTANCE = null;
+	private static ServiAppSanidad INSTANCE = null;
 
     // Private constructor suppresses 
     private SingletonServiAppSanidad(){}
@@ -13,11 +13,11 @@ public class SingletonServiAppSanidad {
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerSanidad();
+            INSTANCE = new ServiAppSanidad();
         }
     }
 
-    public static ControllerSanidad getInstance() {
+    public static ServiAppSanidad getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }

@@ -2,7 +2,7 @@ package sanidad.Integracion;
 
 import java.io.IOException;
 
-import subsistemaActividad.capaIntegracion.DaoActividad;
+
 
 public class SingletonDaoSanidad {
 

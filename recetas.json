@@ -1,0 +1,14 @@
+{"recetas": [
+   {
+      "data": {
+         "codigo": "1",
+         "medicamento": "paracetamol",
+         "dosis": "3 al dia",
+         "Nombremedico": "david00",
+         "comprado": "Sin Adquirir",
+         "NombreAcampado": "Julio"
+         
+      },
+      "type": "receta"
+   }
+]}
