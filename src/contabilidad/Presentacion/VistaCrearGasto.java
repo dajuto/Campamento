@@ -69,7 +69,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		labcrear.setBounds(25, 20, 330, 36);
 		getContentPane().add(labcrear);
 		
-		JLabel lblCodigo = new JLabel("Cuenta de Gastos: ");
+		JLabel lblCodigo = new JLabel("Cuenta de Gasto: ");
 		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblCodigo.setBounds(25, 66, 148, 25);
 		getContentPane().add(lblCodigo);
@@ -84,7 +84,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		lblImporte.setBounds(25, 137, 69, 25);
 		getContentPane().add(lblImporte);
 		
-		JLabel lblFecha = new JLabel("Fecha de pago:");
+		JLabel lblFecha = new JLabel("Fecha contable:");
 		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblFecha.setBounds(25, 175, 116, 25);
 		getContentPane().add(lblFecha);
@@ -123,11 +123,11 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 			empleado_txt.addItem(e.getNombre());
 		}
 		
-		if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
+		//if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
 			
-			empleado_txt.setVisible(false);
-			lblEmplead.setVisible(false);	
-		}
+			//empleado_txt.setVisible(false);
+			//lblEmplead.setVisible(false);	
+		//}
 		
 		cuenta_txt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

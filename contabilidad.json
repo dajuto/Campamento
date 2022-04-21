@@ -1,12 +1,13 @@
-{"ingresos": [
+{"contabilidad": [
    
    {
       "data": {
          "Tipo": "Ventas",
          "Concepto": "Abono acampado de Jose Cordero",
          "Importe": 200,
-         "Fecha de pago": "11/01/2022",
-         "Acampado": {"Nombre":  "Jose Cordero", "DNI" : "78765711A" }
+         "Fecha contable": "11/01/2022",
+         "Acampado": {"Nombre":  "Jose Cordero", "DNI" : "78765711A" }, 
+         "Contabilizada": "No"
       },
       "type": "ingresos"
    },
@@ -16,8 +17,9 @@
          "Tipo": "Subvenciones, donaciones",
          "Concepto": "Subvención de Ayuntamiento de Madrid",
          "Importe": 2000,
-         "Fecha de pago": "12/01/2022",
+         "Fecha contable": "12/01/2022",
          "Acampado": {"Nombre":  "", "DNI" : "" }
+          "Contabilizada": "Si"
       },
       "type": "ingresos"
    } 

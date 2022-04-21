@@ -3,7 +3,6 @@ package contabilidad.Presentacion;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import gestoria.Negocio.InstalacionesTableModel;
 import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
@@ -17,7 +16,7 @@ import javax.swing.JComponent;
 import javax.swing.JTable;
 
 import contabilidad.Negocio.ContabilidadObserver;
-import contabilidad.Negocio.Gastos;
+import contabilidad.Negocio.IngresosTableModel;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
 
@@ -47,7 +46,7 @@ public class VistaVerIngresos extends JFrame implements ContabilidadObserver{
 		labcrear.setBounds(25, 24, 330, 36);
 		getContentPane().add(labcrear);
 		
-		JPanel p2 = createViewPanel(new JTable(new InstalacionesTableModel()), "Ingresos campamento");
+		JPanel p2 = createViewPanel(new JTable(new IngresosTableModel()), "Ingresos campamento");
 		p2.setBounds(35, 73, 416, 126);
 		getContentPane().add(p2);
 		

@@ -109,8 +109,9 @@ public class ControllerContabilidad {
 		}
 	}
 	
-	public void añadirIngreso(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
-		boolean existe = SingletonServiAppContabilidad.getInstance().añadirIngreso(cuenta, concepto, importe, fecha, empleado, frame);
+
+	public void añadirIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, Boolean contabilizada, JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirIngreso(cuenta, concepto, importe, fecha, nombreAcam, dniAcam, contabilizada, frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override

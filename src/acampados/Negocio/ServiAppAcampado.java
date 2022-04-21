@@ -24,6 +24,12 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		this.observers = new ArrayList<AcampadoObserver>();
 	}
 	
+	
+	public List<TAcampado> getListaAcampados() {
+		this.updateAcampados();
+		return listaAcampados;
+	}
+	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
 	}

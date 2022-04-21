@@ -56,7 +56,7 @@ public class VistaVerGastos extends JFrame implements ContabilidadObserver{
 	
 	private JPanel createViewPanel(JComponent c, String title) {
 		JPanel p = new JPanel( new BorderLayout() );
-		p.add(new JScrollPane(c));
+		p.add(new JScrollPane(c), BorderLayout.CENTER);
 		return p;
 	}
 	

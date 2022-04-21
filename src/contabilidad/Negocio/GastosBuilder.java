@@ -13,7 +13,6 @@ public class GastosBuilder extends Builder<Object> {
 	@Override
 	protected TGastos createTheInstance(JSONObject data) {
 
-		
 		String tipo = data.getString("Tipo");
 		String concepto = data.getString("Concepto");
 		int importe = data.getInt("Importe");

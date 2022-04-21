@@ -8,11 +8,12 @@ public abstract class Ingresos {
 	protected String tipo;
 	protected String concepto; 
 	protected int importe; 
-	protected String fecha;
-	protected String LoEs; 
+	protected String fechaContable; 
 	protected String nombreAcampado; 
 	protected String dniAcampado; 
-
+	protected Boolean contabilizada;  //si contabilizada = true significa que solo se pueden modificar el concepto y el tipo
+	//si contabilizada = false, significa que el ingreso aun esta como "guardado" y se puede eliminar o modificar completamente. 
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -20,10 +21,24 @@ public abstract class Ingresos {
 		return concepto;
 	}
 	public String getFecha() {
-		return fecha;
+		return fechaContable;
+	}
+	public int getImporte() {
+		return importe;
+	}
+	public String getNombreAcampado() {
+		return nombreAcampado;
+	}
+	
+	public String getDniAcampado(){
+		return dniAcampado; 
 	}
 
+	public Boolean isContabilizada() {
+		return contabilizada; 
+	}
 
+	
 	public JSONObject report() {  //esto es como escribir en el JSON
 		JSONObject contabilidad = new JSONObject();
 		contabilidad.accumulate("type", "ingresos");
@@ -31,12 +46,18 @@ public abstract class Ingresos {
 		data.accumulate("Tipo", this.tipo);
 		data.accumulate("Concepto", this.concepto);
 		data.accumulate("Importe", this.importe);
-		data.accumulate("Fecha", this.fecha); 
+		data.accumulate("Fecha contable", this.fechaContable); 
 		JSONObject acampado = new JSONObject();
-		acampado.accumulate("LoEs", this.LoEs);
 		acampado.accumulate("Nombre", this.nombreAcampado);
 		acampado.accumulate("dniAcampado", this.dniAcampado); 
 		data.accumulate("Acampado", acampado);
+		
+		if (contabilizada) {
+			data.accumulate("Contabilizada", "Si");
+		}
+		else {
+			data.accumulate("Contabilizada", "No");
+		}
 		contabilidad.accumulate("data", data);
 		return contabilidad;
 	}

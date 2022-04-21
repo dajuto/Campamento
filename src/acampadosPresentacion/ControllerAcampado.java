@@ -1,11 +1,15 @@
 package acampadosPresentacion;
 
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 import acampados.Negocio.SingletonServiAppAcampado;
+import acampados.Negocio.TAcampado;
 import empleados.Negocio.SingletonServiAppEmpleado;
+import empleados.Negocio.TEmpleado;
 import empleados.Presentacion.VistaMenuEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
@@ -16,6 +20,10 @@ public class ControllerAcampado {
 		SingletonServiAppAcampado.getInstance().registrarFactoria(factoriaTransferObjects);
 	}
 
+	public List<TAcampado> getListaAcampados() {
+		return SingletonServiAppAcampado.getInstance().getListaAcampados();
+	}
+	
 	public void acampado(JFrame f) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override

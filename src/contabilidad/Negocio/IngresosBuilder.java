@@ -10,22 +10,22 @@ public class IngresosBuilder extends Builder<Object> {
 
 	@Override
 	protected TIngresos createTheInstance(JSONObject data) {
-
 		
 		String tipo = data.getString("Tipo");
 		String concepto = data.getString("Concepto");
 		int importe = data.getInt("Importe");
-		String fecha = data.getString("Fecha de pago");
+		String fecha = data.getString("Fecha contable");
 		JSONObject acampado = data.getJSONObject("Acampado"); 
-		String LoEs = acampado.getString("LoEs");
-		String nombreAcampado = "";
-		String dniAcampado = ""; 
-		if(LoEs.contentEquals("SI")) {
-			nombreAcampado = acampado.getString("Nombre");
-			dniAcampado = acampado.getString("DNI"); 	
+		String nombreAcampado = acampado.getString("Nombre");
+		String dniAcampado = acampado.getString("DNI"); 
+			
+		String sContabilizada = data.getString("Contabilizada"); 
+		boolean conta = false; 
+		if(sContabilizada.equals("Si")) {
+			conta = true; 
 		}
-		
-		TIngresos contabilidadIngresos = new TIngresos(tipo, concepto, importe, fecha, LoEs, nombreAcampado, dniAcampado);
+			
+		TIngresos contabilidadIngresos = new TIngresos(tipo, concepto, importe, fecha, nombreAcampado, dniAcampado, conta);
 		return contabilidadIngresos;
 	}
 }
