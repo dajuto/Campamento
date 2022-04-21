@@ -20,5 +20,27 @@
          "Precio": 2500
       },
       "type": "instalacion"
+   },
+   {
+      "data": {
+         "Nombre": "Secretaria",
+         "Codigo": "4",
+         "Superficie": 23,
+         "Actividades": "No",
+         "Pagado": "No",
+         "Precio": 2000
+      },
+      "type": "instalacion"
+   },
+   {
+      "data": {
+         "Nombre": "Habitaciones 1-30",
+         "Codigo": "5",
+         "Superficie": 200,
+         "Actividades": "No",
+         "Pagado": "No",
+         "Precio": 2300
+      },
+      "type": "instalacion"
    }
 ]}

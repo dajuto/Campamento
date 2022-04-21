@@ -16,21 +16,18 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class VistaMenuLimpiezaGestor extends JFrame implements GestoriaObserver{
-	private JFrame atras;
-	private String nombreUsuario;
+	
 	public VistaMenuLimpiezaGestor(JFrame frame) {
 		setTitle("Menu de Limpieza");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		
-		this.atras = frame;
-		
 		JButton boton_Atras = new JButton("Atras");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				atras.setVisible(true);
+				SingletonControllerGestoria.getInstance().menuGestor();
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);
@@ -86,11 +83,6 @@ public class VistaMenuLimpiezaGestor extends JFrame implements GestoriaObserver{
 	private JFrame getFrame() {
 		return this;
 	}
-	
-	private void update(String nombreUsuario) {
-		this.nombreUsuario = nombreUsuario;
-	}
-
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,

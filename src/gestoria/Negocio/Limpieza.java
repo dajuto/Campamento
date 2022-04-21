@@ -8,7 +8,7 @@ import empleados.Negocio.TEmpleadoLimpieza;
 public abstract class Limpieza {
 	protected String codigo;
 	protected String lugar;
-	protected String fecha;
+	protected String dia;
 	protected String hora;
 	protected String empleadoEncargado;
 	
@@ -18,8 +18,8 @@ public abstract class Limpieza {
 	public String getLugar() {
 		return lugar;
 	}
-	public String getFecha() {
-		return fecha;
+	public String getDia() {
+		return dia;
 	}
 	public String getHora() {
 		return hora;
@@ -34,7 +34,7 @@ public abstract class Limpieza {
 		JSONObject data = new JSONObject();
 		data.accumulate("Codigo", this.codigo);
 		data.accumulate("Lugar", this.lugar);
-		data.accumulate("Fecha", this.fecha);
+		data.accumulate("Dia", this.dia);
 		data.accumulate("Hora", this.hora);
 		data.accumulate("Empleado", this.empleadoEncargado);
 		limpieza.accumulate("data", data);

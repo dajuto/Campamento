@@ -19,11 +19,10 @@ public class LimpiezaBuilder extends Builder<Object> {
 	protected TLimpieza createTheInstance(JSONObject data) {
 		String codigo = data.getString("Codigo");
 		String lugar = data.getString("Lugar");
-		String fecha = data.getString("Fecha");
+		String dia = data.getString("Dia");
 		String hora = data.getString("Hora");
-		String empleadoEncargado = data.getString("Empleado");
 		String empleado = data.getString("Empleado");
-		TLimpieza tlimpieza = new TLimpieza (codigo, lugar, fecha, hora, empleado);
+		TLimpieza tlimpieza = new TLimpieza (codigo, lugar, dia, hora, empleado);
 		return tlimpieza;
 	}
 }

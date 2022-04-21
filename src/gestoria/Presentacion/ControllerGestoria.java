@@ -29,11 +29,11 @@ public class ControllerGestoria {
 		SingletonServiAppGestoria.getInstance().registrarFactoria(objetosFactory);
 	}
 
-	public void menuGestor(JFrame frame) {
+	public void menuGestor() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuGestor(frame);
+				new VistaMenuGestor();
 			}
 		});
 	}
