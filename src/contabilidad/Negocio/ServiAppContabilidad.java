@@ -68,6 +68,25 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		return listaIngresos;
 	}
 	
+	public void eliminarGasto(JFrame frame, String codigo) {  //probar si funciona
+		for (int i = 0; i < listaGastos.size(); i++) {
+			if (listaGastos.get(i).getConcepto().equals(codigo)) {
+				listaGastos.remove(i);
+				SingletonDaoGastos.getInstance().escribeTodo(listaGastos);
+				this.updateGastos();
+			}
+		}
+	}
+
+	public void eliminarIngreso(JFrame frame, String codigo) {  //probar si funciona
+		for (int i = 0; i < listaIngresos.size(); i++) {
+			if (listaIngresos.get(i).getConcepto().equals(codigo)) {
+				listaIngresos.remove(i);
+				SingletonDaoIngresos.getInstance().escribeTodo(listaIngresos);
+				this.updateIngresos();
+			}
+		}
+	}
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
 		}
