@@ -1,7 +1,7 @@
 {"limpieza": [
    {
       "data": {
-         "Empleado": "Ivan Hernandez",
+         "Empleado": "Almudena",
          "Fecha": "12/12/2020",
          "Hora": "12:12",
          "Codigo": "12",
@@ -11,11 +11,21 @@
    },
    {
       "data": {
-         "Empleado": "Ivan Hernandez",
+         "Empleado": "Pepe Luis",
          "Fecha": "11/11/2121",
          "Hora": "11:30",
          "Codigo": "13",
          "Lugar": "puerta"
+      },
+      "type": "limpieza"
+   },
+   {
+      "data": {
+         "Empleado": "Ivan Hernandez",
+         "Fecha": "21/02/2000",
+         "Hora": "11:30",
+         "Codigo": "1",
+         "Lugar": "Trastienda"
       },
       "type": "limpieza"
    }

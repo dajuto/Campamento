@@ -8,6 +8,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import empleados.Integracion.SingletonDaoEmpleado;
+import gestoria.Negocio.TMantenimiento;
 import launcher.Factory;
 import launcher.Observable;
 
@@ -134,6 +135,15 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 			TEmpleadoLimpieza tEmpleado = (TEmpleadoLimpieza) this.factoriaTransferObjects.createInstance(empleado);
 			this.listaEmpleados.add(tEmpleado);
 		}
+		else if (puesto.equals("Empleado Mantenimiento")) {
+			data.accumulate("salario", 2000);
+			data.accumulate("horario", 9);
+			data.accumulate("vacaciones", "Nunca");
+			empleado.accumulate("data", data);
+			empleado.accumulate("type", "Empleado Mantenimiento");
+			TEmpleadoMantenimiento tEmpleado = (TEmpleadoMantenimiento) this.factoriaTransferObjects.createInstance(empleado);
+			this.listaEmpleados.add(tEmpleado);
+		}
 		else if (puesto.equals("Gestor")) {
 			data.accumulate("salario", 3500);
 			data.accumulate("horario", 8);
@@ -162,46 +172,65 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		for(TEmpleado e: this.listaEmpleados) {
 			if(e.nombre.equals(empleado) && e.puesto.equals("Empleado Limpieza")) {
 				TEmpleadoLimpieza te = (TEmpleadoLimpieza) e;
-				
-				for (int i = 0; i < te.horariosLimpieza.size(); i++) {
-					if (te.horariosLimpieza.get(i).matches(codigo)) {
-						te.horariosLimpieza.remove(i);
-					}
-					else {
-						te.horariosLimpieza.add(codigo);
-						break;
-					}
-				}
 				if (te.horariosLimpieza.isEmpty()) {
 					te.horariosLimpieza.add(codigo);
 				}
+				else {
+					boolean eliminado = false;
+					for (int i = 0; i < te.horariosLimpieza.size(); i++) {
+						if (te.horariosLimpieza.get(i).matches(codigo)) {
+							te.horariosLimpieza.remove(i);
+							eliminado = true;
+						}
+					}
+					if (!eliminado) {
+						te.horariosLimpieza.add(codigo);
+					}
+				}
+				
 				JSONArray a = new JSONArray();
 				for (int i = 0; i < te.horariosLimpieza.size(); i++) {
 					a.put(te.horariosLimpieza.get(i));
 				}
 				JSONObject trabajo = new JSONObject();
 				trabajo.accumulate("listaLimpieza", a);
-				e.trabajo = trabajo;
-				//te.trabajo.accumulate("listaLimpieza", a);
+				e.trabajo = trabajo; 
 				e = te;
 				this.guardaEmpleados();
 				
-//				JSONObject trabajo = e.trabajo;
-//				JSONArray listaLimpieza = trabajo.getJSONArray("listaLimpieza");
-//				List<String> listaCod = new ArrayList<String>();
-//				
-//				for(int i = 0; i < listaLimpieza.length(); i++) {
-//		        	listaCod.add(listaLimpieza.getString(i));
-//		        }  
-//				
-//				for (int i = 0; i < listaCod.size(); i++) {
-//					if (listaCod.get(i).matches(codigo)) {
-//						listaCod.remove(i);
-//					}
-//					else {
-//						listaCod.add(codigo);
-//					}
-//				}
+			}
+		}
+	}
+
+	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
+		for(TEmpleado e: this.listaEmpleados) {
+			if(e.nombre.equals(empleado) && e.puesto.equals("Empleado Mantenimiento")) {
+				TEmpleadoMantenimiento te = (TEmpleadoMantenimiento) e;
+				if (te.listaAverias.isEmpty()) {
+					te.listaAverias.add(codigo);
+				}
+				else {
+					boolean eliminado = false;
+					for (int i = 0; i < te.listaAverias.size(); i++) {
+						if (te.listaAverias.get(i).matches(codigo)) {
+							te.listaAverias.remove(i);
+							eliminado = true;
+						}
+					}
+					if (!eliminado) {
+						te.listaAverias.add(codigo);
+					}
+				}
+				
+				JSONArray a = new JSONArray();
+				for (int i = 0; i < te.listaAverias.size(); i++) {
+					a.put(te.listaAverias.get(i));
+				}
+				JSONObject trabajo = new JSONObject();
+				trabajo.accumulate("listaAverias", a);
+				e.trabajo = trabajo; 
+				e = te;
+				this.guardaEmpleados();
 				
 			}
 		}

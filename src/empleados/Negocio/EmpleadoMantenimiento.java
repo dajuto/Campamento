@@ -1,21 +1,19 @@
 package empleados.Negocio;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public abstract class EmpleadoMantenimiento extends TEmpleado{
 	protected List<String> listaAverias;
 	
-	public List<String> getListLimpieza(){
+	public List<String> getListaAverias(){
 		return this.listaAverias;
 	}
 
 	public JSONObject report() {
 	JSONObject empleado = new JSONObject();
-	empleado.accumulate("type", "Empleado Limpieza");
+	empleado.accumulate("type", "Empleado Mantenimiento");
 	JSONObject data = new JSONObject();
 	data.accumulate("usuario", this.usuario);
 	data.accumulate("contrasena", this.contrasena);
@@ -26,7 +24,7 @@ public abstract class EmpleadoMantenimiento extends TEmpleado{
 	data.accumulate("vacaciones", vacaciones);
 	
 	JSONObject averias = new JSONObject();
-	averias.accumulate("listaAverias", this.getListLimpieza());
+	averias.accumulate("listaAverias", this.getListaAverias());
 	
 	data.accumulate("trabajo", averias);
 	empleado.accumulate("data", data);

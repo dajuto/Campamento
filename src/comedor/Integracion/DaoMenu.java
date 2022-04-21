@@ -1,4 +1,5 @@
-package gestoria.Integracion;
+package comedor.integracion;
+
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -14,23 +15,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import gestoria.Negocio.TLimpieza;
-import gestoria.Negocio.TMantenimiento;
+import comedor.negocio.TMenu;
 import launcher.Factory;
 
-public class DaoMantenimiento {
+public class DaoMenu {
+	
 	private String nombreFichero;
 	private InputStream in;
 	private OutputStream os;
-	public DaoMantenimiento() throws IOException {
-		this.nombreFichero = "mantenimiento.json";
+	
+	public DaoMenu() throws IOException {
+		this.nombreFichero = "comedor.json";
 	}
 	
-	public void escribeTodo(List<TMantenimiento> listaLimpieza) { 
+	public void escribeTodo(List<TMenu> listaMenu) { 
 		JSONObject object = new JSONObject();
 		try {
-	        for(int i = 0; i < listaLimpieza.size(); i++) {
-	            object.accumulate("mantenimiento", listaLimpieza.get(i).report());
+	        for(int i = 0; i < listaMenu.size(); i++) {
+	            object.accumulate("comedor", listaMenu.get(i).report());
 	        }
 			this.os = new FileOutputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {
@@ -47,19 +49,19 @@ public class DaoMantenimiento {
 		}
 	}
 	
-	public List<TMantenimiento> leeTodo(Factory<Object> factoriaTranserObjects){ // de json a objetos
+	public List<TMenu> leeTodo(Factory<Object> factoriaTranserObjects){ 
 		try {
 			this.in = new FileInputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		List<TMantenimiento> l = new ArrayList<TMantenimiento>();
+		List<TMenu> l = new ArrayList<TMenu>();
 		try {
             JSONObject jo = new JSONObject(new JSONTokener(in));
-            JSONArray listaAverias = jo.getJSONArray("mantenimiento");
-            for(int i = 0; i < listaAverias.length(); i++) {
-            	TMantenimiento m = (TMantenimiento) factoriaTranserObjects.createInstance(listaAverias.getJSONObject(i));
-                l.add(m);
+            JSONArray gastos = jo.getJSONArray("comedor");
+            for(int i = 0; i < menu.length(); i++) {
+                TMenu a = (TMenu) factoriaTranserObjects.createInstance(menu.getJSONObject(i));
+                l.add(a);
             }
         }
         catch (JSONException e) {

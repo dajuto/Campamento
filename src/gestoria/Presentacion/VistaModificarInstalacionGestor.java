@@ -40,7 +40,7 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 		getContentPane().setLayout(null);
 		setSize(500,350);
 		
-		listaInstalaciones = SingletonControllerGestoria.getInstance().getListainstalaciones();
+		listaInstalaciones = SingletonControllerGestoria.getInstance().getListaInstalaciones();
 		
 		
 		this.atras = frame;

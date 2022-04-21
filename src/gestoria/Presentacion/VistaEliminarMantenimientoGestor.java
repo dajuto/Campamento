@@ -20,13 +20,14 @@ import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 
-public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaObserver{
+public class VistaEliminarMantenimientoGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
-	private JComboBox<String> codElegido;
-	List<TInstalacion> listainstalaciones;
+	private JComboBox <String> codElegido;
+	List<TMantenimiento> listaAverias =	SingletonControllerGestoria.getInstance().getListaAverias();
+;
 	
-	public VistaEliminarInstalacionGestor(JFrame frame) {
-		setTitle("Eliminar instalaciones");
+	public VistaEliminarMantenimientoGestor(JFrame frame) {
+		setTitle("Eliminar Averia");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -43,7 +44,7 @@ public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaOb
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel eliminar = new JLabel("Eliminar instalacion");
+		JLabel eliminar = new JLabel("Eliminar averia");
 		eliminar.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		eliminar.setBounds(25, 24, 330, 36);
 		getContentPane().add(eliminar);
@@ -53,7 +54,12 @@ public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaOb
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				atras.setVisible(true);
-				SingletonControllerGestoria.getInstance().eliminarInstalacion(frame, (String) codElegido.getSelectedItem());
+				for (TMantenimiento l: listaAverias) {
+					if (l.getCodigo().equals(codElegido.getSelectedItem().toString())) {
+						SingletonControllerGestoria.getInstance().modificarEmpleadoMantenimiento(l.getEmpleado(), codElegido.getSelectedItem().toString());
+					}
+				}
+				SingletonControllerGestoria.getInstance().eliminarMantenimiento(frame, codElegido.getSelectedItem().toString());
 			}
 		});
 		boton_Eliminar.setBounds(25, 112, 97, 25);
@@ -61,8 +67,7 @@ public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaOb
 		
 		codElegido = new JComboBox<String>();
 		codElegido.setBounds(25, 73, 239, 22);
-		listainstalaciones = SingletonControllerGestoria.getInstance().getListaInstalaciones();
-		for(TInstalacion cod: this.listainstalaciones) {
+		for(TMantenimiento cod: this.listaAverias) {
 			codElegido.addItem(cod.getCodigo());
 		}
 		getContentPane().add(codElegido);
@@ -74,6 +79,7 @@ public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaOb
 		return this;
 	}
 	
+
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
@@ -101,8 +107,6 @@ public class VistaEliminarInstalacionGestor extends JFrame implements GestoriaOb
 		// TODO Auto-generated method stub
 		
 	}
-
 	
 	
-
 }

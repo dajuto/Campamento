@@ -18,14 +18,13 @@ public class MantenimientoBuilder extends Builder<Object> {
 	@Override
 	protected TMantenimiento createTheInstance(JSONObject data) {
 		String codigo = data.getString("Codigo");
-		String nombre = data.getString("Nombre");
 		String descripcion = data.getString("Descripcion");
 		String lugar = data.getString("Lugar");
 		int coste = data.getInt("Coste");
 		String empleado = data.getString("Empleado");
 		String estado = data.getString("Estado");
 		
-		TMantenimiento tmant = new TMantenimiento (codigo, nombre, descripcion, lugar, coste, empleado, estado);
+		TMantenimiento tmant = new TMantenimiento (codigo, descripcion, lugar, coste, empleado, estado);
 		return tmant;
 	}
 }

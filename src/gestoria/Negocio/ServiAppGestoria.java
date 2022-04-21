@@ -67,6 +67,7 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		this.observers.add(o);
 		this.updateLimpieza();
 		this.updateInstalaciones();
+		this.updateMantenimiento();
 		//this.updateEmpleadosLimpieza();
 		o.onRegister(listaLimpieza, listaInstalaciones, listaAverias, listaEmpleadosLimpieza, nombreUsuario);
 	}
@@ -90,10 +91,10 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 		return listaInstalaciones;
 	}
 	
-//	public List<TEmpleadoLimpieza> getListaEmpleadosLimpieza() {
-//		updateEmpleadosLimpieza();
-//		return listaEmpleadosLimpieza;
-//	}
+	public List<TMantenimiento> getListaMantenimiento() {
+		updateMantenimiento();
+		return listaAverias;
+	}
 
 	public void guardaLimpieza() {
         SingletonDaoLimpieza.getInstance().escribeTodo(this.listaLimpieza);
@@ -101,6 +102,10 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 	
 	public void guardaInstalacion() {
         SingletonDaoInstalacion.getInstance().escribeTodo(this.listaInstalaciones);
+	}
+	
+	private void guardaAveria() {
+		SingletonDaoMantenimiento.getInstance().escribeTodo(this.listaAverias);
 	}
 	
 	public boolean añadirLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
@@ -212,6 +217,63 @@ public class ServiAppGestoria implements Observable<GestoriaObserver>{
 			}
 		}
 	}
+
+	public boolean añadirMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado) {
+		this.updateMantenimiento();
+		for(TMantenimiento ta: this.listaAverias) {
+			if(ta.codigo.equals(codigo)) {
+				return false;
+			}
+		}
+		JSONObject averia = new JSONObject();
+		JSONObject data = new JSONObject();
+		data.accumulate("Codigo", codigo);
+		data.accumulate("Descripcion", descripcion);
+		data.accumulate("Lugar", lugar);
+		data.accumulate("Coste", coste);
+		data.accumulate("Empleado", empleado);
+		data.accumulate("Estado", "Sin reparar");
+		
+		averia.accumulate("data", data);
+		averia.accumulate("type", "averia");
+		
+		TMantenimiento taveria = (TMantenimiento) this.factoriaTranserObjects.createInstance(averia);
+		this.listaAverias.add(taveria);
+		this.guardaAveria();
+		this.updateMantenimiento();
+		
+		return true;
+	}
+	
+	public void eliminarMantenimiento(JFrame frame, String codigo) {
+		for (int i = 0; i < listaAverias.size(); i++) {
+			if (listaAverias.get(i).getCodigo().equals(codigo)) {
+				listaAverias.remove(i);
+				SingletonDaoMantenimiento.getInstance().escribeTodo(listaAverias);
+				this.updateMantenimiento();
+			}
+		}
+	}
+
+	public void modificarMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado,
+			String estado) {
+		for (int i = 0; i < listaAverias.size(); i++) {
+			if (listaAverias.get(i).getCodigo().equals(codigo)) {
+				listaAverias.get(i).descripcion = descripcion;
+				listaAverias.get(i).lugar = lugar;
+				listaAverias.get(i).coste = Integer.parseInt(coste);
+				listaAverias.get(i).empleado = empleado;
+				listaAverias.get(i).estado = estado;
+				SingletonDaoMantenimiento.getInstance().escribeTodo(listaAverias);
+				this.updateMantenimiento();
+			}
+		}
+	}
+
+	
+
+	
+	
 
 	
 

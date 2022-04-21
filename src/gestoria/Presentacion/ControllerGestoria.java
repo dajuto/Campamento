@@ -16,6 +16,7 @@ import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.SingletonServiAppGestoria;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
+import gestoria.Negocio.TMantenimiento;
 import launcher.Factory;
 
 public class ControllerGestoria {
@@ -33,6 +34,15 @@ public class ControllerGestoria {
 			@Override
 			public void run() {
 				new VistaMenuGestor(frame);
+			}
+		});
+	}
+	
+	public void menuAcampado(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuAcampado(frame);
 			}
 		});
 	}
@@ -82,7 +92,23 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void mostrarMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaVerMantenimientoGestor(frame);
+			}
+		});
+	}
 	
+	public void mostrarModificarLimpieza(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarLimpiezaGestor(frame);
+			}
+		});
+	}
 	
 	public void mostrarModificarInstalacion(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -92,6 +118,16 @@ public class ControllerGestoria {
 			}
 		});
 	}
+	
+	public void mostrarModificarMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarMantenimientoGestor(frame);
+			}
+		});
+	}
+
 	
 	public void mostrarEliminarLimpieza(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -111,6 +147,14 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void mostrarEliminarMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEliminarMantenimientoGestor(frame);
+			}
+		});
+	}
 	
 	public void mostrarCrearLimpieza(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -127,6 +171,15 @@ public class ControllerGestoria {
 			@Override
 			public void run() {
 				new VistaCrearInstalacionGestor(frame);
+			}
+		});
+	}
+	
+	public void mostrarCrearMantenimiento(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaCrearMantenimientoGestor(frame);
 			}
 		});
 	}
@@ -164,6 +217,23 @@ public class ControllerGestoria {
 		}
 	}
 	
+	public void añadirMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado,
+			JFrame frame) {
+		boolean existe = SingletonServiAppGestoria.getInstance().añadirMantenimiento(codigo, descripcion, lugar, coste, empleado);
+		if (existe) {
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					frame.setVisible(false);
+					new VistaMenuMantenimientoGestor(frame);
+				}
+			});
+		}
+		else {
+			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
+		}
+	}
+	
 	public void crearEmpleado(JFrame frame) {
 		SingletonControllerEmpleado.getInstance().resgistrar(frame);
 	}
@@ -172,18 +242,13 @@ public class ControllerGestoria {
 	public void eliminarLimpieza(JFrame frame, String codigo) {
 		SingletonServiAppGestoria.getInstance().eliminarLimpieza(frame, codigo);
 	}
-	
-	public void mostrarModificarLimpieza(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaModificarLimpiezaGestor(frame);
-			}
-		});
-	}
 
 	public void eliminarInstalacion(JFrame frame, String codigo) {
 		SingletonServiAppGestoria.getInstance().eliminarInstalacion(frame, codigo);
+	}
+	
+	public void eliminarMantenimiento(JFrame frame, String codigo) {
+		SingletonServiAppGestoria.getInstance().eliminarMantenimiento(frame, codigo);
 	}
 	
 	public void modificarLimpieza(String codigo, String lugar, String fecha, String hora, String empleado, JFrame frame) {
@@ -209,14 +274,31 @@ public class ControllerGestoria {
 		});
 	}
 	
+	public void modificarMantenimiento(String codigo, String descripcion, String lugar, String coste, String empleado,
+			String estado, JFrame frame) {
+		SingletonServiAppGestoria.getInstance().modificarMantenimiento(codigo, descripcion, lugar, coste, empleado, estado);
+		frame.setVisible(false);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuMantenimientoGestor(frame);
+			}
+		});
+	}
+	
 	public List<TLimpieza> getListaLimpieza() {
 		List<TLimpieza> listaLimpieza = SingletonServiAppGestoria.getInstance().getListaLimpieza();
 		return listaLimpieza;
 	}
 	
-	public List<TInstalacion> getListainstalaciones() {
+	public List<TInstalacion> getListaInstalaciones() {
 		List<TInstalacion> listaInstalaciones = SingletonServiAppGestoria.getInstance().getListaInstalaciones();
 		return listaInstalaciones;
+	}
+	
+	public List<TMantenimiento> getListaAverias() {
+		List<TMantenimiento> listaAverias = SingletonServiAppGestoria.getInstance().getListaMantenimiento();
+		return listaAverias;
 	}
 	
 	public void addObserver(GestoriaObserver vista) {
@@ -231,6 +313,27 @@ public class ControllerGestoria {
 	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
 	}
+
+	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
+		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
+	}
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+	
+
+	
+
+	
 
 
 
