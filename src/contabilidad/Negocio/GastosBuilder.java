@@ -18,14 +18,8 @@ public class GastosBuilder extends Builder<Object> {
 		String concepto = data.getString("Concepto");
 		int importe = data.getInt("Importe");
 		String fecha = data.getString("Fecha de pago");
-		JSONObject empleado = data.getJSONObject("Empleado"); 
-		String LoEs = empleado.getString("LoEs");
-		String nombreEmpleado = "";
-		if(LoEs.contentEquals("SI")) {
-			nombreEmpleado = empleado.getString("Nombre");
-		}
-		
-		TGastos contabilidadGastos = new TGastos(tipo, concepto, importe,fecha, LoEs, nombreEmpleado);
+		String nombreEmpleado = data.getString("Empleado"); 
+		TGastos contabilidadGastos = new TGastos(tipo, concepto, importe,fecha, nombreEmpleado);
 		return contabilidadGastos;
 	}
 }
