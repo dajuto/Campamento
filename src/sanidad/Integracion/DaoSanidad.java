@@ -1,20 +1,71 @@
 package sanidad.Integracion;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
 import launcher.Factory;
 import sanidad.Negocio.TReceta;
 
 public class DaoSanidad {
-
-	public List<TReceta> leeTodo(Factory<Object> factoriaTranserObjects) {
-		// TODO Auto-generated method stub
-		return null;
+	
+	private String nombreFichero;
+	private InputStream in;
+	private OutputStream os;
+	public DaoSanidad() throws IOException {
+		this.nombreFichero = "recetas.json";
 	}
-
-	public void escribeTodo(List<TReceta> listaRecetas) {
-		// TODO Auto-generated method stub
-		
+	
+	public void escribeTodo(List<TReceta> listaRecetas) { 
+		JSONObject object = new JSONObject();
+		try {
+	        for(int i = 0; i < listaRecetas.size(); i++) {
+	            object.accumulate("recetas", listaRecetas.get(i).report());
+	        }
+			this.os = new FileOutputStream(this.nombreFichero);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			os.write(object.toString(3).getBytes());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public List<TReceta> leeTodo(Factory<Object> factoriaTranserObjects) { // de json a objetos
+		try {
+			this.in = new FileInputStream(this.nombreFichero);
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
+		}
+		List<TReceta> l = new ArrayList<TReceta>();
+		try {
+            JSONObject jo = new JSONObject(new JSONTokener(in));
+            JSONArray recetas = jo.getJSONArray("recetas");
+            for(int i = 0; i < recetas.length(); i++) {
+            	TReceta a = (TReceta) factoriaTranserObjects.createInstance(recetas.getJSONObject(i));
+                l.add(a);
+            }
+        }
+        catch (JSONException e) {
+            System.out.println("ERROR => La entrada JSON no coincide con la esperada");
+        }
+		return l;
 	}
 
 }

@@ -20,7 +20,7 @@ public class ControllerSanidad {
 	
 	
 	public void registraFactoria(Factory<Object> objetosFactory) {
-		SingletonServiAppSanidad.getInstance().registraFactoria(objetosFactory);
+		SingletonServiAppSanidad.getInstance().registrarFactoria(objetosFactory);
 	}
 
 	public void menuSanidad(JFrame frame) {
@@ -33,16 +33,7 @@ public class ControllerSanidad {
 		});
 	}
 	
-	public void menuCitas(JFrame frame) {
-		
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaMenuCitas(frame);
-			}
-		});
-	}
-
+	//RECETAS
 	
 	public void menuRecetas(JFrame frame) {
 		
@@ -54,33 +45,6 @@ public class ControllerSanidad {
 		});
 	}
 
-
-	public void mostrarListaCitas(JFrame frame) {
-		
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaVerListaCitas(frame);
-			}
-		});
-	}
-	
-	public void mostrarEliminarCita(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaEliminarCita(frame);
-			}
-		});
-	}
-	public void mostrarConsultarCitas(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaConsultarListaCitas(frame);
-			}
-		});
-	}
 	
 	public void mostrarCrearReceta(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -116,23 +80,77 @@ public class ControllerSanidad {
 			}
 		});
 	}
-
-/*public void anadirActividad(Frame ventanaListaActividad, String cod, String lugar, String desc, String Fecha) {
+	
+	public void anadirReceta(JFrame ventanaRecetas, String cod, String medicamento, String dosis, String medicoEmpleado, String Acampado ) {
+		// Confirmación sintáctica de los datos:
 		boolean isNumericCodigo =  cod.matches("[+-]?\\d*(\\.\\d+)?");
-		boolean isNumericLugar =  lugar.matches("[+-]?\\d*(\\.\\d+)?");
-		boolean isNumericDesc =  desc.matches("[+-]?\\d*(\\.\\d+)?");
-		if(isNumericCodigo && !isNumericLugar && !isNumericDesc) {
-			int codigoActividad = Integer.parseInt(cod);
-			boolean exito = SingletonServiAppSanidad.getInstance().anadirActividad(codigoActividad, lugar, desc, Fecha);
+		boolean isNumericMedicamento =  medicamento.matches("[+-]?\\d*(\\.\\d+)?");
+		boolean isNumericDosis =  dosis.matches("[+-]?\\d*(\\.\\d+)?");
+		if(isNumericCodigo && !isNumericMedicamento && !isNumericDosis) {
+			int codigo = Integer.parseInt(cod);
+			boolean exito = SingletonServiAppSanidad.getInstance().a�adirReceta(codigo, medicamento, dosis, medicoEmpleado, Acampado);
 			if(!exito) {
-				JOptionPane.showMessageDialog(ventanaListaActividad, "Ya existe una actividad con el mismo codigo", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(ventanaRecetas, "Ya existe una receta con el mismo codigo", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 		else {
-			JOptionPane.showMessageDialog(ventanaListaActividad, "Los datos introducidos en el formulario no son validos", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(ventanaRecetas, "Los datos introducidos en el formulario no son validos", "Error", JOptionPane.ERROR_MESSAGE);
 		}
-	}*/
+	}
 	
+
+	public void eliminarReceta(JFrame ventanaListaAverias, int codigo) {
+		boolean exito = SingletonServiAppSanidad.getInstance().eliminarReceta(ventanaListaAverias, codigo);
+		if(!exito) {
+			JOptionPane.showMessageDialog(ventanaListaAverias, "La receta que desea eliminar no ha sido adquirida por el acampado. Puede eliminarla modificando su estado de compra", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
+	
+	public void consultarCompraReceta(Frame ventanaAnterior, int codigo) {
+		SingletonServiAppSanidad.getInstance().consultarCompraReceta(codigo);
+	}
+	
+	//CITAS
+	
+	public void menuCitas(JFrame frame) {
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuCitas(frame);
+			}
+		});
+	}
+
+
+	public void mostrarListaCitas(JFrame frame) {
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaVerListaCitas(frame);
+			}
+		});
+	}
+	
+	public void mostrarEliminarCita(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEliminarCita(frame);
+			}
+		});
+	}
+	public void mostrarConsultarCitas(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaConsultarListaCitas(frame);
+			}
+		});
+	}
+
+
 
 	public void addObserver(SanidadObserver vista) {
 		SingletonServiAppSanidad.getInstance().addObserver(vista);
