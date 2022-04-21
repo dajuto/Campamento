@@ -1,0 +1,22 @@
+{"gastos": [
+   {
+      "data": {
+         "Tipo": "Publicidad",
+         "Concepto": "Campaña de marketing",
+         "Importe": 650,
+         "Fecha de pago": "11/01/2022",
+         "Empleado": {"LoEs": "NO" , "Nombre":  " "  }
+      },
+      "type": "gastos"
+   },
+    {
+      "data": {
+         "Tipo": "Sueldos y Salarios",
+         "Concepto": "Nómina de Alfredo Ramos",
+         "Importe": 550,
+         "Fecha de pago": "15/02/2022",
+         "Empleado": {"LoEs": "SI" , "Nombre":  "Alfredo Ramos"  }
+      },
+      "type": "gastos"
+   }
+]}

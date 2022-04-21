@@ -24,7 +24,7 @@ public class ControllerContabilidad {
 	}
 
 	public void registraFactoria(Factory<Object> objetosFactory) {
-		SingletonServiAppGestoria.getInstance().registrarFactoria(objetosFactory);
+		SingletonServiAppContabilidad.getInstance().registrarFactoria(objetosFactory);
 	}
 	
 	public void menuContabilidad(JFrame frame) {  //hecha
