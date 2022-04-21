@@ -3,11 +3,23 @@
    {
       "data": {
          "Tipo": "Ventas",
-         "Concepto": "Abono acampado de Jose Luis Ramírez",
+         "Concepto": "Abono acampado de Jose Cordero",
          "Importe": 200,
          "Fecha de pago": "11/01/2022",
-         "Acampado": {"LoEs": "SI" , "Nombre":  "Jose Luis Ramírez", "DNI" : "47410978A" }
+         "Acampado": {"Nombre":  "Jose Cordero", "DNI" : "78765711A" }
       },
       "type": "ingresos"
-   }
+   },
+   
+   {
+      "data": {
+         "Tipo": "Subvenciones, donaciones",
+         "Concepto": "Subvención de Ayuntamiento de Madrid",
+         "Importe": 2000,
+         "Fecha de pago": "12/01/2022",
+         "Acampado": {"Nombre":  "", "DNI" : "" }
+      },
+      "type": "ingresos"
+   } 
+   
 ]}
