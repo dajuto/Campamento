@@ -43,11 +43,11 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 		
 		
 		codReceta = new JComboBox<TReceta>();
-		codReceta.setBounds(353, 70, 138, 26);
+		codReceta.setBounds(65, 84, 184, 26);
 		getContentPane().add(codReceta);
 		
 		JLabel lblMedico = new JLabel("Codigo de la Receta que desea poner como Adquirida: ");
-		lblMedico.setBounds(36, 73, 314, 20);
+		lblMedico.setBounds(77, 48, 391, 20);
 		getContentPane().add(lblMedico);
 		
 		JButton boton_Atras = new JButton("Atras");
@@ -67,7 +67,7 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 				SingletonControllerSanidad.getInstance().consultarCompraReceta(atras, ((TReceta)codReceta.getSelectedItem()).getCodigo());
 			}
 		});
-		boton_Aceptar.setBounds(36, 162, 244, 25);
+		boton_Aceptar.setBounds(297, 85, 194, 25);
 		getContentPane().add(boton_Aceptar);
 		
 	}
