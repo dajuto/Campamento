@@ -112,5 +112,18 @@
          "nombre": "Joaquiiin"
       },
       "type": "Empleado Mantenimiento"
+   },
+   {
+      "data": {
+         "puesto": "Empleado Mantenimiento",
+         "horario": 9,
+         "salario": 2000,
+         "trabajo": {"listaAverias": []},
+         "vacaciones": "Nunca",
+         "usuario": "cris00",
+         "contrasena": "12345678",
+         "nombre": "cristina"
+      },
+      "type": "Empleado Mantenimiento"
    }
 ]}
