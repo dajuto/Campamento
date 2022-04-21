@@ -1,0 +1,42 @@
+{"limpieza": [
+   {
+      "data": {
+         "Empleado": "Pepe Luis",
+         "Hora": "11:30",
+         "Codigo": "1",
+         "Lugar": "Piscina",
+         "Dia": "Martes"
+      },
+      "type": "limpieza"
+   },
+   {
+      "data": {
+         "Empleado": "Ivan Hernandez",
+         "Hora": "12:30",
+         "Codigo": "2",
+         "Lugar": "Tennis",
+         "Dia": "Jueves"
+      },
+      "type": "limpieza"
+   },
+   {
+      "data": {
+         "Empleado": "Almudena",
+         "Hora": "11:11",
+         "Codigo": "3",
+         "Lugar": "Secretaria",
+         "Dia": "Sabado"
+      },
+      "type": "limpieza"
+   },
+   {
+      "data": {
+         "Empleado": "Pepe Luis",
+         "Hora": "09:00",
+         "Codigo": "4",
+         "Lugar": "Piscina",
+         "Dia": "Sabado"
+      },
+      "type": "limpieza"
+   }
+]}
