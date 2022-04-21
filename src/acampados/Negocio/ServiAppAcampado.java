@@ -101,6 +101,7 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 			}
 			else if (te.nombre.equals(nombre)) {
 				JOptionPane.showMessageDialog(frame, "El nombre especificado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+				return false;
 			}
 		}
 		

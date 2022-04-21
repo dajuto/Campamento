@@ -73,10 +73,6 @@ public class ControllerEmpleado {
 			frame.setVisible(false);
 			SingletonControllerGestoria.getInstance().menuGestor();
 		}
-		
-		else {
-			JOptionPane.showMessageDialog(frame, "Usuario ya existe", "Error", JOptionPane.ERROR_MESSAGE);			
-		}
 	}
 
 	
