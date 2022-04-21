@@ -11,13 +11,6 @@ import org.json.JSONObject;
 
 import contabilidad.Integracion.SingletonDaoGastos;
 import contabilidad.Integracion.SingletonDaoIngresos;
-import gestoria.Integracion.SingletonDaoLimpieza;
-import gestoria.Negocio.GestoriaObserver;
-import gestoria.Negocio.TInstalacion;
-import gestoria.Negocio.TLimpieza;
-
-
-import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import launcher.Observable;
 
@@ -45,9 +38,9 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.contrasenaUsuario = password;
 	}
 
-	public void mostrarListaLimpiezaEmpleado(String nombreEmpleado) {
-		this.updateLimpieza();
-	}
+	//public void mostrarListaLimpiezaEmpleado(String nombreEmpleado) {
+		//this.updateLimpieza();
+	//}
 
 
 	@Override
@@ -75,6 +68,10 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		return listaGastos;
 	}
 
+	public List<TIngresos> getListaIngresos() {
+		this.updateGastos();
+		return listaIngresos;
+	}
 	
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
@@ -112,7 +109,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	
 	// ++++++++++++++INGRESOS ++++++++++++
 	public void updateIngresos() {
-		this.listaGastos = SingletonDaoIngresos.getInstance().leeTodo(this.factoriaTranserObjects);
+		this.listaIngresos = SingletonDaoIngresos.getInstance().leeTodo(this.factoriaTranserObjects);
 	}
 	
 	public void guardaIngresos() {
@@ -143,10 +140,5 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		return true;
 	}
 
-	@Override
-	public void removeObserver(ContabilidadObserver o) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
