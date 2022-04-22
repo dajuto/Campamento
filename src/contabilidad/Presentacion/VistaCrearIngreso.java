@@ -125,6 +125,13 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		contabilizada.setBounds(348, 177, 122, 25);
 		getContentPane().add(contabilizada);
 		
+
+		if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
+			
+			acampado_txt.setVisible(false);
+			lblAcampado.setVisible(false);	
+		}
+		
 		cuenta_txt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

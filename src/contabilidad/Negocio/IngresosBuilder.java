@@ -5,7 +5,7 @@ import launcher.Builder;
 
 public class IngresosBuilder extends Builder<Object> {
 	public IngresosBuilder() {
-		super("ingresos");
+		super("contabilidad"); //ingresos ponia antes
 	}
 
 	@Override

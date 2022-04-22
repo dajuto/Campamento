@@ -56,7 +56,7 @@ public class DaoIngresos {
 		List<TIngresos> l = new ArrayList<TIngresos>();
 		try {
             JSONObject jo = new JSONObject(new JSONTokener(in));
-            JSONArray ingresos = jo.getJSONArray("contabilidad"); //o ingresos
+            JSONArray ingresos = jo.getJSONArray("ingresos"); //o ingresos
             for(int i = 0; i < ingresos.length(); i++) {
                 TIngresos a = (TIngresos) factoriaTranserObjects.createInstance(ingresos.getJSONObject(i));
                 l.add(a);

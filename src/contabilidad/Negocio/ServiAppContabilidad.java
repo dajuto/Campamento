@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import contabilidad.Integracion.SingletonDaoGastos;
 import contabilidad.Integracion.SingletonDaoIngresos;
+import gestoria.Integracion.SingletonDaoInstalacion;
 import launcher.Factory;
 import launcher.Observable;
 
@@ -87,6 +88,25 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 			}
 		}
 	}
+	
+	public void modificarGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada, JFrame frame) {
+		for (int i = 0; i < listaGastos.size(); i++) {
+			if (listaGastos.get(i).getTipo().equals(cuenta)) {
+				listaGastos.get(i).concepto = concepto;
+				listaGastos.get(i).importe = Integer.parseInt(importe);
+				listaGastos.get(i).fecha = fecha;
+				listaGastos.get(i).nombreEmpleado = empleado;
+				listaGastos.get(i).contabilizada = contabilizada;
+				SingletonDaoGastos.getInstance().escribeTodo(listaGastos);
+				this.updateGastos();
+			}
+		}
+	}
+	
+	
+	
+	
+	
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
 		}
@@ -96,7 +116,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	        SingletonDaoGastos.getInstance().escribeTodo(this.listaGastos);
 		}
 	 
-	public boolean añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
+	public boolean añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada,   JFrame frame) {
 		
 		this.updateGastos();
 		
@@ -109,6 +129,14 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		data.accumulate("Fecha de pago", fecha);
 		data.accumulate("Empleado", empleado);
 		
+		if(contabilizada) {
+			
+			data.accumulate("Contabilizada", "Si");
+		}else {
+			
+			data.accumulate("Contabilizada", "No");
+		}
+		
 		gastos.accumulate("data", data);
 		gastos.accumulate("type", "gastos");
 		
@@ -119,7 +147,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		
 		return true;
 	}
-	
 	
 	// ++++++++++++++INGRESOS ++++++++++++
 	public void updateIngresos() {
@@ -153,7 +180,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.listaIngresos.add(tingresos);
 		this.guardaIngresos();
 		this.updateIngresos();
-
 		
 		return true;
 	}

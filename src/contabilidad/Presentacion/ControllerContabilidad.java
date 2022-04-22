@@ -16,6 +16,7 @@ import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.SingletonServiAppGestoria;
 import gestoria.Negocio.TLimpieza;
+import gestoria.Presentacion.VistaMenuInstalacionesGestor;
 import launcher.Factory;
 
 public class ControllerContabilidad {
@@ -133,9 +134,25 @@ public class ControllerContabilidad {
 		SingletonServiAppContabilidad.getInstance().eliminarIngreso(frame, codigo);
 	}
 	
+	
+	public void modificarGasto(String cuenta, String concepto, String importe, String fecha, String empleado, Boolean contabilizada,  JFrame frame) {
+		SingletonServiAppContabilidad.getInstance().modificarGasto(cuenta, concepto, importe, fecha, empleado, contabilizada, frame);
+		frame.setVisible(false);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaGastosContabilidad(frame);
+			}
+		});
+	}
+	
+	
+	
+	
+	
 	//ADRIANA
-	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
-		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, frame);
+	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, Boolean contabilizada,  JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, contabilizada, frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override

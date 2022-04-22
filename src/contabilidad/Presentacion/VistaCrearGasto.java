@@ -1,6 +1,7 @@
 package contabilidad.Presentacion;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
 
@@ -42,6 +43,8 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 	private JComboBox<String> empleado_txt;
 	List<TGastos> listaGastos;
 	List<TEmpleado> listaEmpleados;
+	private JCheckBox contabilizada;
+	private boolean boolContabilizada = false;
 	
 	public VistaCrearGasto(JFrame frame) {
 		setTitle("Añadir un Gasto");
@@ -123,6 +126,11 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 			empleado_txt.addItem(e.getNombre());
 		}
 		
+		contabilizada = new JCheckBox("Marca para contabilizar");
+		contabilizada.setBounds(348, 177, 122, 25);
+		getContentPane().add(contabilizada);
+		
+		
 		if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
 			
 			empleado_txt.setVisible(false);
@@ -142,8 +150,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 				}	
 			}
 		});
-		
-		
+			
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -156,7 +163,10 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 					
 					if (importe_txt.getText().matches("[0-9]*")) {
 						String cuenta = (String) cuenta_txt.getSelectedItem();
-						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleado, getFrame());
+						if (contabilizada.isSelected()) {
+							boolContabilizada = true;
+						}
+						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleado, boolContabilizada,  getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
 				}	
