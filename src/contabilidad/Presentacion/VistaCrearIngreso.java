@@ -35,7 +35,7 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 	private JTextField importe_txt;
 	private JComboBox<String> acampado_txt;
 	private JComboBox<String> cuenta_txt;
-	private String dniAcampado; 
+	private String dniAcampado = ""; 
 	List<TIngresos> listaIngresos;
 	List<TAcampado> listaAcampados;
 	private JCheckBox contabilizada;
@@ -118,7 +118,7 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		acampado_txt.setBounds(121, 216, 116, 22);
 		getContentPane().add(acampado_txt);
 		for(TAcampado e: listaAcampados) {
-			acampado_txt.addItem(e.getNombre());
+			acampado_txt.addItem(e.getNombreCompleto());
 		}
 		
 		contabilizada = new JCheckBox("Marca para contabilizar");
@@ -152,6 +152,7 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 				String acampado = "";
 				if (((String) cuenta_txt.getSelectedItem()).matches("Ventas")) {
 					acampado = (String) acampado_txt.getSelectedItem();
+					
 				}
 				
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
@@ -161,7 +162,7 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 						
 						//estoy cogiendo el dni del acampado seleccionado 
 						for(TAcampado y: listaAcampados) {	
-							if(acampado == (y.getNombre()+y.getApellidos())) {
+							if(acampado == (y.getNombre()+ y.getApellidos())) {
 								dniAcampado = y.getDni(); 
 							}
 						}

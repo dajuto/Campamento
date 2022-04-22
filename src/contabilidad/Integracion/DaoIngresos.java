@@ -13,9 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
-
 import contabilidad.Negocio.TIngresos;
 import launcher.Factory;
+
 
 public class DaoIngresos {
 	
@@ -23,14 +23,14 @@ public class DaoIngresos {
 	private InputStream in;
 	private OutputStream os;
 	public DaoIngresos() throws IOException {
-		this.nombreFichero = "contabilidad.json";
+		this.nombreFichero = "ingresos.json";
 	}
 	
 	public void escribeTodo(List<TIngresos> listaIngresos) { 
 		JSONObject object = new JSONObject();
 		try {
 	        for(int i = 0; i < listaIngresos.size(); i++) {
-	            object.accumulate("contabilidad", listaIngresos.get(i).report());
+	            object.accumulate("ingresos", listaIngresos.get(i).report());
 	        }
 			this.os = new FileOutputStream(this.nombreFichero);
 		} catch (FileNotFoundException e1) {

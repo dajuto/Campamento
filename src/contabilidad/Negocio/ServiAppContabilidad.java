@@ -29,7 +29,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.observers = new ArrayList<ContabilidadObserver>();
 	}
 	
-
 	public void registrarFactoria(Factory<Object> objetosFactory) {  // la tenia alvaro
 		this.factoriaTranserObjects = objetosFactory;
 	}
@@ -69,7 +68,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		return listaIngresos;
 	}
 	
-	public void eliminarGasto(JFrame frame, String codigo) {  //probar si funciona
+	public void eliminarGasto(JFrame frame, String codigo) { 
 		for (int i = 0; i < listaGastos.size(); i++) {
 			if (listaGastos.get(i).getConcepto().equals(codigo)) {
 				listaGastos.remove(i);
@@ -79,7 +78,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		}
 	}
 
-	public void eliminarIngreso(JFrame frame, String codigo) {  //probar si funciona
+	public void eliminarIngreso(JFrame frame, String codigo) {  
 		for (int i = 0; i < listaIngresos.size(); i++) {
 			if (listaIngresos.get(i).getConcepto().equals(codigo)) {
 				listaIngresos.remove(i);
@@ -103,9 +102,20 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		}
 	}
 	
-	
-	
-	
+	public void modificarIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, boolean contabilizada, JFrame frame) {
+		for (int i = 0; i < listaIngresos.size(); i++) {
+			if (listaIngresos.get(i).getTipo().equals(cuenta)) {
+				listaIngresos.get(i).concepto = concepto;
+				listaIngresos.get(i).importe = Integer.parseInt(importe);
+				listaIngresos.get(i).fechaContable = fecha;
+				listaIngresos.get(i).nombreAcampado = nombreAcam;
+				listaIngresos.get(i).dniAcampado = dniAcam; 
+				listaIngresos.get(i).contabilizada = contabilizada;
+				SingletonDaoIngresos.getInstance().escribeTodo(listaIngresos);
+				this.updateIngresos();
+			}
+		}
+	}
 	
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
@@ -171,7 +181,13 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		acampado.accumulate("Nombre", nombreAcampado);
 		acampado.accumulate("DNI", dniAcampado); 
 		data.accumulate("Acampado", acampado);
-		data.accumulate("Contabilizada", "No");
+        if(contabilizada) {
+			
+			data.accumulate("Contabilizada", "Si");
+		}else {
+			
+			data.accumulate("Contabilizada", "No");
+		}
 	
 		ingresos.accumulate("data", data);
 		ingresos.accumulate("type", "ingresos");

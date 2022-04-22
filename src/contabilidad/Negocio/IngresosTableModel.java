@@ -10,7 +10,7 @@ public class IngresosTableModel extends AbstractTableModel implements Contabilid
 	private static final long serialVersionUID = 1L;
 	
 		private List<TIngresos> list;
-		private String[] columnNames = {"Estado", "Cuenta", "Concepto", "Importe","Fecha contable", "Acampado"};
+		private String[] columnNames = {"Contabilizada", "Cuenta", "Concepto", "Importe","Fecha contable", "Nombre Acampado"}; //falta el dni
 		
 		public IngresosTableModel() {
 			list = new ArrayList<TIngresos>();
@@ -39,7 +39,7 @@ public class IngresosTableModel extends AbstractTableModel implements Contabilid
 			case 3: return list.get(rowIndex).getImporte();
 			case 4: return list.get(rowIndex).getFecha();
 			case 5: return list.get(rowIndex).getNombreAcampado();
-			case 6: return list.get(rowIndex).getDniAcampado(); 
+			//case 6: return list.get(rowIndex).getDniAcampado(); 
 			default: return null;
 			}
 		}

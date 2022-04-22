@@ -1,4 +1,4 @@
-{"contabilidad": [
+{"ingresos": [
    
    {
       "data": {
@@ -18,7 +18,7 @@
          "Concepto": "Subvención de Ayuntamiento de Madrid",
          "Importe": 2000,
          "Fecha contable": "12/01/2022",
-         "Acampado": {"Nombre":  "", "DNI" : "" }
+         "Acampado": {"Nombre":  "", "DNI" : "" },
           "Contabilizada": "Si"
       },
       "type": "ingresos"

@@ -10,7 +10,7 @@ public class GastosTableModel extends AbstractTableModel implements Contabilidad
 	private static final long serialVersionUID = 1L;
 	
 		private List<TGastos> list;
-		private String[] columnNames = {"Contabilizada", "Cuenta", "Concepto", "Importe","Fecha de pago", "Empleado"};
+		private String[] columnNames = {"Contabilizada", "Cuenta", "Concepto", "Importe","Fecha contable", "Empleado"};
 		
 		public GastosTableModel() {
 			list = new ArrayList<TGastos>();

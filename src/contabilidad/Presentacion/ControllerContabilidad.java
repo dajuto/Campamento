@@ -147,7 +147,16 @@ public class ControllerContabilidad {
 	}
 	
 	
-	
+	public void modificarIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String DniAcam, Boolean contabilizada,  JFrame frame) {
+		SingletonServiAppContabilidad.getInstance().modificarIngreso(cuenta, concepto, importe, fecha, nombreAcam, DniAcam, contabilizada, frame);
+		frame.setVisible(false);
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaIngresosContabilidad(frame);
+			}
+		});
+	}
 	
 	
 	//ADRIANA

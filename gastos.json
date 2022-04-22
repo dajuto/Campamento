@@ -5,7 +5,7 @@
          "Tipo": "Publicidad",
          "Empleado": "",
          "Importe": 650,
-         "Concepto": "Campaña de marketing",
+         "Concepto": "Marketing",
          "Contabilizada": "Si"
       },
       "type": "gastos"
@@ -15,8 +15,8 @@
          "Fecha de pago": "15/02/2022",
          "Tipo": "Sueldos y Salarios",
          "Empleado": "inesita",
-         "Importe": 550,
-         "Concepto": "Nómina empleado",
+         "Importe": 600,
+         "Concepto": "Nomina empleado",
          "Contabilizada": "No"
       },
       "type": "gastos"
