@@ -25,13 +25,17 @@ import java.awt.Color;
 
 public class VistaMenuRecetas extends JFrame implements SanidadObserver{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame atras;
 	private String nombreUsuario;
 	private RecetasMedicoTableModel table;
 	private JTable table_1;
 	
 	public VistaMenuRecetas(JFrame frame) {
-		setTitle("Menu de Sanidad");
+		setTitle("Menu de Recetas");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,501);
@@ -81,18 +85,13 @@ public class VistaMenuRecetas extends JFrame implements SanidadObserver{
 		btnEliminarReceta.setBounds(365, 358, 149, 29);
 		getContentPane().add(btnEliminarReceta);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(84, 96, 308, 196);
-		getContentPane().add(panel);
-		panel.setLayout(new BorderLayout(0, 0));
 		
-		table_1 = new JTable(new RecetasMedicoTableModel());
-		panel.add(table_1, BorderLayout.CENTER);
 		
-		JPanel recetasView = createViewPanel(new JTable(new RecetasMedicoTableModel()), "Recetas Medico");
-		recetasView.setPreferredSize(new Dimension(500, 400));
+		/**JPanel recetasView = createViewPanel(new JTable(new RecetasMedicoTableModel()), "Recetas Medico");
+		recetasView.setBounds(35, 73, 416, 126);
 		getContentPane().add(recetasView);
-		
+		*/
+		this.setVisible(true);
 	}
 	private JFrame getFrame() {
 		return this;

@@ -10,6 +10,10 @@ import empleados.Negocio.TMedico;
 public class RecetasMedicoTableModel extends AbstractTableModel implements SanidadObserver{
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<TReceta> list;
 	private String[] columnNames = {"Codigo", "Acampado","Medicamento", "Dosis", "Medico", "Comprado"};
 	

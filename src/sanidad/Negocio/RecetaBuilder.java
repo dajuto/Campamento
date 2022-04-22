@@ -10,7 +10,7 @@ import launcher.Builder;
 
 public class RecetaBuilder extends Builder<Object> {
 
-	protected RecetaBuilder(String type) {
+	public RecetaBuilder() {
 		super("receta");
 		// TODO Auto-generated constructor stub
 	}
