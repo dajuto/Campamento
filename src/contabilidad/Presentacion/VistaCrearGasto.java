@@ -123,11 +123,11 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 			empleado_txt.addItem(e.getNombre());
 		}
 		
-		//if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
+		if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
 			
-			//empleado_txt.setVisible(false);
-			//lblEmplead.setVisible(false);	
-		//}
+			empleado_txt.setVisible(false);
+			lblEmplead.setVisible(false);	
+		}
 		
 		cuenta_txt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -182,18 +182,14 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		// TODO Auto-generated method stub
 		this.update(nombreUsuario);
 	}
-
 	@Override
 	public void onCreate(List<TGastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		this.update(nombreUsuario);
 	}
-
 	@Override
 	public void onActualizar(List<TGastos> listaLimpieza, List<TIngresos> listaIngresos, String nombreUsuario) {
 		// TODO Auto-generated method stub
 		this.update(nombreUsuario);
 	}
-	
-
 }

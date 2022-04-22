@@ -54,8 +54,6 @@ public class ControllerContabilidad {
 			}
 		});
 	}
-
-	
 		public void mostrarGastos(JFrame frame) { //hecha
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
@@ -64,7 +62,7 @@ public class ControllerContabilidad {
 			    }
 			});
 		}
-	
+		
 		public void mostrarIngresos(JFrame frame) { //hecha
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
@@ -90,6 +88,49 @@ public class ControllerContabilidad {
 				new VistaCrearIngreso(frame);
 			}
 		});
+	}
+	
+	public void mostrarEliminarGastos(JFrame frame) {  //nueva
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEliminarGasto(frame);
+			}
+		});
+	}
+	
+	public void mostrarEliminarIngresos(JFrame frame) {  //nueva
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEliminarIngreso(frame);
+			}
+		});
+	}
+	
+	public void mostrarModificarIngresos(JFrame frame) {  //nueva
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarIngresos(frame);
+			}
+		});
+	}
+	
+	public void mostrarModificarGastos(JFrame frame) {  //nueva
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarGasto(frame);
+			}
+		});
+	}
+	public void eliminarGasto(JFrame frame, String codigo) {
+		SingletonServiAppContabilidad.getInstance().eliminarGasto(frame, codigo);
+	}
+	
+	public void eliminarIngreso(JFrame frame, String codigo) {
+		SingletonServiAppContabilidad.getInstance().eliminarIngreso(frame, codigo);
 	}
 	
 	//ADRIANA
@@ -125,9 +166,7 @@ public class ControllerContabilidad {
 			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
 		}
 	}
-	
-
-	
+		
 	public List<TGastos> getListaGastos() {
 		List<TGastos> listaGastos = SingletonServiAppContabilidad.getInstance().getListaGastos();
 		return listaGastos;
@@ -145,8 +184,6 @@ public class ControllerContabilidad {
 	public List<TEmpleado> getListaEmpleados() {
 		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
 	}
-
-
 }
 
 
