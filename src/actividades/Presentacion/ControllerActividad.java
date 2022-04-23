@@ -64,13 +64,13 @@ public class ControllerActividad {
 	}
 
 
-	public void anadirActividad(Frame ventanaListaActividad, String cod, String lugar, String desc, String Fecha) {
-		boolean isNumericCodigo =  cod.matches("[+-]?\\d*(\\.\\d+)?");
+	public void anadirActividad(Frame ventanaListaActividad, String id, String lugar, String desc, String Fecha) {
+		boolean isNumericId =  id.matches("[+-]?\\d*(\\.\\d+)?");
 		boolean isNumericLugar =  lugar.matches("[+-]?\\d*(\\.\\d+)?");
 		boolean isNumericDesc =  desc.matches("[+-]?\\d*(\\.\\d+)?");
-		if(isNumericCodigo && !isNumericLugar && !isNumericDesc) {
-			int codigoActividad = Integer.parseInt(cod);
-			boolean exito = SingletonServiAppActividad.getInstance().anadirActividad(codigoActividad, lugar, desc, Fecha);
+		if(isNumericId && !isNumericLugar && !isNumericDesc) {
+			int idActividad = Integer.parseInt(id);
+			boolean exito = SingletonServiAppActividad.getInstance().anadirActividad(idActividad, lugar, desc, Fecha);
 			if(!exito) {
 				JOptionPane.showMessageDialog(ventanaListaActividad, "Ya existe una actividad con el mismo codigo", "Error", JOptionPane.ERROR_MESSAGE);
 			}

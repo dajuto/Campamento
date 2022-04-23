@@ -32,7 +32,7 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 	private Frame ventanaAnterior;
 	
 	public VistaListaActividadesGestor(Frame frame) {
-		super("Gestion colegio mayor");
+		setTitle("Lista Actividades");
 		SingletonControllerActividad.getInstance().addObserver(this);
 		this.ventanaAnterior = frame;
 		this.anadirActividad = new JButton("Anadir actividad");

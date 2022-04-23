@@ -1,0 +1,38 @@
+{"actividad": [
+   {
+      "data": {
+         "Nombre": "PaintBall",
+         "Id": 1,
+         "Monitor": "Manuel",
+         "Instalacion": "Campo de paintball"
+      },
+      "type": "actividad"
+   },
+   {
+      "data": {
+         "Nombre": "Partido de futbol",
+         "Id": 2,
+         "Monitor": "Manuel",
+         "Instalacion": "Pista de futbol"
+      },
+      "type": "actividad"
+   },
+   {
+      "data": {
+         "Nombre": "Senderismo",
+         "Id": 3,
+         "Monitor": "Manuel",
+         "Instalacion": "Afueras del campamento"
+      },
+      "type": "actividad"
+   },
+   {
+      "data": {
+         "Nombre": "Canoas",
+         "Id": 4,
+         "Monitor": "Manuel",
+         "Instalacion": "Lago"
+      },
+      "type": "actividad"
+   }
+]}
