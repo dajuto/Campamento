@@ -17,8 +17,13 @@ public class GastosBuilder extends Builder<Object> {
 		String concepto = data.getString("Concepto");
 		int importe = data.getInt("Importe");
 		String fecha = data.getString("Fecha de pago");
-		String nombreEmpleado = data.getString("Empleado"); 
-		TGastos contabilidadGastos = new TGastos(tipo, concepto, importe,fecha, nombreEmpleado);
+		String nombreEmpleado = data.getString("Empleado");
+		String sContabilizada = data.getString("Contabilizada"); 
+		boolean conta = false; 
+		if(sContabilizada.equals("Si")) {
+			conta = true; 
+		}
+		TGastos contabilidadGastos = new TGastos(tipo, concepto, importe,fecha, nombreEmpleado, conta);
 		return contabilidadGastos;
 	}
 }

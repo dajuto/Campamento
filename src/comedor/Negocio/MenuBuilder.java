@@ -13,11 +13,11 @@ public class MenuBuilder extends Builder<Object>{
 	@Override
 	protected TMenu createTheInstance(JSONObject data) {
 		
+		String dia = data.getString("Dia");
 		String desayuno = data.getInt("Desayuno");
 		String comida = data.getString("Comida");
 		String cena = data.getString("Cena");
-		String horario = data.getString("Horario");
-		TMenu tmenu = new TMenu(desayuno, comida, cena, horario);
+		TMenu tmenu = new TMenu(dia, desayuno, comida, cena);
 		
 		
 		return tmenu;

@@ -13,7 +13,7 @@ public class SingletonServiAppActividad {
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerSanidad();
+            INSTANCE = new ServiAppActividad();
         }
     }
 

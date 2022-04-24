@@ -1,22 +1,23 @@
-package actividades.Presentacion;
+package comedor.negocio;
 
+import comedor.presentacion.ControllerMenu;
 
-public class SingletonControllerSanidad {
+public class SingletonServiAppMenu {
 
-	private static ControllerSanidad INSTANCE = null;
+	private static ServiAppMenu INSTANCE = null;
 
     // Private constructor suppresses 
-    private SingletonControllerSanidad(){}
+    private SingletonServiAppMenu(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
     // otra prueba para evitar instanciación múltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
-            INSTANCE = new ControllerSanidad();
+            INSTANCE = new ServiAppMenu();
         }
     }
 
-    public static ControllerSanidad getInstance() {
+    public static ServiAppMenu getInstance() {
         if (INSTANCE == null) createInstance();
         return INSTANCE;
     }

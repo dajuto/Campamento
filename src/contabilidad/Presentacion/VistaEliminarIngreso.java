@@ -51,7 +51,9 @@ public class VistaEliminarIngreso extends JFrame implements ContabilidadObserver
 		codElegido.setBounds(25, 73, 239, 22);
 		listaIngresos = SingletonControllerContabilidad.getInstance().getListaIngresos();
 		for(TIngresos cod: this.listaIngresos) {
-			codElegido.addItem(cod.getConcepto());  //poner en el concepto un código 
+			if(!cod.isContabilizada()) {  //solo se pueden eliminar los ingresos que NO están contabilizados 
+				codElegido.addItem(cod.getConcepto()); 
+			}
 		}
 		getContentPane().add(codElegido);
 		

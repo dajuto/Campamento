@@ -129,6 +129,7 @@
       },
       "type": "Empleado Mantenimiento"
    },
+<<<<<<< HEAD
    {
       "data": {
          "puesto": "Medico",
@@ -141,5 +142,19 @@
          "nombre": "Dajuto"
       },
       "type": "Medico"
+=======
+    {
+      "data": {
+         "puesto": "Gestor Actividades",
+         "horario": 8,
+         "salario": 3000,
+         "trabajo": {"listaActividades": ["2"]},
+         "vacaciones": "Todo el verano",
+         "usuario": "crmanz",
+         "contrasena": "12345678",
+         "nombre": "Cristian"
+      },
+      "type": "Empleado Mantenimiento"
+>>>>>>> ec28a8db58a25b0a2baac22e0579fbce594775be
    }
 ]}

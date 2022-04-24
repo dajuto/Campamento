@@ -1,11 +1,12 @@
 {"gastos": [
    {
       "data": {
-         "Fecha de pago": "11/01/2022",
+         "Fecha de pago": "24/04/2022",
          "Tipo": "Publicidad",
          "Empleado": "",
          "Importe": 650,
-         "Concepto": "Campaña de marketing"
+         "Concepto": "Marketing",
+         "Contabilizada": "Si"
       },
       "type": "gastos"
    },
@@ -14,28 +15,20 @@
          "Fecha de pago": "15/02/2022",
          "Tipo": "Sueldos y Salarios",
          "Empleado": "inesita",
-         "Importe": 550,
-         "Concepto": "Nómina empleado"
+         "Importe": 600,
+         "Concepto": "Nomina empleado",
+         "Contabilizada": "No"
       },
       "type": "gastos"
    },
    {
       "data": {
-         "Fecha de pago": "21/04/2022",
-         "Tipo": "Publicidad",
+         "Fecha de pago": "24/04/2022",
+         "Tipo": "Gasto",
          "Empleado": "",
-         "Importe": 100,
-         "Concepto": "Instagram"
-      },
-      "type": "gastos"
-   },
-   {
-      "data": {
-         "Fecha de pago": "12/04/2022",
-         "Tipo": "Publicidad",
-         "Empleado": "",
-         "Importe": 200,
-         "Concepto": "Anuncio"
+         "Importe": 2500,
+         "Concepto": "Pago instalaci�n Tennis",
+         "Contabilizada": "No"
       },
       "type": "gastos"
    }

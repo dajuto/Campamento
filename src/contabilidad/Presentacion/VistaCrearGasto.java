@@ -1,6 +1,7 @@
 package contabilidad.Presentacion;
 
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 
 
@@ -19,6 +20,8 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -36,14 +39,18 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 	private JFrame atras;
 	private String nombreUsuario;
 	private JTextField concepto_txt;
-	private JTextField fecha_txt;
 	private JTextField importe_txt;
 	private JComboBox<String> cuenta_txt;
 	private JComboBox<String> empleado_txt;
 	List<TGastos> listaGastos;
 	List<TEmpleado> listaEmpleados;
+	private JCheckBox contabilizada;
+	private boolean boolContabilizada = false;
+	private String fecha; 
 	
 	public VistaCrearGasto(JFrame frame) {
+		
+		
 		setTitle("Añadir un Gasto");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
@@ -84,11 +91,6 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		lblImporte.setBounds(25, 137, 69, 25);
 		getContentPane().add(lblImporte);
 		
-		JLabel lblFecha = new JLabel("Fecha contable:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFecha.setBounds(25, 175, 116, 25);
-		getContentPane().add(lblFecha);
-		
 		JLabel lblEmplead = new JLabel("Emplead@:");
 		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEmplead.setBounds(25, 215, 97, 25);
@@ -106,11 +108,6 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 			cuenta_txt.addItem(e.getTipo());
 		}
 		
-		fecha_txt = new JTextField();
-		fecha_txt.setBounds(151, 179, 116, 22);
-		getContentPane().add(fecha_txt);
-		fecha_txt.setColumns(10);
-		
 		importe_txt = new JTextField();
 		importe_txt.setBounds(121, 141, 116, 22);
 		getContentPane().add(importe_txt);
@@ -123,11 +120,9 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 			empleado_txt.addItem(e.getNombre());
 		}
 		
-		if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
-			
-			empleado_txt.setVisible(false);
-			lblEmplead.setVisible(false);	
-		}
+		contabilizada = new JCheckBox("Marca para contabilizar");
+		contabilizada.setBounds(348, 177, 122, 25);
+		getContentPane().add(contabilizada);
 		
 		cuenta_txt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -142,7 +137,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 				}	
 			}
 		});
-		
+			
 		
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
@@ -150,17 +145,18 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 				String empleado = "";
 				if (((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
 					empleado = (String) empleado_txt.getSelectedItem();
-				}
-				
-				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-					
+				}	
 					if (importe_txt.getText().matches("[0-9]*")) {
 						String cuenta = (String) cuenta_txt.getSelectedItem();
-						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), empleado, getFrame());
+						if (contabilizada.isSelected()) {
+							boolContabilizada = true;
+						}	
+						 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+							fecha = sdf.format(new Date());
+						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha, empleado, boolContabilizada,  getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
-				}	
-				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
+				
 			}
 		});
 		boton_Crear.setBounds(266, 215, 97, 25);

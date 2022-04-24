@@ -51,7 +51,10 @@ public class VistaEliminarGasto extends JFrame implements ContabilidadObserver{
 		codElegido.setBounds(25, 73, 239, 22);
 		listaGastos = SingletonControllerContabilidad.getInstance().getListaGastos();
 		for(TGastos cod: this.listaGastos) {
-			codElegido.addItem(cod.getConcepto());  //poner en el concepto un código 
+			if(!cod.isContabilizada()) {  //solo se pueden eliminar los gastos que NO están contabilizados 
+				codElegido.addItem(cod.getConcepto()); 
+			}
+			 
 		}
 		getContentPane().add(codElegido);
 		

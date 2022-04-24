@@ -16,7 +16,7 @@
          "Codigo": "3",
          "Superficie": 50,
          "Actividades": "No",
-         "Pagado": "No",
+         "Pagado": "Si",
          "Precio": 2500
       },
       "type": "instalacion"

@@ -10,7 +10,7 @@ public class GastosTableModel extends AbstractTableModel implements Contabilidad
 	private static final long serialVersionUID = 1L;
 	
 		private List<TGastos> list;
-		private String[] columnNames = {"Cuenta", "Concepto", "Importe","Fecha de pago", "Empleado"};
+		private String[] columnNames = {"Contabilizada", "Cuenta", "Concepto", "Importe","Fecha contable", "Empleado"};
 		
 		public GastosTableModel() {
 			list = new ArrayList<TGastos>();
@@ -35,11 +35,12 @@ public class GastosTableModel extends AbstractTableModel implements Contabilidad
 		@Override
 		public Object getValueAt(int rowIndex, int columnIndex) {
 			switch(columnIndex) {
-			case 0: return list.get(rowIndex).getTipo();
-			case 1:	return list.get(rowIndex).getConcepto();
-			case 2: return list.get(rowIndex).getImporte();
-			case 3: return list.get(rowIndex).getFecha();
-			case 4: return list.get(rowIndex).getNombre();
+			case 0: return list.get(rowIndex).isContabilizada(); 
+			case 1: return list.get(rowIndex).getTipo();
+			case 2:	return list.get(rowIndex).getConcepto();
+			case 3: return list.get(rowIndex).getImporte();
+			case 4: return list.get(rowIndex).getFecha();
+			case 5: return list.get(rowIndex).getNombre();
 			default: return null;
 			}
 		}
