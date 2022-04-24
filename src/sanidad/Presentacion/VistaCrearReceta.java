@@ -11,7 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TMedico;
+import gestoria.Presentacion.SingletonControllerGestoria;
 import sanidad.Negocio.SanidadObserver;
 import sanidad.Negocio.TReceta;
 import javax.swing.JTextField;
@@ -33,8 +35,8 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
-	JComboBox<TMedico> comboBox;
-	JComboBox<TAcampado> comboBox_1;
+	JComboBox<String> comboBox;
+	JComboBox<String> comboBox_1;
 	List<TMedico> listaMedicos;
 	List<TAcampado> listaAcampados;
 	
@@ -62,7 +64,7 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerSanidad.getInstance().anadirReceta(atras, textField.getText(), textField_1.getText(), textField_2.getText(), ((TMedico)comboBox.getSelectedItem()).getUsuario(),((TAcampado)comboBox_1.getSelectedItem()).getUsuario());
+				SingletonControllerSanidad.getInstance().anadirReceta(atras, textField.getText(), textField_1.getText(), textField_2.getText(), comboBox.getSelectedItem().toString(),comboBox_1.getSelectedItem().toString());
 				
 			}
 		});
@@ -108,30 +110,34 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		lblMedico.setBounds(15, 201, 69, 20);
 		getContentPane().add(lblMedico);
 		
-		for(TMedico te: this.listaMedicos) {
-			comboBox.addItem(te);
+		comboBox = new JComboBox<String>();
+		comboBox.setBounds(142, 200, 146, 22);
+		for(TEmpleado e: SingletonControllerSanidad.getInstance().getListaEmpleados()) {
+			if (e.getPuesto().matches("Medico")) {
+				comboBox.addItem(e.getNombre());
+			}
 		}
-		
-		
-		comboBox = new JComboBox<TMedico>();
-		comboBox.setBounds(142, 198, 146, 26);
 		getContentPane().add(comboBox);
+		
+		
+		
 		
 		
 		JLabel lblAcampado = new JLabel("Acampado: ");
 		lblAcampado.setBounds(15, 237, 94, 20);
 		getContentPane().add(lblAcampado);
 		
-		for(TAcampado te: this.listaAcampados) {
-			comboBox_1.addItem(te);
+	
+		comboBox_1 = new JComboBox<String>();
+		comboBox_1.setBounds(142, 236, 146, 22);
+		for(TAcampado e: SingletonControllerSanidad.getInstance().getListaAcampados()) {
+			
+				comboBox_1.addItem(e.getNombre());
+			
 		}
-		
-		comboBox_1 = new JComboBox<TAcampado> ();
-		comboBox_1.setBounds(142, 234, 146, 26);
 		getContentPane().add(comboBox_1);
-		
-		
-		
+	
+		setVisible(true);
 	}
 	
 	@SuppressWarnings("unused")

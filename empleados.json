@@ -55,8 +55,8 @@
          "salario": 8000,
          "trabajo": {"citasPendientes": []},
          "vacaciones": "Todo el verano",
-         "usuario": "david00",
-         "contrasena": "12345678",
+         "usuario": "d",
+         "contrasena": "1",
          "nombre": "David Viejo"
       },
       "type": "Medico"
@@ -128,5 +128,18 @@
          "nombre": "cristina"
       },
       "type": "Empleado Mantenimiento"
+   },
+   {
+      "data": {
+         "puesto": "Medico",
+         "horario": 8,
+         "salario": 8000,
+         "trabajo": {"citasPendientes": []},
+         "vacaciones": "Todo el verano",
+         "usuario": "dajuto",
+         "contrasena": "11111111",
+         "nombre": "Dajuto"
+      },
+      "type": "Medico"
    }
 ]}

@@ -24,10 +24,8 @@ public class RecetaBuilder extends Builder<Object> {
 		    String medicamento = data.getString("medicamento");
 			String dosis = data.getString("dosis");
 			String NombreAcampado = data.getString("NombreAcampado");
-			TAcampado templAcampado=SingletonServiAppAcampado.getInstance().getAcampado(NombreAcampado);
-			TEmpleado templMedico = SingletonServiAppEmpleado.getInstance().getEmpleado(Nombremedico);
 			String comprado = data.getString("comprado");
-			TReceta treceta= new TReceta(codigo, medicamento, dosis, templMedico,comprado,templAcampado);
+			TReceta treceta= new TReceta(codigo, medicamento, dosis, Nombremedico,comprado,NombreAcampado);
 			return treceta;
 		}
 		else {

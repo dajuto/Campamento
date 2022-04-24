@@ -22,7 +22,11 @@ public class Main {
 	
 	private static Factory<Object> initFactories() {
 		List<Builder<Object>> constructores = new ArrayList<>();
+		
+		constructores.add(new RecetaBuilder());
+		
 		constructores.add(new EmpleadoLimpiezaBuilder());
+		
 		constructores.add(new EmpleadoMantenimientoBuilder());
 		constructores.add(new GestorBuilder());
 		constructores.add(new AcampadoBuilder());
@@ -32,7 +36,8 @@ public class Main {
 		constructores.add(new MedicoBuilder());
 		constructores.add(new GastosBuilder());
 		constructores.add(new IngresosBuilder());
-		constructores.add(new RecetaBuilder());
+	
+		
 		Factory<Object> factoriaTransferObjects = new BuilderBasedFactory<>(constructores);
 		return factoriaTransferObjects;
 	}

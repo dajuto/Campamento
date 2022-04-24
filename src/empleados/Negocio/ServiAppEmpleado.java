@@ -57,6 +57,8 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		for(TEmpleado e: this.listaEmpleados) {
 			if(e.usuario.equals(usuarioEmpleadoEncargado)) {
 				return true;
+			}else if(e.nombre.equals(usuarioEmpleadoEncargado)) {
+				return true;
 			}
 		}
 		return false;

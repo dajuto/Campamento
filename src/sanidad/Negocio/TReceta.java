@@ -5,7 +5,7 @@ import empleados.Negocio.Empleado;
 
 public class TReceta extends Receta{
 	
-	public TReceta(int codigo, String medicamento, String dosis, Empleado Nombremedico, String comprado, Acampado NombreAcampado){
+	public TReceta(int codigo, String medicamento, String dosis, String Nombremedico, String comprado, String NombreAcampado){
 		this.codigo = codigo;
 		this.medicamento = medicamento;
 		this.dosis = dosis;

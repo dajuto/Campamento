@@ -14,6 +14,7 @@ import javax.swing.JLabel;
 
 import empleados.Negocio.TMedico;
 import sanidad.Negocio.SanidadObserver;
+import sanidad.Negocio.SingletonServiAppSanidad;
 import sanidad.Negocio.TReceta;
 
 public class VistaConsultarListaRecetas extends JFrame implements SanidadObserver{
@@ -21,7 +22,7 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
 	private String nombreUsuario;
-	private JComboBox<TReceta> codReceta;
+	private JComboBox<Integer> codReceta;
 	List<TReceta> listaRecetas;
 
 	public VistaConsultarListaRecetas(JFrame frame) {
@@ -37,13 +38,14 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 		getContentPane().add(lblNewLabel);
 		
 		
-		for(TReceta te: this.listaRecetas) {
-			codReceta.addItem(te);
-		}
 		
 		
-		codReceta = new JComboBox<TReceta>();
+		
+		codReceta = new JComboBox<Integer>();
 		codReceta.setBounds(65, 84, 184, 26);
+		for(TReceta te: SingletonServiAppSanidad.getInstance().getListaRecetas()) {
+			codReceta.addItem(te.getCodigo());
+		}
 		getContentPane().add(codReceta);
 		
 		JLabel lblMedico = new JLabel("Codigo de la Receta que desea poner como Adquirida: ");
@@ -64,12 +66,13 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerSanidad.getInstance().consultarCompraReceta(atras, ((TReceta)codReceta.getSelectedItem()).getCodigo());
+				SingletonControllerSanidad.getInstance().consultarCompraReceta(atras, (int) codReceta.getSelectedItem());
 			}
 		});
 		boton_Aceptar.setBounds(297, 85, 194, 25);
 		getContentPane().add(boton_Aceptar);
 		
+		setVisible(true);
 	}
 
 	private void update(List<TReceta> listarecetas,  String nombreUsuario) {

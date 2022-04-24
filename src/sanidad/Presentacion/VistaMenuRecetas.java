@@ -87,10 +87,10 @@ public class VistaMenuRecetas extends JFrame implements SanidadObserver{
 		
 		
 		
-		/**JPanel recetasView = createViewPanel(new JTable(new RecetasMedicoTableModel()), "Recetas Medico");
-		recetasView.setBounds(35, 73, 416, 126);
+		JPanel recetasView = createViewPanel(new JTable(new RecetasMedicoTableModel()), "Recetas Medico");
+		recetasView.setBounds(10, 40, 500, 300);
 		getContentPane().add(recetasView);
-		*/
+		
 		this.setVisible(true);
 	}
 	private JFrame getFrame() {
@@ -99,7 +99,7 @@ public class VistaMenuRecetas extends JFrame implements SanidadObserver{
 	
 	 private JPanel createViewPanel(JComponent c, String title) {
 			JPanel p = new JPanel( new BorderLayout() );
-			p.add(new JScrollPane(c));
+			p.add(new JScrollPane(c), BorderLayout.CENTER);
 			return p;
 		}
 	

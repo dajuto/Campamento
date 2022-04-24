@@ -15,13 +15,14 @@ import javax.swing.JLabel;
 import acampados.Negocio.TAcampado;
 import empleados.Negocio.TMedico;
 import sanidad.Negocio.SanidadObserver;
+import sanidad.Negocio.SingletonServiAppSanidad;
 import sanidad.Negocio.TReceta;
 
 public class VistaEliminarReceta extends JFrame implements SanidadObserver{
 	
 	private JFrame atras;
 	private String nombreUsuario;
-	private JComboBox<TReceta> codReceta;
+	private JComboBox<Integer> codReceta;
 	List<TReceta> listaRecetas;
 	
 	
@@ -38,18 +39,15 @@ public class VistaEliminarReceta extends JFrame implements SanidadObserver{
 		lblNewLabel.setBounds(0, 0, 261, 20);
 		getContentPane().add(lblNewLabel);
 		
-		
-		for(TReceta te: this.listaRecetas) {
-			codReceta.addItem(te);
+		codReceta = new JComboBox<Integer>();
+		codReceta.setBounds(330, 54, 184, 26);
+		for(TReceta te: SingletonServiAppSanidad.getInstance().getListaRecetas()) {
+			codReceta.addItem(te.getCodigo());
 		}
-		
-		
-		codReceta = new JComboBox<TReceta>();
-		codReceta.setBounds(353, 70, 138, 26);
 		getContentPane().add(codReceta);
 		
 		JLabel lblMedico = new JLabel("Codigo de la Receta que desea eliminar: ");
-		lblMedico.setBounds(36, 73, 314, 20);
+		lblMedico.setBounds(27, 57, 314, 20);
 		getContentPane().add(lblMedico);
 		
 		JButton boton_Atras = new JButton("Atras");
@@ -59,20 +57,20 @@ public class VistaEliminarReceta extends JFrame implements SanidadObserver{
 				//atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(353, 162, 138, 25);
+		boton_Atras.setBounds(364, 163, 150, 25);
 		getContentPane().add(boton_Atras);
 		
 		JButton boton_Aceptar = new JButton("Aceptar");
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerSanidad.getInstance().eliminarReceta(atras, ((TReceta)codReceta.getSelectedItem()).getCodigo());
+				SingletonControllerSanidad.getInstance().eliminarReceta(atras, ((int)codReceta.getSelectedItem()));
 			}
 		});
-		boton_Aceptar.setBounds(36, 162, 244, 25);
+		boton_Aceptar.setBounds(27, 163, 150, 25);
 		getContentPane().add(boton_Aceptar);
 		
-		
+		setVisible(true);
 	}
 
 
