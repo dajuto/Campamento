@@ -39,6 +39,8 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 	private JCheckBox contabilizada;
 	List<TGastos> listaGastos; 
 	List<TEmpleado> listaEmpleados;
+	private String empleado; 
+
 	
 	public VistaModificarGasto(JFrame frame) {
 		setTitle("Modificar gasto");
@@ -127,7 +129,18 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 			public void actionPerformed(ActionEvent e) {
 				if (importe.getText().matches("[0-9]*")) {
 					if (fecha.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-						String empleado = (String) empleadoNombre.getSelectedItem();
+                          if(!((String) cuenta.getSelectedItem()).matches("Sueldos y Salarios")) {
+							
+							empleadoNombre.setVisible(false); 
+							lblEmplead.setVisible(false); 	
+							empleado = "";
+							
+						}else {
+							empleadoNombre.setVisible(true); 
+							lblEmplead.setVisible(true);
+						     empleado = (String) empleadoNombre.getSelectedItem();
+						}
+						
 						SingletonControllerContabilidad.getInstance().modificarGasto(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha.getText(), empleado,  contabilizada.isSelected(), getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El precio tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
@@ -144,11 +157,6 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 				cuenta.addItem(cod.getTipo());
 			
 		}
-	
-					importe.setEnabled(false); 
-					fecha.setEnabled(false); 
-					empleadoNombre.setEnabled(false); 	
-			
 		
 		cuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -161,16 +169,21 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 							empleadoNombre.setEnabled(false); 	
 						}
 						else {
-							contabilizada.setEnabled(true);
+							if(!((String) cuenta.getSelectedItem()).matches("Sueldos y Salarios")) {	
+								empleadoNombre.setEnabled(false); 	
+								
+							}else {
+								empleadoNombre.setEnabled(true); 	
+							}
+							
+			         		contabilizada.setEnabled(true);
 							importe.setEnabled(true); 
-							fecha.setEnabled(true); 
-							empleadoNombre.setEnabled(true); 	
+							fecha.setEnabled(true); 		
 						}
-						
+									
 						importeString = Integer.toString(cod.getImporte());
 						importe.setText(importeString);
-						empleadoNombre.setSelectedItem(cod.getNombre());
-						//empleadoNombre.setText(cod.getNombre());
+						empleadoNombre.setSelectedItem(cod.getNombre()); 
 						concepto.setText(cod.getConcepto());
 						fecha.setText(cod.getFecha());
 					}

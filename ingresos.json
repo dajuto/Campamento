@@ -1,27 +1,30 @@
 {"ingresos": [
-   
    {
       "data": {
          "Tipo": "Ventas",
-         "Concepto": "Abono acampado de Jose Cordero",
          "Importe": 200,
+         "Acampado": {
+            "Nombre": "Borja Garcia",
+            "DNI Acampado": "78765711A"
+         },
+         "Concepto": "Abono Borja",
          "Fecha contable": "11/01/2022",
-         "Acampado": {"Nombre":  "Jose Cordero", "DNI" : "78765711A" }, 
          "Contabilizada": "No"
       },
       "type": "ingresos"
    },
-   
    {
       "data": {
          "Tipo": "Subvenciones, donaciones",
-         "Concepto": "Subvención de Ayuntamiento de Madrid",
          "Importe": 2000,
+         "Acampado": {
+            "Nombre": "",
+            "DNI Acampado": ""
+         },
+         "Concepto": "Subvención de Ayuntamiento de Madrid",
          "Fecha contable": "12/01/2022",
-         "Acampado": {"Nombre":  "", "DNI" : "" },
-          "Contabilizada": "Si"
+         "Contabilizada": "Si"
       },
       "type": "ingresos"
-   } 
-   
+   }
 ]}

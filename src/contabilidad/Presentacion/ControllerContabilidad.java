@@ -55,6 +55,15 @@ public class ControllerContabilidad {
 			}
 		});
 	}
+	
+	public void menuRendimiento(JFrame frame) { //hecha
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaRendimientoContabilidad(frame);
+			}
+		});
+	}
 		public void mostrarGastos(JFrame frame) { //hecha
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override

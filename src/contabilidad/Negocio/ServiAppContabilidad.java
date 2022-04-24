@@ -179,7 +179,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		data.accumulate("Fecha contable", fecha);
 		JSONObject acampado = new JSONObject();
 		acampado.accumulate("Nombre", nombreAcampado);
-		acampado.accumulate("DNI", dniAcampado); 
+		acampado.accumulate("DNI Acampado", dniAcampado); 
 		data.accumulate("Acampado", acampado);
         if(contabilizada) {
 			

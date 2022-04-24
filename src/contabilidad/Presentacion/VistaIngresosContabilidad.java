@@ -70,7 +70,7 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 			}
 		});
 		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Mostrar.setBounds(54, 110, 145, 38);
+		boton_Mostrar.setBounds(53, 65, 145, 38);
 		getContentPane().add(boton_Mostrar);
 		
 		
@@ -82,7 +82,7 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 			}
 		});
 		boton_Añadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Añadir.setBounds(284, 110, 145, 38);
+		boton_Añadir.setBounds(287, 65, 145, 38);
 		getContentPane().add(boton_Añadir);
 		
 		setVisible(true);

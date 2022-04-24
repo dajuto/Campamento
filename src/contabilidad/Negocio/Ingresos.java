@@ -49,7 +49,7 @@ public abstract class Ingresos {
 		data.accumulate("Fecha contable", this.fechaContable); 
 		JSONObject acampado = new JSONObject();
 		acampado.accumulate("Nombre", this.nombreAcampado);
-		acampado.accumulate("dniAcampado", this.dniAcampado); 
+		acampado.accumulate("DNI Acampado", this.dniAcampado); 
 		data.accumulate("Acampado", acampado);
 		
 		if (contabilizada) {

@@ -17,7 +17,7 @@ public class IngresosBuilder extends Builder<Object> {
 		String fecha = data.getString("Fecha contable");
 		JSONObject acampado = data.getJSONObject("Acampado"); 
 		String nombreAcampado = acampado.getString("Nombre");
-		String dniAcampado = acampado.getString("DNI"); 
+		String dniAcampado = acampado.getString("DNI Acampado"); 
 			
 		String sContabilizada = data.getString("Contabilizada"); 
 		boolean conta = false; 

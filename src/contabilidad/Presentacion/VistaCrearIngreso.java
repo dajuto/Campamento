@@ -118,19 +118,15 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		acampado_txt.setBounds(121, 216, 116, 22);
 		getContentPane().add(acampado_txt);
 		for(TAcampado e: listaAcampados) {
-			acampado_txt.addItem(e.getNombreCompleto());
+			if(!e.isPagado()) {
+				acampado_txt.addItem(e.getNombreCompleto());  //solo cogemos el acampado que no haya pagado
+			}	
 		}
 		
 		contabilizada = new JCheckBox("Marca para contabilizar");
 		contabilizada.setBounds(348, 177, 122, 25);
 		getContentPane().add(contabilizada);
-		
-
-		if (!((String) cuenta_txt.getSelectedItem()).matches("Sueldos y Salarios")) {
-			
-			acampado_txt.setVisible(false);
-			lblAcampado.setVisible(false);	
-		}
+	
 		
 		cuenta_txt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -150,25 +146,29 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String acampado = "";
+				String dniAcampado = ""; 
 				if (((String) cuenta_txt.getSelectedItem()).matches("Ventas")) {
 					acampado = (String) acampado_txt.getSelectedItem();
 					
 				}
-				
 				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
 					
 					if (importe_txt.getText().matches("[0-9]*")) {
 						String cuenta = (String) cuenta_txt.getSelectedItem();
 						
 						//estoy cogiendo el dni del acampado seleccionado 
-						for(TAcampado y: listaAcampados) {	
-							if(acampado == (y.getNombre()+ y.getApellidos())) {
+						for(TAcampado y: listaAcampados) {		
+							if(acampado.matches(y.getNombreCompleto())) {
 								dniAcampado = y.getDni(); 
+								if (contabilizada.isSelected()) {
+									//poner aqui singletonControllerAcampado.getInstance().modificarAcampado()
+									y.setPagado(true); //estoy poniendo que si se contabiliza el ingreso, se actualiza el atributo pagado de acampado	
+								}
 							}
-						}
+						}	
 						if (contabilizada.isSelected()) {
 							boolContabilizada = true;
-						}
+						}	
 						SingletonControllerContabilidad.getInstance().añadirIngreso(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), acampado, dniAcampado, boolContabilizada , getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	

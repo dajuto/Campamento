@@ -35,13 +35,14 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 	private JTextField concepto;
 	private JTextField importe;
 	private JTextField fecha;
-	private JTextField dniAcamp;
+	private String dniAcamp;
 	private JComboBox<String> acampadoNombre;
 	private String importeString;
 	private JComboBox<String> cuenta;
 	private JCheckBox contabilizada;
 	List<TIngresos> listaIngresos; 
 	List<TAcampado> listaAcampados;
+	private String acampado; 
 	
 	
 	public VistaModificarIngresos(JFrame frame) {
@@ -92,16 +93,10 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		lblEmplead.setBounds(25, 222, 143, 25);
 		getContentPane().add(lblEmplead);
 		
-
 		JLabel lblConcepto = new JLabel("Concepto:");
 		lblConcepto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblConcepto.setBounds(25, 102, 84, 25);
 		getContentPane().add(lblConcepto);
-		
-		JLabel lblDniAcampado = new JLabel("DNI acampado:");
-		lblDniAcampado.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblDniAcampado.setBounds(25, 265, 106, 25);
-		getContentPane().add(lblDniAcampado);
 		
 		
 		concepto = new JTextField();
@@ -128,22 +123,40 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		acampadoNombre.setSelectedItem(listaIngresos.get(0).getNombreAcampado());
 		getContentPane().add(acampadoNombre);
 		for(TAcampado e: listaAcampados) {
-			acampadoNombre.addItem(e.getNombre());
+			if(!e.isPagado()) {
+				acampadoNombre.addItem(e.getNombreCompleto());  //solo cogemos el acampado que no haya pagado
+			}	
 		}
-		
-		dniAcamp = new JTextField();
-		dniAcamp.setBounds(138, 268, 116, 22);
-		dniAcamp.setText(listaIngresos.get(0).getDniAcampado());
-		getContentPane().add(dniAcamp);
-		dniAcamp.setColumns(10);
 		
 		JButton boton_modificar = new JButton("Modificar");
 		boton_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (importe.getText().matches("[0-9]*")) {
 					if (fecha.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-						String acampado = (String) acampadoNombre.getSelectedItem();
-						SingletonControllerContabilidad.getInstance().modificarIngreso(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha.getText(), acampado, dniAcamp.getText(),  contabilizada.isSelected(), getFrame());
+						
+						
+						 if(!((String) cuenta.getSelectedItem()).matches("Ventas")) {
+								
+								acampadoNombre.setVisible(false); 
+								lblEmplead.setVisible(false); 	
+								acampado = "";
+								
+							}else {
+								acampadoNombre.setVisible(true); 
+								lblEmplead.setVisible(true);
+							    acampado = (String) acampadoNombre.getSelectedItem();
+							}
+							//estoy cogiendo el dni del acampado seleccionado 
+							for(TAcampado y: listaAcampados) {		
+								if(acampado.matches(y.getNombreCompleto())) {
+									dniAcamp = y.getDni(); 
+									if (contabilizada.isSelected()) {
+										//poner aqui singletonControllerAcampado.getInstance().modificarAcampado()
+										y.setPagado(true); //estoy poniendo que si se contabiliza el ingreso, se actualiza el atributo pagado de acampado	
+									}
+								}
+							}
+						SingletonControllerContabilidad.getInstance().modificarIngreso(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha.getText(), acampado, dniAcamp,  contabilizada.isSelected(), getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El precio tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
 				}
@@ -158,13 +171,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		for(TIngresos cod: this.listaIngresos) {	
 				cuenta.addItem(cod.getTipo());
 			
-		}
-	
-					importe.setEnabled(false); 
-					fecha.setEnabled(false); 
-					acampadoNombre.setEnabled(false); 	
-					dniAcamp.setEnabled(false); 
-			
+		}	
 		
 		cuenta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -175,14 +182,19 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 							importe.setEnabled(false); 
 							fecha.setEnabled(false); 
 							acampadoNombre.setEnabled(false); 	
-							dniAcamp.setEnabled(false); 
+						
 						}
-						else {
+						else {		
+							if(!((String) cuenta.getSelectedItem()).matches("Ventas")) {	
+								acampadoNombre.setEnabled(false); 	
+								
+							}else {
+								acampadoNombre.setEnabled(true); 	
+							}
 							contabilizada.setEnabled(true);
 							importe.setEnabled(true); 
 							fecha.setEnabled(true); 
-							acampadoNombre.setEnabled(true); 
-							dniAcamp.setEnabled(true); 
+							 
 						}
 						
 						importeString = Integer.toString(cod.getImporte());
@@ -190,7 +202,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 						acampadoNombre.setSelectedItem(cod.getNombreAcampado());
 						concepto.setText(cod.getConcepto());
 						fecha.setText(cod.getFecha());
-						dniAcamp.setText(cod.getDniAcampado()); 
+						
 					}
 				}
 			}

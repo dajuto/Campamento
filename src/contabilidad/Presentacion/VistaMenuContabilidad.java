@@ -65,7 +65,7 @@ public class VistaMenuContabilidad extends JFrame implements ContabilidadObserve
 		boton_Rendimiento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				//SingletonControllerGestoria.getInstance().crearEmpleado(getFrame());
+				SingletonControllerContabilidad.getInstance().menuRendimiento(getFrame());
 			}
 		});
 		
