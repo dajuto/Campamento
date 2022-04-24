@@ -103,16 +103,21 @@ public class ControllerSanidad {
 	}
 	
 
-	public void eliminarReceta(JFrame ventanaListaAverias, int codigo) {
-		boolean exito = SingletonServiAppSanidad.getInstance().eliminarReceta(ventanaListaAverias, codigo);
+	public void eliminarReceta(JFrame ventanaListaRec, int codigo) {
+		boolean exito = SingletonServiAppSanidad.getInstance().eliminarReceta(ventanaListaRec, codigo);
 		if(!exito) {
-			JOptionPane.showMessageDialog(ventanaListaAverias, "La receta que desea eliminar no ha sido adquirida por el acampado. Puede eliminarla modificando su estado de compra", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(ventanaListaRec, "La receta que desea eliminar no ha sido adquirida por el acampado. Puede eliminarla modificando su estado de compra", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
+	
+
 	
 	public void consultarCompraReceta(Frame ventanaAnterior, int codigo) {
 		SingletonServiAppSanidad.getInstance().consultarCompraReceta(codigo);
 	}
+	
+
+	
 	
 	//CITAS
 	
@@ -153,8 +158,17 @@ public class ControllerSanidad {
 			}
 		});
 	}
-
-
+	
+	public void consultarAtencionCita(Frame ventanaAnterior, int codigo) {
+		SingletonServiAppSanidad.getInstance().consultarAtencionCita(codigo);
+	}
+	
+	public void eliminarCita(JFrame ventanaListaCit, int codigo) {
+		boolean exito = SingletonServiAppSanidad.getInstance().eliminarCita(ventanaListaCit, codigo);
+		if(!exito) {
+			JOptionPane.showMessageDialog(ventanaListaCit, "La Cita que desea eliminar no ha sido atendida por el Medico. Puede eliminarla modificando su estado de atencion", "Error", JOptionPane.ERROR_MESSAGE);
+		}
+	}
 
 	public void addObserver(SanidadObserver vista) {
 		SingletonServiAppSanidad.getInstance().addObserver(vista);

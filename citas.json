@@ -1,0 +1,23 @@
+{"citas": [
+   {
+      "data": {
+         "codigo": "1",
+         "motivo": "Borja",
+         "Nombremedico": "David Viejo",
+         "NombreAcampado": "Borja",
+         "atendido": "No"
+      },
+      "type": "cita"
+   },
+
+   {
+      "data": {
+        "codigo": "2",
+         "motivo": "Borja",
+         "Nombremedico": "David Viejo",
+         "NombreAcampado": "Borja",
+         "atendido": "No"
+      },
+      "type": "cita"
+   }
+]}
