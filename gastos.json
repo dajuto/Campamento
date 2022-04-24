@@ -1,7 +1,7 @@
 {"gastos": [
    {
       "data": {
-         "Fecha de pago": "11/01/2022",
+         "Fecha de pago": "24/04/2022",
          "Tipo": "Publicidad",
          "Empleado": "",
          "Importe": 650,
@@ -17,6 +17,17 @@
          "Empleado": "inesita",
          "Importe": 600,
          "Concepto": "Nomina empleado",
+         "Contabilizada": "No"
+      },
+      "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "24/04/2022",
+         "Tipo": "Gasto",
+         "Empleado": "",
+         "Importe": 2500,
+         "Concepto": "Pago instalación Tennis",
          "Contabilizada": "No"
       },
       "type": "gastos"

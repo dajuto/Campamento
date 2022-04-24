@@ -12,6 +12,8 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -30,16 +32,16 @@ import javax.swing.DefaultComboBoxModel;
 public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 	private JFrame atras;
 	private String nombreUsuario;
-	private JTextField concepto_txt;
-	private JTextField fecha_txt;
+	private JTextField concepto_txt; 
 	private JTextField importe_txt;
 	private JComboBox<String> acampado_txt;
-	private JComboBox<String> cuenta_txt;
-	private String dniAcampado = ""; 
+	private JComboBox<String> cuenta_txt; 
 	List<TIngresos> listaIngresos;
 	List<TAcampado> listaAcampados;
 	private JCheckBox contabilizada;
 	private boolean boolContabilizada = false;
+	private String fecha;
+	private String dniAcampado; 
 	
 	public VistaCrearIngreso(JFrame frame) {
 		setTitle("Añadir un Ingreso");
@@ -82,11 +84,6 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		lblImporte.setBounds(25, 137, 69, 25);
 		getContentPane().add(lblImporte);
 		
-		JLabel lblFecha = new JLabel("Fecha contable:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFecha.setBounds(25, 175, 116, 25);
-		getContentPane().add(lblFecha);
-		
 		JLabel lblAcampado = new JLabel("Acampad@:");
 		lblAcampado.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblAcampado.setBounds(25, 213, 97, 25);
@@ -103,11 +100,6 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		concepto_txt.setBounds(110, 105, 116, 22);
 		getContentPane().add(concepto_txt);
 		concepto_txt.setColumns(10);
-			
-		fecha_txt = new JTextField();
-		fecha_txt.setBounds(145, 179, 116, 22);
-		getContentPane().add(fecha_txt);
-		fecha_txt.setColumns(10);
 		
 		importe_txt = new JTextField();
 		importe_txt.setBounds(110, 141, 116, 22);
@@ -146,13 +138,9 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String acampado = "";
-				String dniAcampado = ""; 
 				if (((String) cuenta_txt.getSelectedItem()).matches("Ventas")) {
 					acampado = (String) acampado_txt.getSelectedItem();
-					
-				}
-				if (fecha_txt.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-					
+				}	
 					if (importe_txt.getText().matches("[0-9]*")) {
 						String cuenta = (String) cuenta_txt.getSelectedItem();
 						
@@ -164,16 +152,21 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 									//poner aqui singletonControllerAcampado.getInstance().modificarAcampado()
 									y.setPagado(true); //estoy poniendo que si se contabiliza el ingreso, se actualiza el atributo pagado de acampado	
 								}
+							}else {
+								dniAcampado = ""; 
 							}
 						}	
 						if (contabilizada.isSelected()) {
 							boolContabilizada = true;
 						}	
-						SingletonControllerContabilidad.getInstance().añadirIngreso(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha_txt.getText(), acampado, dniAcampado, boolContabilizada , getFrame());
+						
+						 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+							fecha = sdf.format(new Date());
+							
+						SingletonControllerContabilidad.getInstance().añadirIngreso(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha, acampado, dniAcampado, boolContabilizada , getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
-				}	
-				else JOptionPane.showMessageDialog(atras, "Formato de la fecha incorrecto \n DD/MM/AAAA", "Error", JOptionPane.ERROR_MESSAGE);			
+				
 			}
 		});
 		boton_Crear.setBounds(266, 215, 97, 25);

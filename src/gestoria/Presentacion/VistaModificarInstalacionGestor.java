@@ -18,8 +18,15 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-import javax.swing.DefaultComboBoxModel;
+
+import contabilidad.Presentacion.SingletonControllerContabilidad;
+
 import javax.swing.JCheckBox;
+ 
+//fecha
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 
 public class VistaModificarInstalacionGestor extends JFrame implements GestoriaObserver{
 	private JFrame atras;
@@ -33,6 +40,8 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 	private JCheckBox pagado;
 	private JCheckBox actividades;
 	List<TInstalacion> listaInstalaciones;
+	private String fecha; //para la fecha de instalacion como gasto 
+
 	
 	public VistaModificarInstalacionGestor(JFrame frame) {
 		setTitle("Modificar instalacion");
@@ -101,6 +110,12 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 				if (superficie.getText().matches("[0-9]*")) {
 					if (precio.getText().matches("[0-9]*")) {
 						if (pagado.isSelected()) {
+							
+							//para le pago de instalacion
+							SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+							fecha = sdf.format(new Date());
+							String concepto = "Pago instalación" + " " +  nombre.getText();  
+							SingletonControllerContabilidad.getInstance().añadirGasto("Gasto", concepto, precio.getText(), fecha, "", false, frame); 
 							//TODO ADRI aqui tendria que pagar la instalacion
 						}
 						SingletonControllerGestoria.getInstance().modificarInstalacion(codigo.getSelectedItem().toString(), nombre.getText(), superficie.getText(), precio.getText(), pagado.isSelected(), actividades.isSelected(), getFrame());

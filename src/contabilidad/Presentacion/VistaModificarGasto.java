@@ -10,11 +10,12 @@ import gestoria.Negocio.GestoriaObserver;
 import gestoria.Negocio.TInstalacion;
 import gestoria.Negocio.TLimpieza;
 import gestoria.Negocio.TMantenimiento;
-
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,7 +24,6 @@ import javax.swing.JTextField;
 
 import contabilidad.Negocio.TGastos;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 
 public class VistaModificarGasto extends JFrame implements GestoriaObserver{
@@ -31,8 +31,6 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 	private String nombreUsuario;
 	private JTextField concepto;
 	private JTextField importe;
-	private JTextField fecha;
-	//private JTextField empleadoNombre; 
 	private JComboBox<String> empleadoNombre;
 	private String importeString;
 	private JComboBox<String> cuenta;
@@ -40,6 +38,7 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 	List<TGastos> listaGastos; 
 	List<TEmpleado> listaEmpleados;
 	private String empleado; 
+	private String fecha;
 
 	
 	public VistaModificarGasto(JFrame frame) {
@@ -80,23 +79,16 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		lblImporte.setBounds(25, 137, 84, 25);
 		getContentPane().add(lblImporte);
 		
-		JLabel lblFecha = new JLabel("Fecha contable:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFecha.setBounds(25, 175, 116, 25);
-		getContentPane().add(lblFecha);
-		
 		JLabel lblEmplead = new JLabel("Emplead@:");
 		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblEmplead.setBounds(25, 222, 97, 25);
 		getContentPane().add(lblEmplead);
 		
-
 		JLabel lblConcepto = new JLabel("Concepto:");
 		lblConcepto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblConcepto.setBounds(25, 102, 84, 25);
 		getContentPane().add(lblConcepto);
-		
-		
+			
 		concepto = new JTextField();
 		concepto.setBounds(121, 107, 116, 22);
 		concepto.setText(listaGastos.get(0).getConcepto()); //concepto
@@ -110,12 +102,6 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		getContentPane().add(importe);
 		importe.setColumns(10);
 		
-		fecha = new JTextField();
-		fecha.setBounds(162, 179, 116, 22);
-		fecha.setText(listaGastos.get(0).getFecha());
-		getContentPane().add(fecha);
-		fecha.setColumns(10);
-		
 		empleadoNombre =  new JComboBox<String>();
 		empleadoNombre.setBounds(121, 226, 116, 22);
 		empleadoNombre.setSelectedItem(listaGastos.get(0).getNombre());
@@ -128,24 +114,17 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		boton_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (importe.getText().matches("[0-9]*")) {
-					if (fecha.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-                          if(!((String) cuenta.getSelectedItem()).matches("Sueldos y Salarios")) {
-							
-							empleadoNombre.setVisible(false); 
-							lblEmplead.setVisible(false); 	
-							empleado = "";
-							
+                          if(!((String) cuenta.getSelectedItem()).matches("Sueldos y Salarios")) {	
+							empleado = "";	
 						}else {
-							empleadoNombre.setVisible(true); 
-							lblEmplead.setVisible(true);
 						     empleado = (String) empleadoNombre.getSelectedItem();
 						}
+                          SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+							fecha = sdf.format(new Date());
+						SingletonControllerContabilidad.getInstance().modificarGasto(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha, empleado,  contabilizada.isSelected(), getFrame());
 						
-						SingletonControllerContabilidad.getInstance().modificarGasto(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha.getText(), empleado,  contabilizada.isSelected(), getFrame());
-					}
-					else JOptionPane.showMessageDialog(atras, "El precio tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
 				}
-				else JOptionPane.showMessageDialog(atras, "La superficie tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
+				else JOptionPane.showMessageDialog(atras, "El importe tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
 			}
 		});
 		boton_modificar.setBounds(264, 265, 97, 25);
@@ -154,8 +133,7 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		cuenta = new JComboBox<String>();
 		cuenta.setBounds(162, 63, 116, 22);
 		for(TGastos cod: this.listaGastos) {	
-				cuenta.addItem(cod.getTipo());
-			
+				cuenta.addItem(cod.getTipo());	
 		}
 		
 		cuenta.addActionListener(new ActionListener() {
@@ -165,27 +143,22 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 						if (cod.isContabilizada()) { //solo se pueden modificar el concepto y la cuenta de gasto
 							contabilizada.setEnabled(false);
 							importe.setEnabled(false); 
-							fecha.setEnabled(false); 
 							empleadoNombre.setEnabled(false); 	
 						}
 						else {
 							if(!((String) cuenta.getSelectedItem()).matches("Sueldos y Salarios")) {	
-								empleadoNombre.setEnabled(false); 	
-								
+								empleadoNombre.setEnabled(false); 			
 							}else {
 								empleadoNombre.setEnabled(true); 	
 							}
 							
 			         		contabilizada.setEnabled(true);
 							importe.setEnabled(true); 
-							fecha.setEnabled(true); 		
-						}
-									
+						}				
 						importeString = Integer.toString(cod.getImporte());
 						importe.setText(importeString);
 						empleadoNombre.setSelectedItem(cod.getNombre()); 
 						concepto.setText(cod.getConcepto());
-						fecha.setText(cod.getFecha());
 					}
 				}
 			}
@@ -211,34 +184,29 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		this.nombreUsuario = nombreUsuario;
 	}
 
-	
 
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		// TODO Auto-generated method stub	
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
 		// TODO Auto-generated method stub
-		
 	}
 }
 

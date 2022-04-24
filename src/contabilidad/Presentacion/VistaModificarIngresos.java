@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -23,18 +24,22 @@ import javax.swing.JTextField;
 
 import acampados.Negocio.TAcampado;
 import acampadosPresentacion.SingletonControllerAcampado;
-import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
 
-import javax.swing.DefaultComboBoxModel;
+
 import javax.swing.JCheckBox;
+
+
+//prueba
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 	private JFrame atras;
 	private String nombreUsuario;
 	private JTextField concepto;
 	private JTextField importe;
-	private JTextField fecha;
 	private String dniAcamp;
 	private JComboBox<String> acampadoNombre;
 	private String importeString;
@@ -43,6 +48,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 	List<TIngresos> listaIngresos; 
 	List<TAcampado> listaAcampados;
 	private String acampado; 
+	private String fecha;
 	
 	
 	public VistaModificarIngresos(JFrame frame) {
@@ -53,8 +59,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		
 		listaIngresos = SingletonControllerContabilidad.getInstance().getListaIngresos();
 		listaAcampados = SingletonControllerAcampado.getInstance().getListaAcampados();
-		
-		
+	        
 		this.atras = frame;
 		
 		JButton boton_Atras = new JButton("Atrás");
@@ -70,23 +75,18 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 			
 		JLabel labmodificar = new JLabel("Seleccione un ingreso");
 		labmodificar.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		labmodificar.setBounds(25, 14, 341, 36);
+		labmodificar.setBounds(25, 24, 228, 36);
 		getContentPane().add(labmodificar);
 		
 		JLabel lblCuenta = new JLabel("Cuenta de ingresos:");
 		lblCuenta.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCuenta.setBounds(25, 60, 143, 25);
+		lblCuenta.setBounds(25, 79, 143, 25);
 		getContentPane().add(lblCuenta);
 		
 		JLabel lblImporte = new JLabel("Importe:");
 		lblImporte.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblImporte.setBounds(25, 137, 84, 25);
+		lblImporte.setBounds(25, 174, 84, 25);
 		getContentPane().add(lblImporte);
-		
-		JLabel lblFecha = new JLabel("Fecha contable:");
-		lblFecha.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblFecha.setBounds(25, 175, 116, 25);
-		getContentPane().add(lblFecha);
 		
 		JLabel lblEmplead = new JLabel("Nombre acampado:");
 		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 14));
@@ -95,29 +95,22 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		
 		JLabel lblConcepto = new JLabel("Concepto:");
 		lblConcepto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblConcepto.setBounds(25, 102, 84, 25);
+		lblConcepto.setBounds(25, 130, 84, 25);
 		getContentPane().add(lblConcepto);
 		
-		
 		concepto = new JTextField();
-		concepto.setBounds(121, 107, 116, 22);
+		concepto.setBounds(121, 134, 116, 22);
 		concepto.setText(listaIngresos.get(0).getConcepto()); //concepto
 		getContentPane().add(concepto);
 		concepto.setColumns(10);
 		
 		importe = new JTextField();
-		importe.setBounds(121, 139, 116, 22);
+		importe.setBounds(121, 178, 116, 22);
 		importeString = Integer.toString(listaIngresos.get(0).getImporte());
 		importe.setText(importeString);
 		getContentPane().add(importe);
 		importe.setColumns(10);
-		
-		fecha = new JTextField();
-		fecha.setBounds(162, 179, 116, 22);
-		fecha.setText(listaIngresos.get(0).getFecha());
-		getContentPane().add(fecha);
-		fecha.setColumns(10);
-		
+	
 		acampadoNombre =  new JComboBox<String>();
 		acampadoNombre.setBounds(162, 225, 116, 22);
 		acampadoNombre.setSelectedItem(listaIngresos.get(0).getNombreAcampado());
@@ -132,18 +125,10 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		boton_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (importe.getText().matches("[0-9]*")) {
-					if (fecha.getText().matches("\\d{2}/\\d{2}/\\d{4}")) {
-						
-						
-						 if(!((String) cuenta.getSelectedItem()).matches("Ventas")) {
-								
-								acampadoNombre.setVisible(false); 
-								lblEmplead.setVisible(false); 	
+						 if(!((String) cuenta.getSelectedItem()).matches("Ventas")) {	
 								acampado = "";
 								
 							}else {
-								acampadoNombre.setVisible(true); 
-								lblEmplead.setVisible(true);
 							    acampado = (String) acampadoNombre.getSelectedItem();
 							}
 							//estoy cogiendo el dni del acampado seleccionado 
@@ -154,23 +139,24 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 										//poner aqui singletonControllerAcampado.getInstance().modificarAcampado()
 										y.setPagado(true); //estoy poniendo que si se contabiliza el ingreso, se actualiza el atributo pagado de acampado	
 									}
+								}else {
+									dniAcamp = ""; 
 								}
 							}
-						SingletonControllerContabilidad.getInstance().modificarIngreso(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha.getText(), acampado, dniAcamp,  contabilizada.isSelected(), getFrame());
-					}
-					else JOptionPane.showMessageDialog(atras, "El precio tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
+								SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+								fecha = sdf.format(new Date());
+							SingletonControllerContabilidad.getInstance().modificarIngreso(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha, acampado, dniAcamp,  contabilizada.isSelected(), getFrame());	
 				}
-				else JOptionPane.showMessageDialog(atras, "La superficie tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
+				else JOptionPane.showMessageDialog(atras, "El importe tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
 			}
 		});
 		boton_modificar.setBounds(264, 265, 97, 25);
 		getContentPane().add(boton_modificar);
 		
 		cuenta = new JComboBox<String>();
-		cuenta.setBounds(162, 63, 116, 22);
+		cuenta.setBounds(178, 82, 116, 22);
 		for(TIngresos cod: this.listaIngresos) {	
-				cuenta.addItem(cod.getTipo());
-			
+				cuenta.addItem(cod.getTipo());	
 		}	
 		
 		cuenta.addActionListener(new ActionListener() {
@@ -180,7 +166,6 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 						if (cod.isContabilizada()) { //solo se pueden modificar el concepto y la cuenta de gasto
 							contabilizada.setEnabled(false);
 							importe.setEnabled(false); 
-							fecha.setEnabled(false); 
 							acampadoNombre.setEnabled(false); 	
 						
 						}
@@ -192,17 +177,12 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 								acampadoNombre.setEnabled(true); 	
 							}
 							contabilizada.setEnabled(true);
-							importe.setEnabled(true); 
-							fecha.setEnabled(true); 
-							 
+							importe.setEnabled(true); 	
 						}
-						
 						importeString = Integer.toString(cod.getImporte());
 						importe.setText(importeString);
 						acampadoNombre.setSelectedItem(cod.getNombreAcampado());
 						concepto.setText(cod.getConcepto());
-						fecha.setText(cod.getFecha());
-						
 					}
 				}
 			}
@@ -210,7 +190,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		getContentPane().add(cuenta);
 			
 		contabilizada = new JCheckBox("Marcar para contabilizar ingreso");
-		contabilizada.setBounds(279, 24, 179, 25);
+		contabilizada.setBounds(268, 34, 179, 25);
 		contabilizada.setSelected(listaIngresos.get(0).isContabilizada());
 		getContentPane().add(contabilizada);
 		

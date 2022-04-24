@@ -13,6 +13,8 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
+
+
 public class VistaRendimientoContabilidad extends JFrame implements ContabilidadObserver{
 	
 	private static final long serialVersionUID = 1L;
@@ -29,13 +31,13 @@ public class VistaRendimientoContabilidad extends JFrame implements Contabilidad
     private String tot;
     private String gas; 
     private String ingr; 
+    
 	
 	public VistaRendimientoContabilidad(JFrame frame) {
 		setTitle("Rendimiento del ejercicio");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
-		
 		
 		listaIngresos = SingletonControllerContabilidad.getInstance().getListaIngresos();
 		listaGastos = SingletonControllerContabilidad.getInstance().getListaGastos();
