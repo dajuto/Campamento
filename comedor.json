@@ -1,0 +1,49 @@
+{"comedor": [
+   {
+      "data": {
+         "Dia": "lunes",
+         "Desayuno": "leche y galletas",
+         "Comida": "macarrones con tomate",
+         "Cena": "tortilla de patatas"
+      },
+      "type": "comedor"
+   },
+   {
+      "data": {
+       	 "Dia": "Martes",
+         "Desayuno": "zumo y tostadas",
+         "Comida": "arroz con huevo",
+         "Cena": "pollo y patatas"
+      },
+      "type": "comedor"
+   },
+   {
+      "data": {
+       	 "Dia": "Miercoles",
+         "Desayuno": "yogurt y cereales",
+         "Comida": "pure y pescado ",
+         "Cena": "huevo con salchichas"
+      },
+      "type": "comedor"
+   },
+   {
+      "data": {
+       	 "Dia": "Jueves",
+         "Desayuno": "cafe y bizcoho",
+         "Comida": "albondigas y ensalada",
+         "Cena": "pizza"
+      },
+      "type": "comedor"
+   },
+   {
+      "data": {
+       	 "Dia": "Viernes",
+         "Desayuno": "leche y tortitas",
+         "Comida": "paella",
+         "Cena": "hamburguesa y patatas"
+      },
+      "type": "comedor"
+   },
+      "type": "comedor"
+   }
+]}
