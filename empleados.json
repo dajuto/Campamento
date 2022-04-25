@@ -132,6 +132,10 @@
       },
       "type": "Empleado Mantenimiento"
    },
+<<<<<<< HEAD
+=======
+
+>>>>>>> cf365312fb04b8d988ec81e20e24ee6c46eec792
    {
       "data": {
          "puesto": "Medico",
@@ -144,7 +148,12 @@
          "nombre": "Dajuto"
       },
       "type": "Medico"
+<<<<<<< HEAD
    },
+=======
+	},
+	
+>>>>>>> cf365312fb04b8d988ec81e20e24ee6c46eec792
    {
       "data": {
          "puesto": "Gestor Actividades",
@@ -157,5 +166,9 @@
          "nombre": "Cristian"
       },
       "type": "Empleado Mantenimiento"
+<<<<<<< HEAD
+=======
+
+>>>>>>> cf365312fb04b8d988ec81e20e24ee6c46eec792
    }
 ]}
