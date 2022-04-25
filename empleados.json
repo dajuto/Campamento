@@ -158,7 +158,7 @@
          "puesto": "Gestor Actividades",
          "horario": 8,
          "salario": 3000,
-         "trabajo": {"listaAverias": []},
+         "trabajo": {"listaActividades": []},
          "vacaciones": "Todo el verano",
          "usuario": "crmanz",
          "contrasena": "12345678",
