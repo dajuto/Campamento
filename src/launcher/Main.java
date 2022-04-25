@@ -27,7 +27,7 @@ public class Main {
 		
 		constructores.add(new RecetaBuilder());
 		constructores.add(new CitaBuilder());
-		
+		constructores.add(new ActividadBuilder());
 		constructores.add(new EmpleadoLimpiezaBuilder());
 		
 		constructores.add(new EmpleadoMantenimientoBuilder());
