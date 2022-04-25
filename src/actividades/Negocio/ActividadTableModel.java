@@ -18,7 +18,6 @@ public class ActividadTableModel extends AbstractTableModel implements Actividad
 	
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
