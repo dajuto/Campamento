@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 
 import acampados.Negocio.AcampadoBuilder;
+import actividades.Negocio.ActividadBuilder;
 import contabilidad.Negocio.GastosBuilder;
 import contabilidad.Negocio.IngresosBuilder;
 import empleados.Negocio.EmpleadoLimpiezaBuilder;
