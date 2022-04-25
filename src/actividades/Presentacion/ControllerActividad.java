@@ -2,6 +2,7 @@ package actividades.Presentacion;
 
 import java.awt.Frame;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
@@ -20,7 +21,7 @@ public class ControllerActividad {
 		SingletonServiAppActividad.getInstance().registrarFactoria(objetosFactory);
 	}
 
-	public void mostrarActividadGestor(Frame frame) {
+	public void mostrarActividadGestor(JFrame frame) {
 		//String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
