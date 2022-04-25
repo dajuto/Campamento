@@ -7,18 +7,18 @@ import javax.swing.table.AbstractTableModel;
 
 import empleados.Negocio.TMedico;
 
-public class RecetasMedicoTableModel extends AbstractTableModel implements SanidadObserver{
+public class CitasMedicoTableModel extends AbstractTableModel implements SanidadObserver{
 
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private List<TReceta> list;
-	private String[] columnNames = {"Codigo", "Acampado","Medicamento", "Dosis", "Medico", "Comprado"};
+	private List<TCita> list;
+	private String[] columnNames = {"Codigo", "Acampado","Motivo", "Medico", "Atendido"};
 	
-	public RecetasMedicoTableModel() {
-		list = new ArrayList<TReceta>();
+	public CitasMedicoTableModel() {
+		list = new ArrayList<TCita>();
 		SingletonServiAppSanidad.getInstance().addObserver(this);
 	}
 	
@@ -46,21 +46,18 @@ public class RecetasMedicoTableModel extends AbstractTableModel implements Sanid
 			return list.get(rowIndex).getNombreAcampado();
 		}
 		else if(columnIndex == 2) {
-			return list.get(rowIndex).getMedicamento();
+			return list.get(rowIndex).getMotivo();
 		}
 		else if(columnIndex == 3) {
-			return list.get(rowIndex).getDosis();
-		}
-		else if(columnIndex == 4) {
 			return list.get(rowIndex).getNombremedico();
 		}
 		else {
-			return list.get(rowIndex).getComprado();
+			return list.get(rowIndex).getAtendido();
 		}
 	}
 	
-	private void update(List<TReceta> listaRecetas) {		
-		this.list = listaRecetas;
+	private void update(List<TCita> list) {		
+		this.list = list;
 		this.fireTableDataChanged();
 	}
 
@@ -68,7 +65,7 @@ public class RecetasMedicoTableModel extends AbstractTableModel implements Sanid
 	public void onRegister(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
 			String nombreUsuario) {
 		// TODO Auto-generated method stub
-				this.update(listaRecetas);
+				this.update(listaCitas);
 		
 	}
 
@@ -78,21 +75,21 @@ public class RecetasMedicoTableModel extends AbstractTableModel implements Sanid
 	public void onEliminar(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
 			String nombreUsuario) {
 		// TODO Auto-generated method stub
-		this.update(listaRecetas);
+		this.update(listaCitas);
 	}
 
 	@Override
 	public void onConsultar(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
 			String nombreUsuario) {
 		// TODO Auto-generated method stub
-		this.update(listaRecetas);
+		this.update(listaCitas);
 	}
 
 	@Override
 	public void onCrear(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
 			String nombreUsuario) {
 		// TODO Auto-generated method stub
-		this.update(listaRecetas);
+		this.update(listaCitas);
 	}
 
 }

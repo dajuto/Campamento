@@ -3,15 +3,27 @@ package empleados.Presentacion;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import empleados.Negocio.EmpleadoObserver;
+import empleados.Negocio.TEmpleado;
+
 import java.awt.Font;
 
-public class VistaMenuEmpleado extends JFrame{
+public class VistaMenuEmpleado extends JFrame implements EmpleadoObserver{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private String nombreUsuario=SingletonControllerEmpleado.getInstance().getNombreUsuarioSanidad();
 	
 	public VistaMenuEmpleado() {
-		setTitle("Menu del empleado");
+		setTitle("Menu del empleado: "+ nombreUsuario);
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -73,5 +85,34 @@ public class VistaMenuEmpleado extends JFrame{
 	
 	private JFrame getFrame() {
 		return this;
+	}
+	
+	private void update(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+
+	@Override
+	public void onRegister(List<TEmpleado> listaAcampados, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onCreateEmpleado(List<TEmpleado> lista, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onEliminarEmpleado(List<TEmpleado> lista, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		this.update(nombreUsuario);
+	}
+
+	@Override
+	public void onModificarEmpleado(List<TEmpleado> listaEmpleados, String nombreUsuario) {
+		// TODO Auto-generated method stub
+		this.update(nombreUsuario);
 	}
 }

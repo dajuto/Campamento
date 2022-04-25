@@ -10,6 +10,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import empleados.Presentacion.SingletonControllerEmpleado;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -68,6 +71,7 @@ private JPasswordField password;
 		JButton boton_Aceptar = new JButton("Aceptar");
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				SingletonControllerAcampado.getInstance().registraUsuario(usuario.getText());
 				
 				if(SingletonControllerAcampado.getInstance().existeAcampado(usuario.getText(), password.getText())) {
 					setVisible(false);
@@ -83,5 +87,9 @@ private JPasswordField password;
 	}
 	private JFrame getFrame() {
 		return this;
+	}
+	
+	private String getUsuario() {
+		return usuario.getText();
 	}
 }

@@ -17,13 +17,17 @@ import gestoria.Presentacion.SingletonControllerGestoria;
 import sanidad.Negocio.SanidadObserver;
 import sanidad.Negocio.TCita;
 import sanidad.Negocio.TReceta;
+import sanidad.Presentacion.SingletonControllerSanidad;
+
 import javax.swing.JTextField;
 
 import acampados.Negocio.TAcampado;
 
 import javax.swing.JComboBox;
+import javax.swing.JComponent;
+import javax.swing.JTextPane;
 
-public class VistaCrearReceta extends JFrame implements SanidadObserver{
+public class VistaPedirCita extends JFrame implements SanidadObserver{
 
 	/**
 	 * 
@@ -32,18 +36,19 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 
 	
 	private JFrame atras;
-	private String nombreUsuario;
+	private String nombreUsuario=SingletonControllerSanidad.getInstance().getAcampado();
 	private JTextField textField;
 	private JTextField textField_1;
 	private JTextField textField_2;
+	JLabel lblNewLabel_2 ;
 	JComboBox<String> comboBox;
 	JComboBox<String> comboBox_1;
 	List<TMedico> listaMedicos;
 	List<TAcampado> listaAcampados;
 	
-	public VistaCrearReceta(JFrame frame) {
+	public VistaPedirCita(JFrame frame) {
 		// TODO Auto-generated constructor stub
-		setTitle("Menu Añadir Receta");
+		setTitle("Menu Pedir Cita");
 		this.atras=frame;
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
@@ -65,14 +70,14 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerSanidad.getInstance().anadirReceta(atras, textField.getText(), textField_1.getText(), textField_2.getText(), comboBox.getSelectedItem().toString(),comboBox_1.getSelectedItem().toString());
+				SingletonControllerSanidad.getInstance().pedirCita(atras, textField.getText(), textField_1.getText(), comboBox.getSelectedItem().toString(),lblNewLabel_2.getText());
 				
 			}
 		});
 		boton_Aceptar.setBounds(15, 404, 499, 25);
 		getContentPane().add(boton_Aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Añadir Receta Medico: " + nombreUsuario);
+		JLabel lblNewLabel = new JLabel("Añadir Cita Medico: " + nombreUsuario);
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(0, 0, 261, 20);
 		getContentPane().add(lblNewLabel);
@@ -88,7 +93,7 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		textField.setColumns(10);
 		
 		
-		JLabel lblMedicamento = new JLabel("Medicamento: ");
+		JLabel lblMedicamento = new JLabel("Motivo: ");
 		lblMedicamento.setBounds(15, 129, 112, 20);
 		getContentPane().add(lblMedicamento);
 		
@@ -98,21 +103,13 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		textField_1.setBounds(142, 126, 146, 26);
 		getContentPane().add(textField_1);
 		
-		JLabel lblDosis = new JLabel("Dosis: ");
-		lblDosis.setBounds(15, 165, 69, 20);
-		getContentPane().add(lblDosis);
-		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(142, 162, 146, 26);
-		getContentPane().add(textField_2);
 		
 		JLabel lblMedico = new JLabel("Medico: ");
-		lblMedico.setBounds(15, 201, 69, 20);
+		lblMedico.setBounds(15, 165, 69, 20);
 		getContentPane().add(lblMedico);
 		
 		comboBox = new JComboBox<String>();
-		comboBox.setBounds(142, 200, 146, 22);
+		comboBox.setBounds(142, 168, 146, 22);
 		for(TEmpleado e: SingletonControllerSanidad.getInstance().getListaEmpleados()) {
 			if (e.getPuesto().matches("Medico")) {
 				comboBox.addItem(e.getNombre());
@@ -121,22 +118,18 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		getContentPane().add(comboBox);
 		
 		
-		
-		
-		
 		JLabel lblAcampado = new JLabel("Acampado: ");
-		lblAcampado.setBounds(15, 237, 94, 20);
+		lblAcampado.setBounds(15, 201, 94, 20);
 		getContentPane().add(lblAcampado);
 		
-	
-		comboBox_1 = new JComboBox<String>();
-		comboBox_1.setBounds(142, 236, 146, 22);
-		for(TAcampado e: SingletonControllerSanidad.getInstance().getListaAcampados()) {
-			
-				comboBox_1.addItem(e.getNombre());
-			
-		}
-		getContentPane().add(comboBox_1);
+		
+		lblNewLabel_2 = new JLabel(this.nombreUsuario);
+		lblNewLabel_2.getText();
+		lblNewLabel_2.setBackground(Color.WHITE);
+		lblNewLabel_2.setBounds(142, 206, 146, 20);
+		getContentPane().add(lblNewLabel_2);
+		
+		
 	
 		setVisible(true);
 	}
