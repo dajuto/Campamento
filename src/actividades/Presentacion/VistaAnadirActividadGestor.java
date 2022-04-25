@@ -1,8 +1,10 @@
 package actividades.Presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -10,19 +12,23 @@ import java.awt.event.WindowListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import acampados.Negocio.TAcampado;
 import actividades.Negocio.ActividadObserver;
 import actividades.Negocio.TActividad;
+import empleados.Negocio.TEmpleado;
+import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class VistaAnadirActividadGestor extends JFrame implements ActividadObserver{
 	private String nombreUsuario;
 	private JButton aceptar;
-	private JButton atras;
+	private JFrame atras;
 	private JLabel ingresaId;
 	private JTextField id;
 	private JLabel ingresaInstalacion;
@@ -31,102 +37,98 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 	private JTextField nombre;
 	private JTextField monitor;
 	private JLabel ingresaMonitor;
-	//private JComboBox<TEmpleado> empleadoEncargado;
-	//List<TEmpleado> listaEmpleadosMantenimiento;
+	
+	//List<TMonitor> listaMonitor; 
+	
 	private Frame ventanaAnterior;
 
-	public VistaAnadirActividadGestor(Frame f) {
+	public VistaAnadirActividadGestor(JFrame f) {
 		setTitle("Crear nueva actividad");
 		this.ventanaAnterior = f;
-		SingletonControllerActividad.getInstance().addObserver(this);
-		this.nombreUsuario = nombreUsuario;
-		//this.listaEmpleadosMantenimiento = listaEmpleadosMantenimiento;
-		
-		this.atras = new JButton("Atras");
-		this.aceptar = new JButton("Aceptar");
-		
-		this.id = new JTextField(5);
-		this.instalacion = new JTextField(30);
-		this.nombre = new JTextField(50);
-		this.monitor = new JTextField(20);
-		//this.empleadoEncargado = new JComboBox<TEmpleado>();
-		
-		this.ingresaId = new JLabel("Id: ");
-		this.ingresaNombre = new JLabel("Nombre: ");
-		this.ingresaInstalacion = new JLabel("Instalacion: ");
-		this.ingresaMonitor = new JLabel("Monitor: ");	
-		
-		initGUI();
-	}
-
-	private void initGUI() {
-		JPanel mainPanel = new JPanel(new BorderLayout());
-		this.setContentPane(mainPanel);
-		mainPanel.add(new JLabel("Anadir actividad Gestor: " + this.nombreUsuario), BorderLayout.PAGE_START);
-		
-		JPanel p = new JPanel(new GridLayout(4, 2));
-		//ingresaUsuario.setBounds(30, 30, 200, 20);
-		p.add(this.ingresaId);
-		p.add(id);
-		p.add(this.ingresaNombre);
-		p.add(nombre);
-		p.add(this.ingresaInstalacion);
-		p.add(instalacion);
-		p.add(this.ingresaMonitor);
-		p.add(monitor);
+		getContentPane().setBackground(SystemColor.activeCaption);
+		getContentPane().setLayout(null);
+		setSize(551,501);
+		this.setLocation(550,10);
 		
 		
-		mainPanel.add(p);
 		
-		JPanel a = new JPanel(new GridLayout(2, 1));
-		a.add(atras);
-		this.atras.addActionListener(new ActionListener() {
-			@Override
+		JButton boton_Atras = new JButton("Atras");
+		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//ventanaAnterior.setVisible(true); lo comento pq sigue visible cuando aparece este frame, por tanto no hace falta hacerlo visible cuando cierre este frame
+				//atras.setVisible(true);
 			}
 		});
-		a.add(aceptar);
-		this.aceptar.addActionListener(new ActionListener() {
-			@Override
+		boton_Atras.setBounds(376, 32, 138, 25);
+		getContentPane().add(boton_Atras);
+		
+
+		JButton boton_Aceptar = new JButton("Aceptar");
+		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerActividad.getInstance().anadirActividad(ventanaAnterior, id.getText(), nombre.getText(), instalacion.getText(), monitor.getText());
+				SingletonControllerActividad.getInstance().anadirActividad(atras, ingresaId.getText(), ingresaNombre.getText(), ingresaInstalacion.getText(), ingresaMonitor.getText());
+				
 			}
 		});
-		mainPanel.add(a, BorderLayout.PAGE_END);
+		boton_Aceptar.setBounds(15, 404, 499, 25);
+		getContentPane().add(boton_Aceptar);
 		
-		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+		JLabel lblNewLabel = new JLabel("Añadir Nueva actividad: " + nombreUsuario);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setBounds(0, 0, 261, 20);
+		getContentPane().add(lblNewLabel);
 		
-		this.addWindowListener(new WindowListener() {
-
-            @Override
-            public void windowOpened(WindowEvent e) {}
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                quit();
-            }
-
-			@Override
-            public void windowClosed(WindowEvent e) {}
-
-            @Override
-            public void windowIconified(WindowEvent e) {}
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-
-            @Override
-            public void windowActivated(WindowEvent e) {}
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-
-        });
 		
-		this.pack();
+		ingresaId = new JLabel("Id: ");
+		ingresaId.setBounds(15, 93, 69, 20);
+		getContentPane().add(ingresaId);
+		
+		id = new JTextField();
+		id.setBounds(142, 90, 146, 26);
+		getContentPane().add(id);
+		id.setColumns(10);
+		
+		
+		ingresaNombre = new JLabel("Nombre: ");
+		ingresaNombre.setBounds(15, 129, 112, 20);
+		getContentPane().add(ingresaNombre);
+		
+
+		nombre = new JTextField();
+		nombre.setColumns(10);
+		nombre.setBounds(142, 126, 146, 26);
+		getContentPane().add(nombre);
+		
+		ingresaInstalacion = new JLabel("Instalacion: ");
+		ingresaInstalacion.setBounds(15, 165, 69, 20);
+		getContentPane().add(ingresaInstalacion);
+		
+		instalacion = new JTextField();
+		instalacion.setColumns(10);
+		instalacion.setBounds(142, 162, 146, 26);
+		getContentPane().add(instalacion);
+		
+		ingresaMonitor = new JLabel("Monitor: ");
+		ingresaMonitor.setBounds(15, 201, 69, 20);
+		getContentPane().add(ingresaMonitor);
+		
+		monitor = new JTextField();
+		monitor.setColumns(10);
+		monitor.setBounds(142, 200, 146, 22);
+		getContentPane().add(monitor);
+		
+		/*comboBox = new JComboBox<String>();
+		comboBox.setBounds(142, 200, 146, 22);
+		for(TEmpleado e: SingletonControllerSanidad.getInstance().getListaEmpleados()) {
+			if (e.getPuesto().matches("Medico")) {
+				comboBox.addItem(e.getNombre());
+			}
+		}
+		getContentPane().add(comboBox);*/
+		
+		
+		
 		this.setVisible(true);
 	}
 	

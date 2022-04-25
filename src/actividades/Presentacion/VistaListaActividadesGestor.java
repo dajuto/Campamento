@@ -43,7 +43,7 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 		initGUI();
 	}
 	
-	private Frame getFrame() {
+	private JFrame getFrame() {
 		return this;
 	}
 	

@@ -17,6 +17,7 @@ public class ControllerActividad {
 	}
 	
 	
+	
 	public void registraFactoria(Factory<Object> objetosFactory) {
 		SingletonServiAppActividad.getInstance().registrarFactoria(objetosFactory);
 	}
@@ -42,7 +43,7 @@ public class ControllerActividad {
 		});
 	}
 	
-	public void mostrarAnadirActividadGestor(Frame frame) {
+	public void mostrarAnadirActividadGestor(JFrame frame) {
 		//String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
 		//List<TActividad> l = SingletonServiAppActividad.getInstance().getListaActividades();
 		SwingUtilities.invokeLater(new Runnable() {
@@ -53,7 +54,7 @@ public class ControllerActividad {
 		});
 	}
 
-	public void mostrarEliminarActividadGestor(Frame frame) {
+	public void mostrarEliminarActividadGestor(JFrame frame) {
 		//String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
 		//List<TActividad> l = SingletonServiAppActividad.getInstance().getListaActividades();
 		SwingUtilities.invokeLater(new Runnable() {
@@ -65,7 +66,7 @@ public class ControllerActividad {
 	}
 
 
-	public void anadirActividad(Frame ventanaListaActividad, String id, String lugar, String desc, String Fecha) {
+	public void anadirActividad(JFrame ventanaListaActividad, String id, String lugar, String desc, String Fecha) {
 		boolean isNumericId =  id.matches("[+-]?\\d*(\\.\\d+)?");
 		boolean isNumericLugar =  lugar.matches("[+-]?\\d*(\\.\\d+)?");
 		boolean isNumericDesc =  desc.matches("[+-]?\\d*(\\.\\d+)?");
