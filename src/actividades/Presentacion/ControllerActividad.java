@@ -31,7 +31,7 @@ public class ControllerActividad {
 		});
 	}
 
-	public void mostrarListaActividadesGestor(Frame frame) {
+	public void mostrarListaActividadesGestor(JFrame frame) {
 		//SingletonServiAppActividad.getInstance().updateActividad();
 		String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
 		SwingUtilities.invokeLater(new Runnable() {
