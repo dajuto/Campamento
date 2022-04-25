@@ -16,6 +16,7 @@ import gestoria.Negocio.Instalacion;
 import gestoria.Negocio.InstalacionBuilder;
 import gestoria.Negocio.LimpiezaBuilder;
 import gestoria.Negocio.MantenimientoBuilder;
+import sanidad.Negocio.CitaBuilder;
 import sanidad.Negocio.RecetaBuilder;
 
 public class Main {
@@ -24,6 +25,7 @@ public class Main {
 		List<Builder<Object>> constructores = new ArrayList<>();
 		
 		constructores.add(new RecetaBuilder());
+		constructores.add(new CitaBuilder());
 		
 		constructores.add(new EmpleadoLimpiezaBuilder());
 		

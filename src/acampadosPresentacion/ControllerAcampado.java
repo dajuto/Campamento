@@ -13,6 +13,7 @@ import empleados.Negocio.TEmpleado;
 import empleados.Presentacion.VistaMenuEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
+import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class ControllerAcampado {
 	
@@ -23,6 +24,18 @@ public class ControllerAcampado {
 	public List<TAcampado> getListaAcampados() {
 		return SingletonServiAppAcampado.getInstance().getListaAcampados();
 	}
+	
+	public void registraUsuario(String text) {
+		SingletonServiAppAcampado.getInstance().registraUsuario(text);
+		
+	}
+	
+	public String getAcampado() {
+		String nombreUsuarioGestor = SingletonServiAppAcampado.getInstance().getNombreUsuario();
+		return nombreUsuarioGestor;
+
+	}
+	
 	
 	public void acampado(JFrame f) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -75,6 +88,10 @@ public class ControllerAcampado {
 
 	public void gestoria(JFrame frame) {
 		SingletonControllerGestoria.getInstance().menuAcampado(frame);
+	}
+	
+	public void SanidadCita(JFrame frame) {
+		SingletonControllerSanidad.getInstance().pedirCita(frame);
 	}
 	
 	

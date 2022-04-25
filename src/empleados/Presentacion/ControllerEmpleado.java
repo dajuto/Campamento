@@ -28,6 +28,17 @@ public class ControllerEmpleado {
 		return SingletonServiAppEmpleado.getInstance().getListaEmpleados();
 	}
 	
+	public void registraUsuario(String text) {
+		SingletonServiAppEmpleado.getInstance().registraUsuario(text);
+		SingletonControllerSanidad.getInstance().registraUsuario(text);
+		
+	}
+	public String getNombreUsuarioSanidad() {
+		String nombreUsuarioGestor = SingletonServiAppEmpleado.getInstance().getNombreUsuario();
+		return nombreUsuarioGestor;
+	}
+
+	
 	public void empleado(JFrame f) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -102,6 +113,10 @@ public class ControllerEmpleado {
 	
 	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
 		SingletonServiAppEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);
+	}
+	
+	public void modificarMedico(String empleado, String codigo) {
+		SingletonServiAppEmpleado.getInstance().modificarMedico(empleado, codigo);
 	}
 	
 	public void addObserver(EmpleadoObserver vista) {
