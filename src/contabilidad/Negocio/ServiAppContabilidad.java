@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import contabilidad.Integracion.SingletonDaoGastos;
 import contabilidad.Integracion.SingletonDaoIngresos;
+import gestoria.Integracion.SingletonDaoInstalacion;
 import launcher.Factory;
 import launcher.Observable;
 
@@ -28,7 +29,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.observers = new ArrayList<ContabilidadObserver>();
 	}
 	
-
 	public void registrarFactoria(Factory<Object> objetosFactory) {  // la tenia alvaro
 		this.factoriaTranserObjects = objetosFactory;
 	}
@@ -68,6 +68,55 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		return listaIngresos;
 	}
 	
+	public void eliminarGasto(JFrame frame, String codigo) { 
+		for (int i = 0; i < listaGastos.size(); i++) {
+			if (listaGastos.get(i).getConcepto().equals(codigo)) {
+				listaGastos.remove(i);
+				SingletonDaoGastos.getInstance().escribeTodo(listaGastos);
+				this.updateGastos();
+			}
+		}
+	}
+
+	public void eliminarIngreso(JFrame frame, String codigo) {  
+		for (int i = 0; i < listaIngresos.size(); i++) {
+			if (listaIngresos.get(i).getConcepto().equals(codigo)) {
+				listaIngresos.remove(i);
+				SingletonDaoIngresos.getInstance().escribeTodo(listaIngresos);
+				this.updateIngresos();
+			}
+		}
+	}
+	
+	public void modificarGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada, JFrame frame) {
+		for (int i = 0; i < listaGastos.size(); i++) {
+			if (listaGastos.get(i).getTipo().equals(cuenta)) {
+				listaGastos.get(i).concepto = concepto;
+				listaGastos.get(i).importe = Integer.parseInt(importe);
+				listaGastos.get(i).fecha = fecha;
+				listaGastos.get(i).nombreEmpleado = empleado;
+				listaGastos.get(i).contabilizada = contabilizada;
+				SingletonDaoGastos.getInstance().escribeTodo(listaGastos);
+				this.updateGastos();
+			}
+		}
+	}
+	
+	public void modificarIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, boolean contabilizada, JFrame frame) {
+		for (int i = 0; i < listaIngresos.size(); i++) {
+			if (listaIngresos.get(i).getTipo().equals(cuenta)) {
+				listaIngresos.get(i).concepto = concepto;
+				listaIngresos.get(i).importe = Integer.parseInt(importe);
+				listaIngresos.get(i).fechaContable = fecha;
+				listaIngresos.get(i).nombreAcampado = nombreAcam;
+				listaIngresos.get(i).dniAcampado = dniAcam; 
+				listaIngresos.get(i).contabilizada = contabilizada;
+				SingletonDaoIngresos.getInstance().escribeTodo(listaIngresos);
+				this.updateIngresos();
+			}
+		}
+	}
+	
 		public void updateGastos() {
 			this.listaGastos = SingletonDaoGastos.getInstance().leeTodo(this.factoriaTranserObjects);
 		}
@@ -77,7 +126,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	        SingletonDaoGastos.getInstance().escribeTodo(this.listaGastos);
 		}
 	 
-	public boolean añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, JFrame frame) {
+	public boolean añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada,   JFrame frame) {
 		
 		this.updateGastos();
 		
@@ -90,6 +139,14 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		data.accumulate("Fecha de pago", fecha);
 		data.accumulate("Empleado", empleado);
 		
+		if(contabilizada) {
+			
+			data.accumulate("Contabilizada", "Si");
+		}else {
+			
+			data.accumulate("Contabilizada", "No");
+		}
+		
 		gastos.accumulate("data", data);
 		gastos.accumulate("type", "gastos");
 		
@@ -100,7 +157,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		
 		return true;
 	}
-	
 	
 	// ++++++++++++++INGRESOS ++++++++++++
 	public void updateIngresos() {
@@ -123,9 +179,15 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		data.accumulate("Fecha contable", fecha);
 		JSONObject acampado = new JSONObject();
 		acampado.accumulate("Nombre", nombreAcampado);
-		acampado.accumulate("DNI", dniAcampado); 
+		acampado.accumulate("DNI Acampado", dniAcampado); 
 		data.accumulate("Acampado", acampado);
-		data.accumulate("Contabilizada", "No");
+        if(contabilizada) {
+			
+			data.accumulate("Contabilizada", "Si");
+		}else {
+			
+			data.accumulate("Contabilizada", "No");
+		}
 	
 		ingresos.accumulate("data", data);
 		ingresos.accumulate("type", "ingresos");
@@ -134,7 +196,6 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		this.listaIngresos.add(tingresos);
 		this.guardaIngresos();
 		this.updateIngresos();
-
 		
 		return true;
 	}

@@ -35,6 +35,33 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
+		
+		JButton boton_Eliminar = new JButton("Eliminar Ingresos");
+		boton_Eliminar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				
+				SingletonControllerContabilidad.getInstance().mostrarEliminarIngresos(getFrame());
+
+			}
+		});
+		boton_Eliminar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Eliminar.setBounds(53, 157, 145, 38);
+		getContentPane().add(boton_Eliminar);
+		
+		JButton boton_Modificar = new JButton("Modificar Ingresos");
+		boton_Modificar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				
+				SingletonControllerContabilidad.getInstance().mostrarModificarIngresos(getFrame());
+
+			}
+		});
+		boton_Modificar.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_Modificar.setBounds(287, 157, 145, 38);
+		getContentPane().add(boton_Modificar);
+		
 		JButton boton_Mostrar = new JButton("Mostrar Ingresos");
 		boton_Mostrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -43,7 +70,7 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 			}
 		});
 		boton_Mostrar.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Mostrar.setBounds(54, 110, 145, 38);
+		boton_Mostrar.setBounds(53, 65, 145, 38);
 		getContentPane().add(boton_Mostrar);
 		
 		
@@ -55,7 +82,7 @@ public class VistaIngresosContabilidad extends JFrame implements ContabilidadObs
 			}
 		});
 		boton_Añadir.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		boton_Añadir.setBounds(284, 110, 145, 38);
+		boton_Añadir.setBounds(287, 65, 145, 38);
 		getContentPane().add(boton_Añadir);
 		
 		setVisible(true);

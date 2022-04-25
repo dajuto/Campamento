@@ -55,7 +55,8 @@ public class VistaVerIngresos extends JFrame implements ContabilidadObserver{
 	
 	private JPanel createViewPanel(JComponent c, String title) {
 		JPanel p = new JPanel( new BorderLayout() );
-		p.add(new JScrollPane(c));
+		JScrollPane scrollPane = new JScrollPane(c);
+		p.add(scrollPane, BorderLayout.CENTER);
 		return p;
 	}
 	

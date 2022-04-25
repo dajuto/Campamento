@@ -9,8 +9,7 @@ import javax.swing.JFrame;
 import org.json.JSONObject;
 
 import empleados.Negocio.TMedico;
-import gestoria.Integracion.SingletonDaoLimpieza;
-import gestoria.Negocio.TLimpieza;
+
 import launcher.Factory;
 import launcher.Observable;
 import sanidad.Integracion.SingletonDaoSanidad;
@@ -36,8 +35,6 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 		this.listaRecetas = SingletonDaoSanidad.getInstance().leeTodo(this.factoriaTranserObjects);
 		
 	}
-	
-
 	
 	public void registrarFactoria(Factory<Object> objetosFactory) {
 		this.factoriaTranserObjects = objetosFactory;
@@ -119,8 +116,9 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 			data.accumulate("medicamento", medicamento);
 			data.accumulate("dosis", dosis);
 			data.accumulate("Nombremedico", Nombremedico);
-			data.accumulate("NombreAcampado", NombreAcampado);
 			data.accumulate("comprado", "Sin Adquirir");
+			data.accumulate("NombreAcampado", NombreAcampado);
+			
 			
 			receta.accumulate("data", data);
 			receta.accumulate("type", "receta");

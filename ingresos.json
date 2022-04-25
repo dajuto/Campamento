@@ -1,0 +1,44 @@
+{"ingresos": [
+   {
+      "data": {
+         "Tipo": "Ventas",
+         "Importe": 500,
+         "Acampado": {
+            "Nombre": "Borja Garcia",
+            "DNI Acampado": "78765711A"
+         },
+         "Concepto": "Abono joven",
+         "Fecha contable": "24/04/2022",
+         "Contabilizada": "Si"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Subvencion",
+         "Importe": 200,
+         "Acampado": {
+            "Nombre": "",
+            "DNI Acampado": ""
+         },
+         "Concepto": "Subvencion",
+         "Fecha contable": "24/04/2022",
+         "Contabilizada": "Si"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ventas",
+         "Importe": 500,
+         "Acampado": {
+            "Nombre": "Borja Garcia",
+            "DNI Acampado": "78765711A"
+         },
+         "Concepto": "Abono joven",
+         "Fecha contable": "24/04/2022",
+         "Contabilizada": "Si"
+      },
+      "type": "ingresos"
+   }
+]}

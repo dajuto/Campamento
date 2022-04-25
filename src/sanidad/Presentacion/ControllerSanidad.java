@@ -7,6 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import acampados.Negocio.TAcampado;
+import acampadosPresentacion.SingletonControllerAcampado;
+import empleados.Negocio.TEmpleado;
+import empleados.Presentacion.SingletonControllerEmpleado;
 import launcher.Factory;
 import sanidad.Negocio.SanidadObserver;
 import sanidad.Negocio.SingletonServiAppSanidad;
@@ -157,6 +161,15 @@ public class ControllerSanidad {
 	}
 
 
+	
+	public List<TEmpleado> getListaEmpleados() {
+		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
+	}
+	
+	
+	public List<TAcampado> getListaAcampados() {
+		return SingletonControllerAcampado.getInstance().getListaAcampados();
+	}
 	
 
 	

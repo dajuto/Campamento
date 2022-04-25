@@ -10,8 +10,8 @@ public class Receta {
 	protected int codigo;
 	protected String medicamento;
 	protected String dosis;
-	protected Empleado Nombremedico;
-	protected Acampado NombreAcampado;
+	protected String Nombremedico;
+	protected String NombreAcampado;
 	protected String comprado;
 	
 	public String toString() {
@@ -24,11 +24,11 @@ public class Receta {
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
-	public Acampado getNombreAcampado() {
+	public String getNombreAcampado() {
 		return NombreAcampado;
 	}
 
-	public void setNombreAcampado(Acampado nombreAcampado) {
+	public void setNombreAcampado(String nombreAcampado) {
 		NombreAcampado = nombreAcampado;
 	}
 
@@ -52,10 +52,10 @@ public class Receta {
 	public void setDosis(String dosis) {
 		this.dosis = dosis;
 	}
-	public Empleado getNombremedico() {
+	public String getNombremedico() {
 		return Nombremedico;
 	}
-	public void setNombremedico(Empleado nombremedico) {
+	public void setNombremedico(String nombremedico) {
 		Nombremedico = nombremedico;
 	}
 	
@@ -68,8 +68,8 @@ public class Receta {
 		data.accumulate("codigo", c);
 		data.accumulate("medicamento", this.medicamento);
 		data.accumulate("dosis", this.dosis);
-		data.accumulate("Nombremedico", this.Nombremedico.getUsuario());
-		data.accumulate("NombreAcampado", this.NombreAcampado.getNombre());
+		data.accumulate("Nombremedico", this.Nombremedico);
+		data.accumulate("NombreAcampado", this.NombreAcampado);
 		data.accumulate("comprado", this.comprado);
 		receta.accumulate("data", data);
 		return receta;

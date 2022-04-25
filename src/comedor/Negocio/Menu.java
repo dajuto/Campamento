@@ -4,11 +4,14 @@ import org.json.JSONObject;
 
 public abstract class Menu {
 
+	protected String dia;
 	protected String desayuno;
 	protected String comida;
 	protected String cena;
-	protected int horario;
 	
+	public String getDia() {
+		return dia;
+	}
 	public String getDesayuno() {
 		return desayuno;
 	}
@@ -18,18 +21,16 @@ public abstract class Menu {
 	public String getCena() {
 		return cena;
 	}
-	public int getHorario() {
-		return horario;
-	}
 	
 	public JSONObject report() {
 		JSONObject menu = new JSONObject();
 		menu.accumulate("type", "Menu");
 		JSONObject data = new JSONObject();
+		data.accumulate("Dia", this.dia);
 		data.accumulate("Desayuno", this.desayuno);
 		data.accumulate("Comida", this.comida);
 		data.accumulate("Cena", this.cena);
-		data.accumulate("Horario", this.horario);
+	
 		
 		menu.accumulate("data", data);
 		return menu;

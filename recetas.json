@@ -2,12 +2,44 @@
    {
       "data": {
          "codigo": "1",
-         "medicamento": "paracetamol",
+         "NombreAcampado": "Borja",
          "dosis": "3 al dia",
-         "Nombremedico": "david00",
-         "comprado": "Sin Adquirir",
-         "NombreAcampado": "Julio"
-         
+         "medicamento": "ibuprofeno",
+         "Nombremedico": "David Viejo",
+         "comprado": "Sin Adquirir"
+      },
+      "type": "receta"
+   },
+   {
+      "data": {
+         "codigo": "3",
+         "NombreAcampado": "Alvaro ",
+         "dosis": "2 al dia",
+         "medicamento": "antibiotico",
+         "Nombremedico": "David Viejo",
+         "comprado": "Sin Adquirir"
+      },
+      "type": "receta"
+   },
+   {
+      "data": {
+         "codigo": "2",
+         "NombreAcampado": "Jose",
+         "dosis": "2 al dia",
+         "medicamento": "omeprazol",
+         "Nombremedico": "David Viejo",
+         "comprado": "Sin Adquirir"
+      },
+      "type": "receta"
+   },
+   {
+      "data": {
+         "codigo": "4",
+         "NombreAcampado": "Jose",
+         "dosis": "1 a la semana",
+         "medicamento": "enantyum",
+         "Nombremedico": "Dajuto",
+         "comprado": "Sin Adquirir"
       },
       "type": "receta"
    }

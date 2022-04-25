@@ -23,6 +23,12 @@ public class Acampado {
 		return usuario;
 	}
 
+	public String getNombreCompleto() {
+		
+		return nombre +  " " + apellidos; 
+	}
+	
+	
 	public String getContrasena() {
 		return contrasena;
 	}
