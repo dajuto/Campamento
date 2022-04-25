@@ -318,6 +318,15 @@ public class ControllerGestoria {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
 
+	public void perfilAcampado(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaPerfilAcampado(frame);
+			}
+		});
+	}
+
 	
 
 	

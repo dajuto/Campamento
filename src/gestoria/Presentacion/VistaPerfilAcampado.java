@@ -17,12 +17,12 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
 
-public class VistaMenuAcampado extends JFrame implements GestoriaObserver{
+public class VistaPerfilAcampado extends JFrame implements GestoriaObserver{
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
 	private String nombreUsuario;
 	
-	public VistaMenuAcampado(JFrame frame) {
+	public VistaPerfilAcampado(JFrame frame) {
 		setTitle("Menu de gestoria");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
@@ -40,17 +40,6 @@ public class VistaMenuAcampado extends JFrame implements GestoriaObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JButton boton_perfil = new JButton("Mi perfil");
-		boton_perfil.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				SingletonControllerGestoria.getInstance().perfilAcampado(getFrame());
-			}
-		});
-		boton_perfil.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_perfil.setBounds(159, 54, 165, 38);
-		getContentPane().add(boton_perfil);
-		
 		
 		this.setVisible(true);
 	}
@@ -66,28 +55,25 @@ public class VistaMenuAcampado extends JFrame implements GestoriaObserver{
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
+		update(nombreUsuario);
 		
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		update(nombreUsuario);		
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		update(nombreUsuario);		
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		update(nombreUsuario);		
 	}
 }
