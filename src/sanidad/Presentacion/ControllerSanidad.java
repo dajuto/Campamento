@@ -15,6 +15,7 @@ import empleados.Presentacion.SingletonControllerEmpleado;
 import launcher.Factory;
 import sanidad.Negocio.SanidadObserver;
 import sanidad.Negocio.SingletonServiAppSanidad;
+import sanidad.Negocio.TCita;
 
 public class ControllerSanidad {
 
@@ -68,15 +69,7 @@ public class ControllerSanidad {
 			}
 		});
 	}
-	public void mostrarListaRecetas(JFrame frame) {
-		
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaVerListaRecetas(frame);
-			}
-		});
-	}
+	
 	public void mostrarConsultarRecetas(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -205,6 +198,9 @@ public class ControllerSanidad {
 	}
 	
 
+	public List<TCita> getListaCitas() {	
+		return SingletonServiAppSanidad.getInstance().getListaCitas();
+	}
 	
 	public void modificarMedico(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarMedico(empleado, codigo);		

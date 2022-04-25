@@ -42,7 +42,7 @@ public class VistaMenuEmpleado extends JFrame implements EmpleadoObserver{
 
 		boton_actividades.setBounds(49, 33, 140, 36);
 		getContentPane().add(boton_actividades);
-		
+
 		JButton boton_Sanidad = new JButton("Sanidad");
 		boton_Sanidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		boton_Sanidad.addActionListener(new ActionListener() {
