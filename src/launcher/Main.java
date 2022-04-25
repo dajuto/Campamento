@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 
 import acampados.Negocio.AcampadoBuilder;
+import actividades.Negocio.ActividadBuilder;
 import contabilidad.Negocio.GastosBuilder;
 import contabilidad.Negocio.IngresosBuilder;
 import empleados.Negocio.EmpleadoLimpiezaBuilder;
@@ -26,6 +27,8 @@ public class Main {
 		
 		constructores.add(new RecetaBuilder());
 		constructores.add(new CitaBuilder());
+		
+		constructores.add(new ActividadBuilder());
 		
 		constructores.add(new EmpleadoLimpiezaBuilder());
 		
