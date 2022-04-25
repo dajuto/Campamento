@@ -7,7 +7,7 @@ import launcher.Builder;
 public class ActividadBuilder extends Builder<Object>{
 
 	protected ActividadBuilder() {
-		super("Actividad");
+		super("actividad");
 	}
 
 	@Override

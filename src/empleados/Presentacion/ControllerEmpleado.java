@@ -1,11 +1,13 @@
 package empleados.Presentacion;
 
+import java.awt.Frame;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import actividades.Presentacion.SingletonControllerActividad;
 import contabilidad.Presentacion.SingletonControllerContabilidad;
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
@@ -76,6 +78,10 @@ public class ControllerEmpleado {
 	}
 
 	
+	
+	public void actividades(JFrame frame) {
+		SingletonControllerActividad.getInstance().mostrarActividadGestor(frame);
+	}
 	
 	public void gestoria(JFrame frame) {
 		SingletonControllerGestoria.getInstance().menuGestor();
