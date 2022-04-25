@@ -31,5 +31,16 @@
          "Contabilizada": "No"
       },
       "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "25/04/2022",
+         "Tipo": "Sueldos y Salarios",
+         "Empleado": "Jose luis",
+         "Importe": 23400,
+         "Concepto": "Pago Nomina",
+         "Contabilizada": "No"
+      },
+      "type": "gastos"
    }
 ]}
