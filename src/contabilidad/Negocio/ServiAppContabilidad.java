@@ -70,7 +70,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	
 	public void eliminarGasto(JFrame frame, String codigo) { 
 		for (int i = 0; i < listaGastos.size(); i++) {
-			if (listaGastos.get(i).getConcepto().equals(codigo)) {
+			if (listaGastos.get(i).getnumeroFactura().equals(codigo)) {
 				listaGastos.remove(i);
 				SingletonDaoGastos.getInstance().escribeTodo(listaGastos);
 				this.updateGastos();
@@ -80,7 +80,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 
 	public void eliminarIngreso(JFrame frame, String codigo) {  
 		for (int i = 0; i < listaIngresos.size(); i++) {
-			if (listaIngresos.get(i).getConcepto().equals(codigo)) {
+			if (listaIngresos.get(i).getnumeroFactura().equals(codigo)) {
 				listaIngresos.remove(i);
 				SingletonDaoIngresos.getInstance().escribeTodo(listaIngresos);
 				this.updateIngresos();
@@ -88,29 +88,31 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 		}
 	}
 	
-	public void modificarGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada, JFrame frame) {
+	public void modificarGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada, String numeroFactura, JFrame frame) {
 		for (int i = 0; i < listaGastos.size(); i++) {
-			if (listaGastos.get(i).getTipo().equals(cuenta)) {
+			if (listaGastos.get(i).getnumeroFactura().equals(numeroFactura)) {
 				listaGastos.get(i).concepto = concepto;
 				listaGastos.get(i).importe = Integer.parseInt(importe);
 				listaGastos.get(i).fecha = fecha;
 				listaGastos.get(i).nombreEmpleado = empleado;
 				listaGastos.get(i).contabilizada = contabilizada;
+				listaGastos.get(i).numeroFactura = numeroFactura; 
 				SingletonDaoGastos.getInstance().escribeTodo(listaGastos);
 				this.updateGastos();
 			}
 		}
 	}
 	
-	public void modificarIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, boolean contabilizada, JFrame frame) {
+	public void modificarIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, boolean contabilizada, String numeroFactura,  JFrame frame) {
 		for (int i = 0; i < listaIngresos.size(); i++) {
-			if (listaIngresos.get(i).getTipo().equals(cuenta)) {
+			if (listaIngresos.get(i).getnumeroFactura().equals(numeroFactura)) {
 				listaIngresos.get(i).concepto = concepto;
 				listaIngresos.get(i).importe = Integer.parseInt(importe);
 				listaIngresos.get(i).fechaContable = fecha;
 				listaIngresos.get(i).nombreAcampado = nombreAcam;
 				listaIngresos.get(i).dniAcampado = dniAcam; 
 				listaIngresos.get(i).contabilizada = contabilizada;
+				listaIngresos.get(i).numeroFactura = numeroFactura; 
 				SingletonDaoIngresos.getInstance().escribeTodo(listaIngresos);
 				this.updateIngresos();
 			}
@@ -126,7 +128,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 	        SingletonDaoGastos.getInstance().escribeTodo(this.listaGastos);
 		}
 	 
-	public boolean añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada,   JFrame frame) {
+	public boolean añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, boolean contabilizada, String numeroFactura, JFrame frame) {
 		
 		this.updateGastos();
 		
@@ -146,6 +148,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 			
 			data.accumulate("Contabilizada", "No");
 		}
+		data.accumulate("Numero Factura", numeroFactura); 
 		
 		gastos.accumulate("data", data);
 		gastos.accumulate("type", "gastos");
@@ -167,7 +170,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
         SingletonDaoIngresos.getInstance().escribeTodo(this.listaIngresos);
 	}	
 	
-    public boolean añadirIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcampado, String dniAcampado, boolean contabilizada,  JFrame frame) {
+    public boolean añadirIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcampado, String dniAcampado, boolean contabilizada, String numeroFactura,   JFrame frame) {
 		
 		this.updateIngresos();
 		
@@ -188,7 +191,7 @@ public class ServiAppContabilidad implements Observable<ContabilidadObserver>{
 			
 			data.accumulate("Contabilizada", "No");
 		}
-	
+        data.accumulate("Numero Factura", numeroFactura); 
 		ingresos.accumulate("data", data);
 		ingresos.accumulate("type", "ingresos");
 		

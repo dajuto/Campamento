@@ -7,20 +7,22 @@
             "Nombre": "Borja Garcia",
             "DNI Acampado": "78765711A"
          },
-         "Concepto": "Abono joven",
-         "Fecha contable": "24/04/2022",
+         "Numero Factura": "1",
+         "Concepto": "Abono acampado",
+         "Fecha contable": "25/04/2022",
          "Contabilizada": "Si"
       },
       "type": "ingresos"
    },
    {
       "data": {
-         "Tipo": "Subvencion",
+         "Tipo": "Subvenciones, donaciones",
          "Importe": 200,
          "Acampado": {
             "Nombre": "",
             "DNI Acampado": ""
          },
+         "Numero Factura": "2",
          "Concepto": "Subvencion",
          "Fecha contable": "24/04/2022",
          "Contabilizada": "Si"
@@ -35,9 +37,25 @@
             "Nombre": "Borja Garcia",
             "DNI Acampado": "78765711A"
          },
+         "Numero Factura": "3",
          "Concepto": "Abono joven",
-         "Fecha contable": "24/04/2022",
+         "Fecha contable": "25/04/2022",
          "Contabilizada": "Si"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ingresos financieros",
+         "Importe": 500,
+         "Acampado": {
+            "Nombre": "",
+            "DNI Acampado": ""
+         },
+         "Numero Factura": "5",
+         "Concepto": "Hacienda Publica",
+         "Fecha contable": "25/04/2022",
+         "Contabilizada": "No"
       },
       "type": "ingresos"
    }

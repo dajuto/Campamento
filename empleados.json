@@ -129,7 +129,7 @@
       },
       "type": "Empleado Mantenimiento"
    },
-<<<<<<< HEAD
+
    {
       "data": {
          "puesto": "Medico",
@@ -142,7 +142,7 @@
          "nombre": "Dajuto"
       },
       "type": "Medico"
-=======
+   },
     {
       "data": {
          "puesto": "Gestor Actividades",
@@ -155,6 +155,5 @@
          "nombre": "Cristian"
       },
       "type": "Empleado Mantenimiento"
->>>>>>> ec28a8db58a25b0a2baac22e0579fbce594775be
    }
 ]}

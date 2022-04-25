@@ -5,6 +5,7 @@
          "Tipo": "Publicidad",
          "Empleado": "",
          "Importe": 650,
+         "Numero Factura": "1",
          "Concepto": "Marketing",
          "Contabilizada": "Si"
       },
@@ -12,22 +13,36 @@
    },
    {
       "data": {
-         "Fecha de pago": "15/02/2022",
+         "Fecha de pago": "25/04/2022",
          "Tipo": "Sueldos y Salarios",
-         "Empleado": "inesita",
+         "Empleado": "Jose luis",
          "Importe": 600,
+         "Numero Factura": "2",
          "Concepto": "Nomina empleado",
+         "Contabilizada": "Si"
+      },
+      "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "25/04/2022",
+         "Tipo": "Arrendamientos",
+         "Empleado": "",
+         "Importe": 300,
+         "Numero Factura": "3",
+         "Concepto": "Pad",
          "Contabilizada": "No"
       },
       "type": "gastos"
    },
    {
       "data": {
-         "Fecha de pago": "24/04/2022",
-         "Tipo": "Gasto",
+         "Fecha de pago": "25/04/2022",
+         "Tipo": "Arrendamientos",
          "Empleado": "",
-         "Importe": 2500,
-         "Concepto": "Pago instalación Tennis",
+         "Importe": 100,
+         "Numero Factura": "4",
+         "Concepto": "Tenis",
          "Contabilizada": "No"
       },
       "type": "gastos"

@@ -24,8 +24,8 @@ public class IngresosBuilder extends Builder<Object> {
 		if(sContabilizada.equals("Si")) {
 			conta = true; 
 		}
-			
-		TIngresos contabilidadIngresos = new TIngresos(tipo, concepto, importe, fecha, nombreAcampado, dniAcampado, conta);
+		String numeroFactura = data.getString("Numero Factura"); 
+		TIngresos contabilidadIngresos = new TIngresos(tipo, concepto, importe, fecha, nombreAcampado, dniAcampado, conta, numeroFactura);
 		return contabilidadIngresos;
 	}
 }

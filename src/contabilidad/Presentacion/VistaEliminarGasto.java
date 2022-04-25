@@ -21,7 +21,7 @@ import contabilidad.Negocio.TIngresos;
 
 public class VistaEliminarGasto extends JFrame implements ContabilidadObserver{
 	private JFrame atras;
-	private JComboBox<String> codElegido;
+	private JComboBox<String> FacturaElegido;
 	List<TGastos> listaGastos;
 	
 	public VistaEliminarGasto(JFrame frame) {
@@ -47,23 +47,23 @@ public class VistaEliminarGasto extends JFrame implements ContabilidadObserver{
 		eliminar.setBounds(25, 24, 330, 36);
 		getContentPane().add(eliminar);
 		
-		codElegido = new JComboBox<String>();
-		codElegido.setBounds(25, 73, 239, 22);
+		FacturaElegido = new JComboBox<String>();
+		FacturaElegido.setBounds(25, 73, 239, 22);
 		listaGastos = SingletonControllerContabilidad.getInstance().getListaGastos();
 		for(TGastos cod: this.listaGastos) {
 			if(!cod.isContabilizada()) {  //solo se pueden eliminar los gastos que NO están contabilizados 
-				codElegido.addItem(cod.getConcepto()); 
+				FacturaElegido.addItem(cod.getnumeroFactura()); 
 			}
-			 
 		}
-		getContentPane().add(codElegido);
+	
+		getContentPane().add(FacturaElegido);
 		
 		JButton boton_Eliminar = new JButton("Eliminar");
 		boton_Eliminar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				atras.setVisible(true);
-				SingletonControllerContabilidad.getInstance().eliminarGasto(frame, (String) codElegido.getSelectedItem());
+				SingletonControllerContabilidad.getInstance().eliminarGasto(frame, (String) FacturaElegido.getSelectedItem());
 			}
 		});
 		boton_Eliminar.setBounds(25, 112, 97, 25);
