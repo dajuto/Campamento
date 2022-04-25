@@ -7,6 +7,10 @@ import javax.swing.table.AbstractTableModel;
 
 public class ActividadTableModel extends AbstractTableModel implements ActividadObserver{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<TActividad> list;
 	private String[] columnNames = {"Id", "Nombre", "Instalacion", "Monitor"};
 	
