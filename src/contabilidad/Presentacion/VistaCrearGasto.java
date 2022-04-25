@@ -40,13 +40,16 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 	private String nombreUsuario;
 	private JTextField concepto_txt;
 	private JTextField importe_txt;
-	private JComboBox<String> cuenta_txt;
 	private JComboBox<String> empleado_txt;
+	private JComboBox cuenta_txt;
 	List<TGastos> listaGastos;
 	List<TEmpleado> listaEmpleados;
 	private JCheckBox contabilizada;
 	private boolean boolContabilizada = false;
 	private String fecha; 
+	private int numeroFecha; 
+	private int numeroFactura; 
+	private String fac; 
 	
 	public VistaCrearGasto(JFrame frame) {
 		
@@ -101,12 +104,10 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		getContentPane().add(concepto_txt);
 		concepto_txt.setColumns(10);
 		
-		cuenta_txt = new JComboBox<String>();
-		cuenta_txt.setBounds(183, 67, 116, 22);
+        cuenta_txt = new JComboBox();
+        cuenta_txt.setModel(new DefaultComboBoxModel(new String[] {"Sueldos y Salarios", "Arrendamientos", "Reparaciones", "Primas  de seguros", "Suministros", "Compras material", "Servicios internos", "Publicidad"}));
+        cuenta_txt.setBounds(183, 67, 116, 22);
 		getContentPane().add(cuenta_txt);
-		for(TGastos e: listaGastos) {
-			cuenta_txt.addItem(e.getTipo());
-		}
 		
 		importe_txt = new JTextField();
 		importe_txt.setBounds(121, 141, 116, 22);
@@ -147,13 +148,21 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 					empleado = (String) empleado_txt.getSelectedItem();
 				}	
 					if (importe_txt.getText().matches("[0-9]*")) {
-						String cuenta = (String) cuenta_txt.getSelectedItem();
 						if (contabilizada.isSelected()) {
 							boolContabilizada = true;
 						}	
+						numeroFactura = 1; 
+						for(TGastos cod: listaGastos) {
+							fac = String.valueOf(numeroFactura);  //pasamos de int a string
+							if((cod.getnumeroFactura().equals(fac))) {
+								numeroFactura++; 	
+						     }	
+						}
+						fac = String.valueOf(numeroFactura);  //pasamos de int a string
+						
 						 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-							fecha = sdf.format(new Date());
-						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha, empleado, boolContabilizada,  getFrame());
+							fecha = sdf.format(new Date()); 
+						SingletonControllerContabilidad.getInstance().añadirGasto(cuenta_txt.getSelectedItem().toString(), concepto_txt.getText(), importe_txt.getText(), fecha, empleado, boolContabilizada, fac,   getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
 				

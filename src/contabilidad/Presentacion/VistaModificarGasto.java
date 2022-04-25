@@ -1,5 +1,6 @@
 package contabilidad.Presentacion;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
@@ -33,12 +34,14 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 	private JTextField importe;
 	private JComboBox<String> empleadoNombre;
 	private String importeString;
-	private JComboBox<String> cuenta;
 	private JCheckBox contabilizada;
 	List<TGastos> listaGastos; 
 	List<TEmpleado> listaEmpleados;
 	private String empleado; 
 	private String fecha;
+	private JComboBox<String> FacturaElegido;
+	private String numeroFactura; 
+	private String cuenta; 
 
 	
 	public VistaModificarGasto(JFrame frame) {
@@ -69,14 +72,9 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		labmodificar.setBounds(25, 14, 341, 36);
 		getContentPane().add(labmodificar);
 		
-		JLabel lblCuenta = new JLabel("Cuenta de Gasto:");
-		lblCuenta.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCuenta.setBounds(25, 60, 127, 25);
-		getContentPane().add(lblCuenta);
-		
 		JLabel lblImporte = new JLabel("Importe:");
 		lblImporte.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblImporte.setBounds(25, 137, 84, 25);
+		lblImporte.setBounds(25, 174, 84, 25);
 		getContentPane().add(lblImporte);
 		
 		JLabel lblEmplead = new JLabel("Emplead@:");
@@ -86,24 +84,24 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		
 		JLabel lblConcepto = new JLabel("Concepto:");
 		lblConcepto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblConcepto.setBounds(25, 102, 84, 25);
+		lblConcepto.setBounds(25, 127, 84, 25);
 		getContentPane().add(lblConcepto);
 			
 		concepto = new JTextField();
-		concepto.setBounds(121, 107, 116, 22);
+		concepto.setBounds(135, 129, 116, 26);
 		concepto.setText(listaGastos.get(0).getConcepto()); //concepto
 		getContentPane().add(concepto);
 		concepto.setColumns(10);
 		
 		importe = new JTextField();
-		importe.setBounds(121, 139, 116, 22);
+		importe.setBounds(135, 178, 116, 22);
 		importeString = Integer.toString(listaGastos.get(0).getImporte());
 		importe.setText(importeString);
 		getContentPane().add(importe);
 		importe.setColumns(10);
 		
 		empleadoNombre =  new JComboBox<String>();
-		empleadoNombre.setBounds(121, 226, 116, 22);
+		empleadoNombre.setBounds(135, 225, 116, 22);
 		empleadoNombre.setSelectedItem(listaGastos.get(0).getNombre());
 		getContentPane().add(empleadoNombre);
 		for(TEmpleado e: listaEmpleados) {
@@ -114,14 +112,14 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		boton_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (importe.getText().matches("[0-9]*")) {
-                          if(!((String) cuenta.getSelectedItem()).matches("Sueldos y Salarios")) {	
+                          if(!cuenta.matches("Sueldos y Salarios")) {	
 							empleado = "";	
 						}else {
 						     empleado = (String) empleadoNombre.getSelectedItem();
 						}
                           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 							fecha = sdf.format(new Date());
-						SingletonControllerContabilidad.getInstance().modificarGasto(cuenta.getSelectedItem().toString(), concepto.getText(), importe.getText(), fecha, empleado,  contabilizada.isSelected(), getFrame());
+						SingletonControllerContabilidad.getInstance().modificarGasto(cuenta, concepto.getText(), importe.getText(), fecha, empleado,  contabilizada.isSelected(), numeroFactura,  getFrame());
 						
 				}
 				else JOptionPane.showMessageDialog(atras, "El importe tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
@@ -130,23 +128,29 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 		boton_modificar.setBounds(264, 265, 97, 25);
 		getContentPane().add(boton_modificar);
 		
-		cuenta = new JComboBox<String>();
-		cuenta.setBounds(162, 63, 116, 22);
-		for(TGastos cod: this.listaGastos) {	
-				cuenta.addItem(cod.getTipo());	
+		FacturaElegido = new JComboBox<String>();
+		FacturaElegido.setBounds(159, 85, 106, 22);
+		listaGastos = SingletonControllerContabilidad.getInstance().getListaGastos();
+		for(TGastos cod: this.listaGastos) { 
+				FacturaElegido.addItem(cod.getnumeroFactura()); 
 		}
+	
+		getContentPane().add(FacturaElegido);
+	
 		
-		cuenta.addActionListener(new ActionListener() {
+		FacturaElegido.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				for(TGastos cod: listaGastos) {
-					if (cod.getTipo().equals(cuenta.getSelectedItem().toString())) {
+					if (cod.getnumeroFactura().equals(FacturaElegido.getSelectedItem().toString())) {
+						cuenta = cod.getTipo();
+						
 						if (cod.isContabilizada()) { //solo se pueden modificar el concepto y la cuenta de gasto
 							contabilizada.setEnabled(false);
 							importe.setEnabled(false); 
 							empleadoNombre.setEnabled(false); 	
 						}
 						else {
-							if(!((String) cuenta.getSelectedItem()).matches("Sueldos y Salarios")) {	
+							if(!(cuenta.matches("Sueldos y Salarios"))) {	
 								empleadoNombre.setEnabled(false); 			
 							}else {
 								empleadoNombre.setEnabled(true); 	
@@ -159,16 +163,24 @@ public class VistaModificarGasto extends JFrame implements GestoriaObserver{
 						importe.setText(importeString);
 						empleadoNombre.setSelectedItem(cod.getNombre()); 
 						concepto.setText(cod.getConcepto());
+						numeroFactura = cod.getnumeroFactura();
+						cuenta = cod.getTipo();
+						
+						
 					}
 				}
 			}
 		});
-		getContentPane().add(cuenta);
 			
-		contabilizada = new JCheckBox("Marcar para contabilizar un gasto");
-		contabilizada.setBounds(318, 224, 106, 25);
+		contabilizada = new JCheckBox("Marcar para contabilizar gasto");
+		contabilizada.setBounds(283, 224, 165, 25);
 		contabilizada.setSelected(listaGastos.get(0).isContabilizada());
 		getContentPane().add(contabilizada);
+		
+		JLabel lblNumeroFactura = new JLabel("Numero Factura");
+		lblNumeroFactura.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblNumeroFactura.setBounds(25, 82, 127, 25);
+		getContentPane().add(lblNumeroFactura);
 		if (listaGastos.get(0).isContabilizada()) {
 			contabilizada.setEnabled(false);
 		}

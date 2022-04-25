@@ -6,7 +6,7 @@
          "Comida": "macarrones con tomate",
          "Cena": "tortilla de patatas"
       },
-      "type": "comedor"
+      "type": "Nutricionista"
    },
    {
       "data": {
@@ -15,7 +15,7 @@
          "Comida": "arroz con huevo",
          "Cena": "pollo y patatas"
       },
-      "type": "comedor"
+      "type": "Nutricionista"
    },
    {
       "data": {
@@ -24,7 +24,7 @@
          "Comida": "pure y pescado ",
          "Cena": "huevo con salchichas"
       },
-      "type": "comedor"
+      "type": "Nutricionista"
    },
    {
       "data": {
@@ -33,7 +33,7 @@
          "Comida": "albondigas y ensalada",
          "Cena": "pizza"
       },
-      "type": "comedor"
+      "type": "Nutricionista"
    },
    {
       "data": {
@@ -42,8 +42,8 @@
          "Comida": "paella",
          "Cena": "hamburguesa y patatas"
       },
-      "type": "comedor"
-   },
-      "type": "comedor"
+      "type": "Nutricionista"
    }
+   
 ]}
+

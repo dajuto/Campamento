@@ -9,8 +9,12 @@ public abstract class Gastos {
 	protected String fecha; 
 	protected String nombreEmpleado; 
 	protected boolean contabilizada;  //nuevo
+	protected String numeroFactura; 
 
-
+	public String getnumeroFactura() {	
+		return numeroFactura; 	
+	}
+	
 	public String getTipo() {
 		return tipo;
 	}
@@ -48,6 +52,7 @@ public abstract class Gastos {
 		else { //nuevo
 			data.accumulate("Contabilizada", "No"); //nuevo
 		}
+		data.accumulate("Numero Factura", this.numeroFactura); 
 		contabilidad.accumulate("data", data);
 		return contabilidad;
 	}

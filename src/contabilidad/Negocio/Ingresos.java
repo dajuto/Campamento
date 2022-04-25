@@ -13,6 +13,11 @@ public abstract class Ingresos {
 	protected String dniAcampado; 
 	protected Boolean contabilizada;  //si contabilizada = true significa que solo se pueden modificar el concepto y el tipo
 	//si contabilizada = false, significa que el ingreso aun esta como "guardado" y se puede eliminar o modificar completamente. 
+	protected String numeroFactura; 
+
+	public String getnumeroFactura() {	
+		return numeroFactura; 	
+	}
 	
 	public String getTipo() {
 		return tipo;
@@ -58,6 +63,7 @@ public abstract class Ingresos {
 		else {
 			data.accumulate("Contabilizada", "No");
 		}
+		data.accumulate("Numero Factura", this.numeroFactura); 
 		contabilidad.accumulate("data", data);
 		return contabilidad;
 	}

@@ -2,7 +2,7 @@ package contabilidad.Negocio;
 
 public class TIngresos extends Ingresos {
 
-	public TIngresos(String tipo, String concepto, int importe,String fecha, String nombreAcampado, String dniAcampado, boolean contabilizada) {
+	public TIngresos(String tipo, String concepto, int importe,String fecha, String nombreAcampado, String dniAcampado, boolean contabilizada, String numeroFactura) {
 		
 		this.tipo = tipo;
 		this.concepto = concepto;
@@ -11,6 +11,7 @@ public class TIngresos extends Ingresos {
 		this.nombreAcampado = nombreAcampado; 
 		this.dniAcampado = dniAcampado; 
 		this.contabilizada = contabilizada; 
+		this.numeroFactura = numeroFactura; 
 
 	}
 	

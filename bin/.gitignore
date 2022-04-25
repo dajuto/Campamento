@@ -1,8 +1,3 @@
-/acampados/
-/acampadosPresentacion/
-/actividades/
-/comedor/
-/contabilidad/
 /empleados/
 /gestoria/
 /launcher/
@@ -10,9 +5,8 @@
 <<<<<<< HEAD
 /contabilidad/
 /acampados/
-/actividades/
-/comedor/
 /empleados/
-/acampadosPresentacion/
+/comedor/
 =======
->>>>>>> cf365312fb04b8d988ec81e20e24ee6c46eec792
+/actividades/
+>>>>>>> 1ea414a9e0f249cfc76093a44337a57fbc712dd1
