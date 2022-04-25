@@ -18,6 +18,16 @@ public class VistaMenuEmpleado extends JFrame{
 		
 		JButton boton_actividades = new JButton("Actividades");
 		boton_actividades.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		boton_actividades.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerEmpleado.getInstance().actividades(getFrame());
+			}
+			
+		});
+
 		boton_actividades.setBounds(49, 33, 140, 36);
 		getContentPane().add(boton_actividades);
 		

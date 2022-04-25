@@ -25,21 +25,13 @@ public class VistaActividadGestor extends JFrame implements ActividadObserver {
 	private Frame ventanaAnterior;
 	private String nombreUsuario;
 
-	public VistaActividadGestor(Frame frame, String nombreEmpleado) {
+	public VistaActividadGestor(Frame frame) {
 		
 		setTitle("Actividades");
 		this.ventanaAnterior = frame;
 		SingletonControllerActividad.getInstance().addObserver(this);
 		this.listaActividades = new JButton("Lista Mis Actividades");
 		this.atras = new JButton("Atras");
-		initGUI();
-	}
-	
-	private Frame getFrame() {
-		return this;
-	}
-	
-	private void initGUI() {
 		JPanel mainPanel = new JPanel(new BorderLayout());
 		this.setContentPane(mainPanel);
 		mainPanel.add(new JLabel("Actividad Gestor Actividades: "), BorderLayout.PAGE_START);
@@ -98,6 +90,13 @@ public class VistaActividadGestor extends JFrame implements ActividadObserver {
 		this.setVisible(true);
 	}
 	
+	private Frame getFrame() {
+		return this;
+	}
+	
+	/*private void initGUI() {
+		
+	}*/
     private void quit() {
     	int option = JOptionPane.showOptionDialog(this, "Are you sure you want to quit?", "quit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, 1); // el 1 es para q x defecto la opcion senalada sea NO
         if (option == 0) {

@@ -21,11 +21,11 @@ public class ControllerActividad {
 	}
 
 	public void mostrarActividadGestor(Frame frame) {
-		String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
+		//String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaActividadGestor(frame, nombreUsuario);
+				new VistaActividadGestor(frame);
 			}
 		});
 	}
