@@ -1,11 +1,13 @@
 package empleados.Presentacion;
 
+import java.awt.Frame;
 import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import actividades.Presentacion.SingletonControllerActividad;
 import contabilidad.Presentacion.SingletonControllerContabilidad;
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
@@ -25,6 +27,17 @@ public class ControllerEmpleado {
 	public List<TEmpleado> getListaEmpleados() {
 		return SingletonServiAppEmpleado.getInstance().getListaEmpleados();
 	}
+	
+	public void registraUsuario(String text) {
+		SingletonServiAppEmpleado.getInstance().registraUsuario(text);
+		SingletonControllerSanidad.getInstance().registraUsuario(text);
+		
+	}
+	public String getNombreUsuarioSanidad() {
+		String nombreUsuarioGestor = SingletonServiAppEmpleado.getInstance().getNombreUsuario();
+		return nombreUsuarioGestor;
+	}
+
 	
 	public void empleado(JFrame f) {
 		SwingUtilities.invokeLater(new Runnable() {
@@ -77,6 +90,10 @@ public class ControllerEmpleado {
 
 	
 	
+	public void actividades(JFrame frame) {
+		SingletonControllerActividad.getInstance().mostrarActividadGestor(frame);
+	}
+	
 	public void gestoria(JFrame frame) {
 		SingletonControllerGestoria.getInstance().menuGestor();
 	}
@@ -96,6 +113,10 @@ public class ControllerEmpleado {
 	
 	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
 		SingletonServiAppEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);
+	}
+	
+	public void modificarMedico(String empleado, String codigo) {
+		SingletonServiAppEmpleado.getInstance().modificarMedico(empleado, codigo);
 	}
 	
 	public void addObserver(EmpleadoObserver vista) {

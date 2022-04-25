@@ -65,40 +65,34 @@ public class RecetasMedicoTableModel extends AbstractTableModel implements Sanid
 	}
 
 	@Override
-	public void onRegister(List<TReceta> listaRecetas, List<TMedico> listaMedicos, String nombreUsuario) {
+	public void onRegister(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
+			String nombreUsuario) {
 		// TODO Auto-generated method stub
-		this.update(listaRecetas);
+				this.update(listaRecetas);
 		
 	}
 
+
+
 	@Override
-	public void onCrearReceta(List<TReceta> listaRecetas, List<TMedico> listaMedicos, String nombreUsuario) {
+	public void onEliminar(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
+			String nombreUsuario) {
 		// TODO Auto-generated method stub
 		this.update(listaRecetas);
 	}
 
 	@Override
-	public void onEliminarReceta(List<TReceta> listaRecetas, List<TMedico> listaMedicos, String nombreUsuario) {
+	public void onConsultar(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
+			String nombreUsuario) {
 		// TODO Auto-generated method stub
 		this.update(listaRecetas);
 	}
 
 	@Override
-	public void onConsultarReceta(List<TReceta> listaRecetas, List<TMedico> listaMedicos, String nombreUsuario) {
+	public void onCrear(List<TReceta> listaRecetas, List<TCita> listaCitas, List<TMedico> listaMedicos,
+			String nombreUsuario) {
 		// TODO Auto-generated method stub
 		this.update(listaRecetas);
-	}
-
-	@Override
-	public void onEliminarCita(List<TReceta> listaCitas, List<TMedico> listaMedicos, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onConsultarCita(List<TReceta> listaCitas, List<TMedico> listaMedicos, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
 	}
 
 }

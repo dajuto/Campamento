@@ -6,6 +6,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 
 import acampados.Negocio.AcampadoBuilder;
+import actividades.Negocio.ActividadBuilder;
 import contabilidad.Negocio.GastosBuilder;
 import contabilidad.Negocio.IngresosBuilder;
 import empleados.Negocio.EmpleadoLimpiezaBuilder;
@@ -16,6 +17,7 @@ import gestoria.Negocio.Instalacion;
 import gestoria.Negocio.InstalacionBuilder;
 import gestoria.Negocio.LimpiezaBuilder;
 import gestoria.Negocio.MantenimientoBuilder;
+import sanidad.Negocio.CitaBuilder;
 import sanidad.Negocio.RecetaBuilder;
 
 public class Main {
@@ -24,7 +26,8 @@ public class Main {
 		List<Builder<Object>> constructores = new ArrayList<>();
 		
 		constructores.add(new RecetaBuilder());
-		
+		constructores.add(new CitaBuilder());
+		constructores.add(new ActividadBuilder());
 		constructores.add(new EmpleadoLimpiezaBuilder());
 		
 		constructores.add(new EmpleadoMantenimientoBuilder());

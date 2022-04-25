@@ -24,7 +24,7 @@ public abstract class Actividad {
 	
 	public JSONObject report() {
 		JSONObject actividad = new JSONObject();
-		actividad.accumulate("type", "Actividad");
+		actividad.accumulate("type", "actividad");
 		JSONObject data = new JSONObject();
 		data.accumulate("Id", this.id);
 		data.accumulate("Nombre", this.nombre);

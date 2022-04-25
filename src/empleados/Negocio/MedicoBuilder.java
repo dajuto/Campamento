@@ -29,8 +29,8 @@ public class MedicoBuilder extends Builder<Object>{
 		
 		JSONObject trabajo = data.getJSONObject("trabajo");
 		List<String> citasPendientes = new ArrayList<String>();
-		if(trabajo.has("listaCitas")) {
-			JSONArray citasAsignadas = trabajo.getJSONArray("listaCitas");
+		if(trabajo.has("citasPendientes")) {
+			JSONArray citasAsignadas = trabajo.getJSONArray("citasPendientes");
 			for(int i = 0; i < citasAsignadas.length(); i++) {
 				citasPendientes.add(citasAsignadas.getString(i));
 	        }  

@@ -20,5 +20,16 @@
          "Estado": "Sin reparar"
       },
       "type": "averia"
+   },
+   {
+      "data": {
+         "Empleado": "Joaquiiin",
+         "Codigo": "3",
+         "Descripcion": "fdzfdf",
+         "Lugar": "Tennis",
+         "Coste": 34,
+         "Estado": "Sin reparar"
+      },
+      "type": "averia"
    }
 ]}

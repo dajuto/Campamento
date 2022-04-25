@@ -7,6 +7,10 @@ import javax.swing.table.AbstractTableModel;
 
 public class ActividadTableModel extends AbstractTableModel implements ActividadObserver{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private List<TActividad> list;
 	private String[] columnNames = {"Id", "Nombre", "Instalacion", "Monitor"};
 	
@@ -18,38 +22,53 @@ public class ActividadTableModel extends AbstractTableModel implements Actividad
 	
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return list.size();
 	}
 
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return columnNames.length;
 	}
 
+	@Override
+	public String getColumnName(int columnIndex) {
+		return columnNames[columnIndex];
+	}
+	
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		// TODO Auto-generated method stub
-		return null;
+		if(columnIndex == 0) {
+			return list.get(rowIndex).getId();
+		}
+		else if(columnIndex == 1) {
+			return list.get(rowIndex).getNombre();
+		}
+		else if(columnIndex == 2) {
+			return list.get(rowIndex).getInstalacion();
+		}
+		else {
+			return list.get(rowIndex).getMonitor();
+		}
 	}
 
+	private void update(List<TActividad> lista) {
+		this.list = lista;
+		this.fireTableDataChanged();
+	}
+	
 	@Override
 	public void onRegister(List<TActividad> lista) {
-		// TODO Auto-generated method stub
-		
+		this.update(lista);
 	}
 
 	@Override
 	public void onCreateActividad(List<TActividad> lista) {
-		// TODO Auto-generated method stub
-		
+		this.update(lista);
 	}
 
 	@Override
 	public void onEliminarActividad(List<TActividad> lista) {
-		// TODO Auto-generated method stub
-		
+		this.update(lista);
 	}
 
 }

@@ -68,7 +68,7 @@ private JPasswordField password;
 		JButton boton_Aceptar = new JButton("Aceptar");
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				SingletonControllerEmpleado.getInstance().registraUsuario(usuario.getText());
 				if(SingletonControllerEmpleado.getInstance().existeEmpleado(usuario.getText(), password.getText())) {
 					setVisible(false);
 					SingletonControllerEmpleado.getInstance().menuEmpleado();

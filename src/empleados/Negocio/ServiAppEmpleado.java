@@ -19,6 +19,7 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	private Factory<Object> factoriaTransferObjects;
 	private String nombreUsuario;
 	private List<TEmpleado> listaEmpleados;
+
 	
 	public ServiAppEmpleado() {
 		this.listaEmpleados = new ArrayList<TEmpleado>();
@@ -41,6 +42,8 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 	public void updateEmpleados() {
 		this.listaEmpleados = SingletonDaoEmpleado.getInstance().leeTodo(this.factoriaTransferObjects);
 	}
+
+	
 	
 	public boolean existeEmpleado(String usuario, String password) {
 		this.updateEmpleados();
@@ -245,7 +248,41 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 		}
 	}
 	
-		
+
+	public void modificarMedico(String empleado, String codigo) {
+		for(TEmpleado e: this.listaEmpleados) {
+			if(e.nombre.equals(empleado) && e.puesto.equals("Medico")) {
+				TMedico te = (TMedico) e;
+				if (te.citasPendientes.isEmpty()) {
+					te.citasPendientes.add(codigo);
+				}
+				else {
+					boolean eliminado = false;
+					for (int i = 0; i < te.citasPendientes.size(); i++) {
+						if (te.citasPendientes.get(i).matches(codigo)) {
+							te.citasPendientes.remove(i);
+							eliminado = true;
+						}
+					}
+					if (!eliminado) {
+						te.citasPendientes.add(codigo);
+					}
+				}
+				
+				JSONArray a = new JSONArray();
+				for (int i = 0; i < te.citasPendientes.size(); i++) {
+					a.put(te.citasPendientes.get(i));
+				}
+				JSONObject trabajo = new JSONObject();
+				trabajo.accumulate("citasPendientes", a);
+				e.trabajo = trabajo; 
+				e = te;
+				this.guardaEmpleados();
+				
+			}
+		}
+	}
+	
 	
 	
 	}
