@@ -18,6 +18,7 @@ import gestoria.Negocio.LimpiezaBuilder;
 import gestoria.Negocio.MantenimientoBuilder;
 import sanidad.Negocio.CitaBuilder;
 import sanidad.Negocio.RecetaBuilder;
+import comedor.Negocio.MenuBuilder;
 
 public class Main {
 	
@@ -38,6 +39,7 @@ public class Main {
 		constructores.add(new MedicoBuilder());
 		constructores.add(new GastosBuilder());
 		constructores.add(new IngresosBuilder());
+		constructores.add(new MenuBuilder());
 	
 		
 		Factory<Object> factoriaTransferObjects = new BuilderBasedFactory<>(constructores);
