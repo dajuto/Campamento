@@ -38,6 +38,7 @@ public class VistaEliminarReceta extends JFrame implements SanidadObserver{
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,275);
+		this.setLocation(550,10);
 		
 		JLabel lblNewLabel = new JLabel("Eliminar Receta Medico: " + nombreUsuario);
 		lblNewLabel.setBackground(Color.WHITE);
@@ -47,7 +48,10 @@ public class VistaEliminarReceta extends JFrame implements SanidadObserver{
 		codReceta = new JComboBox<Integer>();
 		codReceta.setBounds(330, 54, 184, 26);
 		for(TReceta te: SingletonServiAppSanidad.getInstance().getListaRecetas()) {
-			codReceta.addItem(te.getCodigo());
+			if(te.getComprado().equals("Adquirido")) {
+				codReceta.addItem(te.getCodigo());
+			}
+			
 		}
 		getContentPane().add(codReceta);
 		

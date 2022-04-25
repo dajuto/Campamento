@@ -10,12 +10,15 @@ import java.awt.Font;
 
 public class VistaMenuAcampado extends JFrame{
 	
-	public VistaMenuAcampado() {
+	private JFrame atras;
+	
+	public VistaMenuAcampado(JFrame f) {
+		
 		setTitle("Menu del acampado");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
-		
+		this.atras=f;
 		JButton boton_actividades = new JButton("Mis Actividades");
 		boton_actividades.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		boton_actividades.setBounds(49, 33, 170, 36);
@@ -25,6 +28,7 @@ public class VistaMenuAcampado extends JFrame{
 		boton_Sanidad.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				atras.setVisible(true);
 				SingletonControllerAcampado.getInstance().SanidadCita(getFrame());
 				
 			}

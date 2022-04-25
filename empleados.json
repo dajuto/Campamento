@@ -53,7 +53,12 @@
          "puesto": "Medico",
          "horario": 8,
          "salario": 8000,
-         "trabajo": {"citasPendientes": []},
+         "trabajo": {"citasPendientes": [
+            "2",
+            "3",
+            "5",
+            "6"
+         ]},
          "vacaciones": "Todo el verano",
          "usuario": "d",
          "contrasena": "1",
@@ -132,7 +137,6 @@
       },
       "type": "Empleado Mantenimiento"
    },
-
    {
       "data": {
          "puesto": "Medico",
@@ -145,10 +149,7 @@
          "nombre": "Dajuto"
       },
       "type": "Medico"
-
    },
-	
-
    {
       "data": {
          "puesto": "Gestor Actividades",
@@ -161,6 +162,5 @@
          "nombre": "Cristian"
       },
       "type": "Empleado Mantenimiento"
-
    }
 ]}

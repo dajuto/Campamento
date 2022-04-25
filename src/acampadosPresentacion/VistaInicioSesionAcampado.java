@@ -38,7 +38,7 @@ private JPasswordField password;
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				atras.setVisible(true);
+				//atras.setVisible(true);
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);

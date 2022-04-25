@@ -1,6 +1,7 @@
 package sanidad.Presentacion;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Frame;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -41,6 +42,7 @@ public class VistaPedirCita extends JFrame implements SanidadObserver{
 	private JTextField textField_1;
 	private JTextField textField_2;
 	JLabel lblNewLabel_2 ;
+	JLabel lblNewLabel_5 ;
 	JComboBox<String> comboBox;
 	JComboBox<String> comboBox_1;
 	List<TMedico> listaMedicos;
@@ -53,6 +55,7 @@ public class VistaPedirCita extends JFrame implements SanidadObserver{
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,501);
+		this.setLocation(550,10);
 		
 		
 		JButton boton_Atras = new JButton("Atras");
@@ -64,20 +67,21 @@ public class VistaPedirCita extends JFrame implements SanidadObserver{
 		});
 		boton_Atras.setBounds(376, 32, 138, 25);
 		getContentPane().add(boton_Atras);
-		
 
 		JButton boton_Aceptar = new JButton("Aceptar");
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerSanidad.getInstance().pedirCita(atras, textField.getText(), textField_1.getText(), comboBox.getSelectedItem().toString(),lblNewLabel_2.getText());
+				atras.setVisible(true);
+				SingletonControllerSanidad.getInstance().pedirCita(atras, lblNewLabel_5.getText(), textField_1.getText(), comboBox.getSelectedItem().toString(),lblNewLabel_2.getText());
 				
+				SingletonControllerSanidad.getInstance().modificarMedico(comboBox.getSelectedItem().toString(), lblNewLabel_5.getText());
 			}
 		});
 		boton_Aceptar.setBounds(15, 404, 499, 25);
 		getContentPane().add(boton_Aceptar);
 		
-		JLabel lblNewLabel = new JLabel("Añadir Cita Medico: " + nombreUsuario);
+		JLabel lblNewLabel = new JLabel("Pedir Cita Medico: " + nombreUsuario);
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(0, 0, 261, 20);
 		getContentPane().add(lblNewLabel);
@@ -87,10 +91,19 @@ public class VistaPedirCita extends JFrame implements SanidadObserver{
 		lblNewLabel_1.setBounds(15, 93, 69, 20);
 		getContentPane().add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(142, 90, 146, 26);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		
+		int cod = 0;
+		String c = null;
+		for(TCita e: SingletonControllerSanidad.getInstance().getListaCitas()) {
+			cod=e.getCodigo()+1;
+			c=Integer.toString(cod);
+		}
+		
+		lblNewLabel_5 = new JLabel(c);
+		lblNewLabel_5.getText();
+		lblNewLabel_5.setBackground(Color.WHITE);
+		lblNewLabel_5.setBounds(142, 93, 146, 20);
+		getContentPane().add(lblNewLabel_5);
 		
 		
 		JLabel lblMedicamento = new JLabel("Motivo: ");
@@ -126,7 +139,7 @@ public class VistaPedirCita extends JFrame implements SanidadObserver{
 		lblNewLabel_2 = new JLabel(this.nombreUsuario);
 		lblNewLabel_2.getText();
 		lblNewLabel_2.setBackground(Color.WHITE);
-		lblNewLabel_2.setBounds(142, 206, 146, 20);
+		lblNewLabel_2.setBounds(142, 201, 146, 20);
 		getContentPane().add(lblNewLabel_2);
 		
 		

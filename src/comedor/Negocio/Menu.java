@@ -1,4 +1,4 @@
-package comedor.negocio;
+package comedor.Negocio;
 
 import org.json.JSONObject;
 

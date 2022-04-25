@@ -72,7 +72,7 @@ public class ControllerAcampado {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuAcampado();
+				new VistaMenuAcampado(f);
 			}
 		});
 	}

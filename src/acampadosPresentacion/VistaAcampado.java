@@ -15,7 +15,7 @@ public class VistaAcampado extends JFrame{
 	private JFrame atras;
 	
 	public VistaAcampado(JFrame frame) {
-		setTitle("Empleado");
+		setTitle("Acampado");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);

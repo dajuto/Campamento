@@ -303,7 +303,6 @@ public class ControllerGestoria {
 	
 	public void addObserver(GestoriaObserver vista) {
 		SingletonServiAppGestoria.getInstance().addObserver(vista);	
-
 	}
 
 	public List<TEmpleado> getListaEmpleados() {
@@ -317,26 +316,5 @@ public class ControllerGestoria {
 	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-	
-
-	
-
-	
-
-
-
-	
 
 }

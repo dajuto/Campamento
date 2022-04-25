@@ -32,6 +32,8 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,275);
+		this.setLocation(550,10);
+		
 		
 		JLabel lblNewLabel = new JLabel("Consultar Receta Medico: " + nombreUsuario);
 		lblNewLabel.setBackground(Color.WHITE);
