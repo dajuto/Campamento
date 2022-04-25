@@ -19,6 +19,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
+import contabilidad.Negocio.TGastos;
+import contabilidad.Negocio.TIngresos;
 import contabilidad.Presentacion.SingletonControllerContabilidad;
 
 import javax.swing.JCheckBox;
@@ -40,7 +42,11 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 	private JCheckBox pagado;
 	private JCheckBox actividades;
 	List<TInstalacion> listaInstalaciones;
+	List<TGastos> listaGastos;
 	private String fecha; //para la fecha de instalacion como gasto 
+	private int numeroFactura; 
+	private String fac; 
+	
 
 	
 	public VistaModificarInstalacionGestor(JFrame frame) {
@@ -50,6 +56,7 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 		setSize(500,350);
 		
 		listaInstalaciones = SingletonControllerGestoria.getInstance().getListaInstalaciones();
+		listaGastos = SingletonControllerContabilidad.getInstance().getListaGastos();
 		
 		
 		this.atras = frame;
@@ -114,8 +121,16 @@ public class VistaModificarInstalacionGestor extends JFrame implements GestoriaO
 							//para le pago de instalacion
 							SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 							fecha = sdf.format(new Date());
-							String concepto = "Pago instalación" + " " +  nombre.getText();  
-							SingletonControllerContabilidad.getInstance().añadirGasto("Gasto", concepto, precio.getText(), fecha, "", false, frame); 
+							String concepto = "Pago instalacion" + " " +  nombre.getText();  
+							numeroFactura = 1; 
+							for(TGastos cod: listaGastos) {
+								fac = String.valueOf(numeroFactura);  //pasamos de int a string
+								if((cod.getnumeroFactura().equals(fac))) {
+									numeroFactura++; 	
+							     }	
+							}
+							fac = String.valueOf(numeroFactura);  //pasamos de int a string
+							SingletonControllerContabilidad.getInstance().añadirGasto("Arrendamientos", concepto, precio.getText(), fecha, "", false, fac, frame); 
 							//TODO ADRI aqui tendria que pagar la instalacion
 						}
 						SingletonControllerGestoria.getInstance().modificarInstalacion(codigo.getSelectedItem().toString(), nombre.getText(), superficie.getText(), precio.getText(), pagado.isSelected(), actividades.isSelected(), getFrame());

@@ -35,13 +35,15 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 	private JTextField concepto_txt; 
 	private JTextField importe_txt;
 	private JComboBox<String> acampado_txt;
-	private JComboBox<String> cuenta_txt; 
+	private JComboBox cuenta_txt; 
 	List<TIngresos> listaIngresos;
 	List<TAcampado> listaAcampados;
 	private JCheckBox contabilizada;
 	private boolean boolContabilizada = false;
 	private String fecha;
 	private String dniAcampado; 
+	private int numeroFactura; 
+	private String fac; 
 	
 	public VistaCrearIngreso(JFrame frame) {
 		setTitle("Añadir un Ingreso");
@@ -86,15 +88,13 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		
 		JLabel lblAcampado = new JLabel("Acampad@:");
 		lblAcampado.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblAcampado.setBounds(25, 213, 97, 25);
+		lblAcampado.setBounds(25, 175, 97, 25);
 		getContentPane().add(lblAcampado);
 		
-		cuenta_txt = new JComboBox<String>();
-		cuenta_txt.setBounds(175, 66, 116, 22);
-		getContentPane().add(cuenta_txt);
-		for(TIngresos e: listaIngresos) {
-			cuenta_txt.addItem(e.getTipo());
-		}
+		 cuenta_txt = new JComboBox();
+	     cuenta_txt.setModel(new DefaultComboBoxModel(new String[] {"Ventas", "Subvenciones, donaciones", "Ingreso por arrendamiento", "Ingresos financieros", "Ingresos gestión"}));
+	     cuenta_txt.setBounds(183, 67, 116, 22);
+	     getContentPane().add(cuenta_txt);
 		
 		concepto_txt = new JTextField();
 		concepto_txt.setBounds(110, 105, 116, 22);
@@ -107,7 +107,7 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		importe_txt.setColumns(10);	
 		
 		acampado_txt = new JComboBox<String>();
-		acampado_txt.setBounds(121, 216, 116, 22);
+		acampado_txt.setBounds(132, 178, 116, 22);
 		getContentPane().add(acampado_txt);
 		for(TAcampado e: listaAcampados) {
 			if(!e.isPagado()) {
@@ -115,8 +115,8 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 			}	
 		}
 		
-		contabilizada = new JCheckBox("Marca para contabilizar");
-		contabilizada.setBounds(348, 177, 122, 25);
+		contabilizada = new JCheckBox("Marca para contabilizar ingreso");
+		contabilizada.setBounds(287, 177, 169, 25);
 		getContentPane().add(contabilizada);
 	
 		
@@ -160,10 +160,19 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 							boolContabilizada = true;
 						}	
 						
+						numeroFactura = 1; 
+						for(TIngresos cod: listaIngresos) {
+							fac = String.valueOf(numeroFactura);  //pasamos de int a string
+							if((cod.getnumeroFactura().equals(fac))) {
+								numeroFactura++; 	
+						     }	
+						}
+						fac = String.valueOf(numeroFactura);  //pasamos de int a string
+						
 						 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 							fecha = sdf.format(new Date());
 							
-						SingletonControllerContabilidad.getInstance().añadirIngreso(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha, acampado, dniAcampado, boolContabilizada , getFrame());
+						SingletonControllerContabilidad.getInstance().añadirIngreso(cuenta, concepto_txt.getText(), importe_txt.getText(), fecha, acampado, dniAcampado, boolContabilizada , fac,  getFrame());
 					}
 					else JOptionPane.showMessageDialog(atras, "El importe debe ser un número", "Error", JOptionPane.ERROR_MESSAGE);	
 				

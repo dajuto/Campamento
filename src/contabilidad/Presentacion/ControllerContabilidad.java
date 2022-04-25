@@ -144,8 +144,8 @@ public class ControllerContabilidad {
 	}
 	
 	
-	public void modificarGasto(String cuenta, String concepto, String importe, String fecha, String empleado, Boolean contabilizada,  JFrame frame) {
-		SingletonServiAppContabilidad.getInstance().modificarGasto(cuenta, concepto, importe, fecha, empleado, contabilizada, frame);
+	public void modificarGasto(String cuenta, String concepto, String importe, String fecha, String empleado, Boolean contabilizada, String numeroFactura,   JFrame frame) {
+		SingletonServiAppContabilidad.getInstance().modificarGasto(cuenta, concepto, importe, fecha, empleado, contabilizada, numeroFactura,  frame);
 		frame.setVisible(false);
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -156,8 +156,8 @@ public class ControllerContabilidad {
 	}
 	
 	
-	public void modificarIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String DniAcam, Boolean contabilizada,  JFrame frame) {
-		SingletonServiAppContabilidad.getInstance().modificarIngreso(cuenta, concepto, importe, fecha, nombreAcam, DniAcam, contabilizada, frame);
+	public void modificarIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String DniAcam, Boolean contabilizada, String numeroFactura,  JFrame frame) {
+		SingletonServiAppContabilidad.getInstance().modificarIngreso(cuenta, concepto, importe, fecha, nombreAcam, DniAcam, contabilizada, numeroFactura,  frame);
 		frame.setVisible(false);
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -169,8 +169,8 @@ public class ControllerContabilidad {
 	
 	
 	//ADRIANA
-	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, Boolean contabilizada,  JFrame frame) {
-		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, contabilizada, frame);
+	public void añadirGasto(String cuenta, String concepto, String importe, String fecha, String empleado, Boolean contabilizada, String numeroFactura,  JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirGasto(cuenta, concepto, importe, fecha, empleado, contabilizada, numeroFactura,  frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
@@ -186,8 +186,8 @@ public class ControllerContabilidad {
 	}
 	
 
-	public void añadirIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, Boolean contabilizada, JFrame frame) {
-		boolean existe = SingletonServiAppContabilidad.getInstance().añadirIngreso(cuenta, concepto, importe, fecha, nombreAcam, dniAcam, contabilizada, frame);
+	public void añadirIngreso(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, Boolean contabilizada, String numeroFactura,  JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirIngreso(cuenta, concepto, importe, fecha, nombreAcam, dniAcam, contabilizada, numeroFactura,  frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override

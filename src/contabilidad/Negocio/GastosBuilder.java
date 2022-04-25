@@ -23,7 +23,8 @@ public class GastosBuilder extends Builder<Object> {
 		if(sContabilizada.equals("Si")) {
 			conta = true; 
 		}
-		TGastos contabilidadGastos = new TGastos(tipo, concepto, importe,fecha, nombreEmpleado, conta);
+		String numeroFactura = data.getString("Numero Factura"); 
+		TGastos contabilidadGastos = new TGastos(tipo, concepto, importe,fecha, nombreEmpleado, conta, numeroFactura);
 		return contabilidadGastos;
 	}
 }
