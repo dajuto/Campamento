@@ -21,11 +21,12 @@ public class VistaMenuMedico  extends JFrame implements SanidadObserver{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
-	private String nombreUsuario;
+	private String nombreUsuario=SingletonControllerSanidad.getInstance().getNombreUsuarioSanidad();
+	
 	
 	
 	public VistaMenuMedico(JFrame frame) {
-		setTitle("Menu de Sanidad");
+		setTitle("Menu de Sanidad: " + nombreUsuario);
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);

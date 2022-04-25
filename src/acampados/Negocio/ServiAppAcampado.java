@@ -38,6 +38,10 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		this.nombreUsuario = text;
 	}
 	
+	public String getNombreUsuario() {
+		return this.nombreUsuario;
+	}
+	
 	public void updateAcampados() {
 		this.listaAcampados = SingletonDaoAcampado.getInstance().leeTodo(this.factoriaTranserObjects);
 		
@@ -50,21 +54,21 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 	void onCreateAcampado() {
 		this.updateAcampados();
 		for(AcampadoObserver o: this.observers) {
-			o.onCreateAcampado(this.listaAcampados);
+			o.onCreateAcampado(this.listaAcampados,nombreUsuario);
 		}
 	}
 	
 	void onEliminarAcampado() {
 		this.updateAcampados();
 		for(AcampadoObserver o: this.observers) {
-			o.onEliminarAcampado(this.listaAcampados);
+			o.onEliminarAcampado(this.listaAcampados,nombreUsuario);
 		}
 	}
 	
 	void onModificarAcampado() {
 		this.updateAcampados();
 		for(AcampadoObserver o: this.observers) {
-			o.onModificarAcampado(this.listaAcampados);
+			o.onModificarAcampado(this.listaAcampados,nombreUsuario);
 		}
 	}
 	
@@ -91,7 +95,7 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 	public void addObserver(AcampadoObserver o) {
 		this.observers.add(o);
 		this.updateAcampados();
-		o.onRegister(listaAcampados);
+		o.onRegister(listaAcampados,nombreUsuario);
 	}
 
 	public void removeObserver(AcampadoObserver o) {

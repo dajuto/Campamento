@@ -31,7 +31,7 @@ public class VistaMenuRecetas extends JFrame implements SanidadObserver{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
-	private String nombreUsuario;
+	private String nombreUsuario=SingletonControllerSanidad.getInstance().getNombreUsuarioSanidad();
 	private RecetasMedicoTableModel table;
 	private JTable table_1;
 	

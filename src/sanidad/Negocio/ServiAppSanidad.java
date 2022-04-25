@@ -25,7 +25,7 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 	private List<TMedico> listaMedicos;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
-	private char[] contrasenaUsuario;
+
 	
 	public ServiAppSanidad()  {
 		this.listaRecetas = new ArrayList<TReceta>();
@@ -47,9 +47,8 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 		this.factoriaTranserObjects = objetosFactory;
 	}
 
-	public void registraUsuario(String text, char[] password) {
+	public void registraUsuario(String text) {
 		this.nombreUsuario = text;
-		this.contrasenaUsuario = password;
 	}
 	
 	
@@ -218,5 +217,45 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 		}
 	}
 	
+	public boolean pedirCita(int codigo, String motivo, String Nombremedico, String NombreAcampado) {
+		this.updateCitas();
+		boolean puedo = true;
+		for(TCita ta: this.listaCitas) {
+			if(ta.codigo == (codigo)) {
+				puedo=false;
+			}
+		}
+		if(puedo) {
+			JSONObject cita = new JSONObject();
+			JSONObject data = new JSONObject();
+			String c = Integer.toString(codigo);
+			data.accumulate("codigo", c);
+			data.accumulate("motivo", motivo);
+			data.accumulate("Nombremedico", Nombremedico);
+			data.accumulate("atendido", "No");
+			data.accumulate("NombreAcampado", NombreAcampado);
+			
+			
+			cita.accumulate("data", data);
+			cita.accumulate("type", "cita");
+			
+			TCita Tcita = (TCita) this.factoriaTranserObjects.createInstance(cita);
+			//SingletonControllerSanidad.getInstance().mostrarEliminarReceta(frame);(this.listaAverias.get(i));
+			
+			this.listaCitas.add(Tcita);
+			this.guardaCita();
+			this.onCrear();
+			
+			return true;
+		}else {
+			return false;
+		}
+		
+	}
+	
+	public List<TCita> getListaCitas() {	
+		this.updateCitas();
+		return this.listaCitas;
+	}
 	
 }

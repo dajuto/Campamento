@@ -21,6 +21,10 @@ import sanidad.Negocio.TReceta;
 
 public class VistaEliminarReceta extends JFrame implements SanidadObserver{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private JFrame atras;
 	private String nombreUsuario;
 	private JComboBox<Integer> codReceta;
@@ -29,7 +33,7 @@ public class VistaEliminarReceta extends JFrame implements SanidadObserver{
 	
 
 	public VistaEliminarReceta(JFrame frame) {
-		setTitle("Menu Añadir Receta");
+		setTitle("Menu Eliminar Receta");
 		this.atras=frame;
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);

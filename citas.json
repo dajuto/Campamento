@@ -2,21 +2,50 @@
    {
       "data": {
          "codigo": "1",
-         "motivo": "Borja",
-         "Nombremedico": "David Viejo",
+         "motivo": "Dolor de Cabeza",
          "NombreAcampado": "Borja",
-         "atendido": "No"
+         "atendido": "Si",
+         "Nombremedico": "David Viejo"
       },
       "type": "cita"
    },
-
    {
       "data": {
-        "codigo": "2",
-         "motivo": "Borja",
-         "Nombremedico": "David Viejo",
+         "codigo": "2",
+         "motivo": "Covid",
          "NombreAcampado": "Borja",
-         "atendido": "No"
+         "atendido": "No",
+         "Nombremedico": "David Viejo"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "3",
+         "motivo": "Covid",
+         "NombreAcampado": "Borja",
+         "atendido": "No",
+         "Nombremedico": "David Viejo"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "6",
+         "motivo": "dee",
+         "NombreAcampado": "j",
+         "atendido": "Si",
+         "Nombremedico": "David Viejo"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "8",
+         "motivo": "Diarrea",
+         "NombreAcampado": "j",
+         "atendido": "No",
+         "Nombremedico": "Dajuto"
       },
       "type": "cita"
    }
