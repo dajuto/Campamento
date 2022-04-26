@@ -142,10 +142,8 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 			  
 			   if(pagado) { //si ha pagado el acampado, no puede darle al boton de pagar	
 					boton_Pagar.setEnabled(false);
+					setVisible(true); 
 				}	
-			   
-			  setVisible(true); 
-			  
 		  }if(sel == 1) {
 			  
 			  setVisible(true); 
