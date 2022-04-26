@@ -17,17 +17,10 @@ public class CitasMedicoTableModel extends AbstractTableModel implements Sanidad
 	 */
 	private static final long serialVersionUID = 1L;
 	private List<TCita> list;
+	private List<TCita> listaCitas;
 	private String[] columnNames = {"Codigo", "Acampado","Motivo", "Medico", "Atendido"};
-	private String nombreUsuario=SingletonServiAppEmpleado.getInstance().getNombreUsuario();
-	private List<TEmpleado> listaEmpleados = SingletonServiAppEmpleado.getInstance().getListaEmpleados();
-	private TMedico med;
 	
 	public CitasMedicoTableModel() {
-		for (TEmpleado e: listaEmpleados) {
-			if (e.getUsuario().equals(nombreUsuario)) {
-				med = (TMedico) e;
-			}
-		}
 		SingletonServiAppSanidad.getInstance().addObserver(this);
 	}
 	
@@ -38,7 +31,7 @@ public class CitasMedicoTableModel extends AbstractTableModel implements Sanidad
 	
 	@Override
 	public int getRowCount() {
-		return med.getListaCitas().size();
+		return list.size();
 	}
 
 	@Override
@@ -48,26 +41,21 @@ public class CitasMedicoTableModel extends AbstractTableModel implements Sanidad
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		for (TCita c: list) {
-			if (med.getListaCitas().get(rowIndex).equals(c.getCodigo())) {
-				if(columnIndex == 0) {
-					return c.getCodigo();
-				}
-				else if(columnIndex == 1) {
-					return c.getNombreAcampado();
-				}
-				else if(columnIndex == 2) {
-					return c.getMotivo();
-				}
-				else if(columnIndex == 3) {
-					return c.getNombremedico();
-				}
-				else {
-					return c.getAtendido();
-				}
-			}
+		if(columnIndex == 0) {
+			return list.get(rowIndex).getCodigo();
 		}
-		return null;
+		else if(columnIndex == 1) {
+			return list.get(rowIndex).getNombreAcampado();
+		}
+		else if(columnIndex == 2) {
+			return list.get(rowIndex).getMotivo();
+		}
+		else if(columnIndex == 3) {
+			return list.get(rowIndex).getNombremedico();
+		}
+		else {
+			return list.get(rowIndex).getAtendido();
+		}
 	}
 	
 	private void update(List<TCita> list) {		
