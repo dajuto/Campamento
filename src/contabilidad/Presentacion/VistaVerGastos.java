@@ -28,7 +28,7 @@ public class VistaVerGastos extends JFrame implements ContabilidadObserver{
 		setTitle("Lista de Gastos Campamento");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
-		setSize(500,300);
+		setSize(627,376);
 		
 		this.atras = frame;
 		
@@ -39,7 +39,7 @@ public class VistaVerGastos extends JFrame implements ContabilidadObserver{
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(373, 215, 97, 25);
+		boton_Atras.setBounds(500, 291, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 		JLabel labcrear = new JLabel("Lista de Gastos");
@@ -48,7 +48,7 @@ public class VistaVerGastos extends JFrame implements ContabilidadObserver{
 		getContentPane().add(labcrear);
 		
 		JPanel p2 = createViewPanel(new JTable(new GastosTableModel()), "Gastos campamento");
-		p2.setBounds(35, 73, 416, 126);
+		p2.setBounds(35, 73, 539, 175);
 		getContentPane().add(p2);
 		
 		setVisible(true);

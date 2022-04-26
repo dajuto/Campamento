@@ -9,6 +9,7 @@ import acampados.Negocio.AcampadoBuilder;
 import actividades.Negocio.ActividadBuilder;
 import contabilidad.Negocio.GastosBuilder;
 import contabilidad.Negocio.IngresosBuilder;
+import comedor.Negocio.MenuBuilder;
 import empleados.Negocio.EmpleadoLimpiezaBuilder;
 import empleados.Negocio.EmpleadoMantenimientoBuilder;
 import empleados.Negocio.GestorBuilder;
@@ -39,6 +40,7 @@ public class Main {
 		constructores.add(new MedicoBuilder());
 		constructores.add(new GastosBuilder());
 		constructores.add(new IngresosBuilder());
+		constructores.add(new MenuBuilder());
 	
 		
 		Factory<Object> factoriaTransferObjects = new BuilderBasedFactory<>(constructores);

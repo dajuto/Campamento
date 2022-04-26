@@ -111,7 +111,7 @@ private JComboBox puesto;
 		
 		puesto = new JComboBox();
 		
-		puesto.setModel(new DefaultComboBoxModel(new String[] {"Gestor", "Medico", "Contable", "Coordinador Actividades", "Empleado Mantenimiento", "Empleado Limpieza"}));
+		puesto.setModel(new DefaultComboBoxModel(new String[] {"Gestor", "Medico", "Contable", "Gestor Actividades", "Empleado Mantenimiento", "Empleado Limpieza", "Nutricionista"}));
 		puesto.setBounds(132, 223, 116, 22);
 		getContentPane().add(puesto);
 		

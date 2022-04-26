@@ -5,8 +5,11 @@ import java.util.List;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
+import acampados.Negocio.TAcampado;
+import acampadosPresentacion.SingletonControllerAcampado;
 import contabilidad.Presentacion.VistaCrearGasto;
 import contabilidad.Presentacion.VistaCrearGasto;
 import empleados.Negocio.TEmpleado;
@@ -21,8 +24,8 @@ import launcher.Factory;
 
 public class ControllerGestoria {
 	
-	public void registraUsuario(String text, char[] password) {
-		SingletonServiAppGestoria.getInstance().registraUsuario(text, password);
+	public String getNombreAcampado() {
+		return SingletonControllerAcampado.getInstance().getAcampado();
 	}
 
 	public void registraFactoria(Factory<Object> objetosFactory) {
@@ -38,13 +41,17 @@ public class ControllerGestoria {
 		});
 	}
 	
-	public void menuAcampado(JFrame frame) {
+	public void menuAcampadoGestoria() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuAcampado(frame);
+				new VistaMenuAcampado();
 			}
 		});
+	}
+	
+	public void menuAcampado(JFrame frame) {
+		SingletonControllerAcampado.getInstance().menuAcampado(frame);
 	}
 
 	public void menuLimpiezaGestor(JFrame frame) {
@@ -316,5 +323,58 @@ public class ControllerGestoria {
 	public void modificarEmpleadoMantenimiento(String empleado, String codigo) {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
+
+	public void perfilAcampado(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaPerfilAcampado(frame);
+			}
+		});
+	}
+
+	public void modificarAcampado(String nombreUsuario, String nombre, String apellidos, String edad,
+			String dni, String email, String telefono, String usuario) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuAcampado();
+			}
+		});
+		SingletonControllerAcampado.getInstance().modificarAcampado(nombreUsuario, nombre, apellidos, edad, dni, email, telefono, usuario);
+	}
+
+	public List<TAcampado> getListaAcampados() {
+		return SingletonControllerAcampado.getInstance().getListaAcampados();
+	}
+	
+	public void modificarContrasena() {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaContrasenaAcampado();
+			}
+		});
+	}
+
+	public void CambiarContrasena(String contrasena) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaMenuAcampado();
+			}
+		});
+		SingletonControllerAcampado.getInstance().cambiarContrasena(contrasena);
+	}
+
+	
+
+	
+	
+
+	
+
+	
+
 
 }

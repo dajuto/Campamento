@@ -33,9 +33,8 @@ public class ControllerEmpleado {
 		SingletonControllerSanidad.getInstance().registraUsuario(text);
 		
 	}
-	public String getNombreUsuarioSanidad() {
-		String nombreUsuarioGestor = SingletonServiAppEmpleado.getInstance().getNombreUsuario();
-		return nombreUsuarioGestor;
+	public String getNombreUsuario() {
+		return SingletonServiAppEmpleado.getInstance().getNombreUsuario();
 	}
 
 	

@@ -24,7 +24,6 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		this.observers = new ArrayList<AcampadoObserver>();
 	}
 	
-	
 	public List<TAcampado> getListaAcampados() {
 		this.updateAcampados();
 		return listaAcampados;
@@ -145,6 +144,34 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		
 		return true;
 	}
+
+	public void modificarAcampado(String nombreUsuario2, String nombre, String apellidos, String edad, String dni,
+			String email, String telefono, String usuario) {
+		for (TAcampado acampado: listaAcampados) {
+			if (acampado.usuario.equals(nombreUsuario2)) {
+				acampado.nombre = nombre;
+				acampado.apellidos = apellidos;
+				acampado.edad = Integer.parseInt(edad);
+				acampado.dni = dni;
+				acampado.email = email;
+				acampado.telefono = Integer.parseInt(telefono);
+				acampado.usuario = usuario;
+			}
+		}
+		this.nombreUsuario = usuario;
+		this.guardaAcampado();
+	}
+
+	public void cambiarContrasena(String contrasena) {
+		for (TAcampado acampado: listaAcampados) {
+			if (acampado.usuario.equals(nombreUsuario)) {
+				acampado.contrasena = contrasena;
+			}
+		}
+		this.guardaAcampado();
+	}
+
+	
 
 	
 	
