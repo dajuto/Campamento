@@ -8,8 +8,9 @@ import javax.swing.JFrame;
 
 import org.json.JSONObject;
 
+import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TMedico;
-
+import empleados.Presentacion.SingletonControllerEmpleado;
 import launcher.Factory;
 import launcher.Observable;
 import sanidad.Integracion.SingletonDaoCitas;
@@ -25,8 +26,11 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 	private List<TMedico> listaMedicos;
 	private Factory<Object> factoriaTranserObjects;
 	private String nombreUsuario;
-
 	
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
 	public ServiAppSanidad()  {
 		this.listaRecetas = new ArrayList<TReceta>();
 		listaCitas=new ArrayList<TCita>();
@@ -243,6 +247,8 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 			//SingletonControllerSanidad.getInstance().mostrarEliminarReceta(frame);(this.listaAverias.get(i));
 			
 			this.listaCitas.add(Tcita);
+			
+		
 			this.guardaCita();
 			this.onCrear();
 			
