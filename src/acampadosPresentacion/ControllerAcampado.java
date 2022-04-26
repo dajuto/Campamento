@@ -97,9 +97,6 @@ public class ControllerAcampado {
 		SingletonControllerContabilidad.getInstance().estadoCuentasAcampado(frame);
 	}
 	
-	public void contabilidad(JFrame frame) {
-		SingletonControllerContabilidad.getInstance().estadoCuentasAcampado(frame);
-	}
 	
 	public void SanidadCita(JFrame frame) {
 		SingletonControllerSanidad.getInstance().pedirCita(frame);
