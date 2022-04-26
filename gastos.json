@@ -30,8 +30,8 @@
          "Empleado": "",
          "Importe": 300,
          "Numero Factura": "3",
-         "Concepto": "Pad",
-         "Contabilizada": "No"
+         "Concepto": "Padel",
+         "Contabilizada": "Si"
       },
       "type": "gastos"
    },
