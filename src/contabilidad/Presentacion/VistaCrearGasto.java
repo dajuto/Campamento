@@ -91,12 +91,12 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		
 		JLabel lblImporte = new JLabel("Importe:");
 		lblImporte.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblImporte.setBounds(25, 137, 69, 25);
+		lblImporte.setBounds(25, 148, 69, 25);
 		getContentPane().add(lblImporte);
 		
 		JLabel lblEmplead = new JLabel("Emplead@:");
 		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblEmplead.setBounds(25, 215, 97, 25);
+		lblEmplead.setBounds(25, 183, 97, 25);
 		getContentPane().add(lblEmplead);
 			
 		concepto_txt = new JTextField();
@@ -106,7 +106,7 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		
         cuenta_txt = new JComboBox();
         cuenta_txt.setModel(new DefaultComboBoxModel(new String[] {"Sueldos y Salarios", "Arrendamientos", "Reparaciones", "Primas  de seguros", "Suministros", "Compras material", "Servicios internos", "Publicidad"}));
-        cuenta_txt.setBounds(183, 67, 116, 22);
+        cuenta_txt.setBounds(167, 69, 141, 22);
 		getContentPane().add(cuenta_txt);
 		
 		importe_txt = new JTextField();
@@ -115,14 +115,14 @@ public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
 		importe_txt.setColumns(10);
 		
 		empleado_txt = new JComboBox<String>();
-		empleado_txt.setBounds(121, 216, 116, 22);
+		empleado_txt.setBounds(121, 186, 116, 22);
 		getContentPane().add(empleado_txt);
 		for(TEmpleado e: listaEmpleados) {
 			empleado_txt.addItem(e.getNombre());
 		}
 		
-		contabilizada = new JCheckBox("Marca para contabilizar");
-		contabilizada.setBounds(348, 177, 122, 25);
+		contabilizada = new JCheckBox("Marca para contabilizar gasto");
+		contabilizada.setBounds(291, 183, 161, 25);
 		getContentPane().add(contabilizada);
 		
 		cuenta_txt.addActionListener(new ActionListener() {

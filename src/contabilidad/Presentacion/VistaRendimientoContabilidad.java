@@ -74,6 +74,7 @@ public class VistaRendimientoContabilidad extends JFrame implements Contabilidad
 		ingresos_txt.setBounds(188, 41, 121, 36);
 		getContentPane().add(ingresos_txt);
 		ingresos_txt.setColumns(10);
+		ingresos_txt.setEditable(false);
 		
 		JLabel ren = new JLabel("Rendimiento Ejercicio");
 		ren.setFont(new Font("Times New Roman", Font.BOLD, 24));

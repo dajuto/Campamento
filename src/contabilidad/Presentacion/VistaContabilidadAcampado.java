@@ -10,6 +10,8 @@ import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JPanel;
@@ -18,7 +20,10 @@ import acampados.Negocio.TAcampado;
 import acampadosPresentacion.SingletonControllerAcampado;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.Color;
+import javax.swing.JTextField;
 
 public class VistaContabilidadAcampado extends JFrame implements ContabilidadObserver{
 	
@@ -27,8 +32,20 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 	private String nombreUsuario = SingletonControllerContabilidad.getInstance().getAcampado();
 	private boolean pagado;   
 	List<TAcampado> listaAcampados;
+	private String nombreCompleto;
+	private String dniAcampado; 
+	private int numeroFactura; 
+	private String fac; 
+	List<TIngresos> listaIngresos;
+	private String fecha;
+	JButton boton_Pagar; 
+	
 	
 	public VistaContabilidadAcampado(JFrame frame) {
+		
+		listaIngresos = SingletonControllerContabilidad.getInstance().getListaIngresos();
+		
+		
 		setTitle("Estado de cuentas");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
@@ -58,11 +75,13 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 		boton_Estado.setBounds(40, 133, 165, 38);
 		getContentPane().add(boton_Estado);
 		
+		
+		
 		JButton boton_Pagar = new JButton("Pagar");
 		boton_Pagar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				//SingletonControllerContabilidad.getInstance().menuIngresos(getFrame());
+				exitAction();
 			}
 		});
 		boton_Pagar.setFont(new Font("Tahoma", Font.PLAIN, 17));
@@ -74,8 +93,6 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 		getContentPane().add(panel);
 		
 		JLabel lblNewLabel = new JLabel("Como acampado tiene la posibilidad de consultar el estado de sus cuentas. Es decir, ver si el abono del campamento est\u00E1 pagado o no lo est\u00E1. ");
-		lblNewLabel.setBackground(Color.CYAN);
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		panel.add(lblNewLabel);
 		
 
@@ -84,6 +101,13 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 		for(TAcampado e: listaAcampados) {	
 			if(e.getUsuario().equals(nombreUsuario)) {		
 				pagado = e.isPagado(); 
+				nombreCompleto = e.getNombreCompleto(); 
+				dniAcampado = e.getDni(); 
+				String nombre = e.getNombre(); 
+				String apellido = e.getApellidos(); 
+				int edad = e.getEdad(); 
+				
+				
 			}
 		}
 	
@@ -93,6 +117,41 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 		
 		this.setVisible(true);
 	}
+	
+
+	public void exitAction(){
+		Object[] options = {"Pagar", "Cancelar Pago"};
+		  int sel = JOptionPane.showOptionDialog(this, "¿Está seguro que desea pagar el abono?", "Salir", JOptionPane.YES_NO_OPTION,
+		  JOptionPane.WARNING_MESSAGE, null, options, null);
+		  if(sel == 0) {
+			  
+			  numeroFactura = 1; 
+				for(TIngresos cod: listaIngresos) {
+					fac = String.valueOf(numeroFactura);  //pasamos de int a string
+					if((cod.getnumeroFactura().equals(fac))) {
+						numeroFactura++; 	
+				     }	
+				}
+				fac = String.valueOf(numeroFactura);  //pasamos de int a string
+				
+				 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+			     fecha = sdf.format(new Date());
+			
+			    SingletonControllerContabilidad.getInstance().añadirIngresoAcam("Ventas", "Abono acampado", "1200" ,fecha, nombreCompleto, dniAcampado, false, fac, atras);
+			  
+			   SingletonControllerAcampado.getInstance().cambiarIsPagado(true); 
+			  
+			   if(pagado) { //si ha pagado el acampado, no puede darle al boton de pagar	
+					boton_Pagar.setEnabled(false);
+				}	
+			   
+			  setVisible(true); 
+			  
+		  }if(sel == 1) {
+			  
+			  setVisible(true); 
+		  }
+		}
 	
 	private JFrame getFrame() {
 		return this;

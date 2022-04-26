@@ -111,6 +111,10 @@ public class ControllerAcampado {
 	public void cambiarContrasena(String contrasena) {
 		SingletonServiAppAcampado.getInstance().cambiarContrasena(contrasena);
 	}
+	
+	public void cambiarIsPagado(boolean pagado) {
+		SingletonServiAppAcampado.getInstance().cambiarIsPagado(pagado);
+	}
 
 	
 	
