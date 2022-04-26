@@ -49,12 +49,13 @@
    },
    {
       "data": {
-         "Fecha de pago": "25/04/2022",
-         "Tipo": "Sueldos y Salarios",
-         "Empleado": "Jose luis",
-         "Importe": 23400,
-         "Concepto": "Pago Nomina",
-         "Contabilizada": "No"
+         "Fecha de pago": "26/04/2022",
+         "Tipo": "Publicidad",
+         "Empleado": "",
+         "Importe": 200,
+         "Numero Factura": "5",
+         "Concepto": "Instagram",
+         "Contabilizada": "Si"
       },
       "type": "gastos"
    }

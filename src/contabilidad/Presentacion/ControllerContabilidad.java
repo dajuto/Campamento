@@ -229,6 +229,26 @@ public class ControllerContabilidad {
 			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
 		}
 	}
+	
+	
+	public void añadirIngresoAcam(String cuenta, String concepto, String importe, String fecha, String nombreAcam, String dniAcam, Boolean contabilizada, String numeroFactura,  JFrame frame) {
+		boolean existe = SingletonServiAppContabilidad.getInstance().añadirIngreso(cuenta, concepto, importe, fecha, nombreAcam, dniAcam, contabilizada, numeroFactura,  frame);
+		if (existe) {
+			SwingUtilities.invokeLater(new Runnable() {
+				@Override
+				public void run() {
+					frame.setVisible(false);
+					//new VistaIngresosContabilidad(frame);  
+				}
+			});
+		}
+		else {
+			JOptionPane.showMessageDialog(frame, "Codigo no disponible", "Error", JOptionPane.ERROR_MESSAGE);	
+		}
+	}
+	
+	
+	
 		
 	public List<TGastos> getListaGastos() {
 		List<TGastos> listaGastos = SingletonServiAppContabilidad.getInstance().getListaGastos();

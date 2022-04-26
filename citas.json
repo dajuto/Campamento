@@ -38,5 +38,15 @@
          "Nombremedico": "David Viejo"
       },
       "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "7",
+         "motivo": "Me cago",
+         "NombreAcampado": "j",
+         "atendido": "No",
+         "Nombremedico": "dajuto"
+      },
+      "type": "cita"
    }
 ]}

@@ -46,15 +46,60 @@
    },
    {
       "data": {
-         "Tipo": "Ingresos financieros",
-         "Importe": 500,
+         "Tipo": "Subvenciones, donaciones",
+         "Importe": 200,
          "Acampado": {
             "Nombre": "",
             "DNI Acampado": ""
          },
+         "Numero Factura": "4",
+         "Concepto": "hola",
+         "Fecha contable": "26/04/2022",
+         "Contabilizada": "No"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ventas",
+         "Importe": 1200,
+         "Acampado": {
+            "Nombre": "Jose Cordero",
+            "DNI Acampado": "78765711A"
+         },
          "Numero Factura": "5",
-         "Concepto": "Hacienda Publica",
-         "Fecha contable": "25/04/2022",
+         "Concepto": "Abono acampado",
+         "Fecha contable": "26/04/2022",
+         "Contabilizada": "No"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ventas",
+         "Importe": 1200,
+         "Acampado": {
+            "Nombre": "Jose Cordero",
+            "DNI Acampado": "78765711A"
+         },
+         "Numero Factura": "5",
+         "Concepto": "Abono acampado",
+         "Fecha contable": "26/04/2022",
+         "Contabilizada": "No"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ventas",
+         "Importe": 1200,
+         "Acampado": {
+            "Nombre": "Jose Cordero",
+            "DNI Acampado": "78765711A"
+         },
+         "Numero Factura": "6",
+         "Concepto": "Abono acampado",
+         "Fecha contable": "26/04/2022",
          "Contabilizada": "No"
       },
       "type": "ingresos"

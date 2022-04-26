@@ -72,7 +72,7 @@ public class VistaEstadoAcampado extends JFrame implements ContabilidadObserver{
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 	
-		JLabel lblImporte = new JLabel("Importe:  300 euros ");
+		JLabel lblImporte = new JLabel("Importe:  1200 euros ");
 		lblImporte.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		lblImporte.setBounds(38, 124, 142, 32);
 		getContentPane().add(lblImporte);
