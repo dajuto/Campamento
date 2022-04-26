@@ -38,20 +38,20 @@ public class ControllerEmpleado {
 	}
 
 	
-	public void empleado(JFrame f) {
+	public void empleado() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaEmpleado(f);
+				new VistaEmpleado();
 			}
 		});
 	}
 	
-	public void iniciarSesion(JFrame f) {
+	public void iniciarSesion() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaInicioSesionEmpleado(f);
+				new VistaInicioSesionEmpleado();
 			}
 		});
 	}

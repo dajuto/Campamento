@@ -49,11 +49,11 @@ public class ControllerAcampado {
 		});
 	}
 	
-	public void iniciarSesion(JFrame f) {
+	public void iniciarSesion() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaInicioSesionAcampado(f);
+				new VistaInicioSesionAcampado();
 			}
 		});
 	}
