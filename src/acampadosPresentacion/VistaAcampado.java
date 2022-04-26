@@ -5,6 +5,9 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import launcher.SuperVista;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -12,21 +15,19 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class VistaAcampado extends JFrame{
-	private JFrame atras;
 	
-	public VistaAcampado(JFrame frame) {
+	public VistaAcampado() {
 		setTitle("Acampado");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		
-		this.atras = frame;
 		
 		JButton boton_Atras = new JButton("Atras");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				atras.setVisible(true);
+				new SuperVista();
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);

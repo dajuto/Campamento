@@ -36,7 +36,7 @@ private JPasswordField password;
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerAcampado.getInstance().acampado(getFrame());
+				SingletonControllerAcampado.getInstance().acampado();
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);
