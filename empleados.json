@@ -149,18 +149,22 @@
          "nombre": "Dajuto"
       },
       "type": "Medico"
+<<<<<<< HEAD
 
    },
     {
+=======
+>>>>>>> 78868e47761c544ccfe96db6f74a6d6e095e3724
 
    },
+    
    {
 
       "data": {
          "puesto": "Gestor Actividades",
          "horario": 8,
          "salario": 3000,
-         "trabajo": {"listaAverias": []},
+         "trabajo": {"listaActividades": []},
          "vacaciones": "Todo el verano",
          "usuario": "crmanz",
          "contrasena": "12345678",

@@ -30,8 +30,8 @@
          "Empleado": "",
          "Importe": 300,
          "Numero Factura": "3",
-         "Concepto": "Pad",
-         "Contabilizada": "No"
+         "Concepto": "Padel",
+         "Contabilizada": "Si"
       },
       "type": "gastos"
    },
@@ -43,6 +43,17 @@
          "Importe": 100,
          "Numero Factura": "4",
          "Concepto": "Tenis",
+         "Contabilizada": "No"
+      },
+      "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "25/04/2022",
+         "Tipo": "Sueldos y Salarios",
+         "Empleado": "Jose luis",
+         "Importe": 23400,
+         "Concepto": "Pago Nomina",
          "Contabilizada": "No"
       },
       "type": "gastos"

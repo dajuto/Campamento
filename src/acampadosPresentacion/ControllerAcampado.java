@@ -4,10 +4,13 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import acampados.Negocio.SingletonServiAppAcampado;
 import acampados.Negocio.TAcampado;
+import contabilidad.Presentacion.SingletonControllerContabilidad;
+import contabilidad.Presentacion.VistaIngresosContabilidad;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleado;
 import empleados.Presentacion.VistaMenuEmpleado;
@@ -46,11 +49,11 @@ public class ControllerAcampado {
 		});
 	}
 	
-	public void iniciarSesion(JFrame f) {
+	public void iniciarSesion() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaInicioSesionAcampado(f);
+				new VistaInicioSesionAcampado();
 			}
 		});
 	}
@@ -87,12 +90,30 @@ public class ControllerAcampado {
 	}
 
 	public void gestoria(JFrame frame) {
-		SingletonControllerGestoria.getInstance().menuAcampado(frame);
+		SingletonControllerGestoria.getInstance().menuAcampadoGestoria();
 	}
+	
+	public void contabilidad(JFrame frame) {
+		SingletonControllerContabilidad.getInstance().estadoCuentasAcampado(frame);
+	}
+	
 	
 	public void SanidadCita(JFrame frame) {
 		SingletonControllerSanidad.getInstance().pedirCita(frame);
 	}
+
+	public void modificarAcampado(String nombreUsuario, String nombre, String apellidos, String edad,
+			String dni, String email, String telefono,String usuario) {
+		SingletonServiAppAcampado.getInstance().modificarAcampado(nombreUsuario, nombre, apellidos, edad, dni, email, telefono,usuario);
+		
+	}
+
+	public void cambiarContrasena(String contrasena) {
+		SingletonServiAppAcampado.getInstance().cambiarContrasena(contrasena);
+	}
+
+	
+	
 	
 	
 }

@@ -33,26 +33,25 @@ public class ControllerEmpleado {
 		SingletonControllerSanidad.getInstance().registraUsuario(text);
 		
 	}
-	public String getNombreUsuarioSanidad() {
-		String nombreUsuarioGestor = SingletonServiAppEmpleado.getInstance().getNombreUsuario();
-		return nombreUsuarioGestor;
+	public String getNombreUsuario() {
+		return SingletonServiAppEmpleado.getInstance().getNombreUsuario();
 	}
 
 	
-	public void empleado(JFrame f) {
+	public void empleado() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaEmpleado(f);
+				new VistaEmpleado();
 			}
 		});
 	}
 	
-	public void iniciarSesion(JFrame f) {
+	public void iniciarSesion() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaInicioSesionEmpleado(f);
+				new VistaInicioSesionEmpleado();
 			}
 		});
 	}

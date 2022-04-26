@@ -23,7 +23,7 @@ public class VistaMenuGestor extends JFrame implements GestoriaObserver{
 	private String nombreUsuario;
 	
 	public VistaMenuGestor() {
-		setTitle("Menu de gestoria");
+		setTitle("Menu de gestoria" );
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -98,29 +98,25 @@ public class VistaMenuGestor extends JFrame implements GestoriaObserver{
 	@Override
 	public void onRegister(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		update(nombreUsuario);
 	}
 
 	@Override
 	public void onCreate(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		update(nombreUsuario);
 	}
 
 	@Override
 	public void onEliminar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		update(nombreUsuario);
 	}
 
 	@Override
 	public void onModificar(List<TLimpieza> listaLimpieza, List<TInstalacion> listaInstalaciones,
 			List<TMantenimiento> listaAverias, List<TEmpleadoLimpieza> listaEmpleadosLimpieza, String nombreUsuario) {
-		// TODO Auto-generated method stub
-		
+		update(nombreUsuario);
 	}
 
 	

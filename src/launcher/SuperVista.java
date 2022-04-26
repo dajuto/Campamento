@@ -34,7 +34,7 @@ public class SuperVista extends JFrame{
 		JButton boton_Empleados = new JButton("Empleados");
 		boton_Empleados.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SingletonSuperControlador.getInstance().generalEmpleado(getFrame());
+				SingletonSuperControlador.getInstance().generalEmpleado();
 				setVisible(false);
 			}
 		});

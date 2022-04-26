@@ -6,6 +6,9 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import empleados.Presentacion.SingletonControllerEmpleado;
+
 import java.awt.Font;
 
 public class VistaMenuAcampado extends JFrame{
@@ -38,6 +41,12 @@ public class VistaMenuAcampado extends JFrame{
 		getContentPane().add(boton_Sanidad);
 		
 		JButton boton_contabilidad = new JButton("Contabilidad");
+		boton_contabilidad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerAcampado.getInstance().contabilidad(getFrame());
+			}
+		});
 		boton_contabilidad.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		boton_contabilidad.setBounds(270, 108, 170, 36);
 		getContentPane().add(boton_contabilidad);
@@ -61,6 +70,17 @@ public class VistaMenuAcampado extends JFrame{
 		boton_Gestoria.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		boton_Gestoria.setBounds(161, 179, 170, 36);
 		getContentPane().add(boton_Gestoria);
+		
+		JButton btnCerrarSesin = new JButton("Cerrar Sesi\u00F3n");
+		btnCerrarSesin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerAcampado.getInstance().iniciarSesion();
+			}
+		});
+		btnCerrarSesin.setBounds(349, 215, 121, 25);
+		getContentPane().add(btnCerrarSesin);
+		
 		setVisible(true);
 	}
 	

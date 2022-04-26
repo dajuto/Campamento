@@ -22,23 +22,21 @@ import javax.swing.JPasswordField;
 
 public class VistaInicioSesionAcampado extends JFrame {
 
-private JFrame atras;
 private JTextField usuario;
 private JPasswordField password;
 	
-	public VistaInicioSesionAcampado(JFrame frame) {
+	public VistaInicioSesionAcampado() {
 		setTitle("Inicio Sesion");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		
-		this.atras = frame;
 		
 		JButton boton_Atras = new JButton("Atras");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//atras.setVisible(true);
+				SingletonControllerAcampado.getInstance().acampado(getFrame());
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);
@@ -77,7 +75,7 @@ private JPasswordField password;
 					setVisible(false);
 					SingletonControllerAcampado.getInstance().menuAcampado(getFrame());
 				}
-				else JOptionPane.showMessageDialog(atras, "Usuario Incorrecto", "Error", JOptionPane.ERROR_MESSAGE);			
+				else JOptionPane.showMessageDialog(null, "Usuario Incorrecto", "Error", JOptionPane.ERROR_MESSAGE);			
 			}
 		});
 		boton_Aceptar.setBounds(84, 162, 97, 25);

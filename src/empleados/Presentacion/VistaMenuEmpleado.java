@@ -20,7 +20,7 @@ public class VistaMenuEmpleado extends JFrame implements EmpleadoObserver{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String nombreUsuario=SingletonControllerEmpleado.getInstance().getNombreUsuarioSanidad();
+	private String nombreUsuario=SingletonControllerEmpleado.getInstance().getNombreUsuario();
 	
 	public VistaMenuEmpleado() {
 		setTitle("Menu del empleado: "+ nombreUsuario);
@@ -80,6 +80,16 @@ public class VistaMenuEmpleado extends JFrame implements EmpleadoObserver{
 		boton_Gestoria.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		boton_Gestoria.setBounds(165, 176, 140, 36);
 		getContentPane().add(boton_Gestoria);
+		
+		JButton btnCerrarSesin = new JButton("Cerrar Sesi\u00F3n");
+		btnCerrarSesin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerEmpleado.getInstance().iniciarSesion();
+			}
+		});
+		btnCerrarSesin.setBounds(349, 215, 121, 25);
+		getContentPane().add(btnCerrarSesin);
 		setVisible(true);
 	}
 	

@@ -14,8 +14,8 @@ import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class SuperControlador{
 	
-	public void generalEmpleado(JFrame f) {
-		SingletonControllerEmpleado.getInstance().empleado(f);
+	public void generalEmpleado() {
+		SingletonControllerEmpleado.getInstance().empleado();
 	}
 
 	public void generalAcampado(JFrame f) {
