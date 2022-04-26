@@ -32,6 +32,8 @@ public class VistaConsultarListaCitas extends JFrame implements SanidadObserver{
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,275);
+		this.setLocation(550,10);
+		
 		
 		JLabel lblNewLabel = new JLabel("Consultar Cita Medico: " + nombreUsuario);
 		lblNewLabel.setBackground(Color.WHITE);

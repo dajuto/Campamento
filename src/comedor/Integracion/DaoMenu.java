@@ -58,9 +58,9 @@ public class DaoMenu {
 		List<TMenu> l = new ArrayList<TMenu>();
 		try {
             JSONObject jo = new JSONObject(new JSONTokener(in));
-            JSONArray gastos = jo.getJSONArray("comedor");
-            for(int i = 0; i < menu.length(); i++) {
-                TMenu a = (TMenu) factoriaTranserObjects.createInstance(menu.getJSONObject(i));
+            JSONArray comedor = jo.getJSONArray("comedor");
+            for(int i = 0; i < comedor.length(); i++) {
+                TMenu a = (TMenu) factoriaTranserObjects.createInstance(comedor.getJSONObject(i));
                 l.add(a);
             }
         }

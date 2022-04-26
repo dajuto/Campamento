@@ -6,18 +6,7 @@
          "dosis": "3 al dia",
          "medicamento": "ibuprofeno",
          "Nombremedico": "David Viejo",
-         "comprado": "Sin Adquirir"
-      },
-      "type": "receta"
-   },
-   {
-      "data": {
-         "codigo": "3",
-         "NombreAcampado": "Alvaro ",
-         "dosis": "2 al dia",
-         "medicamento": "antibiotico",
-         "Nombremedico": "David Viejo",
-         "comprado": "Sin Adquirir"
+         "comprado": "Adquirido"
       },
       "type": "receta"
    },
@@ -28,7 +17,7 @@
          "dosis": "2 al dia",
          "medicamento": "omeprazol",
          "Nombremedico": "David Viejo",
-         "comprado": "Adquirido"
+         "comprado": "Sin Adquirir"
       },
       "type": "receta"
    },
@@ -39,6 +28,17 @@
          "dosis": "1 a la semana",
          "medicamento": "enantyum",
          "Nombremedico": "Dajuto",
+         "comprado": "Sin Adquirir"
+      },
+      "type": "receta"
+   },
+   {
+      "data": {
+         "codigo": "5",
+         "NombreAcampado": "Alvaro ",
+         "dosis": "1 al dia",
+         "medicamento": "enantyum",
+         "Nombremedico": "David Viejo",
          "comprado": "Sin Adquirir"
       },
       "type": "receta"

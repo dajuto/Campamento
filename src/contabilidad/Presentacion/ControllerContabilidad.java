@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import acampadosPresentacion.SingletonControllerAcampado;
 import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.SingletonServiAppContabilidad;
 import contabilidad.Negocio.TGastos;
@@ -16,6 +17,7 @@ import empleados.Negocio.TEmpleadoLimpieza;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Negocio.SingletonServiAppGestoria;
 import gestoria.Negocio.TLimpieza;
+import gestoria.Presentacion.VistaMenuAcampado;
 import gestoria.Presentacion.VistaMenuInstalacionesGestor;
 import launcher.Factory;
 
@@ -135,6 +137,32 @@ public class ControllerContabilidad {
 			}
 		});
 	}
+	
+	//acampado
+	public void estadoCuentasAcampado(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaContabilidadAcampado(frame);
+			}
+		});
+	}
+	//acampado
+	public String getAcampado() {
+		String n =SingletonControllerAcampado.getInstance().getAcampado();
+		return n;
+	}
+	
+	public void menuVerEstado(JFrame frame) { //hecha
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaEstadoAcampado(frame);
+			}
+		});
+	}
+	
+	
 	public void eliminarGasto(JFrame frame, String codigo) {
 		SingletonServiAppContabilidad.getInstance().eliminarGasto(frame, codigo);
 	}

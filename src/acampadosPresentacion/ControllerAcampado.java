@@ -9,6 +9,8 @@ import javax.swing.SwingUtilities;
 
 import acampados.Negocio.SingletonServiAppAcampado;
 import acampados.Negocio.TAcampado;
+import contabilidad.Presentacion.SingletonControllerContabilidad;
+import contabilidad.Presentacion.VistaIngresosContabilidad;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleado;
 import empleados.Presentacion.VistaMenuEmpleado;
@@ -73,7 +75,7 @@ public class ControllerAcampado {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaMenuAcampado();
+				new VistaMenuAcampado(f);
 			}
 		});
 	}
@@ -91,6 +93,10 @@ public class ControllerAcampado {
 		SingletonControllerGestoria.getInstance().menuAcampadoGestoria();
 	}
 	
+	public void contabilidad(JFrame frame) {
+		SingletonControllerContabilidad.getInstance().estadoCuentasAcampado(frame);
+	}
+	
 	public void SanidadCita(JFrame frame) {
 		SingletonControllerSanidad.getInstance().pedirCita(frame);
 	}
@@ -105,6 +111,7 @@ public class ControllerAcampado {
 		SingletonServiAppAcampado.getInstance().cambiarContrasena(contrasena);
 	}
 
+	
 	
 	
 }

@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
+import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -31,9 +32,10 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 	private JButton atras;
 	private Frame ventanaAnterior;
 	
-	public VistaListaActividadesGestor(Frame frame) {
+	public VistaListaActividadesGestor(JFrame frame) {
 		setTitle("Lista Actividades");
 		SingletonControllerActividad.getInstance().addObserver(this);
+		
 		this.ventanaAnterior = frame;
 		this.anadirActividad = new JButton("Anadir actividad");
 		this.eliminarActividad = new JButton("Eliminar actividad");
@@ -41,7 +43,7 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 		initGUI();
 	}
 	
-	private Frame getFrame() {
+	private JFrame getFrame() {
 		return this;
 	}
 	

@@ -48,6 +48,8 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,501);
+		this.setLocation(550,10);
+		
 		
 		
 		JButton boton_Atras = new JButton("Atras");

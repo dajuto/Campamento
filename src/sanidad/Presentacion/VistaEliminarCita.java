@@ -30,7 +30,7 @@ public class VistaEliminarCita extends JFrame implements SanidadObserver{
 	private JFrame atras;
 	private String nombreUsuario;
 	private JComboBox<Integer> codCita;
-	List<TCita> listCitas;
+	List<TCita> listCitas=SingletonControllerSanidad.getInstance().getListaCitas();
 	
 	
 
@@ -40,6 +40,8 @@ public class VistaEliminarCita extends JFrame implements SanidadObserver{
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,275);
+		this.setLocation(550,10);
+		
 		
 		JLabel lblNewLabel = new JLabel("Eliminar Cita Medico: " + nombreUsuario);
 		lblNewLabel.setBackground(Color.WHITE);
@@ -49,7 +51,10 @@ public class VistaEliminarCita extends JFrame implements SanidadObserver{
 		codCita = new JComboBox<Integer>();
 		codCita.setBounds(330, 54, 184, 26);
 		for(TCita te: SingletonServiAppSanidad.getInstance().getListaCitas()) {
-			codCita.addItem(te.getCodigo());
+			if(te.getAtendido().equals("Si")) {
+				codCita.addItem(te.getCodigo());
+			}
+		
 		}
 		getContentPane().add(codCita);
 		
