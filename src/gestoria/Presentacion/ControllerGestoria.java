@@ -324,8 +324,6 @@ public class ControllerGestoria {
 		SingletonControllerEmpleado.getInstance().modificarEmpleadoMantenimiento(empleado, codigo);		
 	}
 
-<<<<<<< HEAD
-<<<<<<< HEAD
 	public void perfilAcampado(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -378,23 +376,5 @@ public class ControllerGestoria {
 
 	
 
-	
 
-	
-
-	
-	
-
-	
-
-	
-
-
-
-	
-
-=======
->>>>>>> 09bef8d3818490b1c569cb718d4713c94f16971e
-=======
->>>>>>> 09bef8d3818490b1c569cb718d4713c94f16971e
 }
