@@ -36,7 +36,7 @@ public class VistaAcampado extends JFrame{
 		boton_IniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerAcampado.getInstance().iniciarSesion(getFrame());
+				SingletonControllerAcampado.getInstance().iniciarSesion();
 			}
 		});
 		boton_IniciarSesion.setFont(new Font("Tahoma", Font.PLAIN, 16));

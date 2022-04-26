@@ -5,6 +5,10 @@ import java.awt.SystemColor;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import launcher.SingletonSuperControlador;
+import launcher.SuperVista;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -12,21 +16,19 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class VistaEmpleado extends JFrame{
-	private JFrame atras;
 	
-	public VistaEmpleado(JFrame frame) {
+	public VistaEmpleado() {
 		setTitle("Empleado");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		
-		this.atras = frame;
 		
 		JButton boton_Atras = new JButton("Atras");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				atras.setVisible(true);
+				new SuperVista();
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);
@@ -36,7 +38,7 @@ public class VistaEmpleado extends JFrame{
 		boton_IniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerEmpleado.getInstance().iniciarSesion(getFrame());
+				SingletonControllerEmpleado.getInstance().iniciarSesion();
 			}
 		});
 		boton_IniciarSesion.setFont(new Font("Tahoma", Font.PLAIN, 24));
