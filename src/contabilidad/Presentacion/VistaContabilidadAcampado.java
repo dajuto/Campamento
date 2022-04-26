@@ -138,7 +138,7 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 			
 			    SingletonControllerContabilidad.getInstance().añadirIngresoAcam("Ventas", "Abono acampado", "1200" ,fecha, nombreCompleto, dniAcampado, false, fac, atras);
 			  
-			   SingletonControllerAcampado.getInstance().cambiarIsPagado(true); 
+			    SingletonControllerAcampado.getInstance().cambiarIsPagado(true); 
 			  
 			   if(pagado) { //si ha pagado el acampado, no puede darle al boton de pagar	
 					boton_Pagar.setEnabled(false);
