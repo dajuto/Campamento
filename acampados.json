@@ -10,7 +10,7 @@
          "Telefono": 630864506,
          "Actividades": {"Lista Actividades": []},
          "Pagado": "Si",
-         "ContraseÃ±a": "12345678",
+         "Contraseña": "12345678",
          "Habitacion": "12A",
          "DNI": "78765711A"
       },
@@ -27,7 +27,7 @@
          "Telefono": 606606060,
          "Actividades": {"Lista Actividades": []},
          "Pagado": "No",
-         "ContraseÃ±a": "1",
+         "Contraseña": "1",
          "Habitacion": "123",
          "DNI": "78765711A"
       },
@@ -44,7 +44,7 @@
          "Telefono": 928800690,
          "Actividades": {"Lista Actividades": []},
          "Pagado": "No",
-         "ContraseÃ±a": "12345678",
+         "Contraseña": "12345678",
          "Habitacion": "123",
          "DNI": "78765711A"
       },
