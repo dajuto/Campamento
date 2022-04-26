@@ -1,7 +1,7 @@
 {"acampados": [
    {
       "data": {
-<<<<<<< HEAD
+
          "Nombre": "Alvarito",
          "Apellidos": "Cordero Capitas",
          "Edad": 22,
@@ -13,7 +13,6 @@
          "Pagado": "Si",
          "ContraseÃ±a": "12345678",
          "Habitacion": "12A",
-=======
          "Nombre": "adri",
          "Apellidos": "adrisky",
          "Edad": 22,
@@ -23,16 +22,14 @@
          "Telefono": 630864506,
          "Actividades": {"Lista Actividades": []},
          "Pagado": "No",
-         "Contraseña": "12345678",
+         "Contraseï¿½a": "12345678",
          "Habitacion": "123",
->>>>>>> aae2631f317fdf3c22c099b5e18c737d607c4f43
          "DNI": "78765711A"
       },
       "type": "acampado"
    },
    {
       "data": {
-<<<<<<< HEAD
          "Nombre": "Jose",
          "Apellidos": "Cordero",
          "Edad": 21,
@@ -43,7 +40,6 @@
          "Actividades": {"Lista Actividades": []},
          "Pagado": "No",
          "ContraseÃ±a": "1",
-=======
          "Nombre": "alvaro",
          "Apellidos": "adrisky",
          "Edad": 22,
@@ -53,8 +49,7 @@
          "Telefono": 630864506,
          "Actividades": {"Lista Actividades": []},
          "Pagado": "No",
-         "Contraseña": "12345678",
->>>>>>> aae2631f317fdf3c22c099b5e18c737d607c4f43
+         "Contraseï¿½a": "12345678",
          "Habitacion": "123",
          "DNI": "78765711A"
       },
@@ -62,7 +57,6 @@
    },
    {
       "data": {
-<<<<<<< HEAD
          "Nombre": "Borja",
          "Apellidos": "Garcia",
          "Edad": 21,
@@ -74,8 +68,7 @@
          "Pagado": "Si",
          "ContraseÃ±a": "12345678",
          "Habitacion": "123",
-         "DNI": "78765711A"
-=======
+         "DNI": "78765711A", 
          "Nombre": "david",
          "Apellidos": "dajuto",
          "Edad": 22,
@@ -85,10 +78,9 @@
          "Telefono": 630864506,
          "Actividades": {"Lista Actividades": []},
          "Pagado": "No",
-         "Contraseña": "11111111",
+         "Contraseï¿½a": "11111111",
          "Habitacion": "123",
          "DNI": "78787877A"
->>>>>>> aae2631f317fdf3c22c099b5e18c737d607c4f43
       },
       "type": "acampado"
    }
