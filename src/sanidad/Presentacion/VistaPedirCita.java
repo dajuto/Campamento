@@ -125,7 +125,7 @@ public class VistaPedirCita extends JFrame implements SanidadObserver{
 		comboBox.setBounds(142, 168, 146, 22);
 		for(TEmpleado e: SingletonControllerSanidad.getInstance().getListaEmpleados()) {
 			if (e.getPuesto().matches("Medico")) {
-				comboBox.addItem(e.getNombre());
+				comboBox.addItem(e.getUsuario());
 			}
 		}
 		getContentPane().add(comboBox);

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import empleados.Negocio.SingletonServiAppEmpleado;
+import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TMedico;
 
 public class CitasMedicoTableModel extends AbstractTableModel implements SanidadObserver{
@@ -16,9 +18,16 @@ public class CitasMedicoTableModel extends AbstractTableModel implements Sanidad
 	private static final long serialVersionUID = 1L;
 	private List<TCita> list;
 	private String[] columnNames = {"Codigo", "Acampado","Motivo", "Medico", "Atendido"};
+	private String nombreUsuario=SingletonServiAppEmpleado.getInstance().getNombreUsuario();
+	private List<TEmpleado> listaEmpleados = SingletonServiAppEmpleado.getInstance().getListaEmpleados();
+	private TMedico med;
 	
 	public CitasMedicoTableModel() {
-		list = new ArrayList<TCita>();
+		for (TEmpleado e: listaEmpleados) {
+			if (e.getUsuario().equals(nombreUsuario)) {
+				med = (TMedico) e;
+			}
+		}
 		SingletonServiAppSanidad.getInstance().addObserver(this);
 	}
 	
@@ -29,7 +38,7 @@ public class CitasMedicoTableModel extends AbstractTableModel implements Sanidad
 	
 	@Override
 	public int getRowCount() {
-		return list.size();
+		return med.getListaCitas().size();
 	}
 
 	@Override
@@ -39,21 +48,26 @@ public class CitasMedicoTableModel extends AbstractTableModel implements Sanidad
 
 	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		if(columnIndex == 0) {
-			return list.get(rowIndex).getCodigo();
+		for (TCita c: list) {
+			if (med.getListaCitas().get(rowIndex).equals(c.getCodigo())) {
+				if(columnIndex == 0) {
+					return c.getCodigo();
+				}
+				else if(columnIndex == 1) {
+					return c.getNombreAcampado();
+				}
+				else if(columnIndex == 2) {
+					return c.getMotivo();
+				}
+				else if(columnIndex == 3) {
+					return c.getNombremedico();
+				}
+				else {
+					return c.getAtendido();
+				}
+			}
 		}
-		else if(columnIndex == 1) {
-			return list.get(rowIndex).getNombreAcampado();
-		}
-		else if(columnIndex == 2) {
-			return list.get(rowIndex).getMotivo();
-		}
-		else if(columnIndex == 3) {
-			return list.get(rowIndex).getNombremedico();
-		}
-		else {
-			return list.get(rowIndex).getAtendido();
-		}
+		return null;
 	}
 	
 	private void update(List<TCita> list) {		

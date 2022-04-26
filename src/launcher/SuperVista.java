@@ -13,6 +13,11 @@ import java.awt.Color;
 
 public class SuperVista extends JFrame{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public SuperVista() {
 		setTitle("HappyCamp");
 		getContentPane().setBackground(SystemColor.activeCaption);
