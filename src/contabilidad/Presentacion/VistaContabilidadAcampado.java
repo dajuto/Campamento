@@ -107,7 +107,6 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 				String apellido = e.getApellidos(); 
 				int edad = e.getEdad(); 
 				
-				
 			}
 		}
 	
