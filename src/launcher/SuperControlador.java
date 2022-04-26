@@ -19,7 +19,7 @@ public class SuperControlador{
 	}
 
 	public void generalAcampado(JFrame f) {
-		SingletonControllerAcampado.getInstance().acampado(f);
+		SingletonControllerAcampado.getInstance().acampado();
 	}
 
 	public void registraFactoria(Factory<Object> factoriaTransferObjects) {
