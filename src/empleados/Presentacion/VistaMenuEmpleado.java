@@ -20,7 +20,7 @@ public class VistaMenuEmpleado extends JFrame implements EmpleadoObserver{
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private String nombreUsuario=SingletonControllerEmpleado.getInstance().getNombreUsuarioSanidad();
+	private String nombreUsuario=SingletonControllerEmpleado.getInstance().getNombreUsuario();
 	
 	public VistaMenuEmpleado() {
 		setTitle("Menu del empleado: "+ nombreUsuario);

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import acampados.Negocio.SingletonServiAppAcampado;
@@ -87,12 +88,23 @@ public class ControllerAcampado {
 	}
 
 	public void gestoria(JFrame frame) {
-		SingletonControllerGestoria.getInstance().menuAcampado(frame);
+		SingletonControllerGestoria.getInstance().menuAcampadoGestoria();
 	}
 	
 	public void SanidadCita(JFrame frame) {
 		SingletonControllerSanidad.getInstance().pedirCita(frame);
 	}
+
+	public void modificarAcampado(String nombreUsuario, String nombre, String apellidos, String edad,
+			String dni, String email, String telefono,String usuario) {
+		SingletonServiAppAcampado.getInstance().modificarAcampado(nombreUsuario, nombre, apellidos, edad, dni, email, telefono,usuario);
+		
+	}
+
+	public void cambiarContrasena(String contrasena) {
+		SingletonServiAppAcampado.getInstance().cambiarContrasena(contrasena);
+	}
+
 	
 	
 }

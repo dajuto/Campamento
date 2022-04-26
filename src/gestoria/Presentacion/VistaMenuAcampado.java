@@ -19,22 +19,19 @@ import java.awt.Color;
 
 public class VistaMenuAcampado extends JFrame implements GestoriaObserver{
 	private static final long serialVersionUID = 1L;
-	private JFrame atras;
-	private String nombreUsuario;
+	private String nombreUsuario = SingletonControllerGestoria.getInstance().getNombreAcampado();
 	
-	public VistaMenuAcampado(JFrame frame) {
-		setTitle("Menu de gestoria");
+	public VistaMenuAcampado() {
+		setTitle("Menu de gestoria: " + nombreUsuario);
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
-		
-		this.atras = frame;
 		
 		JButton boton_Atras = new JButton("Atras");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				atras.setVisible(true);
+				SingletonControllerGestoria.getInstance().menuAcampado(getFrame());
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);
@@ -48,8 +45,19 @@ public class VistaMenuAcampado extends JFrame implements GestoriaObserver{
 			}
 		});
 		boton_perfil.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_perfil.setBounds(159, 54, 165, 38);
+		boton_perfil.setBounds(32, 96, 195, 38);
 		getContentPane().add(boton_perfil);
+		
+		JButton boton_perfil_1 = new JButton("Cambiar Contrase\u00F1a");
+		boton_perfil_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+				SingletonControllerGestoria.getInstance().modificarContrasena();
+			}
+		});
+		boton_perfil_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
+		boton_perfil_1.setBounds(254, 96, 195, 38);
+		getContentPane().add(boton_perfil_1);
 		
 		
 		this.setVisible(true);

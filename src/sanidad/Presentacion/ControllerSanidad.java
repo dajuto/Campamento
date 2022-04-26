@@ -211,7 +211,7 @@ public class ControllerSanidad {
 	}
 
 	public String getNombreUsuarioSanidad() {
-		String n =SingletonControllerEmpleado.getInstance().getNombreUsuarioSanidad();
+		String n =SingletonControllerEmpleado.getInstance().getNombreUsuario();
 		return n;
 	}
 

@@ -20,12 +20,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import acampados.Negocio.TAcampado;
 import acampadosPresentacion.SingletonControllerAcampado;
+import javax.swing.JPasswordField;
 
 public class VistaPerfilAcampado extends JFrame implements GestoriaObserver{
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
 	private String nombreUsuario;
+	private List<TAcampado> listaAcampados;
+	private TAcampado acampado;
 	private JTextField nombre;
 	private JTextField apellidos;
 	private JTextField edad;
@@ -33,12 +37,21 @@ public class VistaPerfilAcampado extends JFrame implements GestoriaObserver{
 	private JTextField email;
 	private JTextField telefono;
 	private JTextField usuario;
+	private JPasswordField password;
 	
 	public VistaPerfilAcampado(JFrame frame) {
-		setTitle("Perfil");
+		nombreUsuario = SingletonControllerGestoria.getInstance().getNombreAcampado();
+		listaAcampados = SingletonControllerGestoria.getInstance().getListaAcampados();
+		
+		for (TAcampado a: listaAcampados) {
+			if (a.getUsuario().equals(nombreUsuario)){
+				acampado = a;
+			}
+		}
+		setTitle("Perfil de "+ nombreUsuario);
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
-		setSize(445,394);
+		setSize(521,376);
 		
 		this.atras = frame;
 		
@@ -49,7 +62,7 @@ public class VistaPerfilAcampado extends JFrame implements GestoriaObserver{
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(318, 309, 97, 25);
+		boton_Atras.setBounds(394, 291, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 		JLabel label = new JLabel("");
@@ -69,22 +82,26 @@ public class VistaPerfilAcampado extends JFrame implements GestoriaObserver{
 		JButton boton_modificar = new JButton("Modificar");
 		boton_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if (dni.getText().matches("[0-9]{7,8}[A-Za-z]")) {
-					if (email.getText().matches("[-\\w\\.]+@\\w+\\.\\w+")) {
-						if (edad.getText().matches("[0-9]*")) {
-							if (telefono.getText().matches("[0-9]*") && telefono.getText().length() == 9) {
-								SingletonControllerAcampado.getInstance().modificarAcampado(HACERRRRR);
+				if (password.getText().equals(acampado.getContrasena())) {
+					if (dni.getText().matches("[0-9]{7,8}[A-Za-z]")) {
+						if (email.getText().matches("[-\\w\\.]+@\\w+\\.\\w+")) {
+							if (edad.getText().matches("[0-9]*")) {
+								if (telefono.getText().matches("[0-9]*") && telefono.getText().length() == 9) {
+									setVisible(false);
+									SingletonControllerGestoria.getInstance().modificarAcampado(nombreUsuario, nombre.getText(), apellidos.getText(), edad.getText(), dni.getText(), email.getText(), telefono.getText(),usuario.getText());
+								}
+								else JOptionPane.showMessageDialog(atras, "Formato del telefono es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 							}
-							else JOptionPane.showMessageDialog(atras, "Formato del telefono es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+							else JOptionPane.showMessageDialog(atras, "Formato de la edad es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 						}
-						else JOptionPane.showMessageDialog(atras, "Formato de la edad es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+						else JOptionPane.showMessageDialog(atras, "Formato del email es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 					}
-					else JOptionPane.showMessageDialog(atras, "Formato del email es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
-				}
-				else JOptionPane.showMessageDialog(atras, "Formato del dni es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+					else JOptionPane.showMessageDialog(atras, "Formato del dni es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
+				}			
+				else JOptionPane.showMessageDialog(atras, "La contraseña introducida es incorrecta", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 		});
-		boton_modificar.setBounds(274, 156, 97, 25);
+		boton_modificar.setBounds(349, 176, 97, 25);
 		getContentPane().add(boton_modificar);
 		
 		JLabel lblApellidos = new JLabel("Apellidos:");
@@ -118,46 +135,58 @@ public class VistaPerfilAcampado extends JFrame implements GestoriaObserver{
 		getContentPane().add(lblDni);
 		
 		nombre = new JTextField();
-		nombre.setBounds(93, 64, 116, 22);
+		nombre.setBounds(109, 62, 116, 22);
 		getContentPane().add(nombre);
 		nombre.setColumns(10);
+		nombre.setText(acampado.getNombre());
 		
 		apellidos = new JTextField();
 		apellidos.setColumns(10);
-		apellidos.setBounds(93, 102, 116, 22);
+		apellidos.setBounds(109, 100, 116, 22);
 		getContentPane().add(apellidos);
+		apellidos.setText(acampado.getApellidos());
 		
 		edad = new JTextField();
 		edad.setColumns(10);
-		edad.setBounds(93, 138, 116, 22);
+		edad.setBounds(109, 136, 116, 22);
 		getContentPane().add(edad);
+		edad.setText(Integer.toString(acampado.getEdad()));
 		
 		dni = new JTextField();
 		dni.setColumns(10);
-		dni.setBounds(93, 178, 116, 22);
+		dni.setBounds(109, 176, 116, 22);
 		getContentPane().add(dni);
+		dni.setText(acampado.getDni());
 		
 		email = new JTextField();
 		email.setColumns(10);
-		email.setBounds(93, 216, 116, 22);
+		email.setBounds(109, 214, 116, 22);
 		getContentPane().add(email);
+		email.setText(acampado.getEmail());
 		
 		telefono = new JTextField();
 		telefono.setColumns(10);
-		telefono.setBounds(93, 254, 116, 22);
+		telefono.setBounds(109, 252, 116, 22);
 		getContentPane().add(telefono);
+		telefono.setText(Integer.toString(acampado.getTelefono()));
 		
 		usuario = new JTextField();
 		usuario.setColumns(10);
-		usuario.setBounds(93, 292, 116, 22);
+		usuario.setBounds(109, 290, 116, 22);
 		getContentPane().add(usuario);
+		usuario.setText(acampado.getUsuario());
+		
+		JLabel lblContrasea = new JLabel("Contrase\u00F1a:");
+		lblContrasea.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblContrasea.setBounds(278, 138, 85, 25);
+		getContentPane().add(lblContrasea);
+		
+		password = new JPasswordField();
+		password.setBounds(375, 136, 116, 22);
+		getContentPane().add(password);
 		
 		
 		this.setVisible(true);
-	}
-	
-	private JFrame getFrame() {
-		return this;
 	}
 	
 	private void update(String nombreUsuario) {

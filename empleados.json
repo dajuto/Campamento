@@ -145,16 +145,10 @@
          "nombre": "Dajuto"
       },
       "type": "Medico"
-<<<<<<< HEAD
-   },
-    {
-=======
 
    },
-	
 
    {
->>>>>>> 1ea414a9e0f249cfc76093a44337a57fbc712dd1
       "data": {
          "puesto": "Gestor Actividades",
          "horario": 8,
@@ -166,9 +160,5 @@
          "nombre": "Cristian"
       },
       "type": "Empleado Mantenimiento"
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ea414a9e0f249cfc76093a44337a57fbc712dd1
    }
 ]}
