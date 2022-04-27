@@ -8,7 +8,7 @@
       },
       "type": "actividad"
    },
-    {
+   {
       "data": {
          "Nombre": "Partido de futbol",
          "Monitor": "Manuel",
@@ -32,6 +32,15 @@
          "Monitor": "Manuel",
          "Id": 4,
          "Instalacion": "Lago"
+      },
+      "type": "actividad"
+   },
+   {
+      "data": {
+         "Nombre": "Tenis",
+         "Monitor": "Manuel",
+         "Id": 5,
+         "Instalacion": "Pista de tenis"
       },
       "type": "actividad"
    }
