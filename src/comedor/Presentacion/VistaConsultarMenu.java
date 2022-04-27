@@ -101,8 +101,9 @@ public class VistaConsultarMenu extends JFrame implements MenuObserver{
 	}
 
 	@Override
-	public void onModificarMenu(List<TMenu> listaMenu) {
+	public void onConsultarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
 		this.update(listaMenu, dia);
-	}		
+	}	
+		
 }
