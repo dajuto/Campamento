@@ -70,7 +70,8 @@ public class ControllerActividad {
 		boolean isNumericId =  id.matches("[+-]?\\d*(\\.\\d+)?");
 		boolean isNumericNombre =  nombre.matches("[+-]?\\d*(\\.\\d+)?");
 		boolean isNumericInstalacion =  instalacion.matches("[+-]?\\d*(\\.\\d+)?");
-		if(isNumericId && !isNumericNombre && !isNumericInstalacion) {
+		boolean isNumericMonitor = instalacion.matches("[+-]?\\d*(\\.\\d+)?");
+		if(isNumericId && !isNumericNombre && !isNumericInstalacion && !isNumericMonitor) {
 			int idActividad = Integer.parseInt(id);
 			boolean exito = SingletonServiAppActividad.getInstance().anadirActividad(idActividad, nombre, instalacion, monitor);
 			if(!exito) {
