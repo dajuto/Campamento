@@ -16,11 +16,15 @@ import javax.swing.JLabel;
 import comedor.Negocio.MenuObserver;
 import comedor.Negocio.TMenu;
 import comedor.Negocio.SingletonServiAppMenu;
+import sanidad.Negocio.SingletonServiAppSanidad;
+import sanidad.Negocio.TCita;
+import sanidad.Presentacion.SingletonControllerSanidad;
 
 
 //import javax.swing.JTable;
 
 public class VistaEliminarMenu extends JFrame implements MenuObserver{
+	
 	private JFrame atras;
 	private String dia;
 	private JComboBox<String> diaMenu;
@@ -77,32 +81,34 @@ public class VistaEliminarMenu extends JFrame implements MenuObserver{
 		return this;
 	}
 	
-	private void update(List<TMenu> listaMenu,  String dia) {
+	private void update(List<TMenu> listaMenu) {
 		this.listaMenu = listaMenu;
-		this.dia = dia;
+		
 	}
+	
+	@Override
+	public void onEliminarMenu(List<TMenu> listaMenu) {
+		// TODO Auto-generated method stub
+		this.update(listaMenu);
+	}	
 	
 	@Override
 	public void onCrearMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
+		this.update(listaMenu);
 	}
 
 	@Override
 	public void onConsultarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
+		this.update(listaMenu);
 	}
 
-	@Override
-	public void onModificarMenu(List<TMenu> listaMenu) {
-		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
-	}		
 	
 	
 
 }
+
 
 
 
