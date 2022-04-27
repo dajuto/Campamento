@@ -33,7 +33,16 @@ public class ControllerMenu {
 			}
 		});
 	}
-
+	
+	public void mostrarListaMenu(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaListaMenu(frame);
+			}
+		});
+	}
+	
 	public void mostrarCrearMenu(Frame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -61,19 +70,11 @@ public class ControllerMenu {
 		});
 	}
 	
-	public void mostrarModificarMenu(JFrame frame) {
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaModificarMenu(frame);
-			}
-		});
-	}
 	
 	
 	
 	public void crearMenu( String dia, String desayuno, String comida, String cena, JFrame frame) {
-		boolean existe = SingletonServiAppMenu.getInstance().crearMenu(dia, desayuno, comida, cena);
+		boolean existe = SingletonServiAppMenu.getInstance().crearMenu(dia, desayuno, comida, cena, frame);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
@@ -97,16 +98,6 @@ public class ControllerMenu {
 		
 	}
 	
-	public void modificarMenu(String dia, String desayuno, String comida, String cena, JFrame frame) {
-		SingletonServiAppMenu.getInstance().modificarMenu(dia, desayuno, comida, cena);
-		frame.setVisible(false);
-		SwingUtilities.invokeLater(new Runnable() {
-			@Override
-			public void run() {
-				new VistaVerMenu(frame);
-			}
-		});
-	}
 	
 	public void consultarMenu(Frame ventanaAnterior, String dia) {
 		SingletonServiAppMenu.getInstance().consultarMenu(dia);
@@ -116,12 +107,4 @@ public class ControllerMenu {
 		SingletonServiAppMenu.getInstance().addObserver(vista);
 	}
 
-	
-	public List<TEmpleado> getListaEmpleados() {
-		return SingletonControllerEmpleado.getInstance().getListaEmpleados();
-	}
-	
-	public List<TMenu> getListaMenu() {	
-		return SingletonServiAppMenu.getInstance().getListaMenu();
-	}
 }
