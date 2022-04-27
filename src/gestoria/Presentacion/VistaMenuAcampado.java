@@ -45,7 +45,7 @@ public class VistaMenuAcampado extends JFrame implements GestoriaObserver{
 			}
 		});
 		boton_perfil.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_perfil.setBounds(32, 96, 195, 38);
+		boton_perfil.setBounds(138, 77, 195, 38);
 		getContentPane().add(boton_perfil);
 		
 		JButton boton_perfil_1 = new JButton("Cambiar Contrase\u00F1a");
@@ -56,7 +56,7 @@ public class VistaMenuAcampado extends JFrame implements GestoriaObserver{
 			}
 		});
 		boton_perfil_1.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_perfil_1.setBounds(254, 96, 195, 38);
+		boton_perfil_1.setBounds(138, 142, 195, 38);
 		getContentPane().add(boton_perfil_1);
 		
 		

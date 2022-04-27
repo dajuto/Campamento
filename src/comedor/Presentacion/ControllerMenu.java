@@ -72,8 +72,8 @@ public class ControllerMenu {
 	
 	
 	
-	public void añadirMenu( String dia, String desayuno, String comida, String cena, JFrame frame) {
-		boolean existe = SingletonServiAppMenu.getInstance().añadirMenu(dia, desayuno, comida, cena);
+	public void crearMenu( String dia, String desayuno, String comida, String cena, JFrame frame) {
+		boolean existe = SingletonServiAppMenu.getInstance().crearMenu(dia, desayuno, comida, cena);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
@@ -97,7 +97,7 @@ public class ControllerMenu {
 		
 	}
 	
-	public void modificarLimpieza(String dia, String desayuno, String comida, String cena, JFrame frame) {
+	public void modificarMenu(String dia, String desayuno, String comida, String cena, JFrame frame) {
 		SingletonServiAppMenu.getInstance().modificarMenu(dia, desayuno, comida, cena);
 		frame.setVisible(false);
 		SwingUtilities.invokeLater(new Runnable() {

@@ -7,7 +7,7 @@ import launcher.Builder;
 public class MenuBuilder extends Builder<Object>{
 
 	public MenuBuilder() {
-		super("Menu");
+		super("comedor");
 	}
 
 	@Override
