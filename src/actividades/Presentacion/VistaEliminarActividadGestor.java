@@ -33,7 +33,7 @@ public class VistaEliminarActividadGestor extends JFrame implements ActividadObs
 	private JFrame atras;
 	
 	private JLabel ingresaIdActividad;
-	private JComboBox<TActividad> idActividad;
+	private JComboBox<Integer> idActividad;
 	List<TActividad> listaActividades;
 	
 	public VistaEliminarActividadGestor(JFrame ventanaListaAverias) {
@@ -51,10 +51,10 @@ public class VistaEliminarActividadGestor extends JFrame implements ActividadObs
 		lblNewLabel.setBounds(0, 0, 261, 20);
 		getContentPane().add(lblNewLabel);
 		
-		idActividad = new JComboBox<TActividad>();
+		idActividad = new JComboBox<Integer>();
 		idActividad.setBounds(330, 54, 184, 26);
 		for(TActividad ta: SingletonServiAppActividad.getInstance().getListaActividades()) {
-			idActividad.addItem(ta);
+			idActividad.addItem(ta.getId());
 		
 		}
 		getContentPane().add(idActividad);
@@ -91,13 +91,6 @@ public class VistaEliminarActividadGestor extends JFrame implements ActividadObs
 		this.setVisible(true);
 	}
 	
-	private void quit() {
-    	int option = JOptionPane.showOptionDialog(this, "Are you sure you want to quit?", "quit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, 1); // el 1 es para q x defecto la opcion senalada sea NO
-        if (option == 0) {
-            System.exit(0);
-        }
-	}
-
 	private void update (List<TActividad>lista) {
 		this.listaActividades=lista;
 	}

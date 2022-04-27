@@ -2,26 +2,26 @@
    {
       "data": {
          "Nombre": "PaintBall",
-         "Id": 1,
          "Monitor": "Manuel",
+         "Id": 1,
          "Instalacion": "Campo de paintball"
       },
       "type": "actividad"
    },
-   {
+    {
       "data": {
          "Nombre": "Partido de futbol",
-         "Id": 2,
          "Monitor": "Manuel",
-         "Instalacion": "Pista de futbol"
+         "Id": 2,
+         "Instalacion": "Campo de futbol"
       },
       "type": "actividad"
    },
    {
       "data": {
          "Nombre": "Senderismo",
-         "Id": 3,
          "Monitor": "Manuel",
+         "Id": 3,
          "Instalacion": "Afueras del campamento"
       },
       "type": "actividad"
@@ -29,8 +29,8 @@
    {
       "data": {
          "Nombre": "Canoas",
-         "Id": 4,
          "Monitor": "Manuel",
+         "Id": 4,
          "Instalacion": "Lago"
       },
       "type": "actividad"

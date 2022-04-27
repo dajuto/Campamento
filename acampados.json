@@ -44,6 +44,8 @@
          "Telefono": 606606060,
          "Actividades": {"ListaActividades": []},
          "Pagado": "No",
+         "Actividades": {"Lista Actividades": []},
+         "Pagado": "Si",
          "Contraseña": "1",
          "Habitacion": "123",
          "DNI": "78765711A"
