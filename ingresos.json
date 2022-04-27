@@ -58,5 +58,20 @@
          "Contabilizada": "No"
       },
       "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ventas",
+         "Importe": 1200,
+         "Acampado": {
+            "Nombre": "Jose Cordero",
+            "DNI Acampado": "78765711A"
+         },
+         "Numero Factura": "2",
+         "Concepto": "Abono acampado",
+         "Fecha contable": "27/04/2022",
+         "Contabilizada": "No"
+      },
+      "type": "ingresos"
    }
 ]}
