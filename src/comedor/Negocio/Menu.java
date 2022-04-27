@@ -23,17 +23,18 @@ public abstract class Menu {
 	}
 	
 	public JSONObject report() {
-		JSONObject menu = new JSONObject();
-		menu.accumulate("type", "Menu");
+		JSONObject comedor = new JSONObject();
+		comedor.accumulate("type", "Menu");
 		JSONObject data = new JSONObject();
 		data.accumulate("Dia", this.dia);
-		data.accumulate("Desayuno", this.desayuno);
+		data.accumulate("Desayuno", this.desayuno); 
+		data.accumulate("Desayuno", desayuno);
 		data.accumulate("Comida", this.comida);
 		data.accumulate("Cena", this.cena);
-	
 		
-		menu.accumulate("data", data);
-		return menu;
+		
+		comedor.accumulate("data", data);
+		return comedor;
 	}
 	
 	
