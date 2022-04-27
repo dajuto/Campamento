@@ -132,12 +132,6 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		this.setVisible(true);
 	}
 	
-	private void quit() {
-    	int option = JOptionPane.showOptionDialog(this, "Are you sure you want to quit?", "quit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, 1); // el 1 es para q x defecto la opcion senalada sea NO
-        if (option == 0) {
-            System.exit(0);
-        }
-	}
 	
 	private void update(String nombreUsuario) {
 		this.nombreUsuario=nombreUsuario;

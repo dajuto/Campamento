@@ -1,6 +1,7 @@
 package actividades.Presentacion;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.GridLayout;
@@ -24,110 +25,72 @@ import javax.swing.JTable;
 import actividades.Negocio.ActividadObserver;
 import actividades.Negocio.ActividadTableModel;
 import actividades.Negocio.TActividad;
+import sanidad.Negocio.CitasMedicoTableModel;
+import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class VistaListaActividadesGestor extends JFrame implements ActividadObserver{
 	private String nombreUsuario;
 	private JButton anadirActividad;
 	private JButton eliminarActividad;
-	private JButton atras;
+	private JFrame atras;
 	private Frame ventanaAnterior;
 	
 	public VistaListaActividadesGestor(JFrame frame) {
 		setTitle("Lista Actividades");
-		SingletonControllerActividad.getInstance().addObserver(this);
+
+		getContentPane().setBackground(SystemColor.activeCaption);
+		getContentPane().setLayout(null);
+		setSize(551,501);
+		this.atras = frame;
 		
-		this.ventanaAnterior = frame;
-		this.anadirActividad = new JButton("Anadir actividad");
-		this.eliminarActividad = new JButton("Eliminar actividad");
-		this.atras = new JButton("Atras");
-		initGUI();
+		JButton boton_Atras = new JButton("Atras");
+		boton_Atras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				atras.setVisible(true);
+			}
+		});
+		boton_Atras.setBounds(15, 403, 499, 25);
+		getContentPane().add(boton_Atras);
+		
+		JLabel lblNewLabel = new JLabel("Lista Actividades: " + nombreUsuario);
+		lblNewLabel.setBackground(Color.WHITE);
+		lblNewLabel.setBounds(0, 0, 261, 20);
+		getContentPane().add(lblNewLabel);
+		
+		
+		anadirActividad = new JButton("Añadir Actividad");
+		anadirActividad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SingletonControllerActividad.getInstance().mostrarAnadirActividadGestor(getFrame());
+			}
+		});
+		anadirActividad.setBounds(15, 358, 250, 29);
+		getContentPane().add(anadirActividad);
+		
+		eliminarActividad = new JButton("Eliminar Actividad");
+		eliminarActividad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SingletonControllerActividad.getInstance().mostrarEliminarActividadGestor(getFrame());
+			}
+		});
+		eliminarActividad.setBounds(265, 358, 249, 29);
+		getContentPane().add(eliminarActividad);
+		
+		
+		
+		JPanel recetasView = createViewPanel(new JTable(new ActividadTableModel()), "Lista de Actividades");
+		recetasView.setBounds(10, 40, 500, 300);
+		getContentPane().add(recetasView);
+		
+		this.setVisible(true);
 	}
 	
 	private JFrame getFrame() {
 		return this;
 	}
 	
-	private void initGUI() {
-		JPanel mainPanel = new JPanel(new BorderLayout());
-		this.setContentPane(mainPanel);
-		mainPanel.add(new JLabel("Lista Actividades Gestor: " + nombreUsuario), BorderLayout.PAGE_START);
-		
-		JPanel centralPanel = new JPanel();
-		centralPanel.setLayout(new BoxLayout(centralPanel, BoxLayout.Y_AXIS));
-		
-		JPanel actividadView = createViewPanel(new JTable(new ActividadTableModel()), "Actividad Gestor");
-		actividadView.setPreferredSize(new Dimension(500, 400));
-		centralPanel.add(actividadView);
-		
-		JPanel p = new JPanel(new GridLayout(1, 3));
-		p.add(anadirActividad);
-		this.anadirActividad.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SingletonControllerActividad.getInstance().mostrarAnadirActividadGestor(getFrame());
-			}
-		});
-		p.add(eliminarActividad);
-		this.eliminarActividad.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				SingletonControllerActividad.getInstance().mostrarEliminarActividadGestor(getFrame());
-			}
-		});
-		centralPanel.add(p);
-		
-		mainPanel.add(centralPanel);
-		
-		JPanel a = new JPanel(new GridLayout(1, 1));
-		a.add(atras);
-		this.atras.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				ventanaAnterior.setVisible(true);
-			}
-		});
-		mainPanel.add(a, BorderLayout.PAGE_END);
-		
-		this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
-		
-		this.addWindowListener(new WindowListener() {
-
-            @Override
-            public void windowOpened(WindowEvent e) {}
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-                quit();
-            }
-
-			@Override
-            public void windowClosed(WindowEvent e) {}
-
-            @Override
-            public void windowIconified(WindowEvent e) {}
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {}
-
-            @Override
-            public void windowActivated(WindowEvent e) {}
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {}
-
-        });
-		
-		this.pack();
-		this.setVisible(true);
-	}
-	
-    private void quit() {
-    	int option = JOptionPane.showOptionDialog(this, "Are you sure you want to quit?", "quit", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, 1); // el 1 es para q x defecto la opcion senalada sea NO
-        if (option == 0) {
-            System.exit(0);
-        }
-	}
+   
     private JPanel createViewPanel(JComponent c, String title) {
 		JPanel p = new JPanel( new BorderLayout() );
 		p.add(new JScrollPane(c));
@@ -139,20 +102,17 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
     }
 	@Override
 	public void onRegister(List<TActividad> lista) {
-		// TODO Auto-generated method stub
-		
+		this.update(nombreUsuario);
 	}
 
 	@Override
 	public void onCreateActividad(List<TActividad> lista) {
-		// TODO Auto-generated method stub
-		
+		this.update(nombreUsuario);
 	}
 
 	@Override
 	public void onEliminarActividad(List<TActividad> lista) {
-		// TODO Auto-generated method stub
-		
+		this.update(nombreUsuario);
 	}
 
 }

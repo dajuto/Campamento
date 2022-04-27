@@ -66,13 +66,13 @@ public class ControllerActividad {
 	}
 
 
-	public void anadirActividad(JFrame ventanaListaActividad, String id, String lugar, String desc, String Fecha) {
+	public void anadirActividad(JFrame ventanaListaActividad, String id, String nombre, String instalacion, String monitor) {
 		boolean isNumericId =  id.matches("[+-]?\\d*(\\.\\d+)?");
-		boolean isNumericLugar =  lugar.matches("[+-]?\\d*(\\.\\d+)?");
-		boolean isNumericDesc =  desc.matches("[+-]?\\d*(\\.\\d+)?");
-		if(isNumericId && !isNumericLugar && !isNumericDesc) {
+		boolean isNumericNombre =  nombre.matches("[+-]?\\d*(\\.\\d+)?");
+		boolean isNumericInstalacion =  instalacion.matches("[+-]?\\d*(\\.\\d+)?");
+		if(isNumericId && !isNumericNombre && !isNumericInstalacion) {
 			int idActividad = Integer.parseInt(id);
-			boolean exito = SingletonServiAppActividad.getInstance().anadirActividad(idActividad, lugar, desc, Fecha);
+			boolean exito = SingletonServiAppActividad.getInstance().anadirActividad(idActividad, nombre, instalacion, monitor);
 			if(!exito) {
 				JOptionPane.showMessageDialog(ventanaListaActividad, "Ya existe una actividad con el mismo codigo", "Error", JOptionPane.ERROR_MESSAGE);
 			}

@@ -168,34 +168,4 @@
       "type": "Empleado Mantenimiento"
 
    }
-   {
-      "data": {
-         "puesto": "Nutricionista",
-         "horario": 9,
-         "salario": 4000,
-         "trabajo": {"listaMenu": []},
-         "vacaciones": "Todo el verano",
-         "usuario": "casilda0",
-         "contrasena": "11223344",
-         "nombre": "casilda"
-      },
-      "type": "Nutricionista"
-
-
-   },
-{
-
-      "data": {
-         "puesto": "Nutricionista",
-         "horario": 8,
-         "salario": 5000,
-         "trabajo": {"listaMenu": []},
-         "vacaciones": "Todo el verano",
-         "usuario": "crbelt02",
-         "contrasena": "12345678",
-         "nombre": "cristina"
-      },
-      "type": "Nutricionista"
-
-   }
 ]}
