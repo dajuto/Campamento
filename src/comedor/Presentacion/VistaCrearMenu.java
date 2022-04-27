@@ -134,12 +134,6 @@ public class VistaCrearMenu extends JFrame implements MenuObserver{
 	
 
 	@Override
-	public void onModificarMenu(List<TMenu> listaMenu) {
-		// TODO Auto-generated method stub
-		this.update(listaMenu,dia);
-	}
-
-	@Override
 	public void onCrearMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
 		this.update(listaMenu,dia);
