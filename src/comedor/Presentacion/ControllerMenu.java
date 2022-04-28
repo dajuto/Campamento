@@ -1,11 +1,13 @@
 package comedor.Presentacion;
 
 import java.awt.Frame;
-
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 
+import acampados.Negocio.TAcampado;
+import acampadosPresentacion.SingletonControllerAcampado;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleado;
 import empleados.Presentacion.SingletonControllerEmpleado;
