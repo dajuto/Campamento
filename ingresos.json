@@ -73,5 +73,20 @@
          "Contabilizada": "No"
       },
       "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ventas",
+         "Importe": 1200,
+         "Acampado": {
+            "Nombre": "david dajuto",
+            "DNI Acampado": "78787877A"
+         },
+         "Numero Factura": "3",
+         "Concepto": "Abono acampado",
+         "Fecha contable": "28/04/2022",
+         "Contabilizada": "No"
+      },
+      "type": "ingresos"
    }
 ]}
