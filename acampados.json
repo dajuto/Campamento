@@ -100,5 +100,56 @@
          "DNI": "78787877A"
       },
       "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "Pepeeee",
+         "Apellidos": "Luiss",
+         "Edad": 29,
+         "Salud": "Sano",
+         "Usuario": "pepe01",
+         "Email": "pepe@ucm.es",
+         "Telefono": 630864506,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "Si",
+         "Contraseña": "12345678",
+         "Habitacion": "123",
+         "DNI": "78765711A"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "Jose ",
+         "Apellidos": "LUISITO",
+         "Edad": 99,
+         "Salud": "Gripe",
+         "Usuario": "josito01",
+         "Email": "josito@ucm.es",
+         "Telefono": 666666666,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "No",
+         "Contraseña": "12345678",
+         "Habitacion": "123",
+         "DNI": "78765711G"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "Vicente",
+         "Apellidos": "Madurga",
+         "Edad": 22,
+         "Salud": "Sano",
+         "Usuario": "Vicente00",
+         "Email": "vicente@ucm.es",
+         "Telefono": 630864506,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "Si",
+         "Contraseña": "12345678",
+         "Habitacion": "123",
+         "DNI": "78766666A"
+      },
+      "type": "acampado"
    }
 ]}

@@ -58,5 +58,17 @@
          "Contabilizada": "Si"
       },
       "type": "gastos"
+   },
+   {
+      "data": {
+         "Fecha de pago": "28/04/2022",
+         "Tipo": "Sueldos y Salarios",
+         "Empleado": "Almudena",
+         "Importe": 500,
+         "Numero Factura": "6",
+         "Concepto": "Pago nomina",
+         "Contabilizada": "Si"
+      },
+      "type": "gastos"
    }
 ]}

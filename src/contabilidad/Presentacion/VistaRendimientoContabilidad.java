@@ -64,6 +64,7 @@ public class VistaRendimientoContabilidad extends JFrame implements Contabilidad
 		gastos_txt.setBounds(189, 105, 120, 36);
 		getContentPane().add(gastos_txt);
 		gastos_txt.setColumns(10);
+		gastos_txt.setEditable(false);
 		
 		JLabel ing = new JLabel("Total Ingresos");
 		ing.setFont(new Font("Times New Roman", Font.BOLD, 24));
@@ -85,6 +86,7 @@ public class VistaRendimientoContabilidad extends JFrame implements Contabilidad
 		rend_txt.setBounds(275, 171, 105, 34);
 		getContentPane().add(rend_txt);
 		rend_txt.setColumns(10);
+		rend_txt.setEditable(false);
 		
 		for(TIngresos cod: listaIngresos) {
 			TotalIngresos += cod.getImporte();  
