@@ -77,6 +77,14 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 	
 	//RECETAS
 	
+	public List<TMedico> getListaMedicos() {
+		return listaMedicos;
+	}
+
+	public void setListaMedicos(List<TMedico> listaMedicos) {
+		this.listaMedicos = listaMedicos;
+	}
+
 	public List<TReceta> getListaRecetas() {	
 		this.updateRecetas();
 		return listaRecetas;
@@ -177,8 +185,10 @@ public class ServiAppSanidad implements Observable<SanidadObserver> {
 				if(this.listaCitas.get(i).atendido.equals("Si")) {
 					//SingletonControllerSanidad.getInstance().mostrarEliminarReceta(frame);(this.listaAverias.get(i));
 					this.listaCitas.remove(i);
+					this.onEliminar();
 					this.guardaCita();
-				    this.onEliminar();
+					
+				   
 				    i--;
 				}
 				else {

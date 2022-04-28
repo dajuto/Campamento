@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import acampados.Negocio.TAcampado;
+import empleados.Negocio.TEmpleado;
 import empleados.Negocio.TMedico;
 import gestoria.Negocio.TMantenimiento;
 import gestoria.Presentacion.SingletonControllerGestoria;
@@ -28,7 +29,7 @@ public class VistaEliminarCita extends JFrame implements SanidadObserver{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
-	private String nombreUsuario;
+	private String nombreUsuario=SingletonControllerSanidad.getInstance().getNombreUsuarioSanidad();
 	private JComboBox<Integer> codCita;
 	List<TCita> listCitas=SingletonControllerSanidad.getInstance().getListaCitas();
 	
@@ -97,6 +98,8 @@ public class VistaEliminarCita extends JFrame implements SanidadObserver{
 		//this.listaAcampados=listaAcampados;
 		this.nombreUsuario = nombreUsuario;
 	}
+
+
 
 
 

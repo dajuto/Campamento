@@ -32,7 +32,7 @@ public class VistaMenuCitas extends JFrame implements SanidadObserver{
 	 */
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
-	private String nombreUsuario=SingletonControllerSanidad.getInstance().getNombreUsuarioSanidad();;
+	private String nombreUsuario=SingletonControllerSanidad.getInstance().getNombreUsuarioSanidad();
 	private RecetasMedicoTableModel table;
 	private JTable table_1;
 	
@@ -61,16 +61,7 @@ public class VistaMenuCitas extends JFrame implements SanidadObserver{
 		
 		
 		
-		/**JButton btnCrearReceta = new JButton("Crear Receta");
-		btnCrearReceta.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SingletonControllerSanidad.getInstance().mostrarCrearReceta(getFrame());
-			}
-		});
-		btnCrearReceta.setBounds(15, 358, 149, 29);
-		getContentPane().add(btnCrearReceta);
-		*/
-		
+	
 		JButton btnConsultarRecetas = new JButton("Consultar Citas");
 		btnConsultarRecetas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

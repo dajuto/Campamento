@@ -251,7 +251,7 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 
 	public void modificarMedico(String empleado, String codigo) {
 		for(TEmpleado e: this.listaEmpleados) {
-			if(e.nombre.equals(empleado) && e.puesto.equals("Medico")) {
+			if(e.usuario.equals(empleado) && e.puesto.equals("Medico")) {
 				TMedico te = (TMedico) e;
 				if (te.citasPendientes.isEmpty()) {
 					te.citasPendientes.add(codigo);

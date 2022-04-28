@@ -22,7 +22,7 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 	
 	private static final long serialVersionUID = 1L;
 	private JFrame atras;
-	private String nombreUsuario;
+	private String nombreUsuario=SingletonControllerSanidad.getInstance().getNombreUsuarioSanidad();
 	private JComboBox<Integer> codReceta;
 	List<TReceta> listaRecetas;
 
@@ -47,7 +47,9 @@ public class VistaConsultarListaRecetas extends JFrame implements SanidadObserve
 		codReceta = new JComboBox<Integer>();
 		codReceta.setBounds(65, 84, 184, 26);
 		for(TReceta te: SingletonServiAppSanidad.getInstance().getListaRecetas()) {
-			codReceta.addItem(te.getCodigo());
+			if(te.getNombremedico().equals(this.nombreUsuario)) {
+				codReceta.addItem(te.getCodigo());
+			}
 		}
 		getContentPane().add(codReceta);
 		

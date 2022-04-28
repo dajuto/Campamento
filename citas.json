@@ -1,48 +1,18 @@
 {"citas": [
    {
       "data": {
-         "codigo": "2",
-         "motivo": "gastrointeritis",
+         "codigo": "9",
+         "motivo": "Fiebre",
          "NombreAcampado": "j",
          "atendido": "No",
-         "Nombremedico": "David Viejo"
+         "Nombremedico": "d"
       },
       "type": "cita"
    },
    {
       "data": {
-         "codigo": "3",
-         "motivo": "Caida",
-         "NombreAcampado": "j",
-         "atendido": "No",
-         "Nombremedico": "David Viejo"
-      },
-      "type": "cita"
-   },
-   {
-      "data": {
-         "codigo": "5",
-         "motivo": "alergia",
-         "NombreAcampado": "j",
-         "atendido": "No",
-         "Nombremedico": "David Viejo"
-      },
-      "type": "cita"
-   },
-   {
-      "data": {
-         "codigo": "6",
-         "motivo": "Mareo",
-         "NombreAcampado": "j",
-         "atendido": "No",
-         "Nombremedico": "David Viejo"
-      },
-      "type": "cita"
-   },
-   {
-      "data": {
-         "codigo": "7",
-         "motivo": "Me cago",
+         "codigo": "10",
+         "motivo": "dx",
          "NombreAcampado": "j",
          "atendido": "No",
          "Nombremedico": "dajuto"

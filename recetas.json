@@ -1,34 +1,12 @@
 {"recetas": [
    {
       "data": {
-         "codigo": "1",
-         "NombreAcampado": "Borja",
-         "dosis": "3 al dia",
-         "medicamento": "ibuprofeno",
-         "Nombremedico": "David Viejo",
-         "comprado": "Adquirido"
-      },
-      "type": "receta"
-   },
-   {
-      "data": {
-         "codigo": "2",
-         "NombreAcampado": "Jose",
-         "dosis": "2 al dia",
-         "medicamento": "omeprazol",
-         "Nombremedico": "David Viejo",
-         "comprado": "Sin Adquirir"
-      },
-      "type": "receta"
-   },
-   {
-      "data": {
          "codigo": "4",
          "NombreAcampado": "Jose",
          "dosis": "1 a la semana",
          "medicamento": "enantyum",
-         "Nombremedico": "Dajuto",
-         "comprado": "Sin Adquirir"
+         "Nombremedico": "dajuto",
+         "comprado": "Adquirido"
       },
       "type": "receta"
    },
@@ -38,7 +16,18 @@
          "NombreAcampado": "Alvaro ",
          "dosis": "1 al dia",
          "medicamento": "enantyum",
-         "Nombremedico": "David Viejo",
+         "Nombremedico": "d",
+         "comprado": "Adquirido"
+      },
+      "type": "receta"
+   },
+   {
+      "data": {
+         "codigo": "10",
+         "NombreAcampado": "Alvarito",
+         "dosis": "rgsse",
+         "medicamento": "degdw",
+         "Nombremedico": "d",
          "comprado": "Sin Adquirir"
       },
       "type": "receta"

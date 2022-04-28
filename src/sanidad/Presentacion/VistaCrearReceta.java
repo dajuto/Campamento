@@ -32,10 +32,11 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 
 	
 	private JFrame atras;
-	private String nombreUsuario;
-	private JTextField textField;
+	private String nombreUsuario=SingletonControllerSanidad.getInstance().getNombreUsuarioSanidad();
+
 	private JTextField textField_1;
 	private JTextField textField_2;
+	private JLabel lblNewLabel_5;
 	JComboBox<String> comboBox;
 	JComboBox<String> comboBox_1;
 	List<TMedico> listaMedicos;
@@ -67,7 +68,7 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerSanidad.getInstance().anadirReceta(atras, textField.getText(), textField_1.getText(), textField_2.getText(), comboBox.getSelectedItem().toString(),comboBox_1.getSelectedItem().toString());
+				SingletonControllerSanidad.getInstance().anadirReceta(atras, lblNewLabel_5.getText(), textField_1.getText(), textField_2.getText(), comboBox.getSelectedItem().toString(),comboBox_1.getSelectedItem().toString());
 				
 			}
 		});
@@ -84,10 +85,23 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		lblNewLabel_1.setBounds(15, 93, 69, 20);
 		getContentPane().add(lblNewLabel_1);
 		
-		textField = new JTextField();
-		textField.setBounds(142, 90, 146, 26);
-		getContentPane().add(textField);
-		textField.setColumns(10);
+		int cod = 0;
+		String c = null;
+		for(TReceta e: SingletonControllerSanidad.getInstance().getListaRecetas()) {
+			cod=e.getCodigo()+1;
+			if(cod==10) {
+				cod=1;
+			}
+			c=Integer.toString(cod);
+		}
+		
+		lblNewLabel_5 = new JLabel(c);
+		lblNewLabel_5.getText();
+		lblNewLabel_5.setBackground(Color.WHITE);
+		lblNewLabel_5.setBounds(142, 93, 146, 20);
+		getContentPane().add(lblNewLabel_5);
+		
+		
 		
 		
 		JLabel lblMedicamento = new JLabel("Medicamento: ");
@@ -117,7 +131,7 @@ public class VistaCrearReceta extends JFrame implements SanidadObserver{
 		comboBox.setBounds(142, 200, 146, 22);
 		for(TEmpleado e: SingletonControllerSanidad.getInstance().getListaEmpleados()) {
 			if (e.getPuesto().matches("Medico")) {
-				comboBox.addItem(e.getNombre());
+				comboBox.addItem(e.getUsuario());
 			}
 		}
 		getContentPane().add(comboBox);

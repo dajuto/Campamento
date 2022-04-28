@@ -96,6 +96,9 @@ public class VistaPedirCita extends JFrame implements SanidadObserver{
 		String c = null;
 		for(TCita e: SingletonControllerSanidad.getInstance().getListaCitas()) {
 			cod=e.getCodigo()+1;
+			if(cod==10) {
+				cod=1;
+			}
 			c=Integer.toString(cod);
 		}
 		

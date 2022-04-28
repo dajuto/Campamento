@@ -53,12 +53,7 @@
          "puesto": "Medico",
          "horario": 8,
          "salario": 8000,
-         "trabajo": {"citasPendientes": [
-            "2",
-            "3",
-            "5",
-            "6"
-         ]},
+         "trabajo": {"citasPendientes": ["9"]},
          "vacaciones": "Todo el verano",
          "usuario": "d",
          "contrasena": "1",
@@ -142,30 +137,25 @@
          "puesto": "Medico",
          "horario": 8,
          "salario": 8000,
-         "trabajo": {"citasPendientes": []},
+         "trabajo": {"citasPendientes": ["10"]},
          "vacaciones": "Todo el verano",
          "usuario": "dajuto",
          "contrasena": "11111111",
          "nombre": "Dajuto"
       },
       "type": "Medico"
-
-
    },
-    
    {
-
       "data": {
          "puesto": "Gestor Actividades",
          "horario": 8,
          "salario": 3000,
-         "trabajo": {"listaActividades": []},
+         "trabajo": {"listaAverias": []},
          "vacaciones": "Todo el verano",
          "usuario": "crmanz",
          "contrasena": "12345678",
          "nombre": "Cristian"
       },
       "type": "Empleado Mantenimiento"
-
    }
 ]}

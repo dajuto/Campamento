@@ -16,6 +16,7 @@ import launcher.Factory;
 import sanidad.Negocio.SanidadObserver;
 import sanidad.Negocio.SingletonServiAppSanidad;
 import sanidad.Negocio.TCita;
+import sanidad.Negocio.TReceta;
 
 public class ControllerSanidad {
 
@@ -200,6 +201,9 @@ public class ControllerSanidad {
 
 	public List<TCita> getListaCitas() {	
 		return SingletonServiAppSanidad.getInstance().getListaCitas();
+	}
+	public List<TReceta> getListaRecetas() {	
+		return SingletonServiAppSanidad.getInstance().getListaRecetas();
 	}
 	
 	public void modificarMedico(String empleado, String codigo) {
