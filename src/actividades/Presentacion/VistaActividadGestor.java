@@ -17,16 +17,22 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 public class VistaActividadGestor extends JFrame implements ActividadObserver{
+	
+	private JFrame atras;
+	
 	public VistaActividadGestor(JFrame frame) {
 		setTitle("Menu Actividades");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		
+		this.atras = frame;
+		
 		JButton boton_Atras = new JButton("Atras");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
+				atras.setVisible(true);
 				//SingletonControllerActividad.getInstance().menuGestor();
 			}
 		});

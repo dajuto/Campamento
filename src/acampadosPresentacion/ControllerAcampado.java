@@ -40,11 +40,11 @@ public class ControllerAcampado {
 	}
 	
 	
-	public void acampado(JFrame f) {
+	public void acampado() {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				new VistaAcampado(f);
+				new VistaAcampado();
 			}
 		});
 	}
@@ -110,6 +110,10 @@ public class ControllerAcampado {
 
 	public void cambiarContrasena(String contrasena) {
 		SingletonServiAppAcampado.getInstance().cambiarContrasena(contrasena);
+	}
+	
+	public void cambiarIsPagado(boolean pagado) {
+		SingletonServiAppAcampado.getInstance().cambiarIsPagado(pagado);
 	}
 
 	

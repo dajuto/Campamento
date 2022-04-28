@@ -5,6 +5,8 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import actividades.Negocio.TActividad;
+
 public class Acampado {
 	protected String usuario;
 	protected String contrasena;
@@ -16,7 +18,7 @@ public class Acampado {
 	protected int telefono;
 	protected String salud;
 	protected String habitacion;
-	protected List<String> listaactividades; //TODO SEGOVIANO, CAMBIA STRING POR TActividades
+	protected List<TActividad> listaActividades; //TODO SEGOVIANO, CAMBIA STRING POR TActividades
 	protected boolean pagado;
 	
 	public String getUsuario() {
@@ -65,8 +67,8 @@ public class Acampado {
 		return habitacion;
 	}
 
-	public List<String> getListaActividades() {
-		return listaactividades;
+	public List<TActividad> getListaActividades() {
+		return listaActividades;
 	}
 
 	public boolean isPagado() {
@@ -95,7 +97,7 @@ public class Acampado {
 		data.put("Habitacion", habitacion);
 		
 		JSONObject activi = new JSONObject();
-		activi.accumulate("Lista Actividades", this.getListaActividades());
+		activi.accumulate("ListaActividades", this.getListaActividades());
 		data.accumulate("Actividades", activi);
 //		String actividades = "[";
 //		for(int j = 0; j < this.listaactividades.size(); j++) {

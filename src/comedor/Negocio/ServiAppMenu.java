@@ -70,14 +70,14 @@ public class ServiAppMenu implements Observable<MenuObserver>{
 	void onCrearMenu() {
 		this.updateMenu();
 		for(MenuObserver o: this.observers) {
-			o.onCrearMenu(this.listaMenu,this.nombreUsuario);
+			o.onCrearMenu(this.listaMenu);
 		}
 	}
 	
 	void onEliminarMenu() {
 		this.updateMenu();
 		for(MenuObserver o: this.observers) {
-			o.onEliminarMenu(this.listaMenu,this.nombreUsuario);
+			o.onEliminarMenu(this.listaMenu);
 		}
 	}
 
@@ -85,27 +85,22 @@ public class ServiAppMenu implements Observable<MenuObserver>{
 	void onConsultarMenu() {
 		this.updateMenu();
 		for(MenuObserver o: this.observers) {
-			o.onConsultarMenu(this.listaMenu,this.nombreUsuario);
+			o.onConsultarMenu(this.listaMenu);
 		}
 	}
 	
-	void onModificarMenu() {
-		this.updateMenu();
-		for(MenuObserver o: this.observers) {
-			o.onModificarMenu(this.listaMenu,this.nombreUsuario);
-		}
-	}
+	
 	
 	public boolean crearMenu(String dia, String desayuno, String comida, String cena) {
 		this.updateMenu();
 		boolean puedo = true;
 		for(TMenu ta: this.listaMenu) {
-			if(ta.dia == diaMenu) {
+			if(ta.dia == dia) {
 				puedo = false;
 			}
 		}
 		if(puedo) {
-			JSONObject Menu = new JSONObject();
+			JSONObject comedor = new JSONObject();
 			
 			JSONObject data = new JSONObject();
 			data.accumulate("Dia", dia);
@@ -113,10 +108,10 @@ public class ServiAppMenu implements Observable<MenuObserver>{
 			data.accumulate("Comida", comida);
 			data.accumulate("Cena", cena);
 			
-			menu.accumulate("data", data);
-			menu.accumulate("type", "menu");
+			comedor.accumulate("data", data);
+			comedor.accumulate("type", "menu");
 			
-			TMenu ta = (TMenu) this.factoriaTranserObjects.createInstance(menu);
+			TMenu ta = (TMenu) this.factoriaTranserObjects.createInstance(comedor);
 			this.listaMenu.add(ta);
 			this.guardaMenu();
 		    this.onCrearMenu();
@@ -127,16 +122,21 @@ public class ServiAppMenu implements Observable<MenuObserver>{
 		}
 	}
 	
-	public void eliminarMenu(JFrame frame, String dia) {  
-		for (int i = 0; i < listaMenu.size(); i++) {
-			if (listaMenu.get(i).getDia().equals(dia)) {
-				listaMenu.remove(i);
-				SingletonDaoMenu.getInstance().escribeTodo(listaMenu);
-				this.updateMenu();
-			}
-		}
-	}
 	
+	
+	public boolean eliminarMenu(Frame ventanaListaMenu, String dia) {
+		boolean actividad = true;
+		for(int i = 0; i < this.listaMenu.size(); i++) {
+			if(this.listaMenu.get(i).getDia() == dia) {
+					this.listaMenu.remove(i);
+					this.guardaMenu();
+				    this.onEliminarMenu();
+				    i--;
+				}
+				
+		}
+		return actividad;
+	}
 	
 	public void consultarMenu(String dia) {
 		for(TMenu ta: this.listaMenu) {
@@ -153,16 +153,6 @@ public class ServiAppMenu implements Observable<MenuObserver>{
 		}
 	}
 	
-	public void modificarMenu(String dia, String desayuno, String comida, String cena, JFrame frame) {
-		for (int i = 0; i < listaMenu.size(); i++) {
-			if (listaMenu.get(i).getDia().equals(dia)) {
-				listaMenu.get(i).desayuno = desayuno;
-				listaMenu.get(i).comida = comida;
-				listaMenu.get(i).cena = cena;
-				SingletonDaoMenu.getInstance().escribeTodo(listaMenu);
-				this.updateMenu();
-			}
-		}
-	}
+	
 	
 }

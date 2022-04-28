@@ -78,7 +78,7 @@ public class ServiAppActividad implements Observable<ActividadObserver>{
       SingletonDaoActividad.getInstance().escribeTodo(listaActividad);
 	}
 	
-	public boolean anadirActividad(int idActividad, String instalacion, String monitor, String nombre) {
+	public boolean anadirActividad(int idActividad, String nombre, String instalacion, String monitor) {
 		this.updateActividad();
 		boolean puedo = true;
 		for(TActividad ta: this.listaActividad) {

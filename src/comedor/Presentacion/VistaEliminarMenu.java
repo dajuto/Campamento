@@ -15,57 +15,62 @@ import javax.swing.JLabel;
 
 import comedor.Negocio.MenuObserver;
 import comedor.Negocio.TMenu;
+import comedor.Negocio.SingletonServiAppMenu;
+import sanidad.Negocio.SingletonServiAppSanidad;
+import sanidad.Negocio.TCita;
+import sanidad.Presentacion.SingletonControllerSanidad;
 
 
 //import javax.swing.JTable;
 
 public class VistaEliminarMenu extends JFrame implements MenuObserver{
+	
 	private JFrame atras;
 	private String dia;
-	private JComboBox<String> codMenu;
+	private JComboBox<String> diaMenu;
 	List<TMenu> listaMenu;
 	
 	public VistaEliminarMenu(JFrame frame) {
-		setTitle("Añadir Menu ");
+		setTitle("Eliminar Menu ");
 		this.atras=frame;
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(551,275);
 		
-		JLabel lblNewLabel = new JLabel("Eliminar Menu: " + dia);
+		JLabel lblNewLabel = new JLabel("Eliminar Menu: ");
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(0, 0, 261, 20);
 		getContentPane().add(lblNewLabel);
 		
-		codMenu = new JComboBox<Integer>();
-		codMenu.setBounds(330, 54, 184, 26);
+		diaMenu = new JComboBox<String>();
+		diaMenu.setBounds(251, 54, 184, 26);
 		for(TMenu te: SingletonServiAppMenu.getInstance().getListaMenu()) {
-			codMenu.addItem(te.getCodigo());
+			diaMenu.addItem(te.getDia());
 		}
-		getContentPane().add(codMenu);
+		getContentPane().add(diaMenu);
 		
 		JLabel lblEliminar = new JLabel("Dia de la semana que quiere eliminar: ");
-		lblEliminar.setBounds(27, 57, 314, 20);
+		lblEliminar.setBounds(44, 57, 314, 20);
 		getContentPane().add(lblEliminar);
 		
-		JButton boton_Atras = new JButton("Atras");
+		JButton boton_Atras = new JButton("Atrás");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				//atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(364, 163, 150, 25);
+		boton_Atras.setBounds(366, 179, 150, 25);
 		getContentPane().add(boton_Atras);
 		
 		JButton boton_Aceptar = new JButton("Aceptar");
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerMenu.getInstance().eliminarMenu(atras, ((int)codMenu.getSelectedItem()));
+				SingletonControllerMenu.getInstance().eliminarMenu(atras, ((String)diaMenu.getSelectedItem()));
 			}
 		});
-		boton_Aceptar.setBounds(27, 163, 150, 25);
+		boton_Aceptar.setBounds(25, 179, 150, 25);
 		getContentPane().add(boton_Aceptar);
 		
 		setVisible(true);
@@ -76,32 +81,34 @@ public class VistaEliminarMenu extends JFrame implements MenuObserver{
 		return this;
 	}
 	
-	private void update(List<TMenu> listaMenu,  String dia) {
+	private void update(List<TMenu> listaMenu) {
 		this.listaMenu = listaMenu;
-		this.dia = dia;
+		
 	}
 	
 	@Override
-	public void onCrearMenu(List<TMenu> listaMenu, String dia) {
+	public void onEliminarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
+		this.update(listaMenu);
+	}	
+	
+	@Override
+	public void onCrearMenu(List<TMenu> listaMenu) {
+		// TODO Auto-generated method stub
+		this.update(listaMenu);
 	}
 
 	@Override
-	public void onConsultarMenu(List<TMenu> listaMenu, String dia) {
+	public void onConsultarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
+		this.update(listaMenu);
 	}
 
-	@Override
-	public void onModificarMenu(List<TMenu> listaMenu, String dia) {
-		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
-	}		
 	
 	
 
 }
+
 
 
 

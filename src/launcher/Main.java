@@ -40,7 +40,7 @@ public class Main {
 		constructores.add(new MedicoBuilder());
 		constructores.add(new GastosBuilder());
 		constructores.add(new IngresosBuilder());
-		constructores.add(new MenuBuilder());
+		//constructores.add(new MenuBuilder());
 	
 		
 		Factory<Object> factoriaTransferObjects = new BuilderBasedFactory<>(constructores);

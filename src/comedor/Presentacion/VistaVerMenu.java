@@ -1,30 +1,27 @@
 package comedor.Presentacion;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-
 import comedor.Negocio.MenuObserver;
-import comedor.Negocio.MenuTableModel;
 import comedor.Negocio.TMenu;
+import empleados.Negocio.TEmpleadoLimpieza;
+import gestoria.Negocio.GestoriaObserver;
+import gestoria.Negocio.TInstalacion;
+import gestoria.Negocio.TLimpieza;
+import gestoria.Negocio.TMantenimiento;
 
-import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JComponent;
-import javax.swing.JTable;
 
 public class VistaVerMenu extends JFrame implements MenuObserver{
+	
 	private JFrame atras;
-	private String dia;
+	
 	public VistaVerMenu(JFrame frame) {
-		setTitle("Menu Semanal");
+		setTitle("Menu");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
@@ -36,48 +33,49 @@ public class VistaVerMenu extends JFrame implements MenuObserver{
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				atras.setVisible(true);
+				//SingletonControllerMenu.getInstance().mostrarMenu();
 			}
 		});
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel labcrear = new JLabel("Lista menu");
-		labcrear.setFont(new Font("Times New Roman", Font.BOLD, 24));
-		labcrear.setBounds(25, 24, 330, 36);
-		getContentPane().add(labcrear);
-		
-		JPanel p2 = createViewPanel(new JTable(new MenuTableModel()), "Menu");
-		p2.setBounds(35, 73, 416, 126);
-		getContentPane().add(p2);
+		JButton boton_VerMenu = new JButton("Ver Menu Semanal");
+		boton_VerMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerMenu.getInstance().mostrarListaMenu(getFrame());
+			}
+		});
+		boton_VerMenu.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		boton_VerMenu.setBounds(149, 101, 201, 38);
+		getContentPane().add(boton_VerMenu);
 		
 		setVisible(true);
 	}
 	
-	private JPanel createViewPanel(JComponent c, String title) {
-		JPanel p = new JPanel( new BorderLayout() );
-		p.add(new JScrollPane(c));
-		return p;
+	private JFrame getFrame() {
+		return this;
 	}
 	
-	private void update(List<TMenu> listaMenu, String dia) {
-		this.dia = dia;
+	@Override
+	public void onRegister(List<TMenu> listaMenu) {
+		// TODO Auto-generated method stub
 	}
 
 	@Override
 	public void onCrearMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
 	}
 
 	@Override
 	public void onEliminarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
+	}
+	
+	@Override
+	public void onConsultarMenu(List<TMenu> listaMenu) {
+		// TODO Auto-generated method stub
 	}
 
-	@Override
-	public void onModificarMenu(List<TMenu> listaMenu) {
-		// TODO Auto-generated method stub
-		this.update(listaMenu, dia);
-	}		
+
 }

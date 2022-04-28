@@ -171,12 +171,14 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		this.guardaAcampado();
 	}
 
-	
-
-	
-	
-	
-	
+	public void cambiarIsPagado(Boolean pagado) {
+		for (TAcampado acampado: listaAcampados) {
+			if (acampado.usuario.equals(nombreUsuario)) {
+				acampado.pagado = pagado;
+			}
+		}
+		this.guardaAcampado();
+	}		
 }
 
 

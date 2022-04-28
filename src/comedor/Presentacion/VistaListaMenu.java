@@ -1,4 +1,4 @@
-package actividades.Presentacion;
+package comedor.Presentacion;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -22,21 +22,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import actividades.Negocio.ActividadObserver;
-import actividades.Negocio.ActividadTableModel;
-import actividades.Negocio.TActividad;
+import comedor.Negocio.MenuObserver;
+import comedor.Negocio.MenuTableModel;
+import comedor.Negocio.TMenu;
 import sanidad.Negocio.CitasMedicoTableModel;
 import sanidad.Presentacion.SingletonControllerSanidad;
 
-public class VistaListaActividadesGestor extends JFrame implements ActividadObserver{
-	private String nombreUsuario;
-	private JButton anadirActividad;
-	private JButton eliminarActividad;
+public class VistaListaMenu extends JFrame implements MenuObserver{
+	private String dia;
+	private JButton crearMenu;
+	private JButton eliminarMenu;
 	private JFrame atras;
 	private Frame ventanaAnterior;
 	
-	public VistaListaActividadesGestor(JFrame frame) {
-		setTitle("Lista Actividades");
+	public VistaListaMenu(JFrame frame) {
+		setTitle("Menu Semanal");
 
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
@@ -53,33 +53,33 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 		boton_Atras.setBounds(15, 403, 499, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel lblNewLabel = new JLabel("Lista Actividades: " + nombreUsuario);
+		JLabel lblNewLabel = new JLabel("Menu Semanal");
 		lblNewLabel.setBackground(Color.WHITE);
 		lblNewLabel.setBounds(0, 0, 261, 20);
 		getContentPane().add(lblNewLabel);
 		
 		
-		anadirActividad = new JButton("Añadir Actividad");
-		anadirActividad.addActionListener(new ActionListener() {
+		crearMenu = new JButton("AÃ±adir Menu");
+		crearMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SingletonControllerActividad.getInstance().mostrarAnadirActividadGestor(getFrame());
+				SingletonControllerMenu.getInstance().mostrarCrearMenu(getFrame());
 			}
 		});
-		anadirActividad.setBounds(15, 358, 250, 29);
-		getContentPane().add(anadirActividad);
+		crearMenu.setBounds(15, 358, 250, 29);
+		getContentPane().add(crearMenu);
 		
-		eliminarActividad = new JButton("Eliminar Actividad");
-		eliminarActividad.addActionListener(new ActionListener() {
+		eliminarMenu = new JButton("Eliminar Menu");
+		eliminarMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				SingletonControllerActividad.getInstance().mostrarEliminarActividadGestor(getFrame());
+				SingletonControllerMenu.getInstance().mostrarEliminarMenu(getFrame());
 			}
 		});
-		eliminarActividad.setBounds(265, 358, 249, 29);
-		getContentPane().add(eliminarActividad);
+		eliminarMenu.setBounds(265, 358, 249, 29);
+		getContentPane().add(eliminarMenu);
 		
 		
 		
-		JPanel recetasView = createViewPanel(new JTable(new ActividadTableModel()), "Lista de Actividades");
+		JPanel recetasView = createViewPanel(new JTable(new MenuTableModel()), "Menu Semanal");
 		recetasView.setBounds(10, 40, 500, 300);
 		getContentPane().add(recetasView);
 		
@@ -97,24 +97,27 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 		return p;
 	}
 
-    private void update (String nombreUsuario) {
-    	this.nombreUsuario=nombreUsuario;
+    private void update (String dia) {
+    	this.dia=dia;
     }
 	@Override
-	public void onRegister(List<TActividad> lista) {
-		this.update(nombreUsuario);
+	public void onRegister(List<TMenu> listaMenu) {
+		this.update(dia);
 	}
 
 	@Override
-	public void onCreateActividad(List<TActividad> lista) {
-		this.update(nombreUsuario);
+	public void onCrearMenu(List<TMenu> listaMenu) {
+		this.update(dia);
 	}
 
 	@Override
-	public void onEliminarActividad(List<TActividad> lista) {
-		this.update(nombreUsuario);
+	public void onEliminarMenu(List<TMenu> listaMenu) {
+		this.update(dia);
+	}
+	
+	@Override
+	public void onConsultarMenu(List<TMenu> listaMenu) {
+		// TODO Auto-generated method stub
 	}
 
 }
-
-

@@ -106,6 +106,10 @@ public class ControllerEmpleado {
 		
 	}
 	
+//	public void comedor(JFrame frame) {
+//		SingletonControllerMenu.getInstance().mostrarMenu(frame);
+//	}
+	
 	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
 		SingletonServiAppEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
 	}

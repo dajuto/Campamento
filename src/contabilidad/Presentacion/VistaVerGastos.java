@@ -28,7 +28,7 @@ public class VistaVerGastos extends JFrame implements ContabilidadObserver{
 		setTitle("Lista de Gastos Campamento");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
-		setSize(627,376);
+		setSize(624,378);
 		
 		this.atras = frame;
 		

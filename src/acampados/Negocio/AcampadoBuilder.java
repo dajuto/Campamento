@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import actividades.Negocio.TActividad;
 import launcher.Builder;
 
 public class AcampadoBuilder extends  Builder<Object> {
@@ -28,11 +29,11 @@ public class AcampadoBuilder extends  Builder<Object> {
 		String habitacion = data.getString("Habitacion");
 		
 		JSONObject activi = data.getJSONObject("Actividades");
-		List<String> listaActividades = new ArrayList<String>();
+		List<TActividad> listaActividades = new ArrayList<TActividad>();
 		if(activi.has("Lista Actividades")) {
-			JSONArray actividades = activi.getJSONArray("Lista Actividades");
+			JSONArray actividades = activi.getJSONArray("ListaActividades");
 			for(int i = 0; i < actividades.length(); i++) {
-				listaActividades.add(actividades.getString(i));
+				listaActividades.add((TActividad) actividades.get(i));
 	        }  
 		}
 		

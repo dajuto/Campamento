@@ -27,7 +27,7 @@ public class VistaVerIngresos extends JFrame implements ContabilidadObserver{
 		setTitle("Lista de Ingresos Campamento");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
-		setSize(500,300);
+		setSize(624,384);
 		
 		this.atras = frame;
 		
@@ -38,7 +38,7 @@ public class VistaVerIngresos extends JFrame implements ContabilidadObserver{
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(373, 215, 97, 25);
+		boton_Atras.setBounds(437, 289, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 		JLabel labcrear = new JLabel("Lista de Ingresos");
@@ -47,7 +47,7 @@ public class VistaVerIngresos extends JFrame implements ContabilidadObserver{
 		getContentPane().add(labcrear);
 		
 		JPanel p2 = createViewPanel(new JTable(new IngresosTableModel()), "Ingresos campamento");
-		p2.setBounds(35, 73, 416, 126);
+		p2.setBounds(35, 73, 533, 183);
 		getContentPane().add(p2);
 		
 		setVisible(true);

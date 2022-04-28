@@ -6,44 +6,43 @@
          "Comida": "macarrones con tomate",
          "Cena": "tortilla de patatas"
       },
-      "type": "Nutricionista"
+      "type": "comedor"
    },
    {
       "data": {
-       	 "Dia": "Martes",
+       	"Dia": "Martes",
          "Desayuno": "zumo y tostadas",
          "Comida": "arroz con huevo",
          "Cena": "pollo y patatas"
       },
-      "type": "Nutricionista"
+      "type": "comedor"
    },
    {
       "data": {
-       	 "Dia": "Miercoles",
+       	"Dia": "Miercoles",
          "Desayuno": "yogurt y cereales",
          "Comida": "pure y pescado ",
          "Cena": "huevo con salchichas"
       },
-      "type": "Nutricionista"
+      "type": "comedor"
    },
    {
       "data": {
-       	 "Dia": "Jueves",
+       	"Dia": "Jueves",
          "Desayuno": "cafe y bizcoho",
          "Comida": "albondigas y ensalada",
          "Cena": "pizza"
       },
-      "type": "Nutricionista"
+      "type": "comedor"
    },
    {
       "data": {
-       	 "Dia": "Viernes",
+       	"Dia": "Viernes",
          "Desayuno": "leche y tortitas",
          "Comida": "paella",
          "Cena": "hamburguesa y patatas"
       },
-      "type": "Nutricionista"
+      "type": "comedor"
    }
    
 ]}
-
