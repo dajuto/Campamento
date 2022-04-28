@@ -124,7 +124,7 @@ public class ServiAppMenu implements Observable<MenuObserver>{
 	
 	
 	
-	public boolean eliminarActividad(Frame ventanaListaMenu, String dia) {
+	public boolean eliminarMenu(Frame ventanaListaMenu, String dia) {
 		boolean actividad = true;
 		for(int i = 0; i < this.listaMenu.size(); i++) {
 			if(this.listaMenu.get(i).getDia() == dia) {
