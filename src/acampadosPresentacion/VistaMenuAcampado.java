@@ -54,6 +54,8 @@ public class VistaMenuAcampado extends JFrame{
 		JButton boton_Comedor = new JButton("Menu Comedor");
 		boton_Comedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				SingletonControllerAcampado.getInstance().comedor(getFrame());
 			}
 		});
 		boton_Comedor.setFont(new Font("Tahoma", Font.PLAIN, 18));
