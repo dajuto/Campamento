@@ -1,4 +1,4 @@
-package comedor.integracion;
+package comedor.Integracion;
 
 import java.io.IOException;
 
@@ -9,7 +9,7 @@ public class SingletonDaoMenu {
     private SingletonDaoMenu(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
-    // otra prueba para evitar instanciación múltiple 
+    // otra prueba para evitar instanciaciÃ³n mÃºltiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
             try {
@@ -26,7 +26,7 @@ public class SingletonDaoMenu {
         return INSTANCE;
     }
     
-    //El método "clone" es sobreescrito por el siguiente que arroja una excepción:
+    //El mÃ©todo "clone" es sobreescrito por el siguiente que arroja una excepciÃ³n:
     @Override
     public Object clone() throws CloneNotSupportedException {
         	throw new CloneNotSupportedException(); 
