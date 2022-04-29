@@ -10,9 +10,9 @@
          "Telefono": 630864506,
          "Actividades": {"ListaActividades": []},
          "Pagado": "Si",
-         "Contraseña": "12345678",
-         "Habitacion": "12A",
-         "DNI": "78765711B"
+         "Contraseña": "12121212",
+         "Habitacion": "1",
+         "DNI": "78765711A"
       },
       "type": "acampado"
    },
@@ -28,7 +28,7 @@
          "Actividades": {"ListaActividades": []},
          "Pagado": "Si",
          "Contraseña": "12345678",
-         "Habitacion": "123",
+         "Habitacion": "2",
          "DNI": "78765711A"
       },
       "type": "acampado"
@@ -45,7 +45,7 @@
          "Actividades": {"ListaActividades": []},
          "Pagado": "Si",
          "Contraseña": "1",
-         "Habitacion": "123",
+         "Habitacion": "3",
          "DNI": "78765711A"
       },
       "type": "acampado"
@@ -56,13 +56,13 @@
          "Apellidos": "adrisky",
          "Edad": 22,
          "Salud": "Sano",
-         "Usuario": "alvaro00",
+         "Usuario": "alvaro02",
          "Email": "adri@ucm.es",
          "Telefono": 630864506,
          "Actividades": {"ListaActividades": []},
          "Pagado": "No",
          "Contraseña": "12345678",
-         "Habitacion": "123",
+         "Habitacion": "4",
          "DNI": "78765711A"
       },
       "type": "acampado"
@@ -79,7 +79,7 @@
          "Actividades": {"ListaActividades": []},
          "Pagado": "Si",
          "Contraseña": "12345678",
-         "Habitacion": "123",
+         "Habitacion": "5",
          "DNI": "78765711A"
       },
       "type": "acampado"
@@ -96,7 +96,7 @@
          "Actividades": {"ListaActividades": []},
          "Pagado": "No",
          "Contraseña": "11111111",
-         "Habitacion": "123",
+         "Habitacion": "6",
          "DNI": "78787877A"
       },
       "type": "acampado"
@@ -113,7 +113,7 @@
          "Actividades": {"ListaActividades": []},
          "Pagado": "Si",
          "Contraseña": "12345678",
-         "Habitacion": "123",
+         "Habitacion": "11",
          "DNI": "78765711A"
       },
       "type": "acampado"
@@ -130,7 +130,7 @@
          "Actividades": {"ListaActividades": []},
          "Pagado": "No",
          "Contraseña": "12345678",
-         "Habitacion": "123",
+         "Habitacion": "8",
          "DNI": "78765711G"
       },
       "type": "acampado"
@@ -147,8 +147,42 @@
          "Actividades": {"ListaActividades": []},
          "Pagado": "Si",
          "Contraseña": "12345678",
-         "Habitacion": "123",
+         "Habitacion": "9",
          "DNI": "78766666A"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "tojito",
+         "Apellidos": "perez",
+         "Edad": 21,
+         "Salud": "Sano",
+         "Usuario": "tojo00",
+         "Email": "tojo@ucm.es",
+         "Telefono": 630030303,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "No",
+         "Contraseña": "12345678",
+         "Habitacion": "10",
+         "DNI": "78765711A"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "pepitogrillo",
+         "Apellidos": "cordero",
+         "Edad": 34,
+         "Salud": "Sano",
+         "Usuario": "ppeluis00",
+         "Email": "pepe@ucm.es",
+         "Telefono": 606090909,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "No",
+         "Contraseña": "12345678",
+         "Habitacion": "7",
+         "DNI": "78765711A"
       },
       "type": "acampado"
    }

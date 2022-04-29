@@ -128,7 +128,17 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 		int numTelefono = Integer.parseInt(telefono);
 		data.accumulate("Telefono", numTelefono);
 		data.accumulate("Salud", salud);
-		data.accumulate("Habitacion", "123");
+		int habitacion = 1;
+		for (TAcampado aca: listaAcampados) {
+			for (TAcampado acam: listaAcampados) {
+				if (Integer.parseInt(acam.getHabitacion()) == habitacion) {
+					habitacion++;
+					break;
+				}
+			}
+		}
+		
+		data.accumulate("Habitacion", Integer.toString(habitacion));
 		JSONObject actividades = new JSONObject();
 		data.accumulate("Actividades", actividades);
 		data.accumulate("Pagado", "No");
@@ -178,6 +188,21 @@ public class ServiAppAcampado implements Observable<AcampadoObserver>{
 			}
 		}
 		this.guardaAcampado();
+	}
+
+	public boolean comprobarUsuario(String usuario, String nombre) {
+		this.updateAcampados();
+		for(TAcampado acampado: this.listaAcampados) {
+			if(acampado.usuario.equals(usuario)) {
+				JOptionPane.showMessageDialog(null, "El usuario especificado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+			else if (acampado.nombre.equals(nombre)) {
+				JOptionPane.showMessageDialog(null, "El nombre especificado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		}
+		return true;
 	}		
 }
 
