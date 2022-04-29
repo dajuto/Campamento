@@ -27,7 +27,7 @@ public class ControllerMenu {
 		SingletonServiAppMenu.getInstance().registrarFactoria(objetosFactory);
 	}
 
-	public void mostrarMenu(Frame frame) {
+	public void mostrarMenu(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -35,7 +35,14 @@ public class ControllerMenu {
 			}
 		});
 	}
-	
+	public void mostrarMenuAcampado(JFrame frame) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaVerMenuAcampado(frame);
+			}
+		});
+	}
 	public void mostrarListaMenu(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -45,7 +52,7 @@ public class ControllerMenu {
 		});
 	}
 	
-	public void mostrarCrearMenu(Frame frame) {
+	public void mostrarCrearMenu(JFrame frame) {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -54,7 +61,7 @@ public class ControllerMenu {
 		});
 	}
 
-	public void mostrarEliminarMenu(Frame frame) {
+	public void mostrarEliminarMenu(JFrame frame) {
 			SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -76,7 +83,7 @@ public class ControllerMenu {
 	
 	
 	public void crearMenu( String dia, String desayuno, String comida, String cena, JFrame frame) {
-		boolean existe = SingletonServiAppMenu.getInstance().crearMenu(dia, desayuno, comida, cena, frame);
+		boolean existe = SingletonServiAppMenu.getInstance().crearMenu(dia, desayuno, comida, cena);
 		if (existe) {
 			SwingUtilities.invokeLater(new Runnable() {
 				@Override
