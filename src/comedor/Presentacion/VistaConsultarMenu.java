@@ -2,6 +2,7 @@ package comedor.Presentacion;
 
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -39,26 +40,26 @@ public class VistaConsultarMenu extends JFrame implements MenuObserver{
 		getContentPane().setLayout(null);
 		setSize(551,275);
 		
-		JLabel lblNewLabel = new JLabel("Consultar Menu: ");
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(0, 0, 261, 20);
-		getContentPane().add(lblNewLabel);
-		
+		JLabel labNewLabel = new JLabel("Consultar Menu: ");
+		labNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		labNewLabel.setBounds(25, 14, 330, 36);
+		getContentPane().add(labNewLabel);
 		
 		
 		
 		diaMenu = new JComboBox<String>();
-		diaMenu.setBounds(282, 61, 184, 26);
+		diaMenu.setBounds(331, 79, 184, 26);
 		for(TMenu te: SingletonServiAppMenu.getInstance().getListaMenu()) {
 			diaMenu.addItem(te.getDia());
 		}
 		getContentPane().add(diaMenu);
 		
 		JLabel lblMenu = new JLabel("Dia de la semana que quiere ver el menu: ");
-		lblMenu.setBounds(45, 58, 423, 32);
+		lblMenu.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblMenu.setBounds(25, 74, 423, 32);
 		getContentPane().add(lblMenu);
 		
-		JButton boton_Atras = new JButton("Atras");
+		JButton boton_Atras = new JButton("Atrás");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -75,7 +76,7 @@ public class VistaConsultarMenu extends JFrame implements MenuObserver{
 				SingletonControllerMenu.getInstance().consultarMenu(atras, (String) diaMenu.getSelectedItem());
 			}
 		});
-		boton_Aceptar.setBounds(26, 186, 194, 25);
+		boton_Aceptar.setBounds(25, 123, 194, 25);
 		getContentPane().add(boton_Aceptar);
 		
 		setVisible(true);
@@ -93,6 +94,12 @@ public class VistaConsultarMenu extends JFrame implements MenuObserver{
 		this.dia = dia;
 	}
 
+	@Override
+	public void onRegister(List<TMenu> listaMenu) {
+		// TODO Auto-generated method stub
+		this.update(listaMenu,dia);
+	}
+	
 	@Override
 	public void onCrearMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
