@@ -23,6 +23,8 @@ import acampados.Negocio.TAcampado;
 import actividades.Negocio.ActividadObserver;
 import actividades.Negocio.TActividad;
 import empleados.Negocio.TEmpleado;
+import gestoria.Negocio.TInstalacion;
+import gestoria.Presentacion.SingletonControllerGestoria;
 import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class VistaAnadirActividadGestor extends JFrame implements ActividadObserver{
@@ -37,7 +39,7 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 	private JTextField nombre;
 	private JTextField monitor;
 	private JLabel ingresaMonitor;
-	
+	JComboBox<String> comboBox;
 	//List<TMonitor> listaMonitor; 
 	
 	private Frame ventanaAnterior;
@@ -67,7 +69,7 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerActividad.getInstance().anadirActividad(atras, id.getText(), nombre.getText(), instalacion.getText(), monitor.getText());
+				SingletonControllerActividad.getInstance().anadirActividad(atras, id.getText(), nombre.getText(), instalacion.getText(), comboBox.getSelectedItem().toString());
 				
 			}
 		});
@@ -104,10 +106,19 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		ingresaInstalacion.setBounds(15, 165, 69, 20);
 		getContentPane().add(ingresaInstalacion);
 		
-		instalacion = new JTextField();
+		
+		comboBox = new JComboBox<String>();
+		comboBox.setBounds(142, 162, 146, 26);
+		for(TInstalacion e: SingletonControllerGestoria.getInstance().getListaInstalaciones()) {
+			if (e.isPuedeActividades()) {
+				comboBox.addItem(e.getNombre());
+			}
+		}
+		getContentPane().add(comboBox);
+		/*instalacion = new JTextField();
 		instalacion.setColumns(10);
 		instalacion.setBounds(142, 162, 146, 26);
-		getContentPane().add(instalacion);
+		getContentPane().add(instalacion);*/
 		
 		ingresaMonitor = new JLabel("Monitor: ");
 		ingresaMonitor.setBounds(15, 201, 69, 20);
@@ -118,14 +129,8 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		monitor.setBounds(142, 200, 146, 22);
 		getContentPane().add(monitor);
 		
-		/*comboBox = new JComboBox<String>();
-		comboBox.setBounds(142, 200, 146, 22);
-		for(TEmpleado e: SingletonControllerSanidad.getInstance().getListaEmpleados()) {
-			if (e.getPuesto().matches("Medico")) {
-				comboBox.addItem(e.getNombre());
-			}
-		}
-		getContentPane().add(comboBox);*/
+		
+		
 		
 		
 		
