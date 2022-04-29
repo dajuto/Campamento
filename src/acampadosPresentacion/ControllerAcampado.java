@@ -18,6 +18,7 @@ import empleados.Presentacion.VistaMenuEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import sanidad.Presentacion.SingletonControllerSanidad;
+import comedor.Presentacion.SingletonControllerMenu;
 
 public class ControllerAcampado {
 	
@@ -99,6 +100,9 @@ public class ControllerAcampado {
 		SingletonControllerContabilidad.getInstance().estadoCuentasAcampado(frame);
 	}
 	
+	public void comedor(JFrame frame) {
+		SingletonControllerMenu.getInstance().mostrarMenuAcampado(frame);
+	}
 	
 	public void SanidadCita(JFrame frame) {
 		SingletonControllerSanidad.getInstance().pedirCita(frame);
