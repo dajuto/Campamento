@@ -13,6 +13,7 @@ import contabilidad.Presentacion.SingletonControllerContabilidad;
 import contabilidad.Presentacion.VistaIngresosContabilidad;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleado;
+import empleados.Presentacion.SingletonControllerEmpleado;
 import empleados.Presentacion.VistaMenuEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
@@ -81,7 +82,8 @@ public class ControllerAcampado {
 	}
 
 	public void crearAcampado(String usuario, String contrasena, String nombre, String apellidos, String dni, String email, String edad, String telefono, String salud, JFrame frame) {
-		boolean exito;
+		boolean exito, exitito;
+		exitito = SingletonControllerEmpleado.getInstance().comprobarUsuario(usuario, nombre);
 		exito = SingletonServiAppAcampado.getInstance().anadirAcampado(usuario, contrasena, nombre, apellidos, dni, email, edad, telefono, salud, frame);
 		if (exito) {
 			frame.setVisible(false);
@@ -114,6 +116,10 @@ public class ControllerAcampado {
 	
 	public void cambiarIsPagado(boolean pagado) {
 		SingletonServiAppAcampado.getInstance().cambiarIsPagado(pagado);
+	}
+
+	public boolean comprobarUsuario(String usuario, String nombre) {
+		return SingletonServiAppAcampado.getInstance().comprobarUsuario(usuario, nombre);
 	}
 
 	
