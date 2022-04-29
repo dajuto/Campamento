@@ -69,7 +69,7 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerActividad.getInstance().anadirActividad(atras, id.getText(), nombre.getText(), instalacion.getText(), comboBox.getSelectedItem().toString());
+				SingletonControllerActividad.getInstance().anadirActividad(atras, id.getText(), nombre.getText(), comboBox.getSelectedItem().toString(), monitor.getText());
 				
 			}
 		});
