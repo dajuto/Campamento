@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 
 import acampados.Negocio.SingletonServiAppAcampado;
 import acampados.Negocio.TAcampado;
+import actividades.Presentacion.SingletonControllerActividad;
 import contabilidad.Presentacion.SingletonControllerContabilidad;
 import contabilidad.Presentacion.VistaIngresosContabilidad;
 import empleados.Negocio.SingletonServiAppEmpleado;
@@ -98,6 +99,10 @@ public class ControllerAcampado {
 	
 	public void contabilidad(JFrame frame) {
 		SingletonControllerContabilidad.getInstance().estadoCuentasAcampado(frame);
+	}
+	
+	public void actividades(JFrame frame) {
+		SingletonControllerActividad.getInstance().mostrarListaActividadesAcampado(frame);
 	}
 	
 	public void comedor(JFrame frame) {

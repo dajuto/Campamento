@@ -23,6 +23,13 @@ public class VistaMenuAcampado extends JFrame{
 		setSize(500,300);
 		this.atras=f;
 		JButton boton_actividades = new JButton("Mis Actividades");
+		boton_actividades.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				SingletonControllerAcampado.getInstance().actividades(getFrame());
+			}
+			
+		});
 		boton_actividades.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		boton_actividades.setBounds(49, 33, 170, 36);
 		getContentPane().add(boton_actividades);

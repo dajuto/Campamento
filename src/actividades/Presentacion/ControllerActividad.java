@@ -43,6 +43,17 @@ public class ControllerActividad {
 		});
 	}
 	
+	public void mostrarListaActividadesAcampado(JFrame frame) {
+		//SingletonServiAppActividad.getInstance().updateActividad();
+		
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaActividadesAcampado(frame);
+			}
+		});
+	}
+	
 	public void mostrarAnadirActividadGestor(JFrame frame) {
 		//String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
 		//List<TActividad> l = SingletonServiAppActividad.getInstance().getListaActividades();
