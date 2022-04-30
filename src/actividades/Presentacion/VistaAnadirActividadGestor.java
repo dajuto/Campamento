@@ -34,7 +34,7 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 	private JLabel ingresaId;
 	private JTextField id;
 	private JLabel ingresaInstalacion;
-	private JTextField instalacion;
+	//private JTextField instalacion;
 	private JLabel ingresaNombre;
 	private JTextField nombre;
 	private JTextField monitor;

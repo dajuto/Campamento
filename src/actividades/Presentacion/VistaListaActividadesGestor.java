@@ -31,6 +31,7 @@ import sanidad.Presentacion.SingletonControllerSanidad;
 public class VistaListaActividadesGestor extends JFrame implements ActividadObserver{
 	private String nombreUsuario;
 	private JButton anadirActividad;
+	private JButton modificarActividad;
 	private JButton eliminarActividad;
 	private JFrame atras;
 	private Frame ventanaAnterior;
@@ -65,8 +66,18 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 				SingletonControllerActividad.getInstance().mostrarAnadirActividadGestor(getFrame());
 			}
 		});
-		anadirActividad.setBounds(15, 358, 250, 29);
+		anadirActividad.setBounds(15, 358, 149, 29);
 		getContentPane().add(anadirActividad);
+		
+		modificarActividad = new JButton("Modificar Actividad");
+		modificarActividad.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SingletonControllerActividad.getInstance().mostrarModificarActividadGestor(getFrame());
+			}
+		});
+		modificarActividad.setBounds(165, 358, 198, 29);
+		getContentPane().add(modificarActividad);
+		
 		
 		eliminarActividad = new JButton("Eliminar Actividad");
 		eliminarActividad.addActionListener(new ActionListener() {
@@ -74,7 +85,7 @@ public class VistaListaActividadesGestor extends JFrame implements ActividadObse
 				SingletonControllerActividad.getInstance().mostrarEliminarActividadGestor(getFrame());
 			}
 		});
-		eliminarActividad.setBounds(265, 358, 249, 29);
+		eliminarActividad.setBounds(365, 358, 149, 29);
 		getContentPane().add(eliminarActividad);
 		
 		

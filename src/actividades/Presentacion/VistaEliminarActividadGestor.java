@@ -36,9 +36,9 @@ public class VistaEliminarActividadGestor extends JFrame implements ActividadObs
 	private JComboBox<Integer> idActividad;
 	List<TActividad> listaActividades;
 	
-	public VistaEliminarActividadGestor(JFrame ventanaListaAverias) {
+	public VistaEliminarActividadGestor(JFrame frame) {
 		setTitle("Eliminar actividad");
-		this.ventanaAnterior = ventanaListaAverias;
+		this.ventanaAnterior = frame;
 		
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);

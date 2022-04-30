@@ -54,6 +54,17 @@ public class ControllerActividad {
 		});
 	}
 
+	public void mostrarModificarActividadGestor(JFrame frame) {
+		//String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
+		//List<TActividad> l = SingletonServiAppActividad.getInstance().getListaActividades();
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaModificarActividadGestor(frame);
+			}
+		});
+	}
+	
 	public void mostrarEliminarActividadGestor(JFrame frame) {
 		//String nombreUsuario = SingletonServiAppActividad.getInstance().getNombreUsuario();
 		//List<TActividad> l = SingletonServiAppActividad.getInstance().getListaActividades();
@@ -65,6 +76,7 @@ public class ControllerActividad {
 		});
 	}
 
+	
 
 	public void anadirActividad(JFrame ventanaListaActividad, String id, String nombre, String instalacion, String monitor) {
 		boolean isNumericId =  id.matches("[+-]?\\d*(\\.\\d+)?");
@@ -90,6 +102,21 @@ public class ControllerActividad {
 			JOptionPane.showMessageDialog(ventanaListaActividad, "La actividad no ha podido ser borrada", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		
+	}
+	
+	public void modificarActividad(JFrame ventanaListaActividad, String id, String nombre, String instalacion, String monitor) {
+		boolean isNumericId =  id.matches("[+-]?\\d*(\\.\\d+)?");
+		boolean isNumericNombre =  nombre.matches("[+-]?\\d*(\\.\\d+)?");
+		boolean isNumericInstalacion =  instalacion.matches("[+-]?\\d*(\\.\\d+)?");
+		boolean isNumericMonitor = instalacion.matches("[+-]?\\d*(\\.\\d+)?");
+		if(isNumericId && !isNumericNombre && !isNumericInstalacion && !isNumericMonitor) {
+			int idActividad = Integer.parseInt(id);
+			boolean exito = SingletonServiAppActividad.getInstance().modificarActividad(idActividad, nombre, instalacion, monitor);
+			
+		}
+		else {
+			JOptionPane.showMessageDialog(ventanaListaActividad, "Los datos introducidos en el formulario no son validos", "Error", JOptionPane.ERROR_MESSAGE);
+		}
 	}
 	
 	public void addObserver(ActividadObserver vista) {
