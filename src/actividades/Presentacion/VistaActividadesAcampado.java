@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
+import actividades.Negocio.AcampadoActTableModel;
 import actividades.Negocio.ActividadObserver;
 import actividades.Negocio.ActividadTableModel;
 import actividades.Negocio.TActividad;
@@ -40,7 +41,7 @@ public class VistaActividadesAcampado extends JFrame implements ActividadObserve
 		boton_Atras.setBounds(15, 403, 499, 25);
 		getContentPane().add(boton_Atras);
 		
-		JPanel recetasView = createViewPanel(new JTable(new ActividadTableModel()), "Lista de Actividades");
+		JPanel recetasView = createViewPanel(new JTable(new AcampadoActTableModel()), "Lista de Actividades");
 		recetasView.setBounds(10, 40, 500, 300);
 		getContentPane().add(recetasView);
 		
