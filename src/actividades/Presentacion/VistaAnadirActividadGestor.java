@@ -1,35 +1,36 @@
 package actividades.Presentacion;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Frame;
-import java.awt.GridLayout;
+
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 import javax.swing.JTextField;
 
-import acampados.Negocio.TAcampado;
+
 import actividades.Negocio.ActividadObserver;
 import actividades.Negocio.TActividad;
-import empleados.Negocio.TEmpleado;
+
 import gestoria.Negocio.TInstalacion;
 import gestoria.Presentacion.SingletonControllerGestoria;
-import sanidad.Presentacion.SingletonControllerSanidad;
 
 public class VistaAnadirActividadGestor extends JFrame implements ActividadObserver{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombreUsuario;
-	private JButton aceptar;
+	
 	private JFrame atras;
 	private JLabel ingresaId;
 	private JTextField id;
@@ -58,7 +59,7 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//atras.setVisible(true);
+				ventanaAnterior.setVisible(true);
 			}
 		});
 		boton_Atras.setBounds(376, 32, 138, 25);

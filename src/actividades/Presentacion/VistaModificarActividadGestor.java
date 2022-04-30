@@ -11,7 +11,6 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import actividades.Negocio.ActividadObserver;
@@ -50,7 +49,7 @@ public class VistaModificarActividadGestor extends JFrame implements ActividadOb
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				atras.setVisible(true);
+				ventanaAnterior.setVisible(true);
 			}
 		});
 		boton_Atras.setBounds(373, 265, 97, 25);
@@ -120,15 +119,9 @@ public class VistaModificarActividadGestor extends JFrame implements ActividadOb
 		getContentPane().add(boton_modificar);
 		
 		
+		
+		this.setVisible(true);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 	
