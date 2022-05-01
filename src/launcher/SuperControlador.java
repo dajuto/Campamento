@@ -10,6 +10,7 @@ import contabilidad.Presentacion.SingletonControllerContabilidad;
 import empleados.Presentacion.SingletonControllerEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import sanidad.Presentacion.SingletonControllerSanidad;
+import comedor.Presentacion.SingletonControllerMenu;
 
 
 public class SuperControlador{
@@ -32,10 +33,11 @@ public class SuperControlador{
 		SingletonControllerContabilidad.getInstance().registraFactoria(factoriaTransferObjects);
 		SingletonControllerSanidad.getInstance().registraFactoria(factoriaTransferObjects);
 		SingletonControllerGestoria.getInstance().registraFactoria(factoriaTransferObjects);
-		//SingletonControllerComedor.getInstance().registraFactoria(factoriaTransferObjects);
+		SingletonControllerMenu.getInstance().registraFactoria(factoriaTransferObjects);
 		
 		
 	
 	}
 
 }
+

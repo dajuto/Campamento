@@ -9,14 +9,17 @@ import javax.swing.SwingUtilities;
 
 import acampados.Negocio.SingletonServiAppAcampado;
 import acampados.Negocio.TAcampado;
+import actividades.Presentacion.SingletonControllerActividad;
 import contabilidad.Presentacion.SingletonControllerContabilidad;
 import contabilidad.Presentacion.VistaIngresosContabilidad;
 import empleados.Negocio.SingletonServiAppEmpleado;
 import empleados.Negocio.TEmpleado;
+import empleados.Presentacion.SingletonControllerEmpleado;
 import empleados.Presentacion.VistaMenuEmpleado;
 import gestoria.Presentacion.SingletonControllerGestoria;
 import launcher.Factory;
 import sanidad.Presentacion.SingletonControllerSanidad;
+import comedor.Presentacion.SingletonControllerMenu;
 
 public class ControllerAcampado {
 	
@@ -79,9 +82,21 @@ public class ControllerAcampado {
 			}
 		});
 	}
+	
+	
+	public void citaNuevoAcampado(JFrame frame,String motivo, String Acampado) {
+		SwingUtilities.invokeLater(new Runnable() {
+			@Override
+			public void run() {
+				new VistaPedirCitaNuevoUsuario(frame,motivo,Acampado);
+			}
+		});
+	}
+	
 
 	public void crearAcampado(String usuario, String contrasena, String nombre, String apellidos, String dni, String email, String edad, String telefono, String salud, JFrame frame) {
-		boolean exito;
+		boolean exito, exitito;
+		exitito = SingletonControllerEmpleado.getInstance().comprobarUsuario(usuario, nombre);
 		exito = SingletonServiAppAcampado.getInstance().anadirAcampado(usuario, contrasena, nombre, apellidos, dni, email, edad, telefono, salud, frame);
 		if (exito) {
 			frame.setVisible(false);
@@ -97,11 +112,25 @@ public class ControllerAcampado {
 		SingletonControllerContabilidad.getInstance().estadoCuentasAcampado(frame);
 	}
 	
+	public void actividades(JFrame frame) {
+		SingletonControllerActividad.getInstance().mostrarListaActividadesAcampado(frame);
+	}
+	
+	public void comedor(JFrame frame) {
+		SingletonControllerMenu.getInstance().mostrarMenuAcampado(frame);
+	}
 	
 	public void SanidadCita(JFrame frame) {
 		SingletonControllerSanidad.getInstance().pedirCita(frame);
 	}
 
+	public void pedirCita(JFrame ventanCit, String cod, String motivo, String medicoEmpleado, String Acampado ) {
+		SingletonControllerSanidad.getInstance().pedirCita(ventanCit, cod, motivo, medicoEmpleado, Acampado);
+		
+	}
+	
+		
+	
 	public void modificarAcampado(String nombreUsuario, String nombre, String apellidos, String edad,
 			String dni, String email, String telefono,String usuario) {
 		SingletonServiAppAcampado.getInstance().modificarAcampado(nombreUsuario, nombre, apellidos, edad, dni, email, telefono,usuario);
@@ -114,6 +143,10 @@ public class ControllerAcampado {
 	
 	public void cambiarIsPagado(boolean pagado) {
 		SingletonServiAppAcampado.getInstance().cambiarIsPagado(pagado);
+	}
+
+	public boolean comprobarUsuario(String usuario, String nombre) {
+		return SingletonServiAppAcampado.getInstance().comprobarUsuario(usuario, nombre);
 	}
 
 	

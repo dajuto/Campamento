@@ -1,4 +1,4 @@
-package comedor.presentacion;
+package comedor.Presentacion;
 
 
 public class SingletonControllerMenu {
@@ -9,7 +9,7 @@ public class SingletonControllerMenu {
     private SingletonControllerMenu(){}
 
     // creador sincronizado para protegerse de posibles problemas  multi-hilo
-    // otra prueba para evitar instanciación múltiple 
+    // otra prueba para evitar instanciacion multiple 
     private synchronized static void createInstance() {
         if (INSTANCE == null) { 
             INSTANCE = new ControllerMenu();
@@ -21,7 +21,7 @@ public class SingletonControllerMenu {
         return INSTANCE;
     }
     
-    //El método "clone" es sobreescrito por el siguiente que arroja una excepción:
+    //El metodo "clone" es sobreescrito por el siguiente que arroja una excepcion:
     @Override
     public Object clone() throws CloneNotSupportedException {
         	throw new CloneNotSupportedException(); 

@@ -7,7 +7,9 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import acampadosPresentacion.SingletonControllerAcampado;
 import actividades.Presentacion.SingletonControllerActividad;
+import comedor.Presentacion.SingletonControllerMenu;
 import contabilidad.Presentacion.SingletonControllerContabilidad;
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
@@ -79,8 +81,11 @@ public class ControllerEmpleado {
 	}
 	
 	public void crearEmpleado(JFrame frame, String usuario, String contrasena, String nombre, String puesto) {
-		boolean exito;
-		exito = SingletonServiAppEmpleado.getInstance().anadirEmpleado(usuario, contrasena, nombre, puesto);
+		boolean exito = false, exitito = false;
+		exitito = SingletonControllerAcampado.getInstance().comprobarUsuario(usuario, nombre);
+		if (exitito) {
+			exito = SingletonServiAppEmpleado.getInstance().anadirEmpleado(usuario, contrasena, nombre, puesto);
+		}
 		if (exito) {
 			frame.setVisible(false);
 			SingletonControllerGestoria.getInstance().menuGestor();
@@ -106,9 +111,9 @@ public class ControllerEmpleado {
 		
 	}
 	
-//	public void comedor(JFrame frame) {
-//		SingletonControllerMenu.getInstance().mostrarMenu(frame);
-//	}
+	public void comedor(JFrame frame) {
+		SingletonControllerMenu.getInstance().mostrarMenu(frame);
+	}
 	
 	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
 		SingletonServiAppEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);
@@ -124,6 +129,10 @@ public class ControllerEmpleado {
 	
 	public void addObserver(EmpleadoObserver vista) {
 		SingletonServiAppEmpleado.getInstance().addObserver(vista);
+	}
+
+	public boolean comprobarUsuario(String usuario, String nombre) {
+		return SingletonServiAppEmpleado.getInstance().comprobarUsuario(usuario, nombre);
 	}
 
 	

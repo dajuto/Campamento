@@ -69,7 +69,7 @@ public class VistaMenuEmpleado extends JFrame implements EmpleadoObserver{
 		boton_Comedor.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//SingletonControllerEmpleado.getInstance().comedor(getFrame());
+				SingletonControllerEmpleado.getInstance().comedor(getFrame());
 			}
 		});
 		boton_Comedor.setFont(new Font("Tahoma", Font.PLAIN, 18));

@@ -123,6 +123,20 @@ public class ServiAppActividad implements Observable<ActividadObserver>{
 		return actividad;
 	}
 	
-
+	public boolean modificarActividad(int idActividad, String nombre, String instalacion, String monitor) {
+		boolean actividad = true;
+		for(int i = 0; i < this.listaActividad.size(); i++) {
+			if(this.listaActividad.get(i).getId() == idActividad) {
+				this.listaActividad.get(i).nombre = nombre;
+				this.listaActividad.get(i).instalacion = instalacion;
+				this.listaActividad.get(i).monitor = monitor;
+				SingletonDaoActividad.getInstance().escribeTodo(listaActividad);
+				this.updateActividad();
+				
+			}
+				
+		}
+		return actividad;
+	}
 	
 }

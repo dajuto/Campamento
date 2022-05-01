@@ -282,6 +282,21 @@ public class ServiAppEmpleado implements Observable<EmpleadoObserver>{
 			}
 		}
 	}
+
+	public boolean comprobarUsuario(String usuario, String nombre) {
+		this.updateEmpleados();
+		for(TEmpleado te: this.listaEmpleados) {
+			if(te.usuario.equals(usuario)) {
+				JOptionPane.showMessageDialog(null, "El usuario especificado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+			else if (te.nombre.equals(nombre)) {
+				JOptionPane.showMessageDialog(null, "El nombre especificado ya existe", "Error", JOptionPane.ERROR_MESSAGE);
+				return false;
+			}
+		}
+		return true;
+	}
 	
 	
 	

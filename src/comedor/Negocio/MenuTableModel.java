@@ -1,4 +1,4 @@
-package comedor.negocio;
+package comedor.Negocio;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,63 +8,74 @@ import javax.swing.table.AbstractTableModel;
 
 public class MenuTableModel extends AbstractTableModel implements MenuObserver{
 
-	private List<TMenu> list;
+	private static final long serialVersionUID = 1L;
+	private List<TMenu> listMenu;
 	private String[] columnNames = {"Dia", "Desayuno", "Comida", "Cena"};
 	
 	public MenuTableModel() {
-		list = new ArrayList<TMenu>();
+		listMenu = new ArrayList<TMenu>();
 		SingletonServiAppMenu.getInstance().addObserver(this);
 	}
 	
 	
 	@Override
 	public int getRowCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return listMenu.size();
 	}
 
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return columnNames.length;
 	}
 
 	@Override
+	public String getColumnName(int columnIndex) {
+		return columnNames[columnIndex];
+	}
+	
+
+	@Override
 	public Object getValueAt(int rowIndex, int columnIndex) {
-		switch(columnIndex) {
-		case 0: return list.get(rowIndex).getDia(); 
-		case 1: return list.get(rowIndex).getDesayuno();
-		case 2:	return list.get(rowIndex).getComida();
-		case 3: return list.get(rowIndex).getCena();
-		default: return null;
+		if(columnIndex == 0) {
+			return listMenu.get(rowIndex).getDia();
+		}
+		else if(columnIndex == 1) {
+			return listMenu.get(rowIndex).getDesayuno();
+		}
+		else if(columnIndex == 2) {
+			return listMenu.get(rowIndex).getComida();
+		}
+		else {
+			return listMenu.get(rowIndex).getCena();
 		}
 	}
 	
-	private void update(List<TMenu> lista) {
-		this.list = lista;
+	private void update(List<TMenu> listaMenu) {
+		this.listMenu = listaMenu;
 		this.fireTableDataChanged();
 	}
 
 	@Override
-	public void onCrearMenu(List<TMenu> lista) {
+	public void onRegister(List<TMenu> listaMenu) {
+		// TODO Auto-generated method stub
+		this.update(listaMenu);
+	}
+	
+	@Override
+	public void onCrearMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
 		this.update(listaMenu);
 	}
 
 	@Override
-	public void onEliminarMenu(List<TMenu> lista) {
+	public void onEliminarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
 		this.update(listaMenu);
 	}
 	
-	@Override
-	public void onModificarMenu(List<TMenu> lista) {
-		// TODO Auto-generated method stub
-		this.update(listaMenu);
-	}
 	
 	@Override
-	public void onConsultarMenu(List<TMenu> lista) {
+	public void onConsultarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
 		this.update(listaMenu);
 	}

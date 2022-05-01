@@ -1,43 +1,46 @@
 package actividades.Presentacion;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Frame;
-import java.awt.GridLayout;
+
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
-import java.awt.event.WindowListener;
+
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 import javax.swing.JTextField;
 
-import acampados.Negocio.TAcampado;
+
 import actividades.Negocio.ActividadObserver;
 import actividades.Negocio.TActividad;
-import empleados.Negocio.TEmpleado;
-import sanidad.Presentacion.SingletonControllerSanidad;
+
+import gestoria.Negocio.TInstalacion;
+import gestoria.Presentacion.SingletonControllerGestoria;
 
 public class VistaAnadirActividadGestor extends JFrame implements ActividadObserver{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String nombreUsuario;
-	private JButton aceptar;
+	
 	private JFrame atras;
 	private JLabel ingresaId;
 	private JTextField id;
 	private JLabel ingresaInstalacion;
-	private JTextField instalacion;
+	//private JTextField instalacion;
 	private JLabel ingresaNombre;
 	private JTextField nombre;
 	private JTextField monitor;
 	private JLabel ingresaMonitor;
-	
+	JComboBox<String> comboBox;
 	//List<TMonitor> listaMonitor; 
 	
 	private Frame ventanaAnterior;
@@ -56,7 +59,7 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				//atras.setVisible(true);
+				ventanaAnterior.setVisible(true);
 			}
 		});
 		boton_Atras.setBounds(376, 32, 138, 25);
@@ -67,7 +70,7 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		boton_Aceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
-				SingletonControllerActividad.getInstance().anadirActividad(atras, id.getText(), nombre.getText(), instalacion.getText(), monitor.getText());
+				SingletonControllerActividad.getInstance().anadirActividad(atras, id.getText(), nombre.getText(), comboBox.getSelectedItem().toString(), monitor.getText());
 				
 			}
 		});
@@ -104,10 +107,19 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		ingresaInstalacion.setBounds(15, 165, 69, 20);
 		getContentPane().add(ingresaInstalacion);
 		
-		instalacion = new JTextField();
+		
+		comboBox = new JComboBox<String>();
+		comboBox.setBounds(142, 162, 146, 26);
+		for(TInstalacion e: SingletonControllerGestoria.getInstance().getListaInstalaciones()) {
+			if (e.isPuedeActividades()) {
+				comboBox.addItem(e.getNombre());
+			}
+		}
+		getContentPane().add(comboBox);
+		/*instalacion = new JTextField();
 		instalacion.setColumns(10);
 		instalacion.setBounds(142, 162, 146, 26);
-		getContentPane().add(instalacion);
+		getContentPane().add(instalacion);*/
 		
 		ingresaMonitor = new JLabel("Monitor: ");
 		ingresaMonitor.setBounds(15, 201, 69, 20);
@@ -118,14 +130,8 @@ public class VistaAnadirActividadGestor extends JFrame implements ActividadObser
 		monitor.setBounds(142, 200, 146, 22);
 		getContentPane().add(monitor);
 		
-		/*comboBox = new JComboBox<String>();
-		comboBox.setBounds(142, 200, 146, 22);
-		for(TEmpleado e: SingletonControllerSanidad.getInstance().getListaEmpleados()) {
-			if (e.getPuesto().matches("Medico")) {
-				comboBox.addItem(e.getNombre());
-			}
-		}
-		getContentPane().add(comboBox);*/
+		
+		
 		
 		
 		

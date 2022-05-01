@@ -12,10 +12,10 @@
    },
    {
       "data": {
-         "Nombre": "Tennis",
+         "Nombre": "Pista de Tenis",
          "Codigo": "3",
          "Superficie": 50,
-         "Actividades": "No",
+         "Actividades": "Si",
          "Pagado": "Si",
          "Precio": 2500
       },
@@ -32,10 +32,53 @@
       },
       "type": "instalacion"
    },
+    {
+      "data": {
+         "Nombre": "Lago",
+         "Codigo": "5",
+         "Superficie": 2000,
+         "Actividades": "Si",
+         "Pagado": "Si",
+         "Precio": 250
+      },
+      "type": "instalacion"
+   }, 
+   {
+      "data": {
+         "Nombre": "Campo de futbol",
+         "Codigo": "6",
+         "Superficie": 20,
+         "Actividades": "Si",
+         "Pagado": "Si",
+         "Precio": 2500
+      },
+      "type": "instalacion"
+   },
+    {
+      "data": {
+         "Nombre": "Al aire libre",
+         "Codigo": "7",
+         "Superficie": 20000,
+         "Actividades": "Si",
+         "Pagado": "Si",
+         "Precio": 250
+      },
+      "type": "instalacion"
+   },{
+      "data": {
+         "Nombre": "Campo de paintball",
+         "Codigo": "8",
+         "Superficie": 20000,
+         "Actividades": "Si",
+         "Pagado": "Si",
+         "Precio": 2500
+      },
+      "type": "instalacion"
+   },
    {
       "data": {
          "Nombre": "Habitaciones 1-30",
-         "Codigo": "5",
+         "Codigo": "9",
          "Superficie": 200,
          "Actividades": "No",
          "Pagado": "No",

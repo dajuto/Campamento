@@ -53,7 +53,10 @@
          "puesto": "Medico",
          "horario": 8,
          "salario": 8000,
-         "trabajo": {"citasPendientes": ["9"]},
+         "trabajo": {"citasPendientes": [
+            "9",
+            "11"
+         ]},
          "vacaciones": "Todo el verano",
          "usuario": "d",
          "contrasena": "1",

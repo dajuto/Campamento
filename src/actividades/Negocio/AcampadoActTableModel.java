@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
+import actividades.Presentacion.SingletonControllerActividad;
+
 public class AcampadoActTableModel extends AbstractTableModel implements ActividadObserver{
 
 	/**
@@ -13,6 +15,7 @@ public class AcampadoActTableModel extends AbstractTableModel implements Activid
 	private static final long serialVersionUID = 1L;
 	private List<TActividad> list;
 	private String[] columnNames = {"Nombre", "Instalacion"};
+	
 	
 	public AcampadoActTableModel() {
 		list = new ArrayList<TActividad>();
