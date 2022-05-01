@@ -185,5 +185,56 @@
          "DNI": "78765711A"
       },
       "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "emilio",
+         "Apellidos": "sanz",
+         "Edad": 21,
+         "Salud": "Covid",
+         "Usuario": "emi00",
+         "Email": "emi@ucm.es",
+         "Telefono": 632123456,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "No",
+         "Contraseña": "12341234",
+         "Habitacion": "12",
+         "DNI": "34252637g"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "ines",
+         "Apellidos": "saez",
+         "Edad": 21,
+         "Salud": "Gripe",
+         "Usuario": "ines00",
+         "Email": "intensa@ucm.es",
+         "Telefono": 637281903,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "No",
+         "Contraseña": "12341234",
+         "Habitacion": "13",
+         "DNI": "23451627F"
+      },
+      "type": "acampado"
+   },
+   {
+      "data": {
+         "Nombre": "iker",
+         "Apellidos": "saez",
+         "Edad": 21,
+         "Salud": "Covid",
+         "Usuario": "iker00",
+         "Email": "iker@ucm.es",
+         "Telefono": 645372893,
+         "Actividades": {"ListaActividades": []},
+         "Pagado": "No",
+         "Contraseña": "12341234",
+         "Habitacion": "14",
+         "DNI": "21331234D"
+      },
+      "type": "acampado"
    }
 ]}

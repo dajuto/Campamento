@@ -158,8 +158,6 @@ private String salud = "Sano";
 			public void actionPerformed(ActionEvent e) {
 				if (checkBox.isSelected()) {
 					salud = comboBox.getSelectedItem().toString();
-					SingletonControllerAcampado.getInstance().citaNuevoAcampado(getFrame(),salud,usuario.getText());
-					
 				}
 				if (password.getText().length() > 7 ) {
 					if (password.getText().equals(password2.getText())) {
@@ -169,7 +167,8 @@ private String salud = "Sano";
 									if (telefono.getText().matches("[0-9]*") && telefono.getText().length() == 9) {
 										SingletonControllerAcampado.getInstance().crearAcampado(usuario.getText(), password.getText(), nombre.getText(), apellidos.getText(), dni.getText(), email.getText(), edad.getText(), telefono.getText(), salud, getFrame());
 										SingletonControllerAcampado.getInstance().registraUsuario(usuario.getText());
-										}
+										SingletonControllerAcampado.getInstance().citaNuevoAcampado(atras,salud,usuario.getText());
+									}
 									else JOptionPane.showMessageDialog(atras, "Formato del telefono es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 								}
 								else JOptionPane.showMessageDialog(atras, "Formato de la edad es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
