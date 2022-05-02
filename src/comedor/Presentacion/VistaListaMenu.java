@@ -37,7 +37,7 @@ public class VistaListaMenu extends JFrame implements MenuObserver{
 	private Frame ventanaAnterior;
 	
 	public VistaListaMenu(JFrame frame) {
-		setTitle("Menu Semanal");
+		setTitle("Menu Semanal Campamento");
 
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
