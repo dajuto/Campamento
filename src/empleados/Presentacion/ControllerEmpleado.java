@@ -9,6 +9,7 @@ import javax.swing.SwingUtilities;
 
 import acampadosPresentacion.SingletonControllerAcampado;
 import actividades.Presentacion.SingletonControllerActividad;
+import comedor.Presentacion.SingletonControllerMenu;
 import contabilidad.Presentacion.SingletonControllerContabilidad;
 import empleados.Negocio.EmpleadoObserver;
 import empleados.Negocio.SingletonServiAppEmpleado;
@@ -110,9 +111,9 @@ public class ControllerEmpleado {
 		
 	}
 	
-//	public void comedor(JFrame frame) {
-//		SingletonControllerMenu.getInstance().mostrarMenu(frame);
-//	}
+	public void comedor(JFrame frame) {
+		SingletonControllerMenu.getInstance().mostrarMenu(frame);
+	}
 	
 	public void modificarEmpleadoLimpieza(String empleado, String codigo) {
 		SingletonServiAppEmpleado.getInstance().modificarEmpleadoLimpieza(empleado, codigo);

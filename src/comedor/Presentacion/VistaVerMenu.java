@@ -33,9 +33,10 @@ public class VistaVerMenu extends JFrame implements MenuObserver{
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
 				atras.setVisible(true);
-				//SingletonControllerMenu.getInstance().mostrarMenu();
+				//SingletonControllerMenu.getInstance().mostrarMenu(getFrame());
 			}
 		});
+		
 		boton_Atras.setBounds(373, 215, 97, 25);
 		getContentPane().add(boton_Atras);
 		

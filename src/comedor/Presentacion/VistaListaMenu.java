@@ -3,6 +3,7 @@ package comedor.Presentacion;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.GridLayout;
 import java.awt.SystemColor;
@@ -53,19 +54,19 @@ public class VistaListaMenu extends JFrame implements MenuObserver{
 		boton_Atras.setBounds(15, 403, 499, 25);
 		getContentPane().add(boton_Atras);
 		
-		JLabel lblNewLabel = new JLabel("Menu Semanal");
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(0, 0, 261, 20);
-		getContentPane().add(lblNewLabel);
+		JLabel labNewLabel = new JLabel("Menu Semanal");
+		labNewLabel.setFont(new Font("Times New Roman", Font.BOLD, 24));
+		labNewLabel.setBounds(15, 11, 330, 36);
+		getContentPane().add(labNewLabel);
 		
 		
-		crearMenu = new JButton("Añadir Menu");
+		crearMenu = new JButton("Crear Menu");
 		crearMenu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SingletonControllerMenu.getInstance().mostrarCrearMenu(getFrame());
 			}
 		});
-		crearMenu.setBounds(15, 358, 250, 29);
+		crearMenu.setBounds(15, 358, 149, 29);
 		getContentPane().add(crearMenu);
 		
 		eliminarMenu = new JButton("Eliminar Menu");
@@ -74,14 +75,22 @@ public class VistaListaMenu extends JFrame implements MenuObserver{
 				SingletonControllerMenu.getInstance().mostrarEliminarMenu(getFrame());
 			}
 		});
-		eliminarMenu.setBounds(265, 358, 249, 29);
+		eliminarMenu.setBounds(165, 358, 198, 29);
 		getContentPane().add(eliminarMenu);
 		
+		JButton btnConsultarMenu = new JButton("Consultar Menu");
+		btnConsultarMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SingletonControllerMenu.getInstance().mostrarConsultarMenu(getFrame());
+			}
+		});
+		btnConsultarMenu.setBounds(365, 358, 149, 29);
+		getContentPane().add(btnConsultarMenu);
 		
 		
-		JPanel recetasView = createViewPanel(new JTable(new MenuTableModel()), "Menu Semanal");
-		recetasView.setBounds(10, 40, 500, 300);
-		getContentPane().add(recetasView);
+		JPanel menuView = createViewPanel(new JTable(new MenuTableModel()), "Menu Semanal");
+		menuView.setBounds(10, 40, 500, 300);
+		getContentPane().add(menuView);
 		
 		this.setVisible(true);
 	}
@@ -119,5 +128,4 @@ public class VistaListaMenu extends JFrame implements MenuObserver{
 	public void onConsultarMenu(List<TMenu> listaMenu) {
 		// TODO Auto-generated method stub
 	}
-
 }

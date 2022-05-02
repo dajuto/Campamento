@@ -1,4 +1,4 @@
-package comedor.negocio;
+package comedor.Negocio;
 
 
 public class TMenu extends Menu{

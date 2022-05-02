@@ -18,5 +18,35 @@
          "Nombremedico": "dajuto"
       },
       "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "11",
+         "motivo": "Covid",
+         "NombreAcampado": "emi00",
+         "atendido": "No",
+         "Nombremedico": "dajuto"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "12",
+         "motivo": "Gripe",
+         "NombreAcampado": "ines00",
+         "atendido": "No",
+         "Nombremedico": "d"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "13",
+         "motivo": "Covid",
+         "NombreAcampado": "iker00",
+         "atendido": "No",
+         "Nombremedico": "dajuto"
+      },
+      "type": "cita"
    }
 ]}

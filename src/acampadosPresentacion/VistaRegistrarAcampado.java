@@ -154,6 +154,7 @@ private String salud = "Sano";
 		
 		JButton boton_Registrar = new JButton("Registrar");
 		boton_Registrar.addActionListener(new ActionListener() {
+			boolean comprobar=false;
 			public void actionPerformed(ActionEvent e) {
 				if (checkBox.isSelected()) {
 					salud = comboBox.getSelectedItem().toString();
@@ -166,6 +167,7 @@ private String salud = "Sano";
 									if (telefono.getText().matches("[0-9]*") && telefono.getText().length() == 9) {
 										SingletonControllerAcampado.getInstance().crearAcampado(usuario.getText(), password.getText(), nombre.getText(), apellidos.getText(), dni.getText(), email.getText(), edad.getText(), telefono.getText(), salud, getFrame());
 										SingletonControllerAcampado.getInstance().registraUsuario(usuario.getText());
+										SingletonControllerAcampado.getInstance().citaNuevoAcampado(atras,salud,usuario.getText());
 									}
 									else JOptionPane.showMessageDialog(atras, "Formato del telefono es incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
 								}
@@ -178,6 +180,11 @@ private String salud = "Sano";
 					else JOptionPane.showMessageDialog(atras, "Las contraseñas no coinciden", "Error", JOptionPane.ERROR_MESSAGE);
 				}
 				else JOptionPane.showMessageDialog(atras, "Tamaño de clave minimo es de 8 caracteres", "Error", JOptionPane.ERROR_MESSAGE);
+				
+				
+				
+				
+				
 			}
 		});
 		boton_Registrar.setBounds(341, 222, 97, 25);

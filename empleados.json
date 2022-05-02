@@ -53,7 +53,11 @@
          "puesto": "Medico",
          "horario": 8,
          "salario": 8000,
-         "trabajo": {"citasPendientes": ["9"]},
+         "trabajo": {"citasPendientes": [
+            "9",
+            "11",
+            "12"
+         ]},
          "vacaciones": "Todo el verano",
          "usuario": "d",
          "contrasena": "1",
@@ -137,7 +141,11 @@
          "puesto": "Medico",
          "horario": 8,
          "salario": 8000,
-         "trabajo": {"citasPendientes": ["10"]},
+         "trabajo": {"citasPendientes": [
+            "10",
+            "11",
+            "13"
+         ]},
          "vacaciones": "Todo el verano",
          "usuario": "dajuto",
          "contrasena": "11111111",

@@ -1,4 +1,4 @@
-package comedor.integracion;
+package comedor.Integracion;
 
 
 import java.io.FileInputStream;
@@ -15,7 +15,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
-import comedor.negocio.TMenu;
+import comedor.Negocio.TMenu;
 import launcher.Factory;
 
 public class DaoMenu {
@@ -70,3 +70,4 @@ public class DaoMenu {
 		return l;
 	}
 }
+
