@@ -38,7 +38,7 @@ public class VistaEliminarMenu extends JFrame implements MenuObserver{
 		getContentPane().setLayout(null);
 		setSize(551,275);
 		
-		JLabel eliminar = new JLabel("Eliminar Menu");
+		JLabel eliminar = new JLabel("Eliminar Menu Campamento");
 		eliminar.setFont(new Font("Times New Roman", Font.BOLD, 24));
 		eliminar.setBounds(28, 21, 330, 36);
 		getContentPane().add(eliminar);
