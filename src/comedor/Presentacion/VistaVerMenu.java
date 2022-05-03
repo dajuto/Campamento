@@ -21,14 +21,14 @@ public class VistaVerMenu extends JFrame implements MenuObserver{
 	private JFrame atras;
 	
 	public VistaVerMenu(JFrame frame) {
-		setTitle("Menu");
+		setTitle("Menu Semanal");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		
 		this.atras = frame;
 		
-		JButton boton_Atras = new JButton("Atras");
+		JButton boton_Atras = new JButton("Atrás");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

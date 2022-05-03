@@ -26,7 +26,7 @@ public class VistaVerMenuAcampado extends JFrame implements MenuObserver{
 	private String diaMenu;
 	
 	public VistaVerMenuAcampado(JFrame frame) {
-		setTitle("Lista de Gastos Campamento");
+		setTitle("Menu Campamento");
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
 		setSize(624,378);

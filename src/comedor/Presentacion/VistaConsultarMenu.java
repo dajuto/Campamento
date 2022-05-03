@@ -34,7 +34,7 @@ public class VistaConsultarMenu extends JFrame implements MenuObserver{
 
 	
 	public VistaConsultarMenu(JFrame frame) {
-		setTitle("Menu Consultar");
+		setTitle("Consultar Menu Campamento");
 		this.atras=frame;
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);

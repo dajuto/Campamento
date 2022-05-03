@@ -40,7 +40,7 @@ public class VistaCrearMenu extends JFrame implements MenuObserver{
 	
 	public VistaCrearMenu(JFrame frame) {
 		// TODO Auto-generated constructor stub
-		setTitle("AÃ±adir Menu");
+		setTitle("Crear Menu Campamento");
 		this.atras=frame;
 		getContentPane().setBackground(SystemColor.activeCaption);
 		getContentPane().setLayout(null);
@@ -49,7 +49,7 @@ public class VistaCrearMenu extends JFrame implements MenuObserver{
 		
 		
 		
-		JButton boton_Atras = new JButton("Atras");
+		JButton boton_Atras = new JButton("Atrás");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -76,7 +76,7 @@ public class VistaCrearMenu extends JFrame implements MenuObserver{
 		labcrear.setBounds(25, 14, 330, 36);
 		getContentPane().add(labcrear);
 		
-		JLabel lblDia = new JLabel("Dia: ");
+		JLabel lblDia = new JLabel("Día: ");
 		lblDia.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblDia.setBounds(31, 93, 112, 20);
 		getContentPane().add(lblDia);
