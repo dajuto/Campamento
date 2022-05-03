@@ -43,5 +43,14 @@
          "Instalacion": "Pista de tenis"
       },
       "type": "actividad"
+   },
+   {
+      "data": {
+         "Nombre": "Baloncesto",
+         "Monitor": "Manuel",
+         "Id": 6,
+         "Instalacion": "Al aire libre"
+      },
+      "type": "actividad"
    }
 ]}

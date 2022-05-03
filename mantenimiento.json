@@ -3,19 +3,19 @@
       "data": {
          "Empleado": "Penelope Cruz",
          "Codigo": "1",
-         "Descripcion": "fkjsf",
-         "Lugar": "Mar",
+         "Descripcion": "Volver a pintar las lineas ya que estam en muy mal estado",
+         "Lugar": "Pista de Tenis",
          "Coste": 1200,
-         "Estado": "Reparado"
+         "Estado": "Sin reparar"
       },
       "type": "averia"
    },
    {
       "data": {
-         "Empleado": "Joaquiiin",
+         "Empleado": "Joaquin Saez",
          "Codigo": "2",
-         "Descripcion": "12:12",
-         "Lugar": "piscina",
+         "Descripcion": "Arreglar en la base azul los pales de la izquierda",
+         "Lugar": "Campo de paintball",
          "Coste": 200,
          "Estado": "Sin reparar"
       },
@@ -23,12 +23,12 @@
    },
    {
       "data": {
-         "Empleado": "Joaquiiin",
+         "Empleado": "cristina",
          "Codigo": "3",
-         "Descripcion": "fdzfdf",
-         "Lugar": "Tennis",
-         "Coste": 34,
-         "Estado": "Sin reparar"
+         "Descripcion": "Hechar anti algas ",
+         "Lugar": "Lago",
+         "Coste": 50,
+         "Estado": "Reparado"
       },
       "type": "averia"
    }

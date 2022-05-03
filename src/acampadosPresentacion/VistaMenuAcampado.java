@@ -22,7 +22,7 @@ public class VistaMenuAcampado extends JFrame{
 		getContentPane().setLayout(null);
 		setSize(500,300);
 		this.atras=f;
-		JButton boton_actividades = new JButton("Mis Actividades");
+		JButton boton_actividades = new JButton("Actividades");
 		boton_actividades.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

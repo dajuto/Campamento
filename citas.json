@@ -1,21 +1,11 @@
 {"citas": [
    {
       "data": {
-         "codigo": "9",
-         "motivo": "Fiebre",
-         "NombreAcampado": "j",
-         "atendido": "No",
-         "Nombremedico": "d"
-      },
-      "type": "cita"
-   },
-   {
-      "data": {
          "codigo": "10",
-         "motivo": "dx",
-         "NombreAcampado": "j",
+         "motivo": "Dolor de rodilla",
+         "NombreAcampado": "jose01",
          "atendido": "No",
-         "Nombremedico": "dajuto"
+         "Nombremedico": "Daniel00"
       },
       "type": "cita"
    },
@@ -23,9 +13,9 @@
       "data": {
          "codigo": "11",
          "motivo": "Covid",
-         "NombreAcampado": "emi00",
-         "atendido": "No",
-         "Nombremedico": "dajuto"
+         "NombreAcampado": "emi01",
+         "atendido": "Si",
+         "Nombremedico": "Daniel00"
       },
       "type": "cita"
    },
@@ -33,9 +23,9 @@
       "data": {
          "codigo": "12",
          "motivo": "Gripe",
-         "NombreAcampado": "ines00",
+         "NombreAcampado": "ines01",
          "atendido": "No",
-         "Nombremedico": "d"
+         "Nombremedico": "David00"
       },
       "type": "cita"
    },
@@ -43,9 +33,49 @@
       "data": {
          "codigo": "13",
          "motivo": "Covid",
-         "NombreAcampado": "iker00",
+         "NombreAcampado": "iker01",
          "atendido": "No",
-         "Nombremedico": "dajuto"
+         "Nombremedico": "Daniel00"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "14",
+         "motivo": "Dolor de tripa",
+         "NombreAcampado": "jose01",
+         "atendido": "No",
+         "Nombremedico": "Daniel00"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "15",
+         "motivo": "Catarro",
+         "NombreAcampado": "jose01",
+         "atendido": "No",
+         "Nombremedico": "David00"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "16",
+         "motivo": "Covid",
+         "NombreAcampado": "alonso01",
+         "atendido": "No",
+         "Nombremedico": "Daniel00"
+      },
+      "type": "cita"
+   },
+   {
+      "data": {
+         "codigo": "17",
+         "motivo": "Dolor de cabeza",
+         "NombreAcampado": "ines01",
+         "atendido": "No",
+         "Nombremedico": "Daniel00"
       },
       "type": "cita"
    }
