@@ -136,7 +136,7 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 				 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			     fecha = sdf.format(new Date());
 			
-			    SingletonControllerContabilidad.getInstance().añadirIngresoAcam("Ventas", "Abono acampado", "1200" ,fecha, nombreCompleto, dniAcampado, false, fac, atras);
+			    SingletonControllerContabilidad.getInstance().añadirIngresoAcam("Ventas", "Abono acampado", "1200" ,fecha, nombreCompleto, dniAcampado, true, fac, atras);
 			  
 			    SingletonControllerAcampado.getInstance().cambiarIsPagado(true); 
 			  

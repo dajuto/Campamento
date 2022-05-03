@@ -3,11 +3,6 @@ package contabilidad.Presentacion;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-
-import empleados.Negocio.TEmpleado;
-import empleados.Presentacion.SingletonControllerEmpleado;
-import gestoria.Presentacion.SingletonControllerGestoria;
-
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -19,11 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-
 import acampados.Negocio.TAcampado;
-import acampadosPresentacion.SingletonControllerAcampado;
 import contabilidad.Negocio.ContabilidadObserver;
-import contabilidad.Negocio.Gastos;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
 
@@ -34,7 +26,6 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 	private String nombreUsuario;
 	private JTextField concepto_txt; 
 	private JTextField importe_txt;
-	private JComboBox<String> acampado_txt;
 	private JComboBox cuenta_txt; 
 	List<TIngresos> listaIngresos;
 	List<TAcampado> listaAcampados;
@@ -52,7 +43,7 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		setSize(500,300);
 		
 		listaIngresos = SingletonControllerContabilidad.getInstance().getListaIngresos();
-		listaAcampados = SingletonControllerAcampado.getInstance().getListaAcampados();
+		//listaAcampados = SingletonControllerAcampado.getInstance().getListaAcampados();
 		
 		this.atras = frame;
 		
@@ -73,89 +64,47 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		
 		JLabel lblCodigo = new JLabel("Cuenta de Ingreso: ");
 		lblCodigo.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblCodigo.setBounds(25, 63, 148, 25);
+		lblCodigo.setBounds(25, 83, 148, 25);
 		getContentPane().add(lblCodigo);
 		
 		JLabel lblConcepto = new JLabel("Concepto: ");
 		lblConcepto.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblConcepto.setBounds(25, 101, 86, 25);
+		lblConcepto.setBounds(25, 121, 86, 25);
 		getContentPane().add(lblConcepto);
 		
 		JLabel lblImporte = new JLabel("Importe:");
 		lblImporte.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblImporte.setBounds(25, 137, 69, 25);
+		lblImporte.setBounds(25, 156, 69, 25);
 		getContentPane().add(lblImporte);
 		
-		JLabel lblAcampado = new JLabel("Acampad@:");
-		lblAcampado.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblAcampado.setBounds(25, 175, 97, 25);
-		getContentPane().add(lblAcampado);
-		
 		 cuenta_txt = new JComboBox();
-	     cuenta_txt.setModel(new DefaultComboBoxModel(new String[] {"Ventas", "Subvenciones, donaciones", "Ingreso por arrendamiento", "Ingresos financieros", "Ingresos gestión"}));
-	     cuenta_txt.setBounds(183, 67, 116, 22);
+	     cuenta_txt.setModel(new DefaultComboBoxModel(new String[] {"Subvenciones, donaciones", "Ingreso por arrendamiento", "Ingresos financieros", "Ingresos gestión"}));
+	     cuenta_txt.setBounds(185, 86, 148, 22);
 	     getContentPane().add(cuenta_txt);
 		
 		concepto_txt = new JTextField();
-		concepto_txt.setBounds(110, 105, 116, 22);
+		concepto_txt.setBounds(121, 125, 116, 22);
 		getContentPane().add(concepto_txt);
 		concepto_txt.setColumns(10);
 		
 		importe_txt = new JTextField();
-		importe_txt.setBounds(110, 141, 116, 22);
+		importe_txt.setBounds(110, 160, 116, 22);
 		getContentPane().add(importe_txt);
 		importe_txt.setColumns(10);	
 		
-		acampado_txt = new JComboBox<String>();
-		acampado_txt.setBounds(132, 178, 116, 22);
-		getContentPane().add(acampado_txt);
-		for(TAcampado e: listaAcampados) {
-			if(!e.isPagado()) {
-				acampado_txt.addItem(e.getNombreCompleto());  //solo cogemos el acampado que no haya pagado
-			}	
-		}
-		
 		contabilizada = new JCheckBox("Marca para contabilizar ingreso");
-		contabilizada.setBounds(287, 177, 169, 25);
+		contabilizada.setBounds(280, 179, 169, 25);
 		getContentPane().add(contabilizada);
-	
-		
-		cuenta_txt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				if (!((String) cuenta_txt.getSelectedItem()).matches("Ventas")) {
-					
-					acampado_txt.setVisible(false);
-					lblAcampado.setVisible(false);	
-				}else {	
-					acampado_txt.setVisible(true);
-					lblAcampado.setVisible(true);	
-				}	
-			}
-		});
+
 			
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String acampado = "";
-				if (((String) cuenta_txt.getSelectedItem()).matches("Ventas")) {
-					acampado = (String) acampado_txt.getSelectedItem();
-				}	
+				dniAcampado = ""; 
 					if (importe_txt.getText().matches("[0-9]*")) {
-						String cuenta = (String) cuenta_txt.getSelectedItem();
-						
-						//estoy cogiendo el dni del acampado seleccionado 
-						for(TAcampado y: listaAcampados) {		
-							if(acampado.matches(y.getNombreCompleto())) {
-								dniAcampado = y.getDni(); 
-								if (contabilizada.isSelected()) {
-									//poner aqui singletonControllerAcampado.getInstance().modificarAcampado()
-									y.setPagado(true); //estoy poniendo que si se contabiliza el ingreso, se actualiza el atributo pagado de acampado	
-								}
-							}else {
-								dniAcampado = ""; 
-							}
-						}	
+						String cuenta = (String) cuenta_txt.getSelectedItem();	
+							
 						if (contabilizada.isSelected()) {
 							boolContabilizada = true;
 						}	

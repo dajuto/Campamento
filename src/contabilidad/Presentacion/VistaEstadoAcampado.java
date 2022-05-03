@@ -1,11 +1,9 @@
 package contabilidad.Presentacion;
 
 import javax.swing.JFrame;
-
 import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
-
 import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.Font;
