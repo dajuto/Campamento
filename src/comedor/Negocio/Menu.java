@@ -24,7 +24,7 @@ public abstract class Menu {
 	
 	public JSONObject report() {
 		JSONObject comedor = new JSONObject();
-		comedor.accumulate("type", "Menu");
+		comedor.accumulate("type", "comedor");
 		JSONObject data = new JSONObject();
 		data.accumulate("Dia", this.dia);
 		data.accumulate("Desayuno", this.desayuno); 

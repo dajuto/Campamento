@@ -44,7 +44,7 @@ public class VistaListaMenu extends JFrame implements MenuObserver{
 		setSize(551,501);
 		this.atras = frame;
 		
-		JButton boton_Atras = new JButton("Atr√°s");
+		JButton boton_Atras = new JButton("Atr·s");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

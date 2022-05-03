@@ -55,7 +55,7 @@ public class VistaEliminarMenu extends JFrame implements MenuObserver{
 		lblEliminar.setBounds(28, 74, 314, 20);
 		getContentPane().add(lblEliminar);
 		
-		JButton boton_Atras = new JButton("Atr√°s");
+		JButton boton_Atras = new JButton("Atr·s");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

@@ -28,7 +28,7 @@ public class VistaVerMenu extends JFrame implements MenuObserver{
 		
 		this.atras = frame;
 		
-		JButton boton_Atras = new JButton("Atr√°s");
+		JButton boton_Atras = new JButton("Atr·s");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

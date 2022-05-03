@@ -109,7 +109,7 @@ public class ServiAppMenu implements Observable<MenuObserver>{
 			data.accumulate("Cena", cena);
 			
 			comedor.accumulate("data", data);
-			comedor.accumulate("type", "menu");
+			comedor.accumulate("type", "comedor");
 			
 			TMenu ta = (TMenu) this.factoriaTranserObjects.createInstance(comedor);
 			this.listaMenu.add(ta);

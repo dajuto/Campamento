@@ -59,7 +59,7 @@ public class VistaConsultarMenu extends JFrame implements MenuObserver{
 		lblMenu.setBounds(25, 74, 423, 32);
 		getContentPane().add(lblMenu);
 		
-		JButton boton_Atras = new JButton("Atr√°s");
+		JButton boton_Atras = new JButton("Atr·s");
 		boton_Atras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
