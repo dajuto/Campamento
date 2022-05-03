@@ -1,33 +1,33 @@
 {"recetas": [
    {
       "data": {
-         "codigo": "4",
-         "NombreAcampado": "Jose",
-         "dosis": "1 a la semana",
-         "medicamento": "enantyum",
-         "Nombremedico": "dajuto",
-         "comprado": "Adquirido"
-      },
-      "type": "receta"
-   },
-   {
-      "data": {
-         "codigo": "5",
-         "NombreAcampado": "Alvaro ",
-         "dosis": "1 al dia",
-         "medicamento": "enantyum",
-         "Nombremedico": "d",
-         "comprado": "Adquirido"
-      },
-      "type": "receta"
-   },
-   {
-      "data": {
          "codigo": "10",
-         "NombreAcampado": "Alvarito",
-         "dosis": "rgsse",
-         "medicamento": "degdw",
-         "Nombremedico": "d",
+         "NombreAcampado": "Alvaro",
+         "dosis": "2 al dia",
+         "medicamento": "Amoxicilina",
+         "Nombremedico": "David00",
+         "comprado": "Adquirido"
+      },
+      "type": "receta"
+   },
+   {
+      "data": {
+         "codigo": "11",
+         "NombreAcampado": "Jose",
+         "dosis": "3 dosis",
+         "medicamento": "paracetamol",
+         "Nombremedico": "Daniel00",
+         "comprado": "Sin Adquirir"
+      },
+      "type": "receta"
+   },
+   {
+      "data": {
+         "codigo": "12",
+         "NombreAcampado": "Borja",
+         "dosis": "3 al dia",
+         "medicamento": "ibuprofeno",
+         "Nombremedico": "Daniel00",
          "comprado": "Sin Adquirir"
       },
       "type": "receta"

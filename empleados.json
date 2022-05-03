@@ -7,7 +7,7 @@
          "vacaciones": "2 semanas de verano",
          "usuario": "alvaro00",
          "contrasena": "12345678",
-         "nombre": "Ivan pp"
+         "nombre": "Alvaro"
       },
       "type": "Gestor"
    },
@@ -19,7 +19,7 @@
          "vacaciones": "Todo el verano",
          "usuario": "ines00",
          "contrasena": "12345678",
-         "nombre": "inesita"
+         "nombre": "ines"
       },
       "type": "Gestor"
    },
@@ -40,7 +40,7 @@
          "puesto": "Empleado Limpieza",
          "horario": 8,
          "salario": 1400,
-         "trabajo": {"listaLimpieza": ["13"]},
+         "trabajo": {"listaLimpieza": ["4"]},
          "vacaciones": "Navidades",
          "usuario": "pepe00",
          "contrasena": "12345678",
@@ -54,12 +54,12 @@
          "horario": 8,
          "salario": 8000,
          "trabajo": {"citasPendientes": [
-            "9",
             "11",
-            "12"
+            "12",
+            "15"
          ]},
          "vacaciones": "Todo el verano",
-         "usuario": "d",
+         "usuario": "David00",
          "contrasena": "1",
          "nombre": "David Viejo"
       },
@@ -71,8 +71,8 @@
          "horario": 8,
          "salario": 1400,
          "trabajo": {"listaLimpieza": [
-            "5",
-            "2"
+            "2",
+            "3"
          ]},
          "vacaciones": "Navidades",
          "usuario": "ivan00",
@@ -99,9 +99,9 @@
          "puesto": "Empleado Mantenimiento",
          "horario": 9,
          "salario": 2000,
-         "trabajo": {"listaAverias": ["1"]},
+         "trabajo": {"listaAverias": []},
          "vacaciones": "Nunca",
-         "usuario": "Penelope",
+         "usuario": "Penelope00",
          "contrasena": "12345678",
          "nombre": "Penelope Cruz"
       },
@@ -112,14 +112,11 @@
          "puesto": "Empleado Mantenimiento",
          "horario": 8,
          "salario": 3500,
-         "trabajo": {"listaAverias": [
-            "2",
-            "3"
-         ]},
+         "trabajo": {"listaAverias": ["3"]},
          "vacaciones": "Todo el verano",
-         "usuario": "joaquin",
+         "usuario": "joaquin00",
          "contrasena": "12345678",
-         "nombre": "Joaquiiin"
+         "nombre": "Joaquin Saez"
       },
       "type": "Empleado Mantenimiento"
    },
@@ -128,7 +125,7 @@
          "puesto": "Empleado Mantenimiento",
          "horario": 9,
          "salario": 2000,
-         "trabajo": {"listaAverias": []},
+         "trabajo": {"listaAverias": ["3"]},
          "vacaciones": "Nunca",
          "usuario": "cris00",
          "contrasena": "12345678",
@@ -144,12 +141,15 @@
          "trabajo": {"citasPendientes": [
             "10",
             "11",
-            "13"
+            "13",
+            "14",
+            "16",
+            "17"
          ]},
          "vacaciones": "Todo el verano",
-         "usuario": "dajuto",
+         "usuario": "Daniel00",
          "contrasena": "11111111",
-         "nombre": "Dajuto"
+         "nombre": "Daniel"
       },
       "type": "Medico"
    },
@@ -160,10 +160,22 @@
          "salario": 3000,
          "trabajo": {"listaAverias": []},
          "vacaciones": "Todo el verano",
-         "usuario": "crmanz",
+         "usuario": "crmanz00",
          "contrasena": "12345678",
          "nombre": "Cristian"
       },
       "type": "Empleado Mantenimiento"
+   },
+   {
+      "data": {
+         "puesto": "Gestor",
+         "horario": 8,
+         "salario": 3500,
+         "vacaciones": "Todo el verano",
+         "usuario": "usuario00",
+         "contrasena": "12345678",
+         "nombre": "usuario"
+      },
+      "type": "Gestor"
    }
 ]}
