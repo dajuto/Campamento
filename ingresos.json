@@ -1,0 +1,62 @@
+{"ingresos": [
+   {
+      "data": {
+         "Tipo": "Ingresos financieros",
+         "Importe": 1000,
+         "Acampado": {
+            "Nombre": "",
+            "DNI Acampado": ""
+         },
+         "Numero Factura": "3",
+         "Concepto": "Hacienda Publica",
+         "Fecha contable": "03/05/2022",
+         "Contabilizada": "Si"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Subvenciones, donaciones",
+         "Importe": 500,
+         "Acampado": {
+            "Nombre": " ",
+            "DNI Acampado": " "
+         },
+         "Numero Factura": "4",
+         "Concepto": "Ayuntamiento Madrid",
+         "Fecha contable": "03/05/2022",
+         "Contabilizada": "Si"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ingreso por arrendamiento",
+         "Importe": 200,
+         "Acampado": {
+            "Nombre": " ",
+            "DNI Acampado": " "
+         },
+         "Numero Factura": "1",
+         "Concepto": "Instalaciones",
+         "Fecha contable": "03/05/2022",
+         "Contabilizada": "No"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ingresos gestión",
+         "Importe": 500,
+         "Acampado": {
+            "Nombre": " ",
+            "DNI Acampado": " "
+         },
+         "Numero Factura": "2",
+         "Concepto": "Serviciosexteriores",
+         "Fecha contable": "03/05/2022",
+         "Contabilizada": "No"
+      },
+      "type": "ingresos"
+   }
+]}

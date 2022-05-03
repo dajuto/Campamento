@@ -43,7 +43,6 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 	private JTextField concepto;
 	private JTextField importe;
 	private String dniAcamp;
-	private JComboBox<String> acampadoNombre;
 	private String importeString;
 	private String cuenta; 
 	private JCheckBox contabilizada;
@@ -72,7 +71,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 				atras.setVisible(true);
 			}
 		});
-		boton_Atras.setBounds(373, 265, 97, 25);
+		boton_Atras.setBounds(367, 265, 97, 25);
 		getContentPane().add(boton_Atras);
 		
 			
@@ -86,18 +85,13 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		lblImporte.setBounds(25, 174, 84, 25);
 		getContentPane().add(lblImporte);
 		
-		JLabel lblEmplead = new JLabel("Nombre acampado:");
-		lblEmplead.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		lblEmplead.setBounds(25, 212, 143, 25);
-		getContentPane().add(lblEmplead);
-		
 		JLabel lblConcepto = new JLabel("Concepto:");
 		lblConcepto.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblConcepto.setBounds(25, 136, 84, 25);
 		getContentPane().add(lblConcepto);
 		
 		concepto = new JTextField();
-		concepto.setBounds(121, 138, 116, 22);
+		concepto.setBounds(121, 138, 149, 22);
 		concepto.setText(listaIngresos.get(0).getConcepto()); //concepto
 		getContentPane().add(concepto);
 		concepto.setColumns(10);
@@ -108,34 +102,17 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 		importe.setText(importeString);
 		getContentPane().add(importe);
 		importe.setColumns(10);
-	
-		acampadoNombre =  new JComboBox<String>();
-		acampadoNombre.setBounds(166, 214, 116, 22);
-		acampadoNombre.setSelectedItem(listaIngresos.get(0).getNombreAcampado());
-		getContentPane().add(acampadoNombre);
-		for(TAcampado e: listaAcampados) {
-			if(!e.isPagado()) {
-				acampadoNombre.addItem(e.getNombreCompleto());  //solo cogemos el acampado que no haya pagado
-			}	
-		}
 		
 		JButton boton_modificar = new JButton("Modificar");
 		boton_modificar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (importe.getText().matches("[0-9]*")) {
-						 if(!cuenta.matches("Ventas")) {	
-								acampado = "";
-								
-							}else {
-							    acampado = (String) acampadoNombre.getSelectedItem();
-							}
 							//estoy cogiendo el dni del acampado seleccionado 
 							for(TAcampado y: listaAcampados) {		
 								if(acampado.matches(y.getNombreCompleto())) {
 									dniAcamp = y.getDni(); 
 									if (contabilizada.isSelected()) {
-										//poner aqui singletonControllerAcampado.getInstance().modificarAcampado()
-										y.setPagado(true); //estoy poniendo que si se contabiliza el ingreso, se actualiza el atributo pagado de acampado	
+										y.setPagado(true);
 									}
 								}else {
 									dniAcamp = ""; 
@@ -148,7 +125,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 				else JOptionPane.showMessageDialog(atras, "El importe tiene que ser un numero", "Error", JOptionPane.ERROR_MESSAGE);			
 			}
 		});
-		boton_modificar.setBounds(264, 265, 97, 25);
+		boton_modificar.setBounds(258, 265, 97, 25);
 		getContentPane().add(boton_modificar);	
 		
 	    FacturaElegido = new JComboBox<String>();
@@ -168,18 +145,15 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 						if (cod.isContabilizada()) { //solo se pueden modificar el concepto y la cuenta de gasto
 							
 							contabilizada.setEnabled(false);
-							importe.setEnabled(false); 
-							acampadoNombre.setEnabled(false); 	
-						
+							importe.setEnabled(false); 	
 						}
 						else {		
-							acampadoNombre.setEnabled(false); 
 							contabilizada.setEnabled(true);
 							importe.setEnabled(true); 	
 						}
 						importeString = Integer.toString(cod.getImporte());
 						importe.setText(importeString);
-						acampadoNombre.setSelectedItem(cod.getNombreAcampado());
+						acampado = cod.getNombreAcampado();
 						concepto.setText(cod.getConcepto());
 						numeroFactura = cod.getnumeroFactura(); 
 						cuenta = cod.getTipo();
@@ -188,7 +162,7 @@ public class VistaModificarIngresos extends JFrame implements GestoriaObserver{
 			}
 		});
 		contabilizada = new JCheckBox("Marcar para contabilizar ingreso");
-		contabilizada.setBounds(25, 265, 222, 25);
+		contabilizada.setBounds(248, 231, 222, 25);
 		contabilizada.setSelected(listaIngresos.get(0).isContabilizada());
 		getContentPane().add(contabilizada);
 		

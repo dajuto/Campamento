@@ -100,8 +100,8 @@ public class VistaCrearIngreso extends JFrame implements ContabilidadObserver{
 		JButton boton_Crear = new JButton("Crear");
 		boton_Crear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String acampado = "";
-				dniAcampado = ""; 
+				String acampado = " ";
+				dniAcampado = " "; 
 					if (importe_txt.getText().matches("[0-9]*")) {
 						String cuenta = (String) cuenta_txt.getSelectedItem();	
 							
