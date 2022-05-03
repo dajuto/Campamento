@@ -9,7 +9,7 @@
          "Email": "alvcorde@ucm.es",
          "Telefono": 630864506,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "Si",
+         "Pagado": "No",
          "Contraseña": "12121212",
          "Habitacion": "1",
          "DNI": "78765711A"
@@ -26,7 +26,7 @@
          "Email": "adri@ucm.es",
          "Telefono": 630864506,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "Si",
+         "Pagado": "No",
          "Contraseña": "12345678",
          "Habitacion": "2",
          "DNI": "78765711A"
@@ -43,7 +43,7 @@
          "Email": "alvaro@gmial.es",
          "Telefono": 606606060,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "Si",
+         "Pagado": "No",
          "Contraseña": "1",
          "Habitacion": "3",
          "DNI": "78765711A"
@@ -77,7 +77,7 @@
          "Email": "borja@ucm.es",
          "Telefono": 928800690,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "Si",
+         "Pagado": "No",
          "Contraseña": "12345678",
          "Habitacion": "5",
          "DNI": "78765711A"
@@ -111,7 +111,7 @@
          "Email": "cris@ucm.es",
          "Telefono": 630864506,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "Si",
+         "Pagado": "No",
          "Contraseña": "12345678",
          "Habitacion": "11",
          "DNI": "78765711A"
@@ -145,7 +145,7 @@
          "Email": "vicente@ucm.es",
          "Telefono": 630864506,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "Si",
+         "Pagado": "No",
          "Contraseña": "12345678",
          "Habitacion": "9",
          "DNI": "78766666A"
@@ -179,7 +179,7 @@
          "Email": "mario@ucm.es",
          "Telefono": 606090909,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "No",
+         "Pagado": "Si",
          "Contraseña": "12345678",
          "Habitacion": "7",
          "DNI": "78765711A"
@@ -213,7 +213,7 @@
          "Email": "intensa@ucm.es",
          "Telefono": 637281903,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "No",
+         "Pagado": "Si",
          "Contraseña": "12341234",
          "Habitacion": "13",
          "DNI": "23451627F"
@@ -230,7 +230,7 @@
          "Email": "iker@ucm.es",
          "Telefono": 645372893,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "No",
+         "Pagado": "Si",
          "Contraseña": "12341234",
          "Habitacion": "14",
          "DNI": "21331234D"
@@ -247,7 +247,7 @@
          "Email": "alon@ucm.es",
          "Telefono": 675849309,
          "Actividades": {"ListaActividades": []},
-         "Pagado": "No",
+         "Pagado": "Si",
          "Contraseña": "12341234",
          "Habitacion": "15",
          "DNI": "35463789H"

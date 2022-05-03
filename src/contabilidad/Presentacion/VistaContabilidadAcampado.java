@@ -72,7 +72,7 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 		});
 			
 		boton_Estado.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_Estado.setBounds(40, 133, 165, 38);
+		boton_Estado.setBounds(39, 100, 165, 38);
 		getContentPane().add(boton_Estado);
 		
 		
@@ -85,15 +85,8 @@ public class VistaContabilidadAcampado extends JFrame implements ContabilidadObs
 			}
 		});
 		boton_Pagar.setFont(new Font("Tahoma", Font.PLAIN, 17));
-		boton_Pagar.setBounds(261, 133, 165, 38);
+		boton_Pagar.setBounds(268, 100, 165, 38);
 		getContentPane().add(boton_Pagar);
-		
-		JPanel panel = new JPanel();
-		panel.setBounds(53, 21, 363, 88);
-		getContentPane().add(panel);
-		
-		JLabel lblNewLabel = new JLabel("Como acampado tiene la posibilidad de consultar el estado de sus cuentas. Es decir, ver si el abono del campamento est\u00E1 pagado o no lo est\u00E1. ");
-		panel.add(lblNewLabel);
 		
 
 		listaAcampados = SingletonControllerAcampado.getInstance().getListaAcampados();
