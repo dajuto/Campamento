@@ -1,17 +1,11 @@
 package contabilidad.Negocio;
-
-
 import java.awt.Frame;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.JFrame;
-
 import org.json.JSONObject;
-
 import contabilidad.Integracion.SingletonDaoGastos;
 import contabilidad.Integracion.SingletonDaoIngresos;
-import gestoria.Integracion.SingletonDaoInstalacion;
 import launcher.Factory;
 import launcher.Observable;
 

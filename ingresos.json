@@ -1,165 +1,60 @@
 {"ingresos": [
    {
       "data": {
-         "Tipo": "Subvenciones, donaciones",
-         "Importe": 200,
+         "Tipo": "Ingresos financieros",
+         "Importe": 1000,
          "Acampado": {
             "Nombre": "",
             "DNI Acampado": ""
          },
-         "Numero Factura": "2",
-         "Concepto": "Subvencion",
-         "Fecha contable": "24/04/2022",
+         "Numero Factura": "3",
+         "Concepto": "Hacienda Publica",
+         "Fecha contable": "03/05/2022",
          "Contabilizada": "Si"
       },
       "type": "ingresos"
    },
    {
       "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
+         "Tipo": "Subvenciones, donaciones",
+         "Importe": 500,
          "Acampado": {
-            "Nombre": "Jose Cordero",
-            "DNI Acampado": "78765711A"
-         },
-         "Numero Factura": "5",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "26/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "Borja Garcia",
-            "DNI Acampado": "78765711A"
-         },
-         "Numero Factura": "8",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "26/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "adri adrisky",
-            "DNI Acampado": "78765711A"
-         },
-         "Numero Factura": "1",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "27/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "Jose Cordero",
-            "DNI Acampado": "78765711A"
-         },
-         "Numero Factura": "2",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "27/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "david dajuto",
-            "DNI Acampado": "78787877A"
-         },
-         "Numero Factura": "3",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "28/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "david dajuto",
-            "DNI Acampado": "78787877A"
+            "Nombre": " ",
+            "DNI Acampado": " "
          },
          "Numero Factura": "4",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "28/04/2022",
+         "Concepto": "Ayuntamiento Madrid",
+         "Fecha contable": "03/05/2022",
+         "Contabilizada": "Si"
+      },
+      "type": "ingresos"
+   },
+   {
+      "data": {
+         "Tipo": "Ingreso por arrendamiento",
+         "Importe": 200,
+         "Acampado": {
+            "Nombre": " ",
+            "DNI Acampado": " "
+         },
+         "Numero Factura": "1",
+         "Concepto": "Instalaciones",
+         "Fecha contable": "03/05/2022",
          "Contabilizada": "No"
       },
       "type": "ingresos"
    },
    {
       "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
+         "Tipo": "Ingresos gestión",
+         "Importe": 500,
          "Acampado": {
-            "Nombre": "david dajuto",
-            "DNI Acampado": "78787877A"
+            "Nombre": " ",
+            "DNI Acampado": " "
          },
-         "Numero Factura": "5",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "28/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "david dajuto",
-            "DNI Acampado": "78787877A"
-         },
-         "Numero Factura": "6",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "28/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "Pepeeee Luiss",
-            "DNI Acampado": "78765711A"
-         },
-         "Numero Factura": "7",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "28/04/2022",
-         "Contabilizada": "No"
-      },
-      "type": "ingresos"
-   },
-   {
-      "data": {
-         "Tipo": "Ventas",
-         "Importe": 1200,
-         "Acampado": {
-            "Nombre": "Vicente Madurga",
-            "DNI Acampado": "78766666A"
-         },
-         "Numero Factura": "8",
-         "Concepto": "Abono acampado",
-         "Fecha contable": "28/04/2022",
+         "Numero Factura": "2",
+         "Concepto": "Serviciosexteriores",
+         "Fecha contable": "03/05/2022",
          "Contabilizada": "No"
       },
       "type": "ingresos"

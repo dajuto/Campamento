@@ -1,9 +1,6 @@
 package contabilidad.Presentacion;
-
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
-
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -11,13 +8,9 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JComboBox;
-//import javax.swing.JTextField;
-
 import contabilidad.Negocio.ContabilidadObserver;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
-
-//import javax.swing.JTable;
 
 public class VistaEliminarIngreso extends JFrame implements ContabilidadObserver{
 	private JFrame atras;

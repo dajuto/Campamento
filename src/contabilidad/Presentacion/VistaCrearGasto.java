@@ -1,21 +1,9 @@
 package contabilidad.Presentacion;
-
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-
-
-
 import empleados.Negocio.TEmpleado;
 import empleados.Presentacion.SingletonControllerEmpleado;
-import gestoria.Negocio.TInstalacion;
-import gestoria.Negocio.TLimpieza;
-import gestoria.Presentacion.SingletonControllerGestoria;
-
-import empleados.Negocio.TEmpleado;
-import gestoria.Presentacion.SingletonControllerGestoria;
-
-
 import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -27,12 +15,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
-
 import contabilidad.Negocio.ContabilidadObserver;
-import contabilidad.Negocio.Gastos;
 import contabilidad.Negocio.TGastos;
 import contabilidad.Negocio.TIngresos;
-
 import javax.swing.DefaultComboBoxModel;
 
 public class VistaCrearGasto extends JFrame implements ContabilidadObserver{
