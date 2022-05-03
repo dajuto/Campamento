@@ -15,12 +15,17 @@ Para poder ejecutar el codigo deberemos:
 		- Boton Sanidad: Apareceran dos botones:
 			- Boton de citas: apareceran las citas de todos los medicos registrados, solo los medicos podran consultar
 			o eliminar citas que esten a su nombre, es decir que se le hayan solicitado a el. Los demas usuarios no 
-			podran consultar o eliminar citas.
+			podran consultar o eliminar citas. Un medico, usuario: "David00" contraseña: "1"
 			- Boton de recetas: apareceran todas las recetas de todos los medicos, solo los medicos podran crear recetas a
 			su nombre para un acampado especifico, consultar y eliminar sus recetas. Donde el resto de usuarios no tendran
 			interacción con las recetas.
 			
-		- Boton Comedor:
+		- Boton Comedor: aparecen cuatro botones: 
+		 	-boton ver comedor: te aparece un boton el cual te da la posibilidad de ver una lista con el menu semanal.
+		 	-boton ver lista menu: este boton nos ofrece mer una tabla con el menu semanal del campamento, ademas nos da la posibilidad de crear un nuevo menu para el campamento, eliminar el menu de un dia seleccionado y por ultimo consultar el menu del campamento.
+			- boton crear menu: nos da la opcion de crear el emnu añadiendo un dia, desayuno, comida y cena.
+			-boton eliminar: elimina el menu de un dia seleccionado
+			- boton consultar: consulta el menu del dia seleccionado 
 		 
 		- Boton Contabilidad: aparecera un menu con tres botones:
 			- Boton de Gastos: En el aparecera un menu con cuatro botones:
@@ -53,8 +58,21 @@ Para poder ejecutar el codigo deberemos:
 				- Boton Modificar instalacion: se podran modificar las instalaciones 
 				- Boton Añadir instalacion: se podra añadir una nueva instalación
 				- Boton eliminar instalación: se podra eliminar una instalacion
-				
-			- Boton Añadir empleado: se podra crear un nuevo empleado, teniendo en cuenta que el usuario y el nombre 
+			
+			
+		- Boton Añadir empleado: se podra crear un nuevo empleado, teniendo en cuenta que el usuario y el nombre 
 			introducidos no coincidan con uno ya existente.
 	
-	- Tambien 	
+	- Tambien se puede iniciar sesion como acampado o registarse como un nuevo acampado.
+		- Boton Pedir Cita: el usuario podra pedir cita con el medico que elija y el motivo que elija, se registrara en la lista de citas pendientes del medico donde la aparecera como  "N0" atendida el nombre del usurio y el motivo.
+		-Al registrar un nuevo acampado, si marca la casilla de enfermo se generara el formulario de pedir cita con el usuario recien registrado si no ha habido fallos en el registro con el motivo predefinido de Covid o Gripe. 
+		
+		- Boton Gestoria: el acampado tendra la posibilidad de modificar su perfil, o cambiar su contraseña. Ejemplo 
+		de acampado, usuario: "alvaro01" contraseña: "12121212"
+		
+		- Boton lista de actividades: el boton lista de actividades mostrará a todos los acampados la misma lista de actividades disponibles del campamento, ya que todas ellas son comunes para todos ellos.
+		
+		- Boton contabilidad: el boton nos permite ver el estado del pago del acampado: "Importe pagado" o "Importe no pagado". De estar el importe pagado, no te permite darle al botón de pagar. De no estar pagado, te permite seleccionar
+		el botón puesto que no se ha pagado el abono. 
+		
+		- Boton menu semanal: el boton nos enseña una lista a los acampados con el menu semanal del campamento 
